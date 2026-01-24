@@ -21,21 +21,12 @@ export const metadata: Metadata = {
     siteName: "Ametyst",
     title: "Ametyst - Banking Platform for the Agentic Economy",
     description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
-    images: [
-      {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Ametyst - Own The Bank",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     site: "@ametyst_xyz",
     title: "Ametyst - Banking Platform for the Agentic Economy",
     description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
-    images: ["/logo.png"],
   },
   icons: {
     icon: "/favicon.svg",
