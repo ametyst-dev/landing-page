@@ -1,9 +1,11 @@
 "use client";
 
-function scrollToSection(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
-  e.preventDefault();
+function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "center" });
 }
+
+const navButtonClass =
+  "text-sm font-medium text-muted hover:text-fg transition-colors bg-transparent border-none cursor-pointer p-0 font-sans";
 
 export default function TopBar() {
   return (
@@ -11,20 +13,20 @@ export default function TopBar() {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-end h-14 sm:h-16">
           <nav className="flex items-center gap-6 sm:gap-8" aria-label="Main">
-            <a
-              href="#how-it-works"
-              onClick={(e) => scrollToSection(e, "how-it-works")}
-              className="text-sm font-medium text-muted hover:text-fg transition-colors"
+            <button
+              type="button"
+              onClick={() => scrollToSection("how-it-works")}
+              className={navButtonClass}
             >
               How it works
-            </a>
-            <a
-              href="#faq"
-              onClick={(e) => scrollToSection(e, "faq")}
-              className="text-sm font-medium text-muted hover:text-fg transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection("faq")}
+              className={navButtonClass}
             >
               FAQ
-            </a>
+            </button>
           </nav>
         </div>
       </div>
