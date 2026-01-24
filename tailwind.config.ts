@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#490282",
-        secondary: "#d6daff",
-        background: "#f8f8ff",
+        bg: "var(--color-bg)",
+        fg: "var(--color-fg)",
+        muted: "var(--color-muted)",
+        border: "var(--color-border)",
+        "btn-bg": "var(--color-btn-bg)",
+        "btn-fg": "var(--color-btn-fg)",
+        "btn-border": "var(--color-btn-border)",
       },
       fontFamily: {
         headline: ["var(--font-neue-machina)", "Arial Black", "sans-serif"],

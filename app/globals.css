@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* B&W Variant 3: Dark gray bg, filled white CTA */
+:root {
+  --color-bg: #111111;
+  --color-fg: #ffffff;
+  --color-muted: #a3a3a3;
+  --color-border: #404040;
+  --color-btn-bg: #ffffff;
+  --color-btn-fg: #000000;
+  --color-btn-border: transparent;
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-gray-900;
+    @apply bg-bg text-fg antialiased;
   }
 }
 
