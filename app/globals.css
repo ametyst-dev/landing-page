@@ -2,23 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* B&W Variant 3: Dark gray bg, filled white CTA */
+/* Default theme - Dark Violet */
 :root {
-  --color-bg: #111111;
-  --color-fg: #ffffff;
-  --color-muted: #a3a3a3;
-  --color-border: #404040;
-  --color-btn-bg: #ffffff;
-  --color-btn-fg: #000000;
+  --color-bg: #0B0B0F;
+  --color-fg: #F8F8FF;
+  --color-muted: #D6DAFF;
+  --color-border: #7A1FFF;
+  --color-btn-bg: #7A1FFF;
+  --color-btn-fg: #F8F8FF;
+  --color-btn-border: transparent;
+}
+
+/* Dark Theme - Violet */
+html[data-theme="dark"] {
+  --color-bg: #0B0B0F;
+  --color-fg: #F8F8FF;
+  --color-muted: #D6DAFF;
+  --color-border: #7A1FFF;
+  --color-btn-bg: #7A1FFF;
+  --color-btn-fg: #F8F8FF;
+  --color-btn-border: transparent;
+}
+
+/* Light Theme - Violet */
+html[data-theme="light"] {
+  --color-bg: #F8F8FF;
+  --color-fg: #0B0B0F;
+  --color-muted: #8a7a9f;
+  --color-border: #D6DAFF;
+  --color-btn-bg: #7A1FFF;
+  --color-btn-fg: #F8F8FF;
   --color-btn-border: transparent;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    transition: background-color 300ms ease-in-out;
   }
   body {
     @apply bg-bg text-fg antialiased;
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  }
+
+  /* Smooth transitions for theme switching */
+  * {
+    transition-property: background-color, color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
   }
 }
 

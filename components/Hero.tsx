@@ -18,13 +18,11 @@ export default function Hero() {
     <section className="min-h-screen flex items-center justify-center px-4 py-16 md:py-24 pt-24 md:pt-28 bg-bg">
       <div className="max-w-5xl w-full mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-fg mb-6 md:mb-8 leading-tight">
-          The agentic economy is where you find Product Market Fit
+          Agents can&apos;t pay services.
         </h1>
 
         <p className="text-lg md:text-xl lg:text-2xl text-fg mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed">
-          Your business model is unclear. Your GTM is unclear. Your UX is unclear.
-          <br className="hidden md:block" />{" "}
-          The path to clarity is the agentic economy.
+          A banking platform to spend and receive money through agents
         </p>
 
         {!isSubmitted ? (

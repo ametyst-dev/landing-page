@@ -2,27 +2,22 @@ const items = [
   {
     id: "what",
     question: "What is Ametyst?",
-    answer: "Banking for the agentic economy. Money as a programmable resource your AI agents can spend and receive.",
+    answer: "A wallet connected to your bank account",
   },
   {
     id: "who",
     question: "Who is it for?",
-    answer: "AI-native founders and seed-stage teams in Europe building or consuming digital services.",
+    answer: "Allowing you to spin up virtual wallets and equip your agents with them",
   },
   {
     id: "how",
     question: "How does it work?",
-    answer: "Create wallets, delegate to agents, let them pay for services. Or connect your APIs and get paid when agents use them.",
+    answer: "Integrate Ametyst SDK in 3 lines of code to set paywalls on your API endpoints.",
   },
   {
     id: "vs-stripe",
     question: "Why Ametyst vs. Stripe?",
-    answer: "Stripe is for checkout. Ametyst is for execution—agents spend and receive during runtime, not at a discrete payment moment.",
-  },
-  {
-    id: "integrate",
-    question: "How quickly can we integrate?",
-    answer: "About 60 minutes. Sign up, load funds, create agent wallets, plug in the SDK.",
+    answer: "Built on stablecoins, x402 and integrable with MCP, A2A, skills.",
   },
 ];
 

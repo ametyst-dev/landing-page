@@ -2,11 +2,6 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-16 md:py-24 px-4 bg-bg scroll-mt-20">
       <div className="max-w-5xl w-full mx-auto">
-        {/* Section intro */}
-        <p className="text-lg md:text-xl lg:text-2xl text-fg mb-6 md:mb-8 max-w-4xl mx-auto text-center leading-relaxed">
-          Unlock the agentic economy with the banking platform that powers it. Spend and receive money through agents.
-        </p>
-
         {/* Video Placeholder */}
         <div className="mb-8">
           <div
