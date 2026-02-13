@@ -10,23 +10,42 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.xyz'),
-  title: "Ametyst - Banking for Agents",
-  description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
-  keywords: ["agentic economy", "AI banking", "autonomous payments", "AI agents", "banking platform", "fintech"],
+  title: "Ametyst – Banking Platform for Autonomous Agents",
+  description:
+    "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+  keywords: [
+    "banking platform for agents",
+    "autonomous agent payments",
+    "AI agent wallets",
+    "programmable wallets",
+    "agent-native payments",
+    "fintech infrastructure",
+  ],
   authors: [{ name: "Ametyst" }],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://ametyst.xyz",
     siteName: "Ametyst",
-    title: "Ametyst - Banking for Agents",
-    description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
+    title: "Ametyst – Banking Platform for Autonomous Agents",
+    description:
+      "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+    images: [
+      {
+        url: "/icon.png",
+        width: 512,
+        height: 512,
+        alt: "Ametyst – Banking Platform for Autonomous Agents",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_xyz",
-    title: "Ametyst - Banking Platform for the Agentic Economy",
-    description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
+    title: "Ametyst – Banking Platform for Autonomous Agents",
+    description:
+      "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+    images: ["/icon.png"],
   },
   icons: {
     icon: "/icon.png",
