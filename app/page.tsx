@@ -1,9 +1,9 @@
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
+import Waitlist from "@/components/Waitlist";
 import FAQ from "@/components/FAQ";
 import EndStrip from "@/components/EndStrip";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Home() {
   return (
@@ -11,9 +11,9 @@ export default function Home() {
       <TopBar />
       <Hero />
       <HowItWorks />
+      <Waitlist />
       <FAQ />
       <EndStrip />
-      <ThemeSwitcher />
     </main>
   );
 }

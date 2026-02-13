@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.xyz'),
-  title: "Ametyst - Banking Platform for the Agentic Economy",
+  title: "Ametyst - Banking for Agents",
   description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
   keywords: ["agentic economy", "AI banking", "autonomous payments", "AI agents", "banking platform", "fintech"],
   authors: [{ name: "Ametyst" }],
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.xyz",
     siteName: "Ametyst",
-    title: "Ametyst - Banking Platform for the Agentic Economy",
+    title: "Ametyst - Banking for Agents",
     description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
   },
   twitter: {
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     description: "Unlock the agentic economy with the banking platform that powers it. Spend and receive money through AI agents.",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
@@ -42,19 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('ametyst-theme') || 'dark';
-                document.documentElement.setAttribute('data-theme', theme);
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-body antialiased">
         <ThemeProvider>
           {children}

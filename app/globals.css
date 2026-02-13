@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Neue Machina";
+  src: url("https://db.onlinewebfonts.com/t/38d41072aa88a50711d4d50dd0d50f6b.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/38d41072aa88a50711d4d50dd0d50f6b.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Default theme - Dark Violet */
 :root {
+  --font-neue-machina: "Neue Machina", "Arial Black", sans-serif;
   --color-bg: #0B0B0F;
   --color-fg: #F8F8FF;
   --color-muted: #D6DAFF;
