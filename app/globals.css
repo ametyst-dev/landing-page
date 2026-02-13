@@ -11,31 +11,8 @@
   font-display: swap;
 }
 
-/* Default theme - Dark Violet */
 :root {
   --font-neue-machina: "Neue Machina", "Arial Black", sans-serif;
-  --color-bg: #0B0B0F;
-  --color-fg: #F8F8FF;
-  --color-muted: #D6DAFF;
-  --color-border: #7A1FFF;
-  --color-btn-bg: #7A1FFF;
-  --color-btn-fg: #F8F8FF;
-  --color-btn-border: transparent;
-}
-
-/* Dark Theme - Violet */
-html[data-theme="dark"] {
-  --color-bg: #0B0B0F;
-  --color-fg: #F8F8FF;
-  --color-muted: #D6DAFF;
-  --color-border: #7A1FFF;
-  --color-btn-bg: #7A1FFF;
-  --color-btn-fg: #F8F8FF;
-  --color-btn-border: transparent;
-}
-
-/* Light Theme - Violet */
-html[data-theme="light"] {
   --color-bg: #F8F8FF;
   --color-fg: #0B0B0F;
   --color-muted: #8a7a9f;
@@ -48,18 +25,9 @@ html[data-theme="light"] {
 @layer base {
   html {
     scroll-behavior: smooth;
-    transition: background-color 300ms ease-in-out;
   }
   body {
     @apply bg-bg text-fg antialiased;
-    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
-  }
-
-  /* Smooth transitions for theme switching */
-  * {
-    transition-property: background-color, color, border-color;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
   }
 }
 
