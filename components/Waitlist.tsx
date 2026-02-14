@@ -4,21 +4,22 @@ import { useState } from "react";
 
 export default function Waitlist() {
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbxj_det6P-dc-cr97W-Mg5tWL9t9TsGAY5affmXxISi73k-_BJeTFAJ2jB8Nf_sZJCh/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const r = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, honeypot }),
+      });
+      if (!r.ok) {
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       setEmail("");
     } catch {
@@ -35,6 +36,15 @@ export default function Waitlist() {
           Start working with agent-native banking
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <input
+            type="text"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            style={{ display: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
           <input
             type="email"
             value={email}
