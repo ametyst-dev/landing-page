@@ -1,0 +1,115 @@
+# Cursor Rules — Ametyst Landing Page
+
+## Project overview
+Marketing landing page for Ametyst, a banking platform for autonomous AI agents.
+Next.js 15 (App Router) · TypeScript 5 · Tailwind CSS 3 · React 19 · Deployed on Vercel.
+
+---
+
+## Language & runtime
+- **TypeScript** everywhere — no `.js` files except config files that require it (`next.config.js`, `postcss.config.js`)
+- **React 19** with the App Router — use Server Components by default; add `"use client"` only when you need browser APIs, event handlers, or `useState`/`useEffect`
+- **Node.js 18+** required for local development
+- **npm** is the package manager — do not use yarn, pnpm, or bun
+
+---
+
+## Project structure
+```
+app/            Next.js App Router (layouts, pages, API routes)
+components/     React UI section components (flat, PascalCase)
+contexts/       React context providers (empty, add only if needed)
+hooks/          Custom React hooks (empty, add only if needed)
+public/         Static assets served at /
+docs/           Project documentation (do not modify unless updating docs)
+```
+
+---
+
+## TypeScript rules
+- Always type component props explicitly — no implicit `any`
+- Prefer `interface` over `type` for object shapes; use `type` for unions and primitives
+- Use plain function declarations with typed props — avoid `React.FC`
+- API route handlers must type the `Request` parameter and return `NextResponse`
+- Do not use `@ts-ignore` or `@ts-expect-error` without a comment explaining why
+- TypeScript strict mode is enabled (`tsconfig.json`) — do not relax strict settings
+
+---
+
+## Styling
+- **Tailwind CSS only** — no CSS modules, no styled-components, no inline `style` objects except where Tailwind cannot express the value (e.g. dynamic values not available as a class)
+- **Semantic color aliases** — always use the Tailwind aliases, never raw hex in class names:
+  - `bg-bg` / `text-fg` — background and primary text
+  - `text-muted` — secondary/muted text
+  - `border-border` — borders and dividers
+  - `bg-btn-bg` / `text-btn-fg` / `border-btn-border` — button colors
+- **Font families**:
+  - `font-headline` — Neue Machina (headings, brand name)
+  - `font-body` — Inter (body text, UI labels)
+- **Light mode only** — do not add `dark:` variants; the site is light-mode by design
+- Color tokens are CSS custom properties defined in `app/globals.css`; to change a brand color, edit the `--color-*` variables there — do not change the Tailwind alias names in `tailwind.config.ts`
+
+---
+
+## Component conventions
+- One component per file, filename matches the component name (PascalCase: `Hero.tsx`)
+- All landing page sections live in `components/` — never inline section markup in `app/page.tsx`
+- Every section component must have a root element with `id="<section-name>"` for anchor-based navigation
+- Client components (`"use client"`) go in `components/`; keep `app/page.tsx` and `app/layout.tsx` as Server Components
+- Do not create sub-folders inside `components/` unless a section grows to multiple files
+
+---
+
+## Routing (App Router)
+- Page files: `app/<route>/page.tsx`
+- Layout files: `app/<route>/layout.tsx` — only if the route needs its own layout
+- API routes: `app/api/<endpoint>/route.ts` — export named HTTP method handlers (`GET`, `POST`, etc.)
+- Use `export const metadata` in `layout.tsx` or `page.tsx` for SEO metadata — never use `<Head>` from `next/head`
+
+---
+
+## API routes
+- Always validate inputs server-side before processing
+- Return `NextResponse.json(...)` with appropriate HTTP status codes
+- Never expose environment variables or secrets in response bodies
+- Use `cache: "no-store"` on any `fetch` calls inside API routes that must not be cached
+- The waitlist route (`app/api/waitlist/route.ts`) is the reference implementation for input validation and error handling
+
+---
+
+## Environment variables
+- Secret variables live in `.env.local` (gitignored) — never commit this file
+- The only required secret is `GOOGLE_SCRIPT_URL` (used by the waitlist API)
+- Access env vars server-side only — never import `process.env.*` inside client components
+- Document any new env var in `docs/ECOSYSTEM.md`
+
+---
+
+## Linting & formatting
+- Run `npm run lint` (`next lint`) before committing — fix all ESLint errors; do not disable rules inline without justification
+- No Prettier config is present; follow the existing code style: 2-space indent, double quotes in JSX attributes, no trailing commas in function arguments
+- Do not add `console.log` calls in production code — remove before committing
+- Do not add `eslint-disable` comments without a brief explanation of why
+
+---
+
+## Build & deployment
+- Build command: `npm run build` — must produce zero TypeScript errors and zero ESLint errors
+- Dev server: `npm run dev`
+- `next.config.js` uses `output: 'standalone'` — required for Vercel/Docker; do not change
+- The `.next/` and `node_modules/` folders are gitignored; never commit build artifacts
+- Deployment target: Vercel (auto-detects Next.js, no extra config needed)
+
+---
+
+## What NOT to do
+- ❌ No `any` types without explicit justification
+- ❌ No hardcoded hex color values in component JSX — use Tailwind aliases
+- ❌ No `dark:` Tailwind variants — light mode only
+- ❌ No markup directly in `app/page.tsx` — extract to a component in `components/`
+- ❌ No removal of the honeypot field in `Waitlist.tsx`
+- ❌ No changes to `output: 'standalone'` in `next.config.js`
+- ❌ No committing `.env*.local` or any credentials
+- ❌ No `console.log` left in production code
+- ❌ No `eslint-disable` comments without explaining the reason
+- ❌ No yarn / pnpm / bun — use npm only
