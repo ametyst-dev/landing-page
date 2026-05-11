@@ -33,7 +33,7 @@ export default function Waitlist() {
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-fg mb-8 md:mb-10 text-center">
-          Start working with agent-native banking
+          Start working with us
         </h2>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
           <input

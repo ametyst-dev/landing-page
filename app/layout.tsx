@@ -10,16 +10,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.xyz'),
-  title: "Ametyst – Banking Platform for Autonomous Agents",
+  title: "Ametyst – Wallets for AI Agents",
   description:
-    "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+    "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
   keywords: [
-    "banking platform for agents",
-    "autonomous agent payments",
     "AI agent wallets",
+    "wallets for AI agents",
+    "agent tool access",
     "programmable wallets",
-    "agent-native payments",
-    "fintech infrastructure",
+    "AI agent infrastructure",
+    "on-demand tool access",
   ],
   authors: [{ name: "Ametyst" }],
   openGraph: {
@@ -27,24 +27,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.xyz",
     siteName: "Ametyst",
-    title: "Ametyst – Banking Platform for Autonomous Agents",
+    title: "Ametyst – Wallets for AI Agents",
     description:
-      "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+      "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst – Banking Platform for Autonomous Agents",
+        alt: "Ametyst – Wallets for AI Agents",
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_xyz",
-    title: "Ametyst – Banking Platform for Autonomous Agents",
+    title: "Ametyst – Wallets for AI Agents",
     description:
-      "Ametyst is a banking platform for autonomous agents. Create bank-linked wallets, set spending policies, and enable agents to pay and get paid for services.",
+      "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
     images: ["/icon.png"],
   },
   icons: {

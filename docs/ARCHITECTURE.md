@@ -27,9 +27,8 @@ landing-page/
 ├── components/
 │   ├── TopBar.tsx              # Fixed header / nav
 │   ├── Hero.tsx                # Above-the-fold hero
-│   ├── HowItWorks.tsx          # Tabbed product walkthrough
+│   ├── HowItWorks.tsx          # Product walkthrough
 │   ├── Waitlist.tsx            # Email capture form (client component)
-│   ├── FAQ.tsx                 # FAQ accordion
 │   └── EndStrip.tsx            # Footer / bottom strip
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks

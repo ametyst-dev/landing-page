@@ -1,7 +1,7 @@
 # CLAUDE.md — landing-page/
 
 ## Purpose
-This is the public-facing landing page for Ametyst — a banking platform for autonomous AI agents. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
+This is the public-facing landing page for Ametyst — wallets that give AI agents on-demand access to every service they need. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
 
 ## Context triggers
 - Load this when the task involves UI changes, new sections, routing, API endpoints, or styling

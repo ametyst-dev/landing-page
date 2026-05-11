@@ -3,20 +3,7 @@
 function scrollToSection(id: string) {
   const element = document.getElementById(id);
   if (element) {
-    if (id === "faq") {
-      // For FAQ, scroll to top so hero/demo are completely hidden
-      const headerHeight = 80; // Account for fixed header
-      const extraOffset = 100; // Extra space to hide demo completely
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight - extraOffset;
-      
-      window.scrollTo({
-        top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
-        behavior: "smooth"
-      });
-    } else {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 }
 
