@@ -26,9 +26,12 @@ landing-page/
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
 │   ├── TopBar.tsx              # Fixed header / nav
-│   ├── Hero.tsx                # Above-the-fold hero
-│   ├── HowItWorks.tsx          # Product walkthrough
-│   ├── Waitlist.tsx            # Email capture form (client component)
+│   ├── Hero.tsx                # Above-the-fold hero (client component)
+│   ├── ChatDemo.tsx            # Animated terminal demo (client component, scripted)
+│   ├── Problem.tsx             # Two-column problem statement
+│   ├── Personas.tsx            # Two-column personas (champion / buyer)
+│   ├── HowItWorks.tsx          # 3 wallet steps
+│   ├── Waitlist.tsx            # Final CTA: /book link + email capture form (client component)
 │   └── EndStrip.tsx            # Footer / bottom strip
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks
@@ -43,6 +46,6 @@ landing-page/
 
 ## Data / content flow
 - **Waitlist form**: user fills email in `Waitlist.tsx` → browser POSTs to `app/api/waitlist/route.ts` → server validates email + honeypot → forwards to Google Sheets via `GOOGLE_SCRIPT_URL` env var → returns `{ ok: true }` → component shows success message
-- **Booking**: `TopBar.tsx` "Get started" button links to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
+- **Booking**: "Book a discovery call" CTAs (TopBar, Hero, Waitlist) link to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
 - **Skill files**: static `.md` files in `public/` are served at `ametyst.xyz/setup-agent-owners-skill.md` and `ametyst.xyz/setup-saas-skill.md` — referenced as copyable skill URLs in `HowItWorks.tsx`
 - **Fonts**: Inter is loaded via `next/font/google` in `layout.tsx`; Neue Machina is loaded via `@font-face` in `globals.css` pointing to an external CDN

@@ -7,7 +7,7 @@ export default function EndStrip() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           <a
-            href="https://x.com/ametyst_xyz"
+            href="https://x.com/ametyst_ai"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs md:text-sm font-medium text-fg opacity-70 hover:opacity-100 transition-opacity font-body"
