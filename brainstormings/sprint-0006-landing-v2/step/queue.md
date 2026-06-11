@@ -1,130 +1,228 @@
 # Chunk Queue
 
-**Total chunks:** 3
-**Test command:** `npm test` (Vitest — being set up in this very step; available from Chunk 1 onward)
+**Total chunks:** 4
+**Test command:** `npm test` (Vitest, single run — see `## Testing` in CLAUDE.md)
 **Source plan:** brainstormings/sprint-0006-landing-v2/step/current-plan.md
 
 ---
 
-## Chunk 1 — Test tooling setup
+## Chunk 1 — Waitlist final CTA + EndStrip footer tagline
 **Status:** done
-**Files:** `package.json`, `vitest.config.ts` (new), `vitest.setup.ts` (new)
-**Done when:** `npx vitest run` executes without config errors ("no test files found" is the expected output at this stage), and `package.json` has `test` and `test:watch` scripts.
+**Files:** `components/Waitlist.tsx`, `components/EndStrip.tsx`
+**Done when:** Waitlist renders header "Give your agents a wallet.", a purple "Book a discovery call" link to `/book`, and the unchanged email+honeypot form with an outline "Join the waiting list" submit; EndStrip shows the tagline plus the existing X/LinkedIn links; zero hardcoded hex in both files.
 
-1. Install dev dependencies (dev-only, no runtime deps):
-```bash
-npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/jest-dom
+Palette note (applies to every class below): the repo uses semantic Tailwind aliases backed by CSS vars — `bg-bg`, `text-fg`, `text-muted`, `border-border`, `bg-btn-bg` (brand purple #7A1FFF), `text-btn-fg` (#F8F8FF), `border-btn-border` (transparent). Brand purple as text/border = `text-btn-bg` / `border-btn-bg`. NEVER write hex values in class names or style props.
+
+### `components/Waitlist.tsx`
+
+The file is a `"use client"` component with `useState` for `email`, `honeypot`, `status` (`"idle" | "loading" | "success" | "error"`) and a `handleSubmit` that POSTs `JSON.stringify({ email, honeypot })` to `/api/waitlist`. KEEP all of that logic byte-identical — this chunk changes ONLY the JSX copy and styling:
+
+1. `<section>`: add `id="waitlist"` and `scroll-mt-20` to the existing className (`py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg border-b border-border/20`).
+2. `<h2>` text becomes exactly: `Give your agents a wallet.` (keep existing h2 classes).
+3. Between the h2 and the form, add a centered primary CTA:
+```tsx
+<div className="flex justify-center mb-8">
+  <a
+    href="/book"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90"
+  >
+    Book a discovery call
+  </a>
+</div>
 ```
-2. Create `vitest.config.ts` at the repo root with exactly this content:
-```ts
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import path from "path";
+4. Form unchanged except styles/labels:
+   - Honeypot input: keep exactly as is (`type="text"`, `style={{ display: "none" }}`, `tabIndex={-1}`, `autoComplete="off"`, `aria-hidden="true"`).
+   - Email input className: replace `focus:border-[#7A1FFF]` with `focus:border-btn-bg` (rest unchanged).
+   - Submit button: REMOVE the inline `style={{ borderColor: '#7A1FFF', backgroundColor: '#7A1FFF', color: '#F8F8FF' }}` and the `uppercase` class. New className: `rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 whitespace-nowrap disabled:opacity-50`. Label: `{status === "loading" ? "Sending..." : "Join the waiting list"}`.
+   - Success message `<p>`: REMOVE `style={{ color: '#7A1FFF' }}`, add `text-btn-bg` to its className. Text unchanged: `You&apos;re on the list! We&apos;ll be in touch soon.`
+   - Error message unchanged: `Something went wrong. Please try again.`
 
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: "jsdom",
-    setupFiles: ["./vitest.setup.ts"],
-    include: ["__tests__/**/*.test.{ts,tsx}"],
-  },
-  resolve: {
-    alias: { "@": path.resolve(__dirname, ".") },
-  },
+### `components/EndStrip.tsx`
+
+Currently a `<footer className="bg-bg py-6 px-8 md:px-16 lg:px-24 xl:px-32">` with one inner div holding two `<a>` links (X → `https://x.com/ametyst_xyz`, LinkedIn → `https://www.linkedin.com/company/ametyst-xyz/`). Keep both links byte-identical. Restructure the inner content to a column:
+```tsx
+<div className="max-w-7xl mx-auto flex flex-col items-center gap-3">
+  <p className="text-xs md:text-sm text-fg opacity-70 font-body text-center">
+    Wallets for agents. Built in Europe. © 2026 Ametyst.
+  </p>
+  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+    {/* the two existing <a> links, unchanged */}
+  </div>
+</div>
+```
+The tagline text is LOCKED copy — character for character: `Wallets for agents. Built in Europe. © 2026 Ametyst.`
+
+Constraints: do not touch `app/api/waitlist/route.ts`. Do not change the POST body shape or remove the honeypot. No new dependencies.
+
+---
+
+## Chunk 2 — TopBar (drop Skill.md, relabel CTA) + Hero (new copy, 2 CTAs)
+**Status:** done
+**Files:** `components/TopBar.tsx`, `components/Hero.tsx`
+**Done when:** TopBar has no Skill.md link and its CTA reads "Book a discovery call" → `/book`; Hero renders the locked H1/sub, a purple `/book` CTA and an outline button that smooth-scrolls to the `waitlist` anchor; the video placeholder block is gone; zero hardcoded hex in both files.
+
+Palette note: semantic Tailwind aliases only — `bg-bg`, `text-fg`, `text-muted`, `border-border`, `bg-btn-bg` (brand purple), `text-btn-fg`, `border-btn-border` (transparent). Purple text/border = `text-btn-bg` / `border-btn-bg`. NEVER write hex in classes or style props.
+
+### `components/TopBar.tsx`
+
+A `"use client"` fixed header with a `scrollToSection(id)` helper and a logo `<button>` + nav. Changes:
+1. Logo button: REMOVE `style={{ color: '#7A1FFF', textShadow: '0 0 1px rgba(122, 31, 255, 0.3)' }}`; add `text-btn-bg` to its className (keep the rest of the className).
+2. DELETE the entire `<a href="/skill.md">Skill.md</a>` element.
+3. CTA `<a>`: href `/book` (keep `target="_blank" rel="noopener noreferrer"`), text exactly `Book a discovery call`, className `rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-2 px-5 text-xs md:text-sm transition-colors hover:opacity-90 ml-2` (the `uppercase` class is REMOVED).
+
+### `components/Hero.tsx`
+
+Full rewrite as a client component:
+```tsx
+"use client";
+
+function scrollToSection(id: string) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+}
+
+export default function Hero() {
+  return (
+    <section id="hero" className="flex flex-col items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32 py-16 md:py-24 pt-32 md:pt-40 lg:pt-48 bg-bg border-b border-border/20">
+      <div className="max-w-7xl w-full mx-auto text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-fg mb-3 md:mb-4 leading-tight">
+          One key. Every AI service.
+        </h1>
+        <p className="text-lg md:text-xl lg:text-2xl font-headline text-fg mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
+          Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/book"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90"
+          >
+            Book a discovery call
+          </a>
+          <button
+            type="button"
+            onClick={() => scrollToSection("waitlist")}
+            className="rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 cursor-pointer"
+          >
+            Join the waiting list
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+Notes:
+- H1 and sub are LOCKED copy — character for character as above.
+- The `waitlist` anchor target is `id="waitlist"` on the `<section>` in `components/Waitlist.tsx` (already present in this step's branch — verify it exists; if missing, add it there).
+- The old video placeholder block ("Product demo coming soon", aspect-video div, play svg) must NOT survive.
+
+Constraints: keep `id="hero"` (the TopBar logo scrolls to it). No new dependencies.
+
+---
+
+## Chunk 3 — HowItWorks rewrite (3 wallet steps, no setup-mode)
+**Status:** done
+**Files:** `components/HowItWorks.tsx`
+**Done when:** the section renders heading "How it works" and exactly 3 numbered steps with the locked titles/descriptions; no "Choose your setup mode", no skill URL, no copy button, no `"use client"`, zero hardcoded hex.
+
+Palette note: semantic Tailwind aliases only — `bg-bg`, `text-fg`, `bg-btn-bg` (brand purple), `text-btn-fg`. NEVER write hex in classes or style props.
+
+Full rewrite of `components/HowItWorks.tsx` as a server component (no `"use client"`, no React imports needed):
+```tsx
+export default function HowItWorks() {
+  const steps = [
+    {
+      title: "Create your wallet.",
+      description: "Open your workspace and create a wallet for your agents.",
+    },
+    {
+      title: "Set the policies.",
+      description: "Decide how much the wallet can spend, and on which services.",
+    },
+    {
+      title: "Connect your agents to the wallet.",
+      description: "One command links them. From there they pay for what they use, within policy.",
+    },
+  ];
+
+  return (
+    <section id="how-it-works" className="py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg scroll-mt-20 border-b border-border/20">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-fg mb-8 md:mb-10 text-center">
+          How it works
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((step, i) => (
+            <div key={step.title} className="flex flex-col items-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center font-bold text-btn-fg text-2xl md:text-3xl mb-3 bg-btn-bg">
+                {i + 1}
+              </div>
+              <p className="font-body text-base md:text-lg font-bold text-fg text-center mb-2">
+                {step.title}
+              </p>
+              <p className="font-body text-sm md:text-base text-fg/70 text-center">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+Titles and descriptions are LOCKED copy — character for character as above. Everything that existed before (setup-mode title, agent-assisted card with skill URL code snippet and copy button, manual card, dark hex styling) must NOT survive.
+
+Constraints: keep `id="how-it-works"` and `scroll-mt-20`. No new dependencies.
+
+---
+
+## Chunk 4 — Section copy tests + build + sweeps [TEST]
+**Status:** done
+**Type:** test
+**Commit point:** chunks 1-4
+**Files:** `__tests__/sections.test.tsx` (new)
+**Done when:** `npm test` green (existing 7 tests + new section tests), `npm run build` green, grep sweeps clean.
+**Test:**
+- Unit: locked copy verbatim per component (TopBar, Hero, HowItWorks, Waitlist, EndStrip), absence of Skill.md/setup-mode, waitlist form POST behavior with mocked fetch
+
+Context (self-contained): Vitest + React Testing Library are configured (`npm test` = `vitest run`, jsdom default env, alias `@` → repo root, tests in `__tests__/`, setup file loads jest-dom matchers). Components under test (all default exports): `components/TopBar.tsx`, `components/Hero.tsx`, `components/HowItWorks.tsx`, `components/Waitlist.tsx`, `components/EndStrip.tsx`. Waitlist is a client component whose form POSTs `JSON.stringify({ email, honeypot })` to `/api/waitlist` and shows `You're on the list! We'll be in touch soon.` on success. Existing test files `__tests__/endstrip.test.tsx` and `__tests__/waitlist-route.test.ts` must keep passing.
+
+1. Create `__tests__/sections.test.tsx`:
+```tsx
+import { describe, it, expect, vi, afterEach } from "vitest";
+import { render, screen, cleanup, fireEvent, waitFor } from "@testing-library/react";
+import TopBar from "@/components/TopBar";
+import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
+import Waitlist from "@/components/Waitlist";
+import EndStrip from "@/components/EndStrip";
+
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
 });
 ```
-3. Create `vitest.setup.ts` at the repo root with exactly this content:
-```ts
-import "@testing-library/jest-dom/vitest";
+Test cases:
+- **TopBar**: render; `screen.getByRole("link", { name: "Book a discovery call" })` has `href="/book"`; `screen.queryByText("Skill.md")` is null.
+- **Hero**: render; `screen.getByRole("heading", { name: "One key. Every AI service." })` exists; `screen.getByText("Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use.")` exists; link "Book a discovery call" → `/book`; `screen.getByRole("button", { name: "Join the waiting list" })` exists.
+- **HowItWorks**: render; heading `How it works`; the 3 titles (`Create your wallet.`, `Set the policies.`, `Connect your agents to the wallet.`) and 3 descriptions (`Open your workspace and create a wallet for your agents.`, `Decide how much the wallet can spend, and on which services.`, `One command links them. From there they pay for what they use, within policy.`) all present verbatim; `screen.queryByText(/skill/i)` is null and `screen.queryByText(/setup/i)` is null.
+- **Waitlist**: render; heading `Give your agents a wallet.`; link "Book a discovery call" → `/book`; submit flow: `vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ ok: true }), { status: 200 })))`, type an email into the email input (`fireEvent.change`), `fireEvent.submit` the form (or click the "Join the waiting list" button), then `await waitFor(...)`: fetch called with `/api/waitlist` and a body containing the email, and `You're on the list! We'll be in touch soon.` appears.
+- **EndStrip**: render; `screen.getByText("Wallets for agents. Built in Europe. © 2026 Ametyst.")` exists.
+2. Run `npm test` — ALL tests green (the pre-existing `endstrip.test.tsx` link assertions and `waitlist-route.test.ts` API tests must still pass).
+3. Run `npm run build` — green.
+4. Sweeps (all must return zero matches):
+```bash
+grep -rn "7A1FFF\|#1a1a1a\|#252525\|ff5f56\|ffbd2e\|27c93f\|e0e0e0" components/
+grep -rni "skill" components/ app/page.tsx
+git diff app/api/ next.config.js
 ```
-4. In `package.json`, add to `scripts` (keep `dev`, `build`, `start`, `lint` untouched):
-```json
-"test": "vitest run",
-"test:watch": "vitest"
-```
-5. Run `npx vitest run` — it must start and report no test files found (no config/transform errors).
+5. Commit point: commit everything from chunks 1-4 (5 components + test file).
 
-Constraints: do not modify any file under `app/` or `components/`. Do not add runtime dependencies.
-
----
-
-## Chunk 2 — Exemplary tests: waitlist API + EndStrip render [TEST]
-**Status:** done
-**Type:** test
-**Commit point:** chunks 1-2
-**Files:** `__tests__/waitlist-route.test.ts` (new), `__tests__/endstrip.test.tsx` (new)
-**Done when:** `npm test` passes with 7 tests green across 2 files.
-**Test:**
-- Unit: waitlist API route validation (valid email, missing email, invalid email, honeypot, missing env) with the Google Script fetch mocked
-- Unit: EndStrip render test (X and LinkedIn links with correct hrefs)
-
-Context (self-contained): the repo has Vitest configured via `vitest.config.ts` at the root (jsdom default environment, setup file `vitest.setup.ts` loading jest-dom matchers, tests discovered in `__tests__/**/*.test.{ts,tsx}`, alias `@` → repo root). The test command is `npm test` (= `vitest run`). The route handler under test is `app/api/waitlist/route.ts`, exporting `POST(req: Request): Promise<NextResponse>`; it reads `process.env.GOOGLE_SCRIPT_URL` inside the handler, returns `{ ok: true }` (200) when honeypot is filled WITHOUT calling fetch, 400 `{ error: "Invalid email" }` for missing/invalid email, 500 `{ error: "Missing server config" }` when env is missing, and forwards `{ email }` via POST to the env URL otherwise. The footer component under test is `components/EndStrip.tsx` (default export `EndStrip`, no props) rendering two `<a>` links: accessible name "X" → `https://x.com/ametyst_xyz`, accessible name "LinkedIn" → `https://www.linkedin.com/company/ametyst-xyz/`.
-
-1. Create `__tests__/waitlist-route.test.ts`. First line MUST be the docblock that switches this file to node environment (Web `Request`/`Response` are Node-native, not in jsdom):
-```ts
-// @vitest-environment node
-```
-Imports:
-```ts
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { POST } from "@/app/api/waitlist/route";
-```
-Setup: in `beforeEach`, `vi.stubEnv("GOOGLE_SCRIPT_URL", "https://script.example/mock")` and `vi.stubGlobal("fetch", vi.fn(async () => new Response("ok", { status: 200 })))`. In `afterEach`, `vi.unstubAllEnvs()` and `vi.unstubAllGlobals()`.
-Helper to build requests:
-```ts
-const makeReq = (body: unknown) =>
-  new Request("http://localhost/api/waitlist", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-```
-Test cases (5):
-1. valid email accepted: `POST(makeReq({ email: "user@example.com" }))` → `res.status === 200`, `await res.json()` equals `{ ok: true }`, and the fetch mock was called once with `"https://script.example/mock"` and a body containing `"user@example.com"`.
-2. missing email rejected: `POST(makeReq({}))` → status 400, json `{ error: "Invalid email" }`.
-3. invalid email rejected: `POST(makeReq({ email: "not-an-email" }))` → status 400.
-4. filled honeypot short-circuits: `POST(makeReq({ email: "user@example.com", honeypot: "bot" }))` → status 200, json `{ ok: true }`, and the fetch mock was NOT called.
-5. missing GOOGLE_SCRIPT_URL: stub env to `""` for this test (`vi.stubEnv("GOOGLE_SCRIPT_URL", "")`) → status 500, json `{ error: "Missing server config" }`.
-
-2. Create `__tests__/endstrip.test.tsx` (jsdom default environment, no docblock):
-```ts
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import EndStrip from "@/components/EndStrip";
-```
-Test cases (2):
-1. X link: render `<EndStrip />`, `screen.getByRole("link", { name: "X" })` has attribute `href` = `https://x.com/ametyst_xyz`.
-2. LinkedIn link: `screen.getByRole("link", { name: "LinkedIn" })` has attribute `href` = `https://www.linkedin.com/company/ametyst-xyz/`.
-
-3. Run `npm test` — all 7 tests green.
-4. Commit point: commit everything from Chunk 1 and Chunk 2 (deps, config, setup, scripts, both test files).
-
-Constraints: do NOT modify `app/api/waitlist/route.ts` or `components/EndStrip.tsx` — if a test fails, fix the test, not the source. No credentials in tests.
-
----
-
-## Chunk 3 — CLAUDE.md Testing section + build check [TEST]
-**Status:** done
-**Type:** test
-**Commit point:** chunk 3
-**Files:** `CLAUDE.md`
-**Done when:** `CLAUDE.md` contains the `## Testing` section, and both `npm test` and `npm run build` pass.
-**Test:** verify existing tests still pass (`npm test`) and the Next.js production build is unaffected (`npm run build`).
-
-Context (self-contained): the repo root `CLAUDE.md` documents this repo for AI agents; it currently has sections `## Purpose`, `## Context triggers`, `## Boundaries`, `## Operations supported`, `## Submodules map`, `## Docs`, `## Safety / sharp edges`, `## Examples` — and no `## Testing` section. Vitest was configured in this macro step (`npm test` = `vitest run`, config in `vitest.config.ts`, tests in `__tests__/`).
-
-1. In `CLAUDE.md`, insert a `## Testing` section between `## Submodules map` and `## Docs`, with exactly this content:
-```markdown
-## Testing
-- Command: `npm test` (Vitest, single run) — `npm run test:watch` for watch mode
-- Framework: Vitest + React Testing Library, jsdom environment by default
-- API route tests run in node environment via `// @vitest-environment node` docblock (Web Request/Response are Node-native)
-- Tests live in `__tests__/` at repo root, named `*.test.ts(x)`
-- No `.env.test` required — `GOOGLE_SCRIPT_URL` is stubbed with `vi.stubEnv` and the Google Script fetch is mocked
-```
-2. Run `npm test` — all tests still green.
-3. Run `npm run build` — build green (test files and `vitest.config.ts` must not leak into the Next build; if `tsc` complains about vitest types during build, add `vitest.config.ts`, `vitest.setup.ts`, and `__tests__` to the `exclude` array of `tsconfig.json` and re-run).
-4. Verify `git diff app/api/waitlist/route.ts components/` is empty (source untouched).
-5. Commit point: commit the CLAUDE.md change (and tsconfig.json only if step 3 required it).
-
-Constraints: do not change any other CLAUDE.md section. Do not touch `next.config.js`.
+Constraints: if a test fails because a component doesn't match the locked copy, fix the COMPONENT (copy is locked); if it fails due to a wrong selector, fix the TEST. Do not modify `app/api/waitlist/route.ts`.

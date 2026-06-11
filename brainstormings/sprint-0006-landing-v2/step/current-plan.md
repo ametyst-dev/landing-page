@@ -1,125 +1,107 @@
-# Sprint 0006 — Step 0: Test infrastructure setup
+# Sprint 0006 — Step 1: Shell + existing sections rewrite (locked copy)
 
 ## Context
 
-Sprint 0006 (landing-v2) rebuilds the Ametyst landing page. Macro Step 0 adds test infrastructure (the repo has zero today) so later steps (ChatDemo state machine, copy verbatim checks, waitlist regression guard) have a place to put tests. Sub-branch: `landing-v2/step-0`.
+Macro Step 1 of sprint-0006-landing-v2. Step 0 (test infra) is merged (PR #3). This step applies the locked copy verbatim to all 5 existing components, removes every product link (Skill.md, setup-mode block, skill URLs), makes `/book` the primary CTA everywhere, and replaces all hardcoded hex with semantic Tailwind aliases. Sub-branch: `landing-v2-step-1`.
 
 ## Findings from codebase analysis
 
-- `package.json`: no `test` script, no test deps. Next 15.1 + React 19 + TS 5. Node v22.22.3 local.
-- No `vitest.config.ts`, no `__tests__/`, no jest config — clean slate.
-- `CLAUDE.md` has no `## Testing` section (this step adds it).
-- `app/api/waitlist/route.ts`: handler reads `process.env.GOOGLE_SCRIPT_URL` **inside** the handler (good — tests can set/unset it per test). Honeypot returns `{ ok: true }` silently. Validation: missing/non-string/regex-invalid email → 400; missing env → 500; upstream not-ok → 502.
-- `components/EndStrip.tsx`: simplest component, pure presentational (X + LinkedIn links) — ideal render-test target.
-- `tsconfig.json` alias `@/*` → `./*` — vitest config must replicate it.
-- React 19 requires `@testing-library/react` ≥ 16.
-- Route handler tests need Node-native `Request`/`Response`: run API tests with `// @vitest-environment node` docblock; component tests default to jsdom.
+- Palette aliases available (tailwind.config.ts → globals.css vars): `bg`, `fg`, `muted`, `border`, `btn-bg` (#7A1FFF purple), `btn-fg` (#F8F8FF), `btn-border` (transparent). The brand purple as text/border = `text-btn-bg` / `border-btn-bg` (no dedicated "accent" alias; adding one would touch tailwind.config, which the repo CLAUDE.md discourages).
+- `globals.css` already sets `html { scroll-behavior: smooth }`, but ADR-002 mandates the TopBar `scrollToSection` pattern for the hero secondary CTA → Hero becomes a `"use client"` component.
+- Hex violations to fix: TopBar logo (`#7A1FFF` + textShadow), Hero video placeholder block (removed anyway), HowItWorks number boxes (`#7A1FFF`) + dark code card (`#1a1a1a`, `#252525`, `#ff5f56`, `#ffbd2e`, `#27c93f`, `#e0e0e0` — all removed with setup-mode block), Waitlist (focus border, submit button, success text).
+- `HowItWorks.tsx` currently has NO header and uses `"use client"` + useState only for the copy button → after rewrite it becomes a pure server component.
+- `Waitlist.tsx` form logic (state machine idle/loading/success/error, honeypot state, POST shape `{ email, honeypot }`) must be preserved exactly; only copy and styling change.
+- `app/page.tsx` already renders TopBar → Hero → HowItWorks → Waitlist → EndStrip — **no change needed in this step**.
+- Existing tests: `__tests__/endstrip.test.tsx` (X/LinkedIn hrefs — remain valid) and `__tests__/waitlist-route.test.ts` (API — untouched). Test command `npm test` (Vitest, CLAUDE.md ## Testing).
 
 ## Decisions
 
-- **Vitest with `@vitejs/plugin-react`**: the guidelines list 4 devDeps (vitest, @testing-library/react, @testing-library/jest-dom, jsdom); `@vitejs/plugin-react` is added as a 5th for the JSX automatic runtime — dev-only, covered by the "dev-only test tooling" exception in the sprint constraints.
-- **`npm test` = `vitest run`** (single pass, CI-friendly); `npm run test:watch` for dev loop.
-- **Tests live in `__tests__/` at repo root**: the guidelines' Step 3 already references `__tests__/`, so standardize there now.
-- **Per-file environment override**: jsdom is the config default (component tests); API route tests opt into node env via docblock. Avoids polyfilling fetch/Request in jsdom.
-- ADRs 001–003 are not touched by this step (they concern Steps 1–3).
+- **Step titles rendering**: the locked copy's "**Step 1 — Create your wallet.**" markdown is rendered as numbered box (1/2/3, existing visual pattern) + bold title "Create your wallet." + description. The "Step N —" prefix is markdown structure, not rendered copy — this respects the "no em dashes in page copy" constraint while keeping the copy strings verbatim.
+- **Purple via `btn-bg` alias**: brand purple text/borders use `text-btn-bg`/`border-btn-bg`. No new CSS vars, no tailwind.config changes (repo rule).
+- **Button case**: drop the `uppercase` Tailwind class on CTAs — copy is locked in sentence case ("Book a discovery call", "Join the waiting list"); CSS uppercase would visually break verbatim rendering.
+- **`/book` link behavior**: keep the existing `target="_blank" rel="noopener noreferrer"` pattern on /book CTAs (matches current TopBar/HowItWorks behavior; smallest diff).
+- **Form button = secondary style**: the waitlist submit button becomes white/outline (border `border-btn-bg`, text `text-btn-bg`, transparent bg) per locked copy "CTA (secondary, white/outline)".
+- **ADR-002 applies**: one waitlist form only, in Waitlist.tsx (final CTA); Hero secondary CTA smooth-scrolls to its anchor `id="waitlist"` using the TopBar `scrollToSection` pattern.
+- **ADR-003 applies**: Final CTA = Waitlist.tsx (rewrite), Footer = EndStrip.tsx (edit). No renames.
+- **ADR-001 not in scope** (ChatDemo is Step 3).
 
 ## Operational guide
 
-### 1. Install dev dependencies
+### 1. `components/TopBar.tsx` — drop Skill.md, relabel CTA, fix hex
 
-```bash
-npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/jest-dom
-```
+- Keep `"use client"`, `scrollToSection`, fixed header layout.
+- Logo button: remove `style={{ color: '#7A1FFF', textShadow: ... }}`; add `text-btn-bg` to its className.
+- DELETE the `Skill.md` `<a>` entirely.
+- CTA link: label `Book a discovery call` (verbatim), href `/book`, keep `target="_blank" rel="noopener noreferrer"`, className: keep `rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-2 px-5 text-xs md:text-sm transition-colors hover:opacity-90 ml-2` (REMOVE `uppercase`).
 
-No runtime dependencies. Do not touch existing deps.
+### 2. `components/Hero.tsx` — new copy, 2 CTAs, drop video placeholder
 
-### 2. Create `vitest.config.ts` (repo root)
+Rewrite as a client component (`"use client"` needed for scroll handler):
+- H1 (verbatim): `One key. Every AI service.` — keep existing h1 classes, remove the inline `style` textShadow (keep `font-black`/weight via classes).
+- Sub (verbatim): `Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use.`
+- CTA row (flex, centered, gap-4, stacks on mobile `flex-col sm:flex-row`):
+  - Primary `<a href="/book" target="_blank" rel="noopener noreferrer">`: `Book a discovery call` — purple solid: `rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90`.
+  - Secondary `<button type="button" onClick={() => scrollToSection("waitlist")}>`: `Join the waiting list` — white/outline: `rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 cursor-pointer`.
+  - `scrollToSection` helper: same implementation as TopBar's (`document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "center" })` guarded).
+- DELETE the entire video placeholder block (aspect-video div, play icon svg, "Product demo coming soon").
+- Keep `id="hero"`, section padding/border classes as-is.
 
-```ts
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import path from "path";
+### 3. `components/HowItWorks.tsx` — 3 wallet steps, drop setup-mode block
 
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: "jsdom",
-    setupFiles: ["./vitest.setup.ts"],
-    include: ["__tests__/**/*.test.{ts,tsx}"],
-  },
-  resolve: {
-    alias: { "@": path.resolve(__dirname, ".") },
-  },
-});
-```
+Full rewrite as a server component (remove `"use client"`, `useState`, `handleCopy`, `codeContent`):
+- Keep `<section id="how-it-works" className="py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg scroll-mt-20 border-b border-border/20">`.
+- Add header `<h2>` (verbatim): `How it works` — classes `text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-fg mb-8 md:mb-10 text-center`.
+- 3 columns (`grid grid-cols-1 md:grid-cols-3 gap-8`), each column centered with:
+  - Number box: `w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center font-bold text-btn-fg text-2xl md:text-3xl mb-3 bg-btn-bg` with `1`/`2`/`3`.
+  - Title `<p className="font-body text-base md:text-lg font-bold text-fg text-center mb-2">` (verbatim): `Create your wallet.` / `Set the policies.` / `Connect your agents to the wallet.`
+  - Description `<p className="font-body text-sm md:text-base text-fg/70 text-center">` (verbatim): `Open your workspace and create a wallet for your agents.` / `Decide how much the wallet can spend, and on which services.` / `One command links them. From there they pay for what they use, within policy.`
+- DELETE everything else: "Choose your setup mode" title, agent-assisted card, code snippet + copy button, manual card, all dark-theme hex styling, white card wrapper.
 
-### 3. Create `vitest.setup.ts` (repo root)
+### 4. `components/Waitlist.tsx` — final CTA rewrite (form + honeypot kept)
 
-```ts
-import "@testing-library/jest-dom/vitest";
-```
+- Add `id="waitlist"` and `scroll-mt-20` to the `<section>` (scroll target for Hero/TopBar with fixed header).
+- Header `<h2>` (verbatim): `Give your agents a wallet.` — keep existing h2 classes.
+- Below the header, primary CTA `<a href="/book" target="_blank" rel="noopener noreferrer">`: `Book a discovery call` — same purple solid classes as Hero primary; centered, `mb-8`.
+- Form: KEEP UNCHANGED the state machine (`idle|loading|success|error`), honeypot input (hidden, tabIndex -1, aria-hidden), POST to `/api/waitlist` with body `{ email, honeypot }`, success/error messages (`You're on the list! We'll be in touch soon.` / `Something went wrong. Please try again.`).
+- Style fixes only:
+  - email input: `focus:border-[#7A1FFF]` → `focus:border-btn-bg`.
+  - submit button: remove inline `style={{...}}` and `uppercase`; secondary white/outline classes: `rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 whitespace-nowrap disabled:opacity-50`.
+  - button labels: loading `Sending...`, default `Join the waiting list` (verbatim).
+  - success message: `style={{ color: '#7A1FFF' }}` → className `text-btn-bg`.
 
-### 4. Update `package.json` scripts
+### 5. `components/EndStrip.tsx` — footer tagline
 
-Add (keep existing scripts untouched):
-```json
-"test": "vitest run",
-"test:watch": "vitest"
-```
+- Keep `<footer>` and both links (X → `https://x.com/ametyst_xyz`, LinkedIn → `https://www.linkedin.com/company/ametyst-xyz/`) exactly as they are.
+- Add tagline `<p>` (verbatim): `Wallets for agents. Built in Europe. © 2026 Ametyst.` — classes `text-xs md:text-sm text-fg opacity-70 font-body text-center`. Layout: tagline + links row (e.g. flex-col items-center gap-3, links row unchanged inside).
 
-### 5. Create `__tests__/waitlist-route.test.ts` — API validation tests
+### 6. Tests — `__tests__/sections.test.tsx` (new)
 
-Header docblock (required, runs this file in node env):
-```ts
-// @vitest-environment node
-```
+Render each component (jsdom default env) and assert the locked copy verbatim:
+- TopBar: link "Book a discovery call" with href `/book`; NO text "Skill.md" anywhere (`queryByText` null).
+- Hero: heading `One key. Every AI service.`; text `Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use.`; link "Book a discovery call" → `/book`; button "Join the waiting list".
+- HowItWorks: heading `How it works`; the 3 titles and 3 descriptions verbatim; NO text matching `/skill/i` or `/setup/i`.
+- Waitlist: heading `Give your agents a wallet.`; link "Book a discovery call" → `/book`; button "Join the waiting list"; hidden honeypot input present; submit with mocked `fetch` posts `{ email, honeypot }` to `/api/waitlist` (stub `fetch`, fire submit, assert call) and shows `You're on the list! We'll be in touch soon.`
+- EndStrip: text `Wallets for agents. Built in Europe. © 2026 Ametyst.` plus the 2 existing link assertions remain green in `endstrip.test.tsx`.
+- `afterEach(cleanup)` (pattern from `endstrip.test.tsx`).
 
-Import: `import { POST } from "@/app/api/waitlist/route";`
-Use `vi.stubGlobal("fetch", mockFn)` + `vi.stubEnv("GOOGLE_SCRIPT_URL", "https://script.example/mock")`; restore in `afterEach` (`vi.unstubAllGlobals()`, `vi.unstubAllEnvs()`).
-Build requests as `new Request("http://localhost/api/waitlist", { method: "POST", body: JSON.stringify(payload), headers: { "Content-Type": "application/json" } })`.
+### 7. Verification
 
-Test cases:
-1. **Valid email accepted**: fetch mocked `{ ok: true }` → response 200, json `{ ok: true }`, fetch called once with the stubbed URL and body `{"email":"user@example.com"}`.
-2. **Missing email rejected**: `{}` body → 400, json `{ error: "Invalid email" }`.
-3. **Invalid email rejected**: `{ email: "not-an-email" }` → 400.
-4. **Filled honeypot short-circuits**: `{ email: "user@example.com", honeypot: "bot" }` → 200 `{ ok: true }` AND `fetch` NOT called.
-5. **Missing GOOGLE_SCRIPT_URL**: env unset (`vi.stubEnv` with `""` or delete) → 500 `{ error: "Missing server config" }`.
-
-### 6. Create `__tests__/endstrip.test.tsx` — exemplary render test
-
-`import { render, screen } from "@testing-library/react";` + `import EndStrip from "@/components/EndStrip";`
-Assert: link with accessible name "X" has `href="https://x.com/ametyst_xyz"`; link "LinkedIn" has `href="https://www.linkedin.com/company/ametyst-xyz/"`.
-
-### 7. Add `## Testing` section to `CLAUDE.md`
-
-Content to add (after the "Submodules map" or before "Docs" — keep file structure tidy):
-
-```markdown
-## Testing
-- Command: `npm test` (Vitest, single run) — `npm run test:watch` for watch mode
-- Framework: Vitest + React Testing Library, jsdom environment by default
-- API route tests run in node environment via `// @vitest-environment node` docblock (Web Request/Response are Node-native)
-- Tests live in `__tests__/` at repo root, named `*.test.ts(x)`
-- No `.env.test` required — `GOOGLE_SCRIPT_URL` is stubbed with `vi.stubEnv` and the Google Script fetch is mocked
-```
-
-### 8. Verification
-
-- `npm test` → all tests green (6 tests across 2 files).
-- `npm run build` → still green (test files must not break the Next build; `vitest.config.ts` and `__tests__/` are outside `app/`, no impact expected).
+- `npm test` green (existing 7 + new section tests).
+- `npm run build` green.
+- `grep -rn "7A1FFF\|#1a1a1a\|#252525\|ff5f56\|ffbd2e\|27c93f\|e0e0e0" components/` → zero hits.
+- `grep -rni "skill" components/ app/page.tsx` → zero hits.
+- `git diff app/api/ next.config.js` → empty.
 
 ## Consumer verification list
 
-No function/API/method is introduced or changed for consumers — test-only step. The waitlist route is exercised, not modified: its file must show **zero diff** at the end of the step.
+- `scrollToSection("waitlist")` in Hero → requires `id="waitlist"` on the Waitlist `<section>` (added in this step — verify both sides).
+- `scrollToSection("hero")` in TopBar logo → `id="hero"` stays on Hero section (verify not dropped in rewrite).
+- `Waitlist` form → POST `/api/waitlist` body `{ email, honeypot }` — unchanged, covered by existing API tests.
+- `app/page.tsx` imports all 5 components by default export — names/exports unchanged.
 
 ## Constraints to respect
 
-- No new runtime dependencies (dev-only is the allowed exception).
-- Do not modify `app/api/waitlist/route.ts`, `next.config.js`, or any component.
-- Do not commit `.env*` files; no credentials in tests (mock everything).
-
-## What "done" looks like
-
-- `npm test` runs green with the waitlist API + EndStrip tests.
-- `CLAUDE.md` documents the test setup.
-- `app/api/waitlist/route.ts` untouched (zero diff).
+- Copy LOCKED character-for-character; no em dashes in rendered copy; "agents" never "AI agents" in body copy (H1 "Every AI service." is locked copy and allowed).
+- No product links: no skill URLs, no install commands, no setup-mode UI.
+- Semantic aliases only; no `dark:`; palette/fonts untouched; no new dependencies.
+- `/api/waitlist` backend, `/book` page, `next.config.js` untouched.
