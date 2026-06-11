@@ -9,7 +9,7 @@ The landing page is the outermost public layer of the Ametyst system. It is a ma
 - **Skill files** (`public/*.md`): content is authored externally and placed in `public/` to be served as static URLs referenced in `HowItWorks.tsx`
 
 ## Downstream (who consumes this)
-- **End users / visitors**: agent owners and SaaS developers who land on `ametyst.xyz`
+- **End users / visitors**: agent owners and SaaS developers who land on `ametyst.ai`
 - **Google Sheets waitlist**: `app/api/waitlist/route.ts` forwards captured emails to a Google Apps Script webhook (`GOOGLE_SCRIPT_URL`)
 - **Cal.com**: the `/book` page embeds a Cal.com calendar; bookings are managed in Patrick's Cal.com account (`patrick-pinta/30min`)
 - **Vercel**: the site is deployed and served via Vercel; the `standalone` output mode enables edge-compatible deployment

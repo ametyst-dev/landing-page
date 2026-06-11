@@ -47,5 +47,5 @@ landing-page/
 ## Data / content flow
 - **Waitlist form**: user fills email in `Waitlist.tsx` → browser POSTs to `app/api/waitlist/route.ts` → server validates email + honeypot → forwards to Google Sheets via `GOOGLE_SCRIPT_URL` env var → returns `{ ok: true }` → component shows success message
 - **Booking**: "Book a discovery call" CTAs (TopBar, Hero, Waitlist) link to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
-- **Skill files**: static `.md` files in `public/` are served at `ametyst.xyz/setup-agent-owners-skill.md` and `ametyst.xyz/setup-saas-skill.md` — referenced as copyable skill URLs in `HowItWorks.tsx`
+- **Skill files**: static `.md` files in `public/` remain on disk and are served at the site root, but are intentionally NOT linked anywhere in the UI (product links removed in landing v2 until the product-ready signal)
 - **Fonts**: Inter is loaded via `next/font/google` in `layout.tsx`; Neue Machina is loaded via `@font-face` in `globals.css` pointing to an external CDN
