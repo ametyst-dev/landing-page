@@ -11,7 +11,7 @@ describe("EndStrip", () => {
     render(<EndStrip />);
     expect(screen.getByRole("link", { name: "X" })).toHaveAttribute(
       "href",
-      "https://x.com/ametyst_xyz"
+      "https://x.com/ametyst_ai"
     );
   });
 
