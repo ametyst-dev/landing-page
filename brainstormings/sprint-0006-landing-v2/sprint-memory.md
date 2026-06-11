@@ -14,6 +14,7 @@ started: 2026-06-11
 [2026-06-11] [STEP_DONE] to: orchestrator — macro step 1 done. PR: https://github.com/ametyst-dev/landing-page/pull/4
 [2026-06-11] [STEP_START] to: orchestrator — starting macro step 2 on branch landing-v2-step-2: page completion merged step (A: Problem+Personas, B: ChatDemo, C: GEO metadata + docs + acceptance sweep)
 [2026-06-11] [STEP_REDO] to: cursor — macro step 2 sent back for correction. Footer X link 404 (ametyst_xyz does not exist); chunk 7 added: fix to x.com/ametyst_ai (HIL-confirmed, curl 200) + test update.
+[2026-06-11] [STEP_DONE] to: orchestrator — macro step 2 done. PR: https://github.com/ametyst-dev/landing-page/pull/5
 
 ### Received
 <!-- format: [DATETIME] [TYPE] from: {sender} — {one-line summary} -->
