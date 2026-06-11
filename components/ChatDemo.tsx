@@ -66,6 +66,7 @@ export default function ChatDemo() {
           {CHAT_DEMO_SCRIPT.slice(1).map((line, i) => (
             <div
               key={line.text}
+              aria-hidden={!reducedMotion && i >= visibleLines}
               className={`whitespace-pre transition-opacity duration-500 ${
                 reducedMotion || i < visibleLines ? "opacity-100" : "opacity-0"
               }`}

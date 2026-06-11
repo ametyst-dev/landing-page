@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ametyst.xyz'),
+  metadataBase: new URL('https://ametyst.ai'),
   title: "Ametyst | Wallets for Agents",
   description:
     "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ametyst.xyz",
+    url: "https://ametyst.ai",
     siteName: "Ametyst",
     title: "Ametyst | Wallets for Agents",
     description:
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    site: "@ametyst_xyz",
+    site: "@ametyst_ai",
     title: "Ametyst | Wallets for Agents",
     description:
       "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
