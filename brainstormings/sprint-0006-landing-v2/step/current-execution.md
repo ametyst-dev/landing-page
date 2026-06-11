@@ -8,21 +8,18 @@
 
 ## Summary
 **Overall status:** complete
-**Chunks completed:** 3 / 3
+**Chunks completed:** 4 / 4
 **Chunks blocked:** None
 
 ---
 
-## Chunk 1 — Test tooling setup
+## Chunk 1 — Waitlist final CTA + EndStrip footer tagline
 **Status:** complete
-**Committed:** no (included in chunks 1-2 commit b431c19)
+**Committed:** no (included in chunks 1-4 commit aa77b7f)
 
 ### What was done
-- Installed dev dependencies: `vitest`, `@vitejs/plugin-react`, `jsdom`, `@testing-library/react`, `@testing-library/jest-dom`
-- Created `vitest.config.ts` at repo root with jsdom environment, setup file, `@` alias, and `__tests__/**/*.test.{ts,tsx}` include pattern
-- Created `vitest.setup.ts` importing `@testing-library/jest-dom/vitest`
-- Added `"test": "vitest run"` and `"test:watch": "vitest"` scripts to `package.json`
-- Verified `npx vitest run` starts without config errors (reports "No test files found" as expected)
+- **`components/Waitlist.tsx`**: Added `id="waitlist"` and `scroll-mt-20` to section; changed h2 to "Give your agents a wallet."; added centered purple "Book a discovery call" link to `/book`; replaced `focus:border-[#7A1FFF]` with `focus:border-btn-bg`; converted submit button to outline style (`border-btn-bg bg-transparent text-btn-bg`) with label "Join the waiting list" / "Sending..."; removed inline hex styles from submit and success message; added `text-btn-bg` to success `<p>`. Form logic and honeypot unchanged.
+- **`components/EndStrip.tsx`**: Restructured footer to column layout with tagline "Wallets for agents. Built in Europe. © 2026 Ametyst." above unchanged X and LinkedIn links.
 
 ### Test results
 N/A — not a test chunk.
@@ -38,20 +35,19 @@ None.
 
 ---
 
-## Chunk 2 — Exemplary tests: waitlist API + EndStrip render [TEST]
+## Chunk 2 — TopBar (drop Skill.md, relabel CTA) + Hero (new copy, 2 CTAs)
 **Status:** complete
-**Committed:** yes (b431c19)
+**Committed:** no (included in chunks 1-4 commit aa77b7f)
 
 ### What was done
-- Created `__tests__/waitlist-route.test.ts` with `// @vitest-environment node` docblock and 5 test cases covering valid email, missing email, invalid email, honeypot short-circuit, and missing `GOOGLE_SCRIPT_URL`
-- Created `__tests__/endstrip.test.tsx` with 2 render tests for X and LinkedIn link hrefs
-- Added `afterEach(cleanup)` in `endstrip.test.tsx` to prevent DOM leakage between tests (required fix on first run)
+- **`components/TopBar.tsx`**: Removed inline hex style from logo button; added `text-btn-bg`; deleted Skill.md link; changed CTA to "Book a discovery call" → `/book` with updated className (removed `uppercase`). Removed unused `navButtonClass` constant.
+- **`components/Hero.tsx`**: Full rewrite as `"use client"` component with locked H1/sub copy, purple `/book` CTA, outline "Join the waiting list" button scrolling to `waitlist` anchor, video placeholder block removed.
 
 ### Test results
-`npm test` — 7 passed across 2 files (2 test files, 7 tests green).
+N/A — not a test chunk.
 
 ### Deviations from chunk plan
-- Added `afterEach(cleanup)` in `endstrip.test.tsx` because the LinkedIn test failed on first run with "Found multiple elements" — the first test's rendered DOM was not cleaned up before the second test. This is a test-only fix; source files were not modified.
+- Removed unused `navButtonClass` constant after deleting the Skill.md link (no longer referenced).
 
 ### Doubts and open questions
 None.
@@ -61,22 +57,43 @@ None.
 
 ---
 
-## Chunk 3 — CLAUDE.md Testing section + build check [TEST]
+## Chunk 3 — HowItWorks rewrite (3 wallet steps, no setup-mode)
 **Status:** complete
-**Committed:** yes (cfe5fce)
+**Committed:** no (included in chunks 1-4 commit aa77b7f)
 
 ### What was done
-- Inserted `## Testing` section in `CLAUDE.md` between `## Submodules map` and `## Docs` with the exact content specified in the plan
-- Ran `npm test` — 7 tests green
-- Ran `npm run build` — production build succeeded without tsconfig changes
-- Verified `git diff app/api/waitlist/route.ts components/` is empty (source untouched)
+- **`components/HowItWorks.tsx`**: Full rewrite as server component (removed `"use client"`, useState, copy button, setup-mode cards, skill URL code snippet, and all dark hex styling). Now renders "How it works" heading and 3 numbered wallet steps with locked titles/descriptions using semantic `bg-btn-bg` / `text-btn-fg` aliases.
 
 ### Test results
-- `npm test`: 7 passed (2 files)
-- `npm run build`: succeeded (Next.js 15.5.12, zero type/lint errors)
+N/A — not a test chunk.
 
 ### Deviations from chunk plan
-None. `tsconfig.json` exclude was not needed — build passed without it.
+None.
+
+### Doubts and open questions
+None.
+
+### Blockers
+None.
+
+---
+
+## Chunk 4 — Section copy tests + build + sweeps [TEST]
+**Status:** complete
+**Committed:** yes (aa77b7f)
+
+### What was done
+- Created `__tests__/sections.test.tsx` with 5 describe blocks covering TopBar, Hero, HowItWorks, Waitlist (including mocked fetch submit flow), and EndStrip tagline.
+- Ran `npm test` — 12 passed across 3 files (7 existing + 5 new).
+- Ran `npm run build` — succeeded (Next.js 15.5.12, zero type/lint errors).
+- Grep sweeps: zero matches for hex violations in `components/`; zero matches for "skill" in `components/` and `app/page.tsx`; `git diff app/api/ next.config.js` empty.
+
+### Test results
+- `npm test`: 12 passed (3 files)
+- `npm run build`: succeeded
+
+### Deviations from chunk plan
+None.
 
 ### Doubts and open questions
 None.
