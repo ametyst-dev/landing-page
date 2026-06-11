@@ -10,7 +10,7 @@ The project follows Next.js 15 App Router conventions. The `app/` directory owns
 - **Standalone output**: `next.config.js` uses `output: 'standalone'` for Vercel compatibility and potential Docker deployment
 - **Server-side API route for waitlist**: email is never processed client-side; the browser POSTs to `/api/waitlist`, which validates and forwards to Google Sheets via a secret URL stored in env vars
 - **Honeypot bot protection**: the `Waitlist` component includes a hidden form field; if filled, the API silently returns `200 OK` without registering the submission
-- **No test suite**: MVP-phase project; testing is manual per the checklist in the top-level `README.md`
+- **Vitest test suite**: unit and component tests live in `__tests__/` at repo root (Vitest + React Testing Library, jsdom default environment); run with `npm test` — see `## Testing` in the top-level `CLAUDE.md`
 
 ## Folder structure
 ```
