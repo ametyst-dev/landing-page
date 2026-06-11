@@ -12,8 +12,8 @@ This sprint rebuilds the public landing page (ametyst.ai) from its current thin,
 Repo context: Next.js 15 App Router + TypeScript + Tailwind, `output: 'standalone'` (do not remove). Single page assembled in `app/page.tsx` from 5 components: `TopBar`, `Hero`, `HowItWorks`, `Waitlist`, `EndStrip`. NOTE: `EndStrip.tsx` is the footer (X/LinkedIn links); the CTA section + waitlist form is `Waitlist.tsx`. Palette is semantic CSS vars defined in `app/globals.css` and aliased in `tailwind.config.ts` (`bg-bg`, `text-fg`, `text-muted`, `border-border`, `bg-btn-bg`, `text-btn-fg`, `border-btn-border`); current components violate the no-hex repo rule with inline `#7A1FFF` styles — all rewritten code must use the semantic aliases. Waitlist API (`app/api/waitlist/route.ts`, honeypot field — never remove) and `/book` (Cal.com embed) stay untouched at the backend level. No animation libraries are present and none may be added.
 
 ### Dependencies and risks
-- Step 0 first; Step 1 before Steps 2-3 (page shell and section order must exist); Steps 2 and 3 are independent of each other; Step 4 last before stabilization.
-- Copy verbatim risk: guarded by the Step 4 sweep + the ChatDemo script test.
+- Step 0 first; Step 1 before Step 2 (page shell and section order must exist). Inside Step 2, order the chunks: Problem + Personas first, then ChatDemo, then metadata + acceptance sweep last (the sweep validates everything before it).
+- Copy verbatim risk: guarded by the Step 2 acceptance sweep + the ChatDemo script test.
 - Demo script is illustrative: label it as such until aligned with real MCP output (open item, not blocking).
 - Honeypot/waitlist regression: the Waitlist.tsx rewrite must keep the hidden field and POST shape; covered by Step 0 tests.
 - Stabilization can span multiple iterations per repo, each with its own STEP_DONE and incremented macro_step number.
@@ -36,7 +36,7 @@ Repo context: Next.js 15 App Router + TypeScript + Tailwind, `output: 'standalon
 - **Context:** The PRD table names a `Footer` component and an `EndStrip` final CTA, but in the repo `EndStrip.tsx` is the footer and `Waitlist.tsx` is the CTA section.
 - **Decision:** Map by role, not by PRD name: Final CTA = `Waitlist.tsx` (rewrite), Footer = `EndStrip.tsx` (edit). Document the mapping in `docs/README.md`.
 - **Alternatives:** Rename to match the PRD — rejected: churn in imports/docs with zero user-facing value.
-- **Consequences for this repo:** Smallest diff; PRD traceability handled by the docs update in Step 4.
+- **Consequences for this repo:** Smallest diff; PRD traceability handled by the docs update in Step 2 (Part C).
 
 ## Test strategy
 
@@ -68,34 +68,31 @@ Repo context: Next.js 15 App Router + TypeScript + Tailwind, `output: 'standalon
 - `components/Waitlist.tsx` — final CTA rewrite (form + honeypot kept)
 - `components/EndStrip.tsx` — footer tagline
 
-### Step 2 — New sections: Problem + Personas
-**What:** Create `components/Problem.tsx` (header "Agents can do the work. Paying for it is broken.", two columns: access/keys left, invisible spend right) and `components/Personas.tsx` (champion left "Your whole day already runs through agents.", buyer right "Every call, on the books."), copy verbatim from the locked copy source. Insert into `app/page.tsx` in PRD order: Hero → (ChatDemo slot, added in Step 3) → Problem → Personas → HowItWorks. Semantic aliases only, symmetric columns, mobile stacking (grid-cols-1 md:grid-cols-2). No policy code block in Personas.
-**Why:** These carry the problem statement and two-sided story missing from the live page.
-**Output:** Both sections render in order, responsive, build green.
+### Step 2 — Page completion: Problem + Personas + ChatDemo + metadata/acceptance sweep
+> **Note:** this step merges the former Steps 2, 3 and 4 (guidelines updated 2026-06-11 by orchestrator — step numbers changed; the former Step 5 Stabilization is now Step 3). Plan it as a single macro step with chunked execution in this order: (A) Problem + Personas, (B) ChatDemo, (C) metadata + docs + acceptance sweep. Each part below keeps its full original spec.
+
+**Part A — New sections: Problem + Personas**
+Create `components/Problem.tsx` (header "Agents can do the work. Paying for it is broken.", two columns: access/keys left, invisible spend right) and `components/Personas.tsx` (champion left "Your whole day already runs through agents.", buyer right "Every call, on the books."), copy verbatim from the locked copy source. Insert into `app/page.tsx` in PRD order: Hero → (ChatDemo slot, added in Part B) → Problem → Personas → HowItWorks. Semantic aliases only, symmetric columns, mobile stacking (grid-cols-1 md:grid-cols-2). No policy code block in Personas.
+
+**Part B — ChatDemo component**
+Create `components/ChatDemo.tsx`: "See it in action" label + terminal-style card animating the locked demo script (the user prompt types itself character by character, tool-call lines reveal one by one with their costs, the done lines close, pause, then loop). Pure React client component with a timer-driven state machine + CSS transitions — no animation libraries. Script lines stored as a typed constant array with the EXACT strings from the locked copy script (see bottom of this file). Respect `prefers-reduced-motion`: render the complete static script with no animation. Style: light-mode terminal card within the existing palette and semantic aliases, monospace via Tailwind `font-mono`. Insert in `app/page.tsx` between Hero and Problem. Unit-test the script constant (verbatim match against expected strings) and the reduced-motion static render.
+
+**Part C — Metadata, docs, acceptance sweep**
+Update `app/layout.tsx` metadata with GEO phrasings ("MCP wallet", "agent payments", "let my agent pay for tools", "AI spend management") in description/keywords; title and description without em/en dashes, "agents" not "AI agents" in human-readable copy (keywords arrays may keep GEO phrases containing "AI"). Update `docs/README.md` "What's inside" with `ChatDemo`, `Problem`, `Personas` and the new section list (including the Waitlist→FinalCTA and EndStrip→footer role mapping). Verify footer X (x.com/ametyst_xyz) and LinkedIn (linkedin.com/company/ametyst-xyz) URLs resolve. Full acceptance sweep: grep rendered copy for em dashes and "AI agents", grep new code for hardcoded hex, confirm no skill URL/install command anywhere in the UI (`public/*.md` skill files stay on disk but unlinked), `npm run build` + `npm test` green.
+
+**Why:** Completes the entire page in one macro step — the two-sided story sections, the demo centerpiece, and the GEO/acceptance closure. Single-repo sprint: one orchestration cycle instead of three.
+**Output:** Full page renders in PRD order (TopBar → Hero → ChatDemo → Problem → Personas → HowItWorks → FinalCTA → Footer); demo animates and loops with reduced-motion fallback; all PRD acceptance criteria check out; build + tests green.
 **Touches in this repo:**
 - `components/Problem.tsx` — new component
 - `components/Personas.tsx` — new component
-- `app/page.tsx` — import + section order
-
-### Step 3 — ChatDemo component
-**What:** Create `components/ChatDemo.tsx`: "See it in action" label + terminal-style card animating the locked demo script (the user prompt types itself character by character, tool-call lines reveal one by one with their costs, the done lines close, pause, then loop). Pure React client component with a timer-driven state machine + CSS transitions — no animation libraries. Script lines stored as a typed constant array with the EXACT strings from the locked copy script (see bottom of this file). Respect `prefers-reduced-motion`: render the complete static script with no animation. Style: light-mode terminal card within the existing palette and semantic aliases, monospace via Tailwind `font-mono`. Insert in `app/page.tsx` between Hero and Problem. Unit-test the script constant (verbatim match against expected strings) and the reduced-motion static render.
-**Why:** Centerpiece of the page; demonstrates the product instead of promising a demo.
-**Output:** Demo animates and loops, matches script verbatim, accessible fallback works, tests green.
-**Touches in this repo:**
 - `components/ChatDemo.tsx` — new component
-- `app/page.tsx` — insert between Hero and Problem
-- `__tests__/` — script verbatim + reduced-motion tests
-
-### Step 4 — Metadata, docs, acceptance sweep
-**What:** Update `app/layout.tsx` metadata with GEO phrasings ("MCP wallet", "agent payments", "let my agent pay for tools", "AI spend management") in description/keywords; title and description without em/en dashes, "agents" not "AI agents" in human-readable copy (keywords arrays may keep GEO phrases containing "AI"). Update `docs/README.md` "What's inside" with `ChatDemo`, `Problem`, `Personas` and the new section list (including the Waitlist→FinalCTA and EndStrip→footer role mapping). Verify footer X (x.com/ametyst_xyz) and LinkedIn (linkedin.com/company/ametyst-xyz) URLs resolve. Full acceptance sweep: grep rendered copy for em dashes and "AI agents", grep new code for hardcoded hex, confirm no skill URL/install command anywhere in the UI (`public/*.md` skill files stay on disk but unlinked), `npm run build` + `npm test` green.
-**Why:** GEO seed page #1 + the PRD acceptance criteria are explicit and mechanical; this step closes them.
-**Output:** All PRD acceptance criteria check out.
-**Touches in this repo:**
+- `app/page.tsx` — imports + section order
 - `app/layout.tsx` — GEO metadata
 - `docs/README.md` — component inventory update
+- `__tests__/` — script verbatim + reduced-motion tests, section render tests
 - repo-wide — verification sweep only (no functional changes)
 
-### Step 5 — Stabilization
+### Step 3 — Stabilization
 **What:** Absorb fixes that surface after the main steps: visual polish on demo timing, responsive issues, copy mismatches found in review, link fixes. No pre-defined touches — this step absorbs upgrades and fixes that surface after the main steps are done.
 **Why:** Standard final step. Stabilization can span multiple iterations per repo — each iteration produces its own STEP_DONE with an incremented macro_step number.
 **Output:** Page fully matches the PRD acceptance criteria; ready for publish pending the GEO wiki pass (open item outside this sprint).
