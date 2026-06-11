@@ -8,18 +8,18 @@
 
 ## Summary
 **Overall status:** complete
-**Chunks completed:** 4 / 4
+**Chunks completed:** 7 / 7
 **Chunks blocked:** None
 
 ---
 
-## Chunk 1 — Waitlist final CTA + EndStrip footer tagline
+## Chunk 1 — Problem + Personas components
 **Status:** complete
-**Committed:** no (included in chunks 1-4 commit aa77b7f)
+**Committed:** no (included in chunks 1-2 commit 3076c53)
 
 ### What was done
-- **`components/Waitlist.tsx`**: Added `id="waitlist"` and `scroll-mt-20` to section; changed h2 to "Give your agents a wallet."; added centered purple "Book a discovery call" link to `/book`; replaced `focus:border-[#7A1FFF]` with `focus:border-btn-bg`; converted submit button to outline style (`border-btn-bg bg-transparent text-btn-bg`) with label "Join the waiting list" / "Sending..."; removed inline hex styles from submit and success message; added `text-btn-bg` to success `<p>`. Form logic and honeypot unchanged.
-- **`components/EndStrip.tsx`**: Restructured footer to column layout with tagline "Wallets for agents. Built in Europe. © 2026 Ametyst." above unchanged X and LinkedIn links.
+- **`components/Problem.tsx`**: Created server component with `id="problem"`, centered h2 "Agents can do the work. Paying for it is broken.", and two-column grid with locked copy (left: API key sprawl; right: invisible AI spend). Uses semantic Tailwind aliases only.
+- **`components/Personas.tsx`**: Created server component with `id="personas"`, two-column grid with champion ("Your whole day already runs through agents.") and buyer ("Every call, on the books.") personas and locked paragraph copy.
 
 ### Test results
 N/A — not a test chunk.
@@ -35,19 +35,19 @@ None.
 
 ---
 
-## Chunk 2 — TopBar (drop Skill.md, relabel CTA) + Hero (new copy, 2 CTAs)
+## Chunk 2 — Page wiring + new-section tests [TEST]
 **Status:** complete
-**Committed:** no (included in chunks 1-4 commit aa77b7f)
+**Committed:** yes (3076c53)
 
 ### What was done
-- **`components/TopBar.tsx`**: Removed inline hex style from logo button; added `text-btn-bg`; deleted Skill.md link; changed CTA to "Book a discovery call" → `/book` with updated className (removed `uppercase`). Removed unused `navButtonClass` constant.
-- **`components/Hero.tsx`**: Full rewrite as `"use client"` component with locked H1/sub copy, purple `/book` CTA, outline "Join the waiting list" button scrolling to `waitlist` anchor, video placeholder block removed.
+- **`app/page.tsx`**: Added imports for `Problem` and `Personas`; inserted `<Problem />` and `<Personas />` between `<Hero />` and `<HowItWorks />`.
+- **`__tests__/new-sections.test.tsx`**: Created tests for Problem (heading + both paragraphs verbatim) and Personas (both h3 headings + paragraphs verbatim).
 
 ### Test results
-N/A — not a test chunk.
+- `npm test`: 16 passed (4 files) — all green including pre-existing tests.
 
 ### Deviations from chunk plan
-- Removed unused `navButtonClass` constant after deleting the Skill.md link (no longer referenced).
+- Commit message used "step 5" instead of "step 2" (corrected in subsequent commits).
 
 ### Doubts and open questions
 None.
@@ -57,12 +57,12 @@ None.
 
 ---
 
-## Chunk 3 — HowItWorks rewrite (3 wallet steps, no setup-mode)
+## Chunk 3 — ChatDemo component
 **Status:** complete
-**Committed:** no (included in chunks 1-4 commit aa77b7f)
+**Committed:** no (included in chunks 3-4 commit c3417a7)
 
 ### What was done
-- **`components/HowItWorks.tsx`**: Full rewrite as server component (removed `"use client"`, useState, copy button, setup-mode cards, skill URL code snippet, and all dark hex styling). Now renders "How it works" heading and 3 numbered wallet steps with locked titles/descriptions using semantic `bg-btn-bg` / `text-btn-fg` aliases.
+- **`components/ChatDemo.tsx`**: Created `"use client"` component exporting `ScriptLine` type and `CHAT_DEMO_SCRIPT` constant (8 byte-identical lines). Implements animation state machine: prompt types char-by-char (~30ms/char), lines 1–7 reveal staggered (~600ms apart), 3s pause then loop reset. `prefers-reduced-motion` detection via guarded `matchMedia`; when true, renders full static script with no timers. Markup uses `font-mono`, `whitespace-pre`, semantic aliases, blank line after prompt, "See it in action" label, and "Illustrative demo" caption.
 
 ### Test results
 N/A — not a test chunk.
@@ -78,19 +78,86 @@ None.
 
 ---
 
-## Chunk 4 — Section copy tests + build + sweeps [TEST]
+## Chunk 4 — ChatDemo wiring + tests [TEST]
 **Status:** complete
-**Committed:** yes (aa77b7f)
+**Committed:** yes (c3417a7)
 
 ### What was done
-- Created `__tests__/sections.test.tsx` with 5 describe blocks covering TopBar, Hero, HowItWorks, Waitlist (including mocked fetch submit flow), and EndStrip tagline.
-- Ran `npm test` — 12 passed across 3 files (7 existing + 5 new).
+- **`app/page.tsx`**: Added `import ChatDemo` and inserted `<ChatDemo />` between `<Hero />` and `<Problem />`.
+- **`__tests__/chatdemo.test.tsx`**: Created tests for verbatim `CHAT_DEMO_SCRIPT`, reduced-motion static render (all 8 lines + label), and no-matchMedia safety (no throw, label present).
+
+### Test results
+- `npm test`: 19 passed (5 files) — all green.
+
+### Deviations from chunk plan
+None.
+
+### Doubts and open questions
+None.
+
+### Blockers
+None.
+
+---
+
+## Chunk 5 — GEO metadata + docs inventory
+**Status:** complete
+**Committed:** no (included in chunks 5-6 commit af1a605)
+
+### What was done
+- **`app/layout.tsx`**: Updated `title`, `description`, `keywords`, `openGraph.{title,description,images[0].alt}`, and `twitter.{title,description}` to locked GEO copy. Title/alt: "Ametyst | Wallets for Agents". Description: pay-per-use wallet copy. Keywords: 8 GEO phrases including "wallets for AI agents" and "AI agent wallets". No em/en dashes; "AI agents" appears only inside keywords array.
+- **`docs/README.md`**: Updated intro from "six" to "eight content sections". Added ChatDemo, Problem, Personas entries after Hero. Updated Waitlist entry as Final CTA; EndStrip entry as footer.
+
+### Test results
+N/A — not a test chunk.
+
+### Deviations from chunk plan
+None.
+
+### Doubts and open questions
+None.
+
+### Blockers
+None.
+
+---
+
+## Chunk 6 — Acceptance sweep + page-order test [TEST]
+**Status:** complete
+**Committed:** yes (af1a605)
+
+### What was done
+- **`__tests__/page-order.test.tsx`**: Renders `<Home />` with `matchMedia` stubbed to `matches: true`; asserts 6 heading strings appear in strictly increasing `indexOf` order.
+- Ran `npm test` — 20 passed (6 files).
 - Ran `npm run build` — succeeded (Next.js 15.5.12, zero type/lint errors).
-- Grep sweeps: zero matches for hex violations in `components/`; zero matches for "skill" in `components/` and `app/page.tsx`; `git diff app/api/ next.config.js` empty.
+- Grep sweeps: zero em/en dashes; zero "AI agents" in components/page; layout "AI agents" only in keywords array (line 21); zero hardcoded hex; zero "skill" links; `git diff app/api/ next.config.js` empty.
+- Footer link checks: `x.com/ametyst_xyz` returned 404; `linkedin.com/company/ametyst-xyz/` returned 999 (bot protection).
 
 ### Test results
-- `npm test`: 12 passed (3 files)
+- `npm test`: 20 passed (6 files)
 - `npm run build`: succeeded
+
+### Deviations from chunk plan
+None.
+
+### Doubts and open questions
+- X profile link returned HTTP 404 via curl (pre-existing link in EndStrip, not modified this step). LinkedIn returned 999 (bot protection) — needs manual browser verification per plan guidance.
+
+### Blockers
+None.
+
+---
+
+## Chunk 7 — Fix footer X link (correction from review) [TEST]
+**Status:** complete
+**Committed:** yes (efc70a6)
+
+### What was done
+- **`components/EndStrip.tsx`**: Changed X link `href` from `https://x.com/ametyst_xyz` to `https://x.com/ametyst_ai`. LinkedIn link, tagline, and all other markup unchanged.
+- **`__tests__/endstrip.test.tsx`**: Updated X href assertion to `https://x.com/ametyst_ai`. LinkedIn assertion unchanged.
+
+### Test results
+- `npm test`: 20 passed (6 files) — all green.
 
 ### Deviations from chunk plan
 None.
