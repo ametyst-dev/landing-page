@@ -10,16 +10,18 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.xyz'),
-  title: "Ametyst – Wallets for AI Agents",
+  title: "Ametyst | Wallets for Agents",
   description:
-    "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
+    "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
   keywords: [
-    "AI agent wallets",
+    "MCP wallet",
+    "agent payments",
+    "let my agent pay for tools",
+    "AI spend management",
     "wallets for AI agents",
+    "AI agent wallets",
     "agent tool access",
-    "programmable wallets",
-    "AI agent infrastructure",
-    "on-demand tool access",
+    "pay-per-use AI tools",
   ],
   authors: [{ name: "Ametyst" }],
   openGraph: {
@@ -27,24 +29,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.xyz",
     siteName: "Ametyst",
-    title: "Ametyst – Wallets for AI Agents",
+    title: "Ametyst | Wallets for Agents",
     description:
-      "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
+      "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst – Wallets for AI Agents",
+        alt: "Ametyst | Wallets for Agents",
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_xyz",
-    title: "Ametyst – Wallets for AI Agents",
+    title: "Ametyst | Wallets for Agents",
     description:
-      "Ametyst offers wallets that give your AI agents on-demand access to every service they need. Set spending policies, link your agents, and let them call the tools they actually need.",
+      "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
     images: ["/icon.png"],
   },
   icons: {

@@ -1,7 +1,7 @@
 # landing-page
 
 ## What is this
-The public marketing site for Ametyst — wallets that give AI agents on-demand access to every service they need. It is a single-page Next.js 15 application with a fixed navigation bar, six content sections, a waitlist sign-up form backed by a Google Sheets API, and a dedicated booking page that embeds a Cal.com calendar.
+The public marketing site for Ametyst — wallets that give AI agents on-demand access to every service they need. It is a single-page Next.js 15 application with a fixed navigation bar, eight content sections, a waitlist sign-up form backed by a Google Sheets API, and a dedicated booking page that embeds a Cal.com calendar.
 
 ## Why it exists
 The landing page is the primary conversion surface for Ametyst in its early-stage validation phase. It communicates the product value proposition to two distinct audiences (agent owners and SaaS developers), captures waitlist emails to measure market interest, and provides a frictionless path to book a discovery call.
@@ -12,9 +12,12 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
 - `components/TopBar.tsx` — Fixed navigation bar with brand name and "Book a discovery call" CTA
 - `components/Hero.tsx` — Above-the-fold section with headline, subheadline, and the two primary CTAs
+- `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown below the hero
+- `components/Problem.tsx` — Two-column problem statement (access keys / invisible spend)
+- `components/Personas.tsx` — Two-column personas section (champion / buyer)
 - `components/HowItWorks.tsx` — Section with the 3 wallet steps (create wallet, set policies, connect agents)
 - `components/Waitlist.tsx` — Final CTA section: discovery call link + email capture form with honeypot bot protection, wired to `/api/waitlist`
-- `components/EndStrip.tsx` — Bottom strip / footer with social links and contact info
+- `components/EndStrip.tsx` — Footer with tagline, social links, and contact info
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
 - `public/` — Static assets: `icon.png` (brand icon), skill `.md` files served at root
