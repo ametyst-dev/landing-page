@@ -11,6 +11,7 @@ started: 2026-06-11
 [2026-06-11] [STEP_START] to: orchestrator — starting macro step 0 on branch landing-v2-step-0: test infrastructure setup (Vitest + RTL, waitlist API tests, CLAUDE.md Testing section). NOTE: sub-branch uses `-` separator (landing-v2-step-0) because git cannot create landing-v2/step-0 while branch landing-v2 exists.
 [2026-06-11] [STEP_DONE] to: orchestrator — macro step 0 done. PR: https://github.com/ametyst-dev/landing-page/pull/3
 [2026-06-11] [STEP_START] to: orchestrator — starting macro step 1 on branch landing-v2-step-1: shell + existing sections rewrite with locked copy (TopBar, Hero, HowItWorks, Waitlist final CTA, EndStrip tagline), semantic aliases only
+[2026-06-11] [STEP_DONE] to: orchestrator — macro step 1 done. PR: https://github.com/ametyst-dev/landing-page/pull/4
 
 ### Received
 <!-- format: [DATETIME] [TYPE] from: {sender} — {one-line summary} -->
