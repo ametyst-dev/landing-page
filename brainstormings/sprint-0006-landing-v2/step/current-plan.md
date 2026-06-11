@@ -1,104 +1,64 @@
-# Sprint 0006 — Step 2: Page completion (Problem + Personas, ChatDemo, metadata/acceptance)
+# Sprint 0006 — Step 3: Stabilization (review fixes from step 2 PR)
 
 ## Context
 
-Macro Step 2 of sprint-0006-landing-v2 — the merged step (ex steps 2/3/4 are now Parts A/B/C of a single Step 2; Stabilization is Step 3). Steps 0-1 are merged (PRs #3, #4). This step completes the page: new Problem + Personas sections, the ChatDemo centerpiece, GEO metadata, docs update, and the full PRD acceptance sweep. Sub-branch: `landing-v2-step-2`.
+Macro Step 3 (Stabilization) of sprint-0006-landing-v2. Steps 0-2 merged (PRs #3, #4, #5). The orchestrator's MACRO_STEP_START lists 3 items from the step 2 PR review; codebase analysis found 2 small adjacent items absorbed in the same pass. Sub-branch: `landing-v2-step-3`.
 
 ## Findings from codebase analysis
 
-- `app/page.tsx` current order: TopBar → Hero → HowItWorks → Waitlist → EndStrip. Target PRD order: TopBar → Hero → **ChatDemo** → **Problem** → **Personas** → HowItWorks → Waitlist(FinalCTA) → EndStrip.
-- `app/layout.tsx` metadata violates the new constraints: title `"Ametyst – Wallets for AI Agents"` contains an en dash AND "AI Agents"; description says "AI agents"; keywords lack the 4 GEO phrasings. OG and Twitter blocks duplicate title/description — all three spots must change consistently.
-- No `matchMedia` in jsdom by default → ChatDemo must guard `window.matchMedia` access, and tests must stub it.
-- Existing test patterns to reuse: `__tests__/sections.test.tsx` (render + verbatim copy asserts, `afterEach(cleanup)`), `vi.stubGlobal` pattern.
-- Demo script lines contain `⏺`, `·`, `€`, internal multi-space alignment — must be stored verbatim (test asserts character-for-character), rendered with `whitespace-pre` + `font-mono`.
-- Locked copy for Problem/Personas contains apostrophes (`it's`, `Here's`) → use `&apos;` in JSX (existing pattern in Waitlist).
-- Footer links to verify: `x.com/ametyst_xyz`, `linkedin.com/company/ametyst-xyz` (curl check during sweep).
+- `app/layout.tsx:12` — `metadataBase: new URL('https://ametyst.xyz')` (item 2)
+- `app/layout.tsx:30` — `openGraph.url: "https://ametyst.xyz"` (item 2)
+- `app/layout.tsx:46` — `twitter.site: "@ametyst_xyz"` (item 1)
+- `docs/ARCHITECTURE.md:50` — stale: "Skill files … referenced as copyable skill URLs in `HowItWorks.tsx`" — HowItWorks no longer references them since step 1 (item 3)
+- **Extra A**: `docs/ECOSYSTEM.md:12` still says visitors "land on `ametyst.xyz`" — same canonical-domain fix as item 2
+- **Extra B** (a11y polish from step 2 review note): ChatDemo's not-yet-revealed lines are `opacity-0` but still in the DOM → screen readers read them before they appear. Fix: `aria-hidden` on unrevealed lines (revealed/reduced-motion lines stay readable)
+- Metadata content is not covered by tests (per sprint test strategy) → test verification = existing suite + build must stay green
+- `chatdemo.test.tsx` reduced-motion test must keep passing after the aria change (it stubs `matches: true`, where lines are all visible and NOT aria-hidden — `getByText` keeps working)
 
 ## Decisions
 
-- **ADR-001 applies (ChatDemo)**: pure React client component, timer-driven state machine over a typed constant array (`CHAT_DEMO_SCRIPT`, exported for the verbatim test), CSS transitions, zero animation libraries. `prefers-reduced-motion` → render the complete static script, no timers.
-- **Script line model**: `{ kind: "prompt" | "status" | "tool" | "done" | "detail", text: string }[]` — text strings are byte-identical to the locked script (including alignment spaces). Prompt types char-by-char; the other lines reveal one-by-one; pause ~3s; loop by resetting state.
-- **"Illustrative demo" caption**: per the guidelines' risk note ("Demo script is illustrative: label it as such"), a small `text-muted` caption `Illustrative demo` is rendered under the terminal card. It is a label, not locked page copy.
-- **Metadata rewrite**: title `Ametyst | Wallets for Agents` (no dashes, no "AI agents"); description (no dashes, "agents" only): `Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.`; keywords gain the 4 GEO phrasings (`MCP wallet`, `agent payments`, `let my agent pay for tools`, `AI spend management`) — keywords may keep "AI" phrases. OG + Twitter mirror title/description.
-- **Page-order integration test** (from sprint test strategy) lands in the final acceptance chunk, when the full PRD order exists.
-- **ADR-002/003 untouched** (no new forms, no renames).
+- **Canonical domain `https://ametyst.ai`** (HIL-confirmed per orchestrator message): applied to `metadataBase` and `openGraph.url`. Icons/keywords/descriptions untouched.
+- **ARCHITECTURE.md skill line**: rewritten to state the files stay on disk but are intentionally unlinked (matches the sprint constraint "public/*.md stay on disk but unlinked").
+- **ECOSYSTEM.md domain mention**: included (1-word fix, same review theme).
+- **ChatDemo a11y**: `aria-hidden={!reducedMotion && i >= visibleLines}` on the staggered lines — hidden from assistive tech until revealed; static/reduced-motion render unaffected.
+- No ADR impact (no architecture changes).
 
 ## Operational guide
 
-### Part A — `components/Problem.tsx` + `components/Personas.tsx` (new), wire into page
+### 1. `app/layout.tsx` — 3 value changes
+- Line 12: `metadataBase: new URL('https://ametyst.ai')`
+- Line 30 (openGraph): `url: "https://ametyst.ai"`
+- Line 46 (twitter): `site: "@ametyst_ai"`
+Nothing else changes in the file.
 
-**`components/Problem.tsx`** (new, server component):
-- `<section id="problem" className="py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg border-b border-border/20">`
-- h2 (verbatim): `Agents can do the work. Paying for it is broken.` — classes `text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-fg mb-8 md:mb-10 text-center`
-- `<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">`, two symmetric `<p className="font-body text-base md:text-lg text-fg/80 leading-relaxed">`:
-  - Left (verbatim): `Every service your agent calls wants its own account, its own credits, its own API key. Across a team that becomes hundreds of keys: created, pasted into Notion, shared in DMs, forgotten. One shared key in the wrong place and production goes down.`
-  - Right (verbatim): `Meanwhile the AI bill grows and nobody can see it. No limits per person, no limits per agent, no view of where the money goes. Intelligence is becoming a real line on the P&L, and right now it's invisible.` (`it&apos;s` in JSX)
+### 2. `docs/ARCHITECTURE.md` — fix stale skill-files line (line 50)
+Replace:
+`- **Skill files**: static \`.md\` files in \`public/\` are served at \`ametyst.xyz/setup-agent-owners-skill.md\` and \`ametyst.xyz/setup-saas-skill.md\` — referenced as copyable skill URLs in \`HowItWorks.tsx\``
+with:
+`- **Skill files**: static \`.md\` files in \`public/\` remain on disk and are served at the site root, but are intentionally NOT linked anywhere in the UI (product links removed in landing v2 until the product-ready signal)`
 
-**`components/Personas.tsx`** (new, server component):
-- Same section shell, `id="personas"`.
-- `grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto`, two columns each with h3 (`font-body text-xl md:text-2xl font-bold text-fg mb-3`) + paragraph (`font-body text-base md:text-lg text-fg/80 leading-relaxed`):
-  - Champion left — h3 (verbatim): `Your whole day already runs through agents.`; p (verbatim): `Every task you ship leans on a stack of external tools: search, scraping, enrichment, models. The bottleneck is everything around them: a subscription here, a credit pack there, another account to create. With one wallet your agents reach the best provider for every step of the task and pay only for what they use.`
-  - Buyer right — h3 (verbatim): `Every call, on the books.`; p (verbatim): `Spend per person, per agent, per service, in real time. Limits are enforced by the wallet itself, not a dashboard warning after the money is gone. Your team moves faster. You finally see the bill.`
-- No policy code block.
+### 3. `docs/ECOSYSTEM.md` — canonical domain (line 12)
+`ametyst.xyz` → `ametyst.ai` in the end-users line.
 
-**`app/page.tsx`**: import Problem and Personas; order becomes Hero → Problem → Personas → HowItWorks (ChatDemo slot filled in Part B).
+### 4. `components/ChatDemo.tsx` — a11y polish
+On the staggered script lines (the `CHAT_DEMO_SCRIPT.slice(1).map(...)` divs), add:
+`aria-hidden={!reducedMotion && i >= visibleLines}`
+so unrevealed lines are hidden from screen readers. No other changes; `reducedMotion`, `visibleLines`, classNames stay as they are.
 
-### Part B — `components/ChatDemo.tsx` (new) + wiring
-
-- `"use client"`. Export the script constant for tests:
-```ts
-export type ScriptLine = { kind: "prompt" | "status" | "tool" | "done" | "detail"; text: string };
-export const CHAT_DEMO_SCRIPT: ScriptLine[] = [
-  { kind: "prompt", text: "> Find 50 fintech founders across Europe with verified emails and draft my outreach" },
-  { kind: "status", text: "⏺ ametyst · wallet connected · policy gtm: €50/week, €18.40 used" },
-  { kind: "tool",   text: "⏺ exa.search   \"fintech founders Europe\"          €0.05" },
-  { kind: "tool",   text: "⏺ apify.linkedin   50 profiles                    €0.85" },
-  { kind: "tool",   text: "⏺ apollo.enrich   +verified emails                €1.20" },
-  { kind: "tool",   text: "⏺ claude   drafting 50 outreach messages          €0.31" },
-  { kind: "done",   text: "✓ Done. Here's your file: outreach-fintech-eu.csv" },
-  { kind: "detail", text: "  50 contacts, 50 drafts. Total €2.41, within policy." },
-];
-```
-  Strings byte-identical to the locked script (alignment spaces included).
-- State machine: `typedChars` (prompt typing, ~30ms/char), then reveal lines 1..7 one-by-one (~600ms each, CSS opacity transition), pause ~3000ms, reset and loop. Timers in `useEffect` with cleanup.
-- Reduced motion: `const prefersReduced = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches` (read once in state initializer or effect) → render ALL lines statically, no timers.
-- Markup: section (`id="chat-demo"`, standard section shell) with label `<p>` (verbatim): `See it in action` (`font-body text-sm md:text-base font-bold text-muted uppercase tracking-wider text-center mb-6`), then the terminal card: `max-w-3xl mx-auto rounded-lg border-2 border-border bg-bg p-4 md:p-6 text-left font-mono text-xs md:text-sm text-fg overflow-x-auto`, each line a `<div className="whitespace-pre ...">` (prompt line + blank line + the 7 lines, matching the script's blank line after the prompt). Caption under the card: `<p className="text-xs text-muted text-center mt-3 font-body">Illustrative demo</p>`.
-- `app/page.tsx`: insert `<ChatDemo />` between Hero and Problem.
-
-### Part C — metadata, docs, acceptance sweep
-
-**`app/layout.tsx`** — replace in all 3 spots (metadata, openGraph, twitter):
-- title: `Ametyst | Wallets for Agents`
-- description: `Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.`
-- keywords: `["MCP wallet", "agent payments", "let my agent pay for tools", "AI spend management", "wallets for AI agents", "AI agent wallets", "agent tool access", "pay-per-use AI tools"]`
-- og image alt: `Ametyst | Wallets for Agents`. Everything else (icons, metadataBase, locale, twitter site) unchanged.
-
-**`docs/README.md`** — "What's inside": add `ChatDemo.tsx` (animated terminal demo), `Problem.tsx`, `Personas.tsx`; update the role-mapping notes (Waitlist.tsx = Final CTA section per ADR-003, EndStrip.tsx = footer); update the intro "six content sections" if inaccurate.
-
-**Acceptance sweep** (all must pass):
-- `grep -rn "—\|–" components/ app/layout.tsx app/page.tsx` → zero hits (em/en dashes)
-- `grep -rn "AI agents" components/ app/page.tsx` → zero hits; `grep -n "AI agents" app/layout.tsx` → zero hits outside keywords array (keywords may contain "AI")
-- `grep -rnE "#[0-9a-fA-F]{3,6}\b" components/` → zero hits
-- `grep -rni "skill\|install" components/ app/page.tsx app/layout.tsx` → zero product-link hits (`public/*.md` stay on disk, unlinked)
-- `curl -s -o /dev/null -w "%{http_code}" https://x.com/ametyst_xyz` and `https://www.linkedin.com/company/ametyst-xyz/` → 200/30x
-- `npm test` + `npm run build` green; `git diff app/api/ next.config.js` empty
-
-### Tests
-
-- `__tests__/chatdemo.test.tsx`: (1) `CHAT_DEMO_SCRIPT` verbatim — assert the 8 `text` strings strictly equal the locked script lines; (2) reduced-motion static render — stub `window.matchMedia` to `{ matches: true, ... }`, render `<ChatDemo />`, assert all 8 lines present immediately (use `getByText` with exact strings; for whitespace-sensitive lines use a function matcher on textContent).
-- `__tests__/new-sections.test.tsx`: Problem h2 + both paragraphs verbatim; Personas both h3 + both paragraphs verbatim.
-- Page-order integration test: render `<Home />` from `@/app/page` (stub `matchMedia` for ChatDemo) and assert the visible section headings appear in PRD order (`One key. Every AI service.` → `See it in action` → `Agents can do the work. Paying for it is broken.` → `Your whole day already runs through agents.` → `How it works` → `Give your agents a wallet.`) by index order in `document.body.textContent`.
+### 5. Verification
+- `npm test` → all 20 tests green (especially `chatdemo.test.tsx` reduced-motion render and `page-order.test.tsx`).
+- `npm run build` → green.
+- `grep -rn "ametyst.xyz\|ametyst_xyz" app/ components/ docs/` → zero hits (the LinkedIn company slug `ametyst-xyz` in EndStrip is a different string and stays).
+- `git diff app/api/ next.config.js` → empty.
 
 ## Consumer verification list
 
-- `app/page.tsx` imports `ChatDemo`, `Problem`, `Personas` (default exports) — names must match the new files.
-- `CHAT_DEMO_SCRIPT` + `ScriptLine` exported from `components/ChatDemo.tsx` — consumed by `__tests__/chatdemo.test.tsx`.
-- ChatDemo `matchMedia` guard — consumed implicitly by jsdom tests (must not throw when `matchMedia` is undefined).
-- No changes to TopBar/Hero/HowItWorks/Waitlist/EndStrip — existing `sections.test.tsx` must stay green.
+- `metadataBase` affects resolution of relative OG image URLs (`/icon.png` → now `https://ametyst.ai/icon.png`) — intended effect of the canonical-domain change.
+- `chatdemo.test.tsx` reduced-motion test queries lines via text — unaffected because in reduced motion `aria-hidden` is false and elements remain queryable.
+- No component APIs/exports change.
 
 ## Constraints to respect
 
-- Copy LOCKED character-for-character (including the demo script's spacing); no em/en dashes in rendered copy; "agents" never "AI agents" in human copy (keywords arrays exempt for GEO).
-- No animation libraries, no new runtime dependencies. Semantic aliases only, light mode only.
-- `/api/waitlist`, `/book`, `next.config.js`, honeypot untouched. `public/*.md` files stay on disk but unlinked.
-- Honesty constraints: no banking/cards/audited-contract/EMI/MiCA claims (metadata description included).
+- No copy changes (locked copy untouched). No new dependencies. No styling changes.
+- `/api/waitlist`, `/book`, `next.config.js` untouched.
+- LinkedIn URL (`linkedin.com/company/ametyst-xyz/`) is correct and must NOT change — only the Twitter handle and site domain.

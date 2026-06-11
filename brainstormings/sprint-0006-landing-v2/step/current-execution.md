@@ -8,7 +8,7 @@
 
 ## Summary
 **Overall status:** complete
-**Chunks completed:** 7 / 7
+**Chunks completed:** 1 / 1
 **Chunks blocked:** None
 
 ---
@@ -158,6 +158,33 @@ None.
 
 ### Test results
 - `npm test`: 20 passed (6 files) — all green.
+
+### Deviations from chunk plan
+None.
+
+### Doubts and open questions
+None.
+
+### Blockers
+None.
+
+---
+
+## Chunk 1 (Step 3) — Stabilization fixes (canonical domain, twitter handle, stale docs, ChatDemo a11y) [TEST]
+**Status:** complete
+**Committed:** yes (6c12862)
+
+### What was done
+- **`app/layout.tsx`**: Updated `metadataBase` to `https://ametyst.ai`, `openGraph.url` to `https://ametyst.ai`, and `twitter.site` to `@ametyst_ai`. No other metadata fields changed.
+- **`docs/ARCHITECTURE.md`**: Rewrote skill-files bullet to state files remain on disk but are intentionally unlinked from the UI (landing v2 constraint).
+- **`docs/ECOSYSTEM.md`**: Changed end-users domain mention from `ametyst.xyz` to `ametyst.ai`.
+- **`components/ChatDemo.tsx`**: Added `aria-hidden={!reducedMotion && i >= visibleLines}` on staggered script line divs so unrevealed lines are hidden from screen readers.
+
+### Test results
+- `npm test`: 20 passed (6 files) — all green, including `chatdemo.test.tsx` reduced-motion render.
+- `npm run build`: succeeded (Next.js 15.5.12, zero type/lint errors).
+- Escaped grep `ametyst\.xyz|ametyst_xyz` in `app/`, `components/`, `docs/`: zero hits. (Unescaped plan grep matches LinkedIn slug `ametyst-xyz` in EndStrip — intentional, unchanged.)
+- `git diff app/api/ next.config.js`: empty.
 
 ### Deviations from chunk plan
 None.
