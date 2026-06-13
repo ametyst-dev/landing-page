@@ -29,13 +29,14 @@ export default function Waitlist() {
 
   return (
     <section
-      className="py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg border-b border-border/20"
+      id="waitlist"
+      className="py-16 md:py-24 px-8 md:px-16 lg:px-24 xl:px-32 bg-bg scroll-mt-20"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-fg mb-8 md:mb-10 text-center">
-          Start working with us
+          Give your agents a wallet.
         </h2>
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center justify-center max-w-md sm:max-w-none mx-auto">
           <input
             type="text"
             value={honeypot}
@@ -50,20 +51,19 @@ export default function Waitlist() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
-            className="flex-1 max-w-md px-4 py-3 rounded-lg border-2 border-border/20 bg-bg text-fg placeholder-muted focus:outline-none focus:border-[#7A1FFF] transition-colors font-body"
+            className="w-72 max-w-full sm:w-auto sm:flex-1 sm:max-w-md px-4 py-3 rounded-lg border-2 border-border/20 bg-bg text-fg placeholder-muted focus:outline-none focus:border-btn-bg transition-colors font-body"
             required
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 whitespace-nowrap uppercase disabled:opacity-50"
-            style={{ borderColor: '#7A1FFF', backgroundColor: '#7A1FFF', color: '#F8F8FF' }}
+            className="w-56 max-w-full sm:w-auto rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 whitespace-nowrap disabled:opacity-50"
           >
-            {status === "loading" ? "SENDING..." : "JOIN THE WAITING LIST"}
+            {status === "loading" ? "Sending..." : "Join the waiting list"}
           </button>
         </form>
         {status === "success" && (
-          <p className="text-center text-sm mt-4 font-body" style={{ color: '#7A1FFF' }}>
+          <p className="text-center text-sm mt-4 font-body text-btn-bg">
             You&apos;re on the list! We&apos;ll be in touch soon.
           </p>
         )}

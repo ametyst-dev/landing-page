@@ -32,6 +32,13 @@ This is the public-facing landing page for Ametyst — wallets that give AI agen
 - `hooks/` — Custom React hooks (currently empty); enter when extracting reusable client logic
 - `public/` — Static assets served at root path; enter when updating icons, images, or skill `.md` files
 
+## Testing
+- Command: `npm test` (Vitest, single run) — `npm run test:watch` for watch mode
+- Framework: Vitest + React Testing Library, jsdom environment by default
+- API route tests run in node environment via `// @vitest-environment node` docblock (Web Request/Response are Node-native)
+- Tests live in `__tests__/` at repo root, named `*.test.ts(x)`
+- No `.env.test` required — `GOOGLE_SCRIPT_URL` is stubbed with `vi.stubEnv` and the Google Script fetch is mocked
+
 ## Docs
 - `./docs/README.md` — overview of this repo and what it contains
 - `./docs/ARCHITECTURE.md` — how the codebase is structured and why
