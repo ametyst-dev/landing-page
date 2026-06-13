@@ -13,10 +13,9 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/TopBar.tsx` — Fixed navigation bar with brand name and "Book a discovery call" CTA
 - `components/Hero.tsx` — Above-the-fold section with headline, subheadline, and the two primary CTAs
 - `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown below the hero
-- `components/Problem.tsx` — Two-column problem statement (access keys / invisible spend)
-- `components/Personas.tsx` — Two-column personas section (champion / buyer)
+- `components/Features.tsx` — Hermes-style single-column feature list (one key, pay-per-use, self-enforcing policies, real-time spend visibility, best provider per step)
 - `components/HowItWorks.tsx` — Section with the 3 wallet steps (create wallet, set policies, connect agents)
-- `components/Waitlist.tsx` — Final CTA section: discovery call link + email capture form with honeypot bot protection, wired to `/api/waitlist`
+- `components/Waitlist.tsx` — Final CTA section: email capture form with honeypot bot protection, wired to `/api/waitlist`
 - `components/EndStrip.tsx` — Footer with tagline, social links, and contact info
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)

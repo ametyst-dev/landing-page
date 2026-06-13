@@ -24,11 +24,11 @@ describe("Hero", () => {
   it("renders locked copy and CTAs", () => {
     render(<Hero />);
     expect(
-      screen.getByRole("heading", { name: "One key. Every AI service." })
+      screen.getByRole("heading", { name: "Give your agents one key to pay for every AI service." })
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use."
+        "Ametyst equips your agents with a wallet. One key for every model, tool, and data service they need, pay-per-use."
       )
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Book a discovery call" })).toHaveAttribute(
@@ -47,7 +47,7 @@ describe("HowItWorks", () => {
     expect(screen.getByText("Set the policies.")).toBeInTheDocument();
     expect(screen.getByText("Connect your agents to the wallet.")).toBeInTheDocument();
     expect(
-      screen.getByText("Open your workspace and create a wallet for your agents.")
+      screen.getByText("Create your workspace and set up your first wallet for your agents.")
     ).toBeInTheDocument();
     expect(
       screen.getByText("Decide how much the wallet can spend, and on which services.")
@@ -73,10 +73,6 @@ describe("Waitlist", () => {
     expect(
       screen.getByRole("heading", { name: "Give your agents a wallet." })
     ).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Book a discovery call" })).toHaveAttribute(
-      "href",
-      "/book"
-    );
 
     const emailInput = screen.getByPlaceholderText("Enter your email");
     fireEvent.change(emailInput, { target: { value: "test@example.com" } });

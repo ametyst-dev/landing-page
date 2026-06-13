@@ -1,8 +1,7 @@
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import ChatDemo from "@/components/ChatDemo";
-import Problem from "@/components/Problem";
-import Personas from "@/components/Personas";
+import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Waitlist from "@/components/Waitlist";
 import EndStrip from "@/components/EndStrip";
@@ -13,8 +12,7 @@ export default function Home() {
       <TopBar />
       <Hero />
       <ChatDemo />
-      <Problem />
-      <Personas />
+      <Features />
       <HowItWorks />
       <Waitlist />
       <EndStrip />

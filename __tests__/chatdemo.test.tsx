@@ -23,13 +23,14 @@ describe("ChatDemo", () => {
   it("exports CHAT_DEMO_SCRIPT verbatim", () => {
     expect(CHAT_DEMO_SCRIPT.map((l) => l.text)).toEqual([
       "> Find 50 fintech founders across Europe with verified emails and draft my outreach",
-      "⏺ ametyst · wallet connected · policy gtm: €50/week, €18.40 used",
-      "⏺ exa.search   \"fintech founders Europe\"          €0.05",
-      "⏺ apify.linkedin   50 profiles                    €0.85",
-      "⏺ apollo.enrich   +verified emails                €1.20",
-      "⏺ claude   drafting 50 outreach messages          €0.31",
-      "✓ Done. Here's your file: outreach-fintech-eu.csv",
-      "  50 contacts, 50 drafts. Total €2.41, within policy.",
+      "⏺ calling ametyst · matching intent to authorized providers",
+      "⏺ fund a wallet · €5.00 top-up · policy gtm €50/week",
+      "⏺ calling exa.search   \"fintech founders Europe\"   €0.001",
+      "⏺ calling apollo.enrich   +verified emails   €1.20",
+      "⏺ calling claude   drafting 50 outreach messages   €0.31",
+      "✓ Done — outreach-fintech-eu.csv",
+      "  sources: techcrunch.com · sifted.eu · eu-startups.com",
+      "  50 contacts, 50 drafts. Total €1.31, within policy.",
     ]);
   });
 

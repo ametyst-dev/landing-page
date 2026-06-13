@@ -27,10 +27,9 @@ describe("Page section order", () => {
 
     const text = document.body.textContent ?? "";
     const headings = [
-      "One key. Every AI service.",
+      "Give your agents one key to pay for every AI service.",
       "See it in action",
-      "Agents can do the work. Paying for it is broken.",
-      "Your whole day already runs through agents.",
+      "Features",
       "How it works",
       "Give your agents a wallet.",
     ];

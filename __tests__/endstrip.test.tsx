@@ -19,7 +19,7 @@ describe("EndStrip", () => {
     render(<EndStrip />);
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
       "href",
-      "https://www.linkedin.com/company/ametyst-xyz/"
+      "https://www.linkedin.com/company/ametyst-ai/"
     );
   });
 });

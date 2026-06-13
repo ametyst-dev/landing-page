@@ -9,13 +9,13 @@ function scrollToSection(id: string) {
 
 export default function Hero() {
   return (
-    <section id="hero" className="flex flex-col items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32 py-16 md:py-24 pt-32 md:pt-40 lg:pt-48 bg-bg border-b border-border/20">
+    <section id="hero" className="flex flex-col items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32 pb-14 md:pb-20 pt-32 md:pt-40 lg:pt-48 bg-bg">
       <div className="max-w-7xl w-full mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-fg mb-3 md:mb-4 leading-tight">
-          One key. Every AI service.
+          Give your agents one key to pay for every AI service.
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl font-headline text-fg mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
-          Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use.
+          Ametyst equips your agents with a wallet. One key for every model, tool, and data service they need, pay-per-use.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a

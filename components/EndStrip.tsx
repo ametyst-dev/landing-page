@@ -16,7 +16,7 @@ export default function EndStrip() {
             X
           </a>
           <a
-            href="https://www.linkedin.com/company/ametyst-xyz/"
+            href="https://www.linkedin.com/company/ametyst-ai/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs md:text-sm font-medium text-fg opacity-70 hover:opacity-100 transition-opacity font-body"
