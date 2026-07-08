@@ -8,6 +8,12 @@ function scrollToSection(id: string) {
 }
 
 export default function TopBar() {
+  // Business-app entry point. The production URL is deferred — it is configured
+  // via the NEXT_PUBLIC_APP_URL env var (statically inlined by Next.js at
+  // build). When it is unset we render nothing for the Launch-app CTA rather
+  // than a dangling link.
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full bg-bg border-b border-fg/10">
       <div className="w-full px-4 sm:px-6">
@@ -20,6 +26,14 @@ export default function TopBar() {
             Ametyst
           </button>
           <nav className="flex items-center gap-4 sm:gap-6" aria-label="Main">
+            {appUrl ? (
+              <a
+                href={appUrl}
+                className="rounded-lg border-2 border-btn-border bg-transparent text-btn-bg font-bold py-2 md:py-2.5 px-5 text-xs md:text-base transition-colors hover:bg-btn-bg hover:text-btn-fg"
+              >
+                Launch app
+              </a>
+            ) : null}
             <a
               href="/book"
               target="_blank"
