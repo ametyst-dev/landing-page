@@ -122,13 +122,14 @@ landing-page/
 
 5. Vercel will automatically provision SSL certificates
 
-### Environment Variables (Optional)
+### Environment Variables
 
-If you add email collection backend later, add environment variables in Vercel:
+Configure these in Vercel (Project Settings → Environment Variables) and locally in `.env.local`:
 
-1. Go to Project Settings → Environment Variables
-2. Add your API keys or webhook URLs
-3. Redeploy for changes to take effect
+- `GOOGLE_SCRIPT_URL` (server-only) — Google Apps Script webhook that the waitlist API forwards emails to.
+- `NEXT_PUBLIC_APP_URL` (public) — business-app URL that the TopBar "Launch app" CTA links to. Inlined at build; when unset the CTA is hidden. Production value is deferred.
+
+Redeploy (rebuild) for changes to public (`NEXT_PUBLIC_*`) vars to take effect.
 
 ## Post-MVP Enhancements
 

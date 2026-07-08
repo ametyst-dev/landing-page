@@ -10,7 +10,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `app/` — Next.js App Router root: layout, main page, globals CSS, and route handlers
 - `app/api/waitlist/` — POST endpoint that validates email and forwards it to a Google Sheets script
 - `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
-- `components/TopBar.tsx` — Fixed navigation bar with brand name and "Book a discovery call" CTA
+- `components/TopBar.tsx` — Fixed navigation bar with brand name, a "Launch app" CTA (business-app entry point, shown only when `NEXT_PUBLIC_APP_URL` is set), and the "Book a discovery call" CTA
 - `components/Hero.tsx` — Above-the-fold section with headline, subheadline, and the two primary CTAs
 - `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown below the hero
 - `components/Features.tsx` — Hermes-style single-column feature list (one key, pay-per-use, self-enforcing policies, real-time spend visibility, best provider per step)
@@ -28,3 +28,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - Never hardcode hex color values in components — always use Tailwind semantic aliases (`bg-bg`, `text-fg`, `text-muted`, etc.) defined in `tailwind.config.ts`
 - Never commit `.env*.local` or expose `GOOGLE_SCRIPT_URL` client-side
 - The page is light-mode only; do not introduce `dark:` Tailwind variants unless the design direction explicitly changes
+
+## Environment variables
+- `GOOGLE_SCRIPT_URL` (server-only, required) — Google Apps Script webhook the waitlist API forwards emails to. Never expose client-side.
+- `NEXT_PUBLIC_APP_URL` (public, optional) — the business-app URL the TopBar "Launch app" CTA points to. Public (inlined at build). Production value is deferred; when unset the "Launch app" CTA is hidden.
