@@ -12,10 +12,10 @@ export default function Hero() {
     <section id="hero" className="flex flex-col items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32 pb-14 md:pb-20 pt-32 md:pt-40 lg:pt-48 bg-bg">
       <div className="max-w-7xl w-full mx-auto text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-fg mb-3 md:mb-4 leading-tight">
-          Give your agents one key to pay for every AI service.
+          Let your agents run on their own — spending only what you allow
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl font-headline text-fg mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
-          Ametyst equips your agents with a wallet. One key for every model, tool, and data service they need, pay-per-use.
+          Ametyst gives each agent its own wallet with the spending policies you set, then orchestrates across models and tools to pick the right one for each step.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a

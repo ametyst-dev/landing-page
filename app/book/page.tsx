@@ -7,7 +7,7 @@ export default function BookPage() {
     <div className="min-h-screen bg-bg pt-20 pb-16 px-8 md:px-16 lg:px-24 xl:px-32">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-headline font-bold text-fg mb-8 text-center">
-          Book a Discovery Call
+          Book a discovery call
         </h1>
         <div className="bg-white rounded-lg border-2 border-border/20 p-4 md:p-8">
           <Cal

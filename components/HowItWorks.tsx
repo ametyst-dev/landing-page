@@ -1,16 +1,16 @@
 export default function HowItWorks() {
   const steps = [
     {
-      title: "Create your wallet.",
-      description: "Create your workspace and set up your first wallet for your agents.",
+      title: "Create your workspace.",
+      description: "Set up your workspace in the Ametyst web app, fund your wallet, and set your spending limits.",
     },
     {
-      title: "Set the policies.",
-      description: "Decide how much the wallet can spend, and on which services.",
+      title: "Connect your agents.",
+      description: "Link your agents with one command using the Ametyst CLI.",
     },
     {
-      title: "Connect your agents to the wallet.",
-      description: "One command links them. From there they pay for what they use, within policy.",
+      title: "Start spending.",
+      description: "Your agents run skills and loops, paying per use within your limits.",
     },
   ];
 

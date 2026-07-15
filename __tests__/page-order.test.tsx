@@ -27,11 +27,11 @@ describe("Page section order", () => {
 
     const text = document.body.textContent ?? "";
     const headings = [
-      "Give your agents one key to pay for every AI service.",
-      "See it in action",
-      "Features",
+      "Let your agents run on their own — spending only what you allow",
+      "Your agents pay per use",
       "How it works",
-      "Give your agents a wallet.",
+      "Spend less the more they run",
+      "Give your agents real autonomy.",
     ];
 
     const indices = headings.map((h) => text.indexOf(h));

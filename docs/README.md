@@ -11,11 +11,12 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `app/api/waitlist/` — POST endpoint that validates email and forwards it to a Google Sheets script
 - `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
 - `components/TopBar.tsx` — Fixed navigation bar with brand name, a "Launch app" CTA (business-app entry point, shown only when `NEXT_PUBLIC_APP_URL` is set), and the "Book a discovery call" CTA
-- `components/Hero.tsx` — Above-the-fold section with headline, subheadline, and the two primary CTAs
-- `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown below the hero
-- `components/Features.tsx` — Hermes-style single-column feature list (one key, pay-per-use, self-enforcing policies, real-time spend visibility, best provider per step)
-- `components/HowItWorks.tsx` — Section with the 3 wallet steps (create wallet, set policies, connect agents)
-- `components/Waitlist.tsx` — Final CTA section: email capture form with honeypot bot protection, wired to `/api/waitlist`
+- `components/Hero.tsx` — Above-the-fold section with the autonomy + spend-control headline, subheadline, and the two primary CTAs
+- `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown immediately below the hero (no section heading)
+- `components/ValueProps.tsx` — Three horizontal value-prop cards (agents pay per use, agents orchestrate, you set the spend policies)
+- `components/HowItWorks.tsx` — Section with the 3 steps (create workspace, connect agents, start spending)
+- `components/SpendLess.tsx` — Savings section: how Ametyst orchestrates and discovers cheaper paths, with an illustrative cost-saving example
+- `components/Waitlist.tsx` — Final CTA section ("Give your agents real autonomy."): email capture form with honeypot bot protection, wired to `/api/waitlist`
 - `components/EndStrip.tsx` — Footer with tagline, social links, and contact info
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
