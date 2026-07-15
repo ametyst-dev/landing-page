@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
   title: "Ametyst | Wallets for Agents",
   description:
-    "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
+    "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
   keywords: [
     "MCP wallet",
     "agent payments",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Ametyst",
     title: "Ametyst | Wallets for Agents",
     description:
-      "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
+      "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
     images: [
       {
         url: "/icon.png",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     site: "@ametyst_ai",
     title: "Ametyst | Wallets for Agents",
     description:
-      "Ametyst gives your agents a wallet. One key unlocks every model, tool, and data service they need, pay-per-use. Set policies, track every agent payment, and manage AI spend in real time.",
+      "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
     images: ["/icon.png"],
   },
   icons: {

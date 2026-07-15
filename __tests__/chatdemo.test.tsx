@@ -25,8 +25,9 @@ describe("ChatDemo", () => {
       "> Find 50 fintech founders across Europe with verified emails and draft my outreach",
       "⏺ calling ametyst · matching intent to authorized providers",
       "⏺ fund a wallet · €5.00 top-up · policy gtm €50/week",
-      "⏺ calling exa.search   \"fintech founders Europe\"   €0.001",
-      "⏺ calling apollo.enrich   +verified emails   €1.20",
+      "⏺ calling exa.search   \"fintech founders Europe\"   €0.02",
+      "⏺ calling fullenrich.contacts   +50 verified emails   €0.90",
+      "⏺ calling hunter.verify   50 emails   €0.08",
       "⏺ calling claude   drafting 50 outreach messages   €0.31",
       "✓ Done — outreach-fintech-eu.csv",
       "  sources: techcrunch.com · sifted.eu · eu-startups.com",
@@ -37,8 +38,6 @@ describe("ChatDemo", () => {
   it("renders full static script when prefers-reduced-motion", () => {
     vi.stubGlobal("matchMedia", matchMediaMock(true));
     const { container } = render(<ChatDemo />);
-
-    expect(screen.getByText("See it in action")).toBeInTheDocument();
 
     CHAT_DEMO_SCRIPT.forEach((line) => {
       expect(
@@ -54,6 +53,8 @@ describe("ChatDemo", () => {
       render(<ChatDemo />);
     }).not.toThrow();
 
-    expect(screen.getByText("See it in action")).toBeInTheDocument();
+    expect(
+      screen.getByText((_, el) => el?.textContent === CHAT_DEMO_SCRIPT[6].text)
+    ).toBeInTheDocument();
   });
 });

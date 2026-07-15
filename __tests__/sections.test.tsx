@@ -24,11 +24,13 @@ describe("Hero", () => {
   it("renders locked copy and CTAs", () => {
     render(<Hero />);
     expect(
-      screen.getByRole("heading", { name: "Give your agents one key to pay for every AI service." })
+      screen.getByRole("heading", {
+        name: "Let your agents run on their own — spending only what you allow",
+      })
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Ametyst equips your agents with a wallet. One key for every model, tool, and data service they need, pay-per-use."
+        "Ametyst gives each agent its own wallet with the spending policies you set, then orchestrates across models and tools to pick the right one for each step."
       )
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Book a discovery call" })).toHaveAttribute(
@@ -40,25 +42,23 @@ describe("Hero", () => {
 });
 
 describe("HowItWorks", () => {
-  it("renders 3 wallet steps with locked copy and no skill/setup-mode", () => {
+  it("renders 3 steps with locked copy", () => {
     render(<HowItWorks />);
     expect(screen.getByRole("heading", { name: "How it works" })).toBeInTheDocument();
-    expect(screen.getByText("Create your wallet.")).toBeInTheDocument();
-    expect(screen.getByText("Set the policies.")).toBeInTheDocument();
-    expect(screen.getByText("Connect your agents to the wallet.")).toBeInTheDocument();
-    expect(
-      screen.getByText("Create your workspace and set up your first wallet for your agents.")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText("Decide how much the wallet can spend, and on which services.")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Create your workspace.")).toBeInTheDocument();
+    expect(screen.getByText("Connect your agents.")).toBeInTheDocument();
+    expect(screen.getByText("Start spending.")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "One command links them. From there they pay for what they use, within policy."
+        "Set up your workspace in the Ametyst web app, fund your wallet, and set your spending limits."
       )
     ).toBeInTheDocument();
-    expect(screen.queryByText(/skill/i)).toBeNull();
-    expect(screen.queryByText(/setup/i)).toBeNull();
+    expect(
+      screen.getByText("Link your agents with one command using the Ametyst CLI.")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Your agents run skills and loops, paying per use within your limits.")
+    ).toBeInTheDocument();
   });
 });
 
@@ -71,7 +71,7 @@ describe("Waitlist", () => {
 
     render(<Waitlist />);
     expect(
-      screen.getByRole("heading", { name: "Give your agents a wallet." })
+      screen.getByRole("heading", { name: "Give your agents real autonomy." })
     ).toBeInTheDocument();
 
     const emailInput = screen.getByPlaceholderText("Enter your email");
@@ -99,7 +99,7 @@ describe("EndStrip", () => {
   it("renders footer tagline", () => {
     render(<EndStrip />);
     expect(
-      screen.getByText("Wallets for agents. Built in Europe. © 2026 Ametyst.")
+      screen.getByText("Autonomy for your agents. Built in Europe. © 2026 Ametyst.")
     ).toBeInTheDocument();
   });
 });
