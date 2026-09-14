@@ -1,38 +1,47 @@
-"use client";
-
-function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-}
+import TaskFlow from "@/components/TaskFlow";
 
 export default function Hero() {
   return (
-    <section id="hero" className="flex flex-col items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32 pb-14 md:pb-20 pt-32 md:pt-40 lg:pt-48 bg-bg">
-      <div className="max-w-7xl w-full mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-fg mb-3 md:mb-4 leading-tight">
-          Let your agents run on their own — spending only what you allow
-        </h1>
-        <p className="text-lg md:text-xl lg:text-2xl font-headline text-fg mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
-          Ametyst gives each agent its own wallet with the spending policies you set, then orchestrates across models and tools to pick the right one for each step.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/book"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border-2 border-btn-border bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90"
-          >
-            Book a discovery call
-          </a>
-          <button
-            type="button"
-            onClick={() => scrollToSection("waitlist")}
-            className="rounded-lg border-2 border-btn-bg bg-transparent text-btn-bg font-bold py-3 px-6 text-sm md:text-base transition-colors hover:opacity-90 cursor-pointer"
-          >
-            Join the waiting list
-          </button>
+    <section id="hero" className="section-x pt-28 md:pt-36 lg:pt-40 pb-16 md:pb-24 bg-bg border-b border-border/40">
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div className="lg:col-span-6 min-w-0">
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs md:text-sm font-medium text-fg/70 font-body mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            Solo or with a team, on Claude, Codex or Cursor
+          </p>
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl text-fg leading-[1.05] tracking-tight text-balance mb-6" style={{ fontWeight: 900 }}>
+            You have the agents.
+            <br />
+            <span className="text-accent">Let them work.</span>
+          </h1>
+          <p className="font-body text-lg md:text-xl text-fg/75 max-w-xl leading-relaxed mb-3">
+            Give your agents the tools, <strong className="font-semibold text-fg">you fear what they do</strong>.
+            Hold back, <strong className="font-semibold text-fg">they do nothing</strong>.
+            Watch them, <strong className="font-semibold text-fg">you never stop</strong>. That is the wall.
+          </p>
+          <p className="font-body text-lg md:text-xl text-fg/75 max-w-xl leading-relaxed mb-4">
+            Ametyst takes it down. <strong className="font-semibold text-fg">Your agents get every tool</strong>.
+            <strong className="font-semibold text-fg"> You get limits, visibility and verifiers</strong> that keep the work sharp.
+          </p>
+          <p className="font-headline text-base md:text-lg text-accent mb-8">Welcome to the agentic economy.</p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+            <a href="/book" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base text-center transition-opacity hover:opacity-90 font-body">
+              Book a call, we set up your first workflow
+            </a>
+            <a href="https://business.ametyst.ai" target="_blank" rel="noopener noreferrer" className="rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6 text-sm md:text-base text-center transition-colors hover:bg-accent-soft font-body">
+              Create your workspace
+            </a>
+          </div>
+          <p className="font-body text-sm md:text-base text-fg/80 mt-5">
+            <span className="font-semibold text-accent">€10 in usage credits</span> when you sign up. Free until your workflow runs on its own.
+          </p>
+        </div>
+        <div className="lg:col-span-6 min-w-0">
+          <TaskFlow />
+          <p className="font-body text-xs text-muted mt-3 text-center">
+            A real task, illustrative numbers.{" "}
+            <a href="https://www.youtube.com/watch?v=LKtJlBXsTBU" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-fg">Watch the demo</a>.
+          </p>
         </div>
       </div>
     </section>

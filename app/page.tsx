@@ -1,10 +1,11 @@
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
-import ChatDemo from "@/components/ChatDemo";
-import ValueProps from "@/components/ValueProps";
-import HowItWorks from "@/components/HowItWorks";
-import SpendLess from "@/components/SpendLess";
-import Waitlist from "@/components/Waitlist";
+import Pillars from "@/components/Pillars";
+import Manifesto from "@/components/Manifesto";
+import RealTasks from "@/components/RealTasks";
+import HowWeStart from "@/components/HowWeStart";
+import Pricing from "@/components/Pricing";
+import Cta from "@/components/Cta";
 import EndStrip from "@/components/EndStrip";
 
 export default function Home() {
@@ -12,11 +13,12 @@ export default function Home() {
     <main className="min-h-screen bg-bg">
       <TopBar />
       <Hero />
-      <ChatDemo />
-      <ValueProps />
-      <HowItWorks />
-      <SpendLess />
-      <Waitlist />
+      <Pillars />
+      <Manifesto />
+      <RealTasks />
+      <HowWeStart />
+      <Pricing />
+      <Cta />
       <EndStrip />
     </main>
   );

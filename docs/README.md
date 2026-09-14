@@ -1,7 +1,7 @@
 # landing-page
 
 ## What is this
-The public marketing site for Ametyst — wallets that give AI agents on-demand access to every service they need. It is a single-page Next.js 15 application with a fixed navigation bar, eight content sections, a waitlist sign-up form backed by a Google Sheets API, and a dedicated booking page that embeds a Cal.com calendar.
+The public marketing site for Ametyst — it equips AI agents to work autonomously: a wallet and credits per agent, spending policies per agent and per person, and a verifier that keeps workflows sharp over time. It is a single-page Next.js 15 application with a fixed navigation bar, seven content sections (hero, three product blocks, real tasks, how we start, pricing, final CTA), an email API route kept for a future capture form (`/api/waitlist`, currently unused), and a dedicated booking page that embeds a Cal.com calendar.
 
 ## Why it exists
 The landing page is the primary conversion surface for Ametyst in its early-stage validation phase. It communicates the product value proposition to two distinct audiences (agent owners and SaaS developers), captures waitlist emails to measure market interest, and provides a frictionless path to book a discovery call.
@@ -10,17 +10,19 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `app/` — Next.js App Router root: layout, main page, globals CSS, and route handlers
 - `app/api/waitlist/` — POST endpoint that validates email and forwards it to a Google Sheets script
 - `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
-- `components/TopBar.tsx` — Fixed navigation bar with brand name, a "Launch app" CTA (business-app entry point, shown only when `NEXT_PUBLIC_APP_URL` is set), and the "Book a discovery call" CTA
-- `components/Hero.tsx` — Above-the-fold section with the autonomy + spend-control headline, subheadline, and the two primary CTAs
-- `components/ChatDemo.tsx` — Animated terminal-style demo (scripted, illustrative) shown immediately below the hero (no section heading)
-- `components/ValueProps.tsx` — Three horizontal value-prop cards (agents pay per use, agents orchestrate, you set the spend policies)
-- `components/HowItWorks.tsx` — Section with the 3 steps (create workspace, connect agents, start spending)
-- `components/SpendLess.tsx` — Savings section: how Ametyst orchestrates and discovers cheaper paths, with an illustrative cost-saving example
-- `components/Waitlist.tsx` — Final CTA section ("Give your agents real autonomy."): email capture form with honeypot bot protection, wired to `/api/waitlist`
-- `components/EndStrip.tsx` — Footer with tagline, social links, and contact info
+- `components/TopBar.tsx` — Fixed navigation bar: brand, section anchors, "Sign in" (business.ametyst.ai) and "Book a call" CTA
+- `components/Hero.tsx` — Above-the-fold: "You have the agents. Let them work.", two CTAs, the €10 credits line, and the `TaskFlow` animation
+- `components/Frames.tsx` — Product-faithful mock frames: `AmetystApp` (business-app shell: white sidebar, nav labels and Admin panel as in `index.html`, 10px-radius cards, Verification tabs Overview/Behaviours/Maintenance, `admin={false}` for the member view with the Admin panel collapsed), `NotionFrame`, `ClaudeFrame`, `SheetsFrame`. Keep `AmetystApp` in sync with business-app's sidebar when it changes
+- `components/TaskFlow.tsx` — Four auto-advancing frames on the competitor-ads task (task in the web app → agent runs "scoreboard" and "genera 1-5" in Claude Desktop → Google Sheet with ranking and generated drafts → Verification page with Maintenance and Behaviours on); pauses on hover, tabs are clickable
+- `components/Manifesto.tsx` — Full-width statement band between the three blocks and the real tasks: "Your workflows are your differentiation"
+- `components/RealTasks.tsx` — Four real tasks (B2B prospecting, events CRM, the engineering agent, competitor ads), anonymized: no task slugs or client names on the page; copy comes from the delivered HANDOFF files in domain-expansion
+- `components/Pillars.tsx` — The three blocks, in order: 01 every provider live on production (grouped wall, keep in sync with merchants-router `[env.production.vars]`), 02 policies + task sharing for the admin, 03 maintained and efficient workflows
+- `components/HowWeStart.tsx` — Design-partner process, four steps from the first call to maintenance and new workflows: free until the workflow runs, paid from there
+- `components/Pricing.tsx` — Two cards: tools pay per call, verification pay per run on a monthly budget (never a share of spend, never seats)
+- `components/Cta.tsx` — Final call to action (book a call, create workspace)
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
-- `public/` — Static assets: `icon.png` (brand icon), skill `.md` files served at root
+- `public/` — Static assets: `icon.png` (brand icon), `skill.md` (the agent-facing onboarding guide, linked from the footer) and other skill `.md` files served at root
 - `tailwind.config.ts` — Tailwind configuration with semantic color aliases and font families
 - `PALETTE-info.md` — Reference document describing the Ametyst color palette for both light and dark themes
 
@@ -29,7 +31,3 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - Never hardcode hex color values in components — always use Tailwind semantic aliases (`bg-bg`, `text-fg`, `text-muted`, etc.) defined in `tailwind.config.ts`
 - Never commit `.env*.local` or expose `GOOGLE_SCRIPT_URL` client-side
 - The page is light-mode only; do not introduce `dark:` Tailwind variants unless the design direction explicitly changes
-
-## Environment variables
-- `GOOGLE_SCRIPT_URL` (server-only, required) — Google Apps Script webhook the waitlist API forwards emails to. Never expose client-side.
-- `NEXT_PUBLIC_APP_URL` (public, optional) — the business-app URL the TopBar "Launch app" CTA points to. Public (inlined at build). Production value is deferred; when unset the "Launch app" CTA is hidden.

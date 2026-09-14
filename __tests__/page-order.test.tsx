@@ -1,44 +1,33 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, afterEach } from "vitest";
 import { render, cleanup } from "@testing-library/react";
 import Home from "@/app/page";
 
-afterEach(() => {
-  cleanup();
-  vi.unstubAllGlobals();
-});
+afterEach(() => cleanup());
 
 describe("Page section order", () => {
-  it("renders headings in the correct order", () => {
-    vi.stubGlobal(
-      "matchMedia",
-      vi.fn().mockReturnValue({
-        matches: true,
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        media: "",
-        onchange: null,
-        dispatchEvent: vi.fn(),
-      })
-    );
-
+  it("renders the sections in the locked order", () => {
     render(<Home />);
-
     const text = document.body.textContent ?? "";
     const headings = [
-      "Let your agents run on their own — spending only what you allow",
-      "Your agents pay per use",
-      "How it works",
-      "Spend less the more they run",
-      "Give your agents real autonomy.",
+      "Let them work.",
+      "Every tool they need. One key.",
+      "You set the rules. The work gets shared.",
+      "They stay sharp.",
+      "Your workflows are your differentiation.",
+      "Built with our design partners. Running on their own.",
+      "Free until the workflow runs. Paid from there.",
+      "You pay for what your agents do.",
+      "Get your first workflow running on its own.",
     ];
-
     const indices = headings.map((h) => text.indexOf(h));
-    indices.forEach((idx) => expect(idx).toBeGreaterThanOrEqual(0));
-
+    indices.forEach((idx, i) => expect(idx, headings[i]).toBeGreaterThanOrEqual(0));
     for (let i = 1; i < indices.length; i++) {
       expect(indices[i]).toBeGreaterThan(indices[i - 1]);
     }
+  });
+
+  it("never says wallet anywhere on the page", () => {
+    render(<Home />);
+    expect((document.body.textContent ?? "").toLowerCase()).not.toContain("wallet");
   });
 });

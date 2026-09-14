@@ -1,7 +1,7 @@
 # CLAUDE.md — landing-page/
 
 ## Purpose
-This is the public-facing landing page for Ametyst — wallets that give AI agents on-demand access to every service they need. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
+This is the public-facing landing page for Ametyst — it lets teams' existing agents (Claude Code, Codex, Cursor) work on their own: every tool with one key, spending policies, and verifier agents that keep tasks sharp. Customer-facing copy never says "bank" or "wallet"; the workflow is the door. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
 
 ## Context triggers
 - Load this when the task involves UI changes, new sections, routing, API endpoints, or styling
@@ -53,7 +53,8 @@ This is the public-facing landing page for Ametyst — wallets that give AI agen
 - `next.config.js` uses `output: 'standalone'` — required for the Vercel/Docker deployment; do not remove
 
 ## Examples
-- "Add a pricing section" → create `components/Pricing.tsx`, import it in `app/page.tsx` after `HowItWorks`, update `docs/README.md`
+- "Add a FAQ section" → create `components/Faq.tsx`, import it in `app/page.tsx` after `Pricing`, update `docs/README.md`
 - "Add a new API endpoint" → create `app/api/<name>/route.ts`, update `docs/ARCHITECTURE.md`
 - "Change the brand color" → update CSS custom properties in `app/globals.css`, do not change `tailwind.config.ts` color aliases
-- "Update waitlist copy" → edit `components/Waitlist.tsx` only
+- "Update the final CTA copy" → edit `components/Cta.tsx` only
+- "Update what agents are told to do" → edit `public/skill.md` (agent-facing onboarding guide, plain markdown)

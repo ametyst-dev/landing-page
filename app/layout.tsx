@@ -10,18 +10,18 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
-  title: "Ametyst | Wallets for Agents",
+  title: "Ametyst – You have the agents. Let them work.",
   description:
-    "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
+    "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every tool they need, and gives you the limits, the visibility and the verifier agents that keep their work sharp.",
   keywords: [
-    "MCP wallet",
-    "agent payments",
-    "let my agent pay for tools",
-    "AI spend management",
-    "wallets for AI agents",
-    "AI agent wallets",
+    "autonomous AI workflows",
+    "agents that pay per use",
+    "autonomous AI agents",
     "agent tool access",
-    "pay-per-use AI tools",
+    "agent spending policies",
+    "AI agent spend management",
+    "AI agent infrastructure",
+    "on-demand tool access",
   ],
   authors: [{ name: "Ametyst" }],
   openGraph: {
@@ -29,24 +29,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.ai",
     siteName: "Ametyst",
-    title: "Ametyst | Wallets for Agents",
+    title: "Ametyst – You have the agents. Let them work.",
     description:
-      "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
+      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every tool they need, and gives you the limits, the visibility and the verifier agents that keep their work sharp.",
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst | Wallets for Agents",
+        alt: "Ametyst – You have the agents. Let them work.",
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_ai",
-    title: "Ametyst | Wallets for Agents",
+    title: "Ametyst – You have the agents. Let them work.",
     description:
-      "Ametyst gives each of your agents its own wallet with the spending policies you set, then orchestrates across models and tools. Let your agents run on their own, spending only what you allow.",
+      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every tool they need, and gives you the limits, the visibility and the verifier agents that keep their work sharp.",
     images: ["/icon.png"],
   },
   icons: {
