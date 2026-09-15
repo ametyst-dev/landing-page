@@ -127,9 +127,9 @@ export function ClaudeFrame({ children }: { children: React.ReactNode }) {
           <p className="mb-2 flex items-center gap-1 font-semibold"><span className="inline-block h-3 w-3 rounded-sm bg-[#d97757]" />Claude</p>
           <p className="rounded bg-white/70 px-1.5 py-0.5">+ New chat</p>
           <p className="mt-2 mb-1 text-[8px] uppercase tracking-wide text-[#8c8677]">Recents</p>
-          <p className="rounded bg-white px-1.5 py-0.5 font-medium">run event-leads on…</p>
-          <p className="px-1.5 py-0.5 text-[#8c8677]">scoreboard Plancraft…</p>
-          <p className="px-1.5 py-0.5 text-[#8c8677]">aggiorna eventi</p>
+          <p className="rounded bg-white px-1.5 py-0.5 font-medium">scoreboard</p>
+          <p className="px-1.5 py-0.5 text-[#8c8677]">genera in alta 2</p>
+          <p className="px-1.5 py-0.5 text-[#8c8677]">aggiungi competitor…</p>
           <div className="mt-auto flex items-center gap-1 text-[8px] text-[#8c8677]">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#7a1fff]" /> ametyst · connected
           </div>

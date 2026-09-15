@@ -2,7 +2,7 @@ import TaskFlow from "@/components/TaskFlow";
 
 export default function Hero() {
   return (
-    <section id="hero" className="section-x pt-28 md:pt-36 lg:pt-40 pb-16 md:pb-24 bg-bg border-b border-border/40">
+    <section id="hero" className="section-x pt-20 md:pt-24 lg:pt-28 pb-16 md:pb-24 bg-bg border-b border-border/40">
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
         <div className="lg:col-span-6 min-w-0">
           <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs md:text-sm font-medium text-fg/70 font-body mb-6">
