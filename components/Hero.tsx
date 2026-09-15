@@ -38,10 +38,6 @@ export default function Hero() {
         </div>
         <div className="lg:col-span-6 min-w-0">
           <TaskFlow />
-          <p className="font-body text-xs text-muted mt-3 text-center">
-            A real task, illustrative numbers.{" "}
-            <a href="https://www.youtube.com/watch?v=LKtJlBXsTBU" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-fg">Watch the demo</a>.
-          </p>
         </div>
       </div>
     </section>
