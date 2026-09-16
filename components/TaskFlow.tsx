@@ -103,7 +103,7 @@ function StageResult() {
 
 function StageSharp() {
   return (
-    <AmetystApp page="Agents">
+    <AmetystApp page="Agents" admin={false}>
       <AppTabs tabs={["Overview", "Maintenance", "Behaviours"]} active="Overview" />
       <div className="mb-2 grid grid-cols-2 gap-2">
         {[["Maintenance", "on · pay per output"], ["Behaviours", "on · pay per output"]].map(([n, s]) => (

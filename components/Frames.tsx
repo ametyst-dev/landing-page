@@ -38,7 +38,7 @@ export function AmetystApp({
             </div>
           ))}
           <div className="my-0.5 h-px bg-[#d6daff]" />
-          <div className="rounded-md border border-[#d6daff] px-2 py-1 text-[9px] font-semibold text-[#0b0b0f]">{admin ? "▾" : "▸"} Admin panel</div>
+          <div className={`rounded-md border px-2 py-1 text-[9px] font-semibold ${!admin && adminItems.includes(page) && !main.includes(page) ? active(page) : "border-[#d6daff] text-[#0b0b0f]"}`}>{admin ? "▾" : "▸"} Admin panel</div>
           {admin && adminItems.map((l) => (
             <div key={l} className={`ml-2 rounded-md border px-2 py-1 text-[9px] font-semibold ${page === l && l !== "Tasks" ? active(l) : "border-[#d6daff] text-[#0b0b0f]"}`}>
               {l}
