@@ -25,7 +25,7 @@ const PROVIDER_GROUPS: { label: string; items: string[] }[] = [
 function ProvidersCard() {
   const total = PROVIDER_GROUPS.reduce((n, g) => n + g.items.length, 0);
   return (
-    <AmetystApp page="Services" admin={false}>
+    <AmetystApp page="Apps" admin={false}>
       <AppTabs tabs={["Whitelisted", "Catalog"]} active="Catalog" />
       <div className="space-y-2">
         {PROVIDER_GROUPS.map((g) => (
@@ -39,7 +39,17 @@ function ProvidersCard() {
           </div>
         ))}
       </div>
-      <p className="mt-3 text-[10px] text-[#8a7a9f]">{total} providers live · new ones every week</p>
+      <div className="mt-3 border-t border-[#d6daff] pt-2">
+        <div className="grid grid-cols-[96px_1fr] items-start gap-2">
+          <span className="pt-1 text-[10px] text-[#7a1fff]">Agents</span>
+          <div className="flex flex-wrap gap-1">
+            {[["maintenance", "Ametyst"], ["behaviours", "Ametyst"]].map(([n, by]) => (
+              <span key={n} className="rounded-[6px] border border-[#7a1fff] bg-[#efe8ff] px-1.5 py-0.5 font-mono text-[10px] text-[#0b0b0f]">{n} <span className="text-[#8a7a9f]">· {by}</span></span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className="mt-3 text-[10px] text-[#8a7a9f]">{total} apps live, paid per call or by subscription · specialized agents paid per output · new ones every week</p>
     </AmetystApp>
   );
 }
@@ -74,8 +84,8 @@ function AdminCard() {
 
 function SharpCard() {
   return (
-    <AmetystApp page="Verification">
-      <AppTabs tabs={["Overview", "Behaviours", "Maintenance"]} active="Overview" />
+    <AmetystApp page="Agents">
+      <AppTabs tabs={["Overview", "Maintenance", "Behaviours"]} active="Overview" />
       <div className="mb-2 grid grid-cols-2 gap-2">
         {[["Maintenance", "keeps the task working", "on"], ["Behaviours", "proposes what to add next", "on"]].map(([n, d, st]) => (
           <AppCard key={n} className="flex items-center justify-between gap-2">
@@ -85,13 +95,13 @@ function SharpCard() {
         ))}
       </div>
       <AppCard>
-        <div className="mb-1 flex items-center justify-between"><p className="text-[10px] font-semibold text-[#0b0b0f]">Verifier agents</p><span className="font-mono text-[10px] text-[#7a1fff]">pay per run</span></div>
+        <div className="mb-1 flex items-center justify-between"><p className="text-[10px] font-semibold text-[#0b0b0f]">Specialized agents on your tasks</p><span className="font-mono text-[10px] text-[#7a1fff]">pay per output</span></div>
         <table className="w-full text-[9px]">
-          <thead><tr className="text-[#8a7a9f]"><th className="text-left font-normal">Task</th><th className="text-left font-normal">Kind</th><th className="text-left font-normal">Verifier</th><th className="text-right font-normal">Last run</th></tr></thead>
+          <thead><tr className="text-[#8a7a9f]"><th className="text-left font-normal">Task</th><th className="text-left font-normal">Kind</th><th className="text-left font-normal">Agent</th><th className="text-right font-normal">Last run</th></tr></thead>
           <tbody className="text-[#0b0b0f]">
-            <tr><td className="font-mono">competitor-ads</td><td>Maintenance</td><td>Ametyst</td><td className="text-right">fixed · €1.50 → €0.90</td></tr>
-            <tr><td className="font-mono">competitor-ads</td><td>Behaviour</td><td>Ametyst</td><td className="text-right">1 proposal</td></tr>
-            <tr><td className="font-mono">event-crm</td><td>Maintenance</td><td>Ametyst</td><td className="text-right">nothing to fix</td></tr>
+            <tr><td className="font-mono">competitor-ads</td><td>Maintenance</td><td>Ametyst verifier</td><td className="text-right">fixed · €1.50 → €0.90</td></tr>
+            <tr><td className="font-mono">competitor-ads</td><td>Behaviour</td><td>Ametyst verifier</td><td className="text-right">1 proposal</td></tr>
+            <tr><td className="font-mono">event-crm</td><td>Maintenance</td><td>Ametyst verifier</td><td className="text-right">nothing to fix</td></tr>
           </tbody>
         </table>
       </AppCard>
@@ -106,8 +116,8 @@ export default function Pillars() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <SectionHeading
             index="01 · for your agents"
-            title="Every tool they need. One key."
-            lead="Search, read the web, enrich, think with any model, create, verify. 24 providers live today, one key from your workspace. No accounts, no keys on the machine."
+            title="Every app and every specialized agent. One key."
+            lead="Search, read the web, enrich, think with any model, create, verify: 24 apps live today, paid per call or by subscription. And specialized agents for the tasks that need one, paid per output. One key from your workspace. No accounts, no keys on the machine."
           />
           <ProvidersCard />
         </div>
@@ -125,7 +135,7 @@ export default function Pillars() {
           <SectionHeading
             index="03 · over time"
             title="They stay sharp."
-            lead="Providers change, steps get expensive, new cases show up. Turn on Verification and verifier agents keep each task efficient and propose new tasks, pay as you go per verifier agent. You stop watching, and nothing changes without your word."
+            lead="Every run leaves a report: what the agent spent, what it did, what came back. Read it, or hand it over. Two specialized agents from Ametyst, Maintenance and Behaviours, keep each task working and propose what to add next: per task, per output, inside a budget you set. You stop watching, and nothing changes without your word."
           />
           <SharpCard />
         </div>

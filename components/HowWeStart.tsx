@@ -2,7 +2,7 @@ const steps = [
   { title: "Walkthrough", body: "How your team works, a shared Slack channel, one workflow you want running on its own.", free: true },
   { title: "Onboarding", body: "CLI installed, your custom agent shown on the call. Your €10 in credits cover the trial.", free: true },
   { title: "It runs on its own", body: "The workflow runs in your harness. Everything up to here is free.", free: true },
-  { title: "Maintenance and new workflows", body: "Verifiers keep it sharp and propose new workflows. Verifier runs and credits are paid.", free: false },
+  { title: "Maintenance and new workflows", body: "Specialized agents keep it sharp and propose new workflows. Agent runs and credits are paid.", free: false },
 ];
 
 export default function HowWeStart() {

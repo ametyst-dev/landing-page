@@ -1,6 +1,6 @@
 const items = [
-  { title: "Tools: pay per call", body: "Each provider is paid per call from your workspace credits. No subscriptions, no minimums." },
-  { title: "Verification: pay per run", body: "Every verifier agent run on a task is priced like a tool call: pay as you go, per verifier agent. Not a share of your spend." },
+  { title: "Apps: pay per call or by subscription", body: "Each app is paid per call from your workspace credits, or by subscription where the provider works that way. No minimums." },
+  { title: "Specialized agents: pay per output", body: "Every job handed to a specialized agent, the verifier included, is paid per output from a budget you set, held until the output is validated. Not a share of your spend." },
 ];
 
 export default function Pricing() {
