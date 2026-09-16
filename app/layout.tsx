@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
   title: "Ametyst – You have the agents. Let them work.",
   description:
-    "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+    "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
   keywords: [
     "autonomous AI workflows",
     "agents that pay per use",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Ametyst",
     title: "Ametyst – You have the agents. Let them work.",
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
     images: [
       {
         url: "/icon.png",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     site: "@ametyst_ai",
     title: "Ametyst – You have the agents. Let them work.",
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
     images: ["/icon.png"],
   },
   icons: {

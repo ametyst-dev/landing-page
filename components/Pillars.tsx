@@ -45,7 +45,7 @@ function AdminCard() {
 function SharpCard() {
   return (
     <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Overview", "Maintenance", "Behaviours"]} active="Overview" />
+      <AppTabs tabs={["Overview", "Catalog"]} active="Overview" />
       <div className="mb-2 grid grid-cols-2 gap-2">
         {[["Maintenance", "keeps the task working", "on"], ["Behaviours", "proposes what to add next", "on"]].map(([n, d, st]) => (
           <AppCard key={n} className="flex items-center justify-between gap-2">

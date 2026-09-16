@@ -104,7 +104,7 @@ function StageResult() {
 function StageSharp() {
   return (
     <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Overview", "Maintenance", "Behaviours"]} active="Overview" />
+      <AppTabs tabs={["Overview", "Catalog"]} active="Overview" />
       <div className="mb-2 grid grid-cols-2 gap-2">
         {[["Maintenance", "on · pay per output"], ["Behaviours", "on · pay per output"]].map(([n, s]) => (
           <AppCard key={n} className="flex items-center justify-between">

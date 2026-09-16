@@ -44,7 +44,7 @@ const AGENTS: { name: string; by: string; does: string; status: string }[] = [
 function AgentsView() {
   return (
     <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Catalog", "On my tasks"]} active="Catalog" />
+      <AppTabs tabs={["Overview", "Catalog"]} active="Catalog" />
       <div className="space-y-2">
         {AGENTS.map((a) => (
           <AppCard key={a.name} className={a.status === "coming" ? "border-dashed" : ""}>
