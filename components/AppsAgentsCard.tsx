@@ -79,7 +79,11 @@ export default function AppsAgentsCard() {
           </button>
         ))}
       </div>
-      <div key={view} className="animate-[fadein_.35s_ease]">{view === 0 ? <AppsView /> : <AgentsView />}</div>
+      {/* both views share one grid cell, so the card keeps the same height whichever is shown */}
+      <div className="grid">
+        <div className={`[grid-area:1/1] transition-opacity duration-300 ${view === 0 ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={view !== 0}><AppsView /></div>
+        <div className={`[grid-area:1/1] transition-opacity duration-300 ${view === 1 ? "opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={view !== 1}><AgentsView /></div>
+      </div>
     </div>
   );
 }
