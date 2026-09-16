@@ -103,10 +103,10 @@ function StageResult() {
 
 function StageSharp() {
   return (
-    <AmetystApp page="Verification">
-      <AppTabs tabs={["Overview", "Behaviours", "Maintenance"]} active="Overview" />
+    <AmetystApp page="Agents" admin={false}>
+      <AppTabs tabs={["Overview", "Maintenance", "Behaviours"]} active="Overview" />
       <div className="mb-2 grid grid-cols-2 gap-2">
-        {[["Maintenance", "on · pay per run"], ["Behaviours", "on · pay per run"]].map(([n, s]) => (
+        {[["Maintenance", "on · pay per output"], ["Behaviours", "on · pay per output"]].map(([n, s]) => (
           <AppCard key={n} className="flex items-center justify-between">
             <div><p className="text-[10px] font-semibold text-[#0b0b0f]">{n}</p><p className="text-[9px] text-[#8a7a9f]">{s}</p></div>
             <span className="relative inline-flex h-4 w-7 items-center rounded-full bg-[#7a1fff]"><span className="absolute right-0.5 h-3 w-3 rounded-full bg-white" /></span>
@@ -116,7 +116,7 @@ function StageSharp() {
       <AppCard>
         <p className="font-mono text-[11px] font-semibold text-[#0b0b0f]">competitor-ads · maintenance run</p>
         <p className="mt-0.5 text-[10px] text-[#0b0b0f]">Ads Library changed its response shape. Parser updated, 3 runs re-verified.</p>
-        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90 · verifier: Ametyst</p>
+        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90 · agent: Ametyst verifier</p>
       </AppCard>
       <AppCard className="mt-2 border-2 border-[#7a1fff]">
         <p className="text-[9px] uppercase tracking-wide text-[#7a1fff]">Behaviour proposed</p>

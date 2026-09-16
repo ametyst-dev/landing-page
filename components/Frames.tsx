@@ -9,15 +9,15 @@ export function AmetystApp({
   admin = true,
   children,
 }: {
-  page: "Tasks" | "Permissions" | "Verification" | "Home" | "Services";
+  page: "Tasks" | "Permissions" | "Agents" | "Home" | "Apps";
   /** Title shown in the main area when it differs from the nav label. */
   as?: string;
   /** false = the Admin panel group stays collapsed (member view). */
   admin?: boolean;
   children: React.ReactNode;
 }) {
-  const main = ["Home", "Services", "Tasks", "Install"];
-  const adminItems = ["Overview", "Permissions", "Services", "Tasks", "Verification"];
+  const main = ["Home", "Apps", "Agents", "Tasks", "Install"];
+  const adminItems = ["Overview", "Permissions", "Apps", "Tasks"];
   const active = (label: string) =>
     label === page
       ? "border-[#7a1fff] bg-[#7a1fff] text-white"
@@ -38,7 +38,7 @@ export function AmetystApp({
             </div>
           ))}
           <div className="my-0.5 h-px bg-[#d6daff]" />
-          <div className="rounded-md border border-[#d6daff] px-2 py-1 text-[9px] font-semibold text-[#0b0b0f]">{admin ? "▾" : "▸"} Admin panel</div>
+          <div className={`rounded-md border px-2 py-1 text-[9px] font-semibold ${!admin && adminItems.includes(page) && !main.includes(page) ? active(page) : "border-[#d6daff] text-[#0b0b0f]"}`}>{admin ? "▾" : "▸"} Admin panel</div>
           {admin && adminItems.map((l) => (
             <div key={l} className={`ml-2 rounded-md border px-2 py-1 text-[9px] font-semibold ${page === l && l !== "Tasks" ? active(l) : "border-[#d6daff] text-[#0b0b0f]"}`}>
               {l}

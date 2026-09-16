@@ -20,8 +20,8 @@ export default function Hero() {
             Watch them, <strong className="font-semibold text-fg">you never stop</strong>. That is the wall.
           </p>
           <p className="font-body text-lg md:text-xl text-fg/75 max-w-xl leading-relaxed mb-4">
-            Ametyst takes it down. <strong className="font-semibold text-fg">Your agents get every tool</strong>.
-            <strong className="font-semibold text-fg"> You get limits, visibility and verifiers</strong> that keep the work sharp.
+            Ametyst takes it down. <strong className="font-semibold text-fg">Your agents get every app, and every specialized agent</strong>.
+            <strong className="font-semibold text-fg"> You get the limits and the visibility</strong> that keep the work sharp.
           </p>
           <p className="font-headline text-base md:text-lg text-accent mb-8">Welcome to the agentic economy.</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
