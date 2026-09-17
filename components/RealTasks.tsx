@@ -52,7 +52,7 @@ const TASKS: Task[] = [
     steps: [
       "Turns each message into a structured backlog item and answers in the thread. Re-opens items you decided on.",
       "Fires every 30 minutes as a fresh engineer: investigates, plans, builds in a worktree, runs the tests.",
-      "An independent verifier reviews the diff before the pull request opens. Green merges to staging, anything else waits for you.",
+      "An independent agent reviews the diff before the pull request opens. Green merges to staging, anything else waits for you.",
     ],
     output: "Merged pull requests on staging and a board of what shipped, what is queued, what needs you.",
     runsFrom: "Scheduled, headless (CLI)",

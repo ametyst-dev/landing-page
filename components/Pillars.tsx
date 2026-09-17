@@ -59,9 +59,9 @@ function SharpCard() {
         <table className="w-full text-[9px]">
           <thead><tr className="text-[#8a7a9f]"><th className="text-left font-normal">Task</th><th className="text-left font-normal">Kind</th><th className="text-left font-normal">Agent</th><th className="text-right font-normal">Last run</th></tr></thead>
           <tbody className="text-[#0b0b0f]">
-            <tr><td className="font-mono">competitor-ads</td><td>Maintenance</td><td>Ametyst verifier</td><td className="text-right">fixed · €1.50 → €0.90</td></tr>
-            <tr><td className="font-mono">competitor-ads</td><td>Behaviour</td><td>Ametyst verifier</td><td className="text-right">1 proposal</td></tr>
-            <tr><td className="font-mono">event-crm</td><td>Maintenance</td><td>Ametyst verifier</td><td className="text-right">nothing to fix</td></tr>
+            <tr><td className="font-mono">competitor-ads</td><td>Maintenance</td><td>Ametyst Maintenance</td><td className="text-right">fixed · €1.50 → €0.90</td></tr>
+            <tr><td className="font-mono">competitor-ads</td><td>Behaviour</td><td>Ametyst Behaviours</td><td className="text-right">1 proposal</td></tr>
+            <tr><td className="font-mono">event-crm</td><td>Maintenance</td><td>Ametyst Maintenance</td><td className="text-right">nothing to fix</td></tr>
           </tbody>
         </table>
       </AppCard>

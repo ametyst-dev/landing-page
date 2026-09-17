@@ -1,6 +1,6 @@
 const items = [
   { title: "Apps: pay per call or by subscription", body: "Each app is paid per call from your workspace credits, or by subscription where the provider works that way. No minimums." },
-  { title: "Specialized agents: pay per output", body: "Every job handed to a specialized agent, the verifier included, is paid per output from a budget you set, held until the output is validated. Not a share of your spend." },
+  { title: "Specialized agents: pay per output", body: "Every job handed to a specialized agent, Ametyst's Maintenance and Behaviours agents included, is paid per output from a budget you set, held until the output is validated. Not a share of your spend." },
 ];
 
 export default function Pricing() {

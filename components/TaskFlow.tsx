@@ -116,7 +116,7 @@ function StageSharp() {
       <AppCard>
         <p className="font-mono text-[11px] font-semibold text-[#0b0b0f]">competitor-ads · maintenance run</p>
         <p className="mt-0.5 text-[10px] text-[#0b0b0f]">Ads Library changed its response shape. Parser updated, 3 runs re-verified.</p>
-        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90 · agent: Ametyst verifier</p>
+        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90 · agent: Ametyst Maintenance</p>
       </AppCard>
       <AppCard className="mt-2 border-2 border-[#7a1fff]">
         <p className="text-[9px] uppercase tracking-wide text-[#7a1fff]">Behaviour proposed</p>
