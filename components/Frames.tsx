@@ -9,15 +9,16 @@ export function AmetystApp({
   admin = true,
   children,
 }: {
-  page: "Tasks" | "Permissions" | "Agents" | "Home" | "Apps";
+  page: "Tasks" | "Permissions" | "Specialized Agents" | "Ametyst Agent" | "Home" | "Apps";
   /** Title shown in the main area when it differs from the nav label. */
   as?: string;
   /** false = the Admin panel group stays collapsed (member view). */
   admin?: boolean;
   children: React.ReactNode;
 }) {
-  const main = ["Home", "Apps", "Agents", "Tasks", "Install"];
-  const adminItems = ["Overview", "Permissions", "Apps", "Tasks"];
+  const main = ["Home", "Apps", "Specialized Agents", "Tasks", "Install"];
+  const adminItems = ["Overview", "Permissions", "Tasks management", "Ametyst Agent"];
+  const onAgent = page === "Ametyst Agent";
   const active = (label: string) =>
     label === page
       ? "border-[#7a1fff] bg-[#7a1fff] text-white"
@@ -38,9 +39,9 @@ export function AmetystApp({
             </div>
           ))}
           <div className="my-0.5 h-px bg-[#d6daff]" />
-          <div className={`rounded-md border px-2 py-1 text-[9px] font-semibold ${!admin && adminItems.includes(page) && !main.includes(page) ? active(page) : "border-[#d6daff] text-[#0b0b0f]"}`}>{admin ? "▾" : "▸"} Admin panel</div>
+          <div className={`rounded-md border px-2 py-1 text-[9px] font-semibold ${!admin && page === "Permissions" ? active(page) : "border-[#d6daff] text-[#0b0b0f]"}`}>{admin ? "▾" : "▸"} Admin panel</div>
           {admin && adminItems.map((l) => (
-            <div key={l} className={`ml-2 rounded-md border px-2 py-1 text-[9px] font-semibold ${page === l && l !== "Tasks" ? active(l) : "border-[#d6daff] text-[#0b0b0f]"}`}>
+            <div key={l} className={`ml-2 rounded-md border px-2 py-1 text-[9px] font-semibold ${page === l && !main.includes(l) && !onAgent ? active(l) : "border-[#d6daff] text-[#0b0b0f]"}`}>
               {l}
             </div>
           ))}
@@ -51,7 +52,11 @@ export function AmetystApp({
           </div>
         </aside>
         <div className="min-w-0 flex-1 p-4">
-          <p className="mb-3 text-lg font-bold leading-tight text-[#0b0b0f]">{as ?? page}</p>
+          <div className="mb-3 flex items-start justify-between gap-2">
+            <p className="text-lg font-bold leading-tight text-[#0b0b0f]">{as ?? page}</p>
+            {/* always one click away, from every page */}
+            <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-semibold ${onAgent ? "border-[#7a1fff] bg-[#7a1fff] text-white" : "border-[#7a1fff] text-[#7a1fff]"}`}>✦ Ametyst Agent</span>
+          </div>
           {children}
         </div>
       </div>

@@ -135,7 +135,7 @@ export default function RealTasks() {
               </dl>
               <div className="mt-4 rounded-lg border-2 border-accent bg-accent-soft/40 p-4">
                 <p className="font-body text-xs uppercase tracking-wide text-accent mb-1">Then, over time</p>
-                <p className="font-body text-sm text-fg/85 leading-relaxed">Maintenance keeps it running when a provider or a case changes, and proposes the next behaviour.</p>
+                <p className="font-body text-sm text-fg/85 leading-relaxed">The Ametyst Agent keeps it running when a provider or a case changes, and proposes what to build next.</p>
               </div>
             </div>
           </div>

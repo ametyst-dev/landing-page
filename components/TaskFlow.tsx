@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AmetystApp, AppButton, AppCard, AppTabs, ClaudeFrame, SheetsFrame } from "@/components/Frames";
 
-const STAGES = ["A task in your workspace", "Your agent runs it", "The result lands", "It stays sharp"];
+const STAGES = ["A task in your workspace", "Your agent runs it", "The result lands", "Ametyst Agent keeps it sharp"];
 
 function StageWorkspace() {
   return (
@@ -103,26 +103,22 @@ function StageResult() {
 
 function StageSharp() {
   return (
-    <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Overview", "Catalog"]} active="Overview" />
-      <div className="mb-2 grid grid-cols-2 gap-2">
-        {[["Maintenance", "on · pay per output"], ["Behaviours", "on · pay per output"]].map(([n, s]) => (
-          <AppCard key={n} className="flex items-center justify-between">
-            <div><p className="text-[10px] font-semibold text-[#0b0b0f]">{n}</p><p className="text-[9px] text-[#8a7a9f]">{s}</p></div>
-            <span className="relative inline-flex h-4 w-7 items-center rounded-full bg-[#7a1fff]"><span className="absolute right-0.5 h-3 w-3 rounded-full bg-white" /></span>
-          </AppCard>
-        ))}
-      </div>
+    <AmetystApp page="Ametyst Agent" admin={false}>
       <AppCard>
-        <p className="font-mono text-[11px] font-semibold text-[#0b0b0f]">competitor-ads · maintenance run</p>
-        <p className="mt-0.5 text-[10px] text-[#0b0b0f]">Ads Library changed its response shape. Parser updated, 3 runs re-verified.</p>
-        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90 · agent: Ametyst Maintenance</p>
+        <p className="font-mono text-[11px] font-semibold text-[#0b0b0f]">competitor-ads · fixed</p>
+        <p className="mt-0.5 text-[10px] text-[#0b0b0f]">Ads Library changed its response shape. Parser updated, 3 runs re-checked.</p>
+        <p className="mt-1 font-mono text-[10px] text-[#7a1fff]">cost per scoreboard €1.50 → €0.90</p>
       </AppCard>
       <AppCard className="mt-2 border-2 border-[#7a1fff]">
-        <p className="text-[9px] uppercase tracking-wide text-[#7a1fff]">Behaviour proposed</p>
+        <p className="text-[9px] uppercase tracking-wide text-[#7a1fff]">Proposed by the Ametyst Agent</p>
         <p className="mt-0.5 text-[10px] text-[#0b0b0f]">Weekly alert when a competitor launches an ad that beats your best reach in 7 days.</p>
         <div className="mt-2 flex gap-1.5"><AppButton>Accept</AppButton><AppButton secondary>Later</AppButton></div>
       </AppCard>
+      <div className="mt-2 flex items-center gap-2 rounded-[10px] border border-[#7a1fff] bg-white px-2.5 py-1.5">
+        <span className="text-[10px] text-[#7a1fff]">✦</span>
+        <span className="min-w-0 flex-1 truncate text-[10px] text-[#8a7a9f]">Ask the Ametyst Agent: “why did competitor-ads cost more this week?”</span>
+        <span className="rounded-[6px] bg-[#7a1fff] px-1.5 py-0.5 text-[9px] font-bold text-white">↵</span>
+      </div>
     </AmetystApp>
   );
 }

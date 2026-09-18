@@ -42,29 +42,32 @@ function AdminCard() {
   );
 }
 
-function SharpCard() {
+function AgentCard() {
   return (
-    <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Overview", "Catalog"]} active="Overview" />
+    <AmetystApp page="Ametyst Agent" admin={false}>
       <div className="mb-2 grid grid-cols-2 gap-2">
-        {[["Maintenance", "keeps the task working", "on"], ["Behaviours", "proposes what to add next", "on"]].map(([n, d, st]) => (
-          <AppCard key={n} className="flex items-center justify-between gap-2">
-            <div><p className="text-[10px] font-semibold text-[#0b0b0f]">{n}</p><p className="text-[9px] text-[#8a7a9f]">{d}</p></div>
-            <span className="relative inline-flex h-4 w-7 shrink-0 items-center rounded-full bg-[#7a1fff]"><span className="absolute right-0.5 h-3 w-3 rounded-full bg-white" /></span>
-          </AppCard>
-        ))}
+        <AppCard>
+          <p className="text-[9px] text-[#8a7a9f]">Agent credit · this month</p>
+          <p className="text-[13px] font-bold text-[#0b0b0f]">€9.40 <span className="text-[9px] font-normal text-[#8a7a9f]">left of €15</span></p>
+          <div className="mt-1 h-1 w-full rounded-full bg-[#efe8ff]"><div className="h-1 w-[63%] rounded-full bg-[#7a1fff]" /></div>
+        </AppCard>
+        <AppCard>
+          <p className="text-[9px] text-[#8a7a9f]">Watching</p>
+          <p className="text-[13px] font-bold text-[#0b0b0f]">4 tasks</p>
+          <p className="text-[9px] text-[#8a7a9f]">2 fixed · 1 proposal this week</p>
+        </AppCard>
       </div>
       <AppCard>
-        <div className="mb-1 flex items-center justify-between"><p className="text-[10px] font-semibold text-[#0b0b0f]">Specialized agents on your tasks</p><span className="font-mono text-[10px] text-[#7a1fff]">pay per output</span></div>
-        <table className="w-full text-[9px]">
-          <thead><tr className="text-[#8a7a9f]"><th className="text-left font-normal">Task</th><th className="text-left font-normal">Kind</th><th className="text-left font-normal">Agent</th><th className="text-right font-normal">Last run</th></tr></thead>
-          <tbody className="text-[#0b0b0f]">
-            <tr><td className="font-mono">competitor-ads</td><td>Maintenance</td><td>Ametyst Maintenance</td><td className="text-right">fixed · €1.50 → €0.90</td></tr>
-            <tr><td className="font-mono">competitor-ads</td><td>Behaviour</td><td>Ametyst Behaviours</td><td className="text-right">1 proposal</td></tr>
-            <tr><td className="font-mono">event-crm</td><td>Maintenance</td><td>Ametyst Maintenance</td><td className="text-right">nothing to fix</td></tr>
-          </tbody>
-        </table>
+        <p className="text-[9px] text-[#8a7a9f]">You · from Claude</p>
+        <p className="text-[10px] text-[#0b0b0f]">Look at the workspace tasks. What went wrong this week?</p>
+        <p className="mt-1.5 text-[9px] text-[#7a1fff]">Ametyst Agent</p>
+        <p className="text-[10px] text-[#0b0b0f]">event-crm skipped 2 calls: the Granola folder was renamed. I pointed it at the new one and re-ran them. competitor-ads is fine, and €0.60 cheaper per run since Monday.</p>
       </AppCard>
+      <div className="mt-2 flex items-center gap-2 rounded-[10px] border border-[#7a1fff] bg-white px-2.5 py-1.5">
+        <span className="text-[10px] text-[#7a1fff]">✦</span>
+        <span className="min-w-0 flex-1 truncate text-[10px] text-[#8a7a9f]">Ask the Ametyst Agent: “why did competitor-ads cost more this week?”</span>
+        <span className="rounded-[6px] bg-[#7a1fff] px-1.5 py-0.5 text-[9px] font-bold text-white">↵</span>
+      </div>
     </AmetystApp>
   );
 }
@@ -77,27 +80,27 @@ export default function Pillars() {
           <SectionHeading
             index="01 · for your agents"
             title="Every app and every specialized agent. One key."
-            lead={<><strong className="font-semibold text-fg">24 apps</strong> live today, paid per call or by subscription. <strong className="font-semibold text-fg">Specialized agents</strong> for the tasks that need one, paid per output. <strong className="font-semibold text-fg">One key</strong> from your workspace: no accounts, no keys on the machine.</>}
+            lead={<><strong className="font-semibold text-fg">24 apps</strong> live today, paid per call or by subscription. <strong className="font-semibold text-fg">Specialized agents</strong>, built to do one job well, are coming on the same rails: you set a budget, they do the work. <strong className="font-semibold text-fg">One key</strong> from your workspace: no accounts, no keys on the machine.</>}
           />
           <AppsAgentsCard />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <div className="lg:order-2">
             <SectionHeading
-              index="02 · for the admin"
-              title="You set the rules. The work gets shared."
-              lead={<><strong className="font-semibold text-fg">Policies</strong> say how much each agent and each person can spend, on what. An agent asks, <strong className="font-semibold text-fg">you approve</strong>. Build a task once: when someone joins, their agent <strong className="font-semibold text-fg">runs it the same way</strong>, inside your limits.</>}
+              index="02 · on your side"
+              title="The Ametyst Agent. Always connected."
+              lead={<>An agent of ours that <strong className="font-semibold text-fg">knows your workspace</strong>. Ask it anything, from your own agent or from the app: it looks at your tasks, tells you <strong className="font-semibold text-fg">what went wrong</strong>, fixes what breaks and proposes <strong className="font-semibold text-fg">what to build next</strong>. <strong className="font-semibold text-fg">Nothing changes without your word.</strong></>}
             />
           </div>
-          <div className="lg:order-1"><AdminCard /></div>
+          <div className="lg:order-1"><AgentCard /></div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <SectionHeading
-            index="03 · over time"
-            title="They stay sharp."
-            lead={<>Every run leaves a <strong className="font-semibold text-fg">report</strong>: what it spent, what it did, what came back. Hand it to Ametyst's <strong className="font-semibold text-fg">Maintenance</strong> and <strong className="font-semibold text-fg">Behaviours</strong> agents, per task, per output, inside your budget. <strong className="font-semibold text-fg">Nothing changes without your word.</strong></>}
+            index="03 · for the admin"
+            title="You set the rules. The work gets shared."
+            lead={<><strong className="font-semibold text-fg">Policies</strong> say how much each agent and each person can spend, on what. An agent asks, <strong className="font-semibold text-fg">you approve</strong>. Build a task once: when someone joins, their agent <strong className="font-semibold text-fg">runs it the same way</strong>, inside your limits.</>}
           />
-          <SharpCard />
+          <AdminCard />
         </div>
       </div>
     </section>

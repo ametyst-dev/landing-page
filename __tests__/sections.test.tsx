@@ -41,10 +41,11 @@ describe("Hero", () => {
 });
 
 describe("Pricing", () => {
-  it("has exactly two cards and no seats", () => {
+  it("has the three cards and no seats", () => {
     render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Tools: pay per call" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Verification: pay per run" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Apps: pay per call or by subscription" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "The Ametyst Agent: a monthly credit" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Specialized agents: a budget per job" })).toBeInTheDocument();
     expect(screen.queryByText(/seat/i)).toBeNull();
     expect(screen.queryByText(/share of/i)).not.toBeNull();
   });

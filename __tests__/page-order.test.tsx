@@ -10,9 +10,9 @@ describe("Page section order", () => {
     const text = document.body.textContent ?? "";
     const headings = [
       "Let them work.",
-      "Every tool they need. One key.",
+      "Every app and every specialized agent. One key.",
+      "The Ametyst Agent. Always connected.",
       "You set the rules. The work gets shared.",
-      "They stay sharp.",
       "Your workflows are your differentiation.",
       "Built with our design partners. Running on their own.",
       "Free until the workflow runs. Paid from there.",
