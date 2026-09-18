@@ -20,8 +20,8 @@ export default function Hero() {
             Watch them, <strong className="font-semibold text-fg">you never stop</strong>. That is the wall.
           </p>
           <p className="font-body text-lg md:text-xl text-fg/75 max-w-xl leading-relaxed mb-4">
-            Ametyst takes it down. <strong className="font-semibold text-fg">Your agents get every app and every specialized agent</strong>, with one key.
-            <strong className="font-semibold text-fg"> You set the rules.</strong> And <strong className="font-semibold text-fg">the Ametyst Agent</strong>, always connected, sets up your tasks and keeps them working.
+            Ametyst takes it down. <strong className="font-semibold text-fg">Your agents get every app and every specialized agent</strong>.
+            <strong className="font-semibold text-fg"> You get to check their work and make it sharper</strong>.
           </p>
           <p className="font-headline text-base md:text-lg text-accent mb-8">Welcome to the agentic economy.</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center">

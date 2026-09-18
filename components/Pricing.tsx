@@ -1,7 +1,7 @@
-const items = [
-  { title: "Apps: pay per call or by subscription", body: "Each app is paid per call from your workspace credits, or by subscription where the provider works that way. No minimums." },
-  { title: "The Ametyst Agent: a monthly credit", body: "A monthly credit per person, taken from your workspace credits. Ask it what you want, it uses the credit as it works, and you top up when it runs out. Not a share of your spend." },
-  { title: "Specialized agents: a budget per job", body: "Coming soon. You set a budget for the job, the agent does the work, and Ametyst checks it before the money moves." },
+const items: { title: string; lines: string[]; soon?: boolean }[] = [
+  { title: "Apps", lines: ["Pay per call", "Pay by subscription"] },
+  { title: "Specialized agents", lines: ["Pay per run"], soon: true },
+  { title: "Ametyst Agent", lines: ["Monthly credit", "Pay per usage"] },
 ];
 
 export default function Pricing() {
@@ -11,17 +11,25 @@ export default function Pricing() {
         <div className="max-w-xl mb-10">
           <p className="font-mono text-xs md:text-sm text-accent mb-3">Pricing</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>
-            You pay for what your agents do.
+            Pay only for what you use.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {items.map((it) => (
             <div key={it.title} className="rounded-xl border border-border bg-surface p-5 md:p-6">
-              <h3 className="font-body text-base md:text-lg font-semibold text-fg mb-2">{it.title}</h3>
-              <p className="font-body text-sm text-fg/75 leading-relaxed">{it.body}</p>
+              <div className="mb-4 flex items-center justify-between gap-2">
+                <h3 className="font-body text-base md:text-lg font-semibold text-fg">{it.title}</h3>
+                {it.soon && <span className="rounded-full bg-accent-soft px-2 py-0.5 font-mono text-[10px] text-accent">coming soon</span>}
+              </div>
+              <ul className="space-y-1">
+                {it.lines.map((l) => (
+                  <li key={l} className="font-headline text-xl md:text-2xl text-fg leading-tight" style={{ fontWeight: 900 }}>{l}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
+        <p className="font-body text-sm text-fg/70 mt-6">Free to start. No minimums. Never a share of your spend.</p>
       </div>
     </section>
   );

@@ -11,12 +11,12 @@ describe("Page section order", () => {
     const headings = [
       "Let them work.",
       "Every app and every specialized agent. One key.",
-      "The Ametyst Agent. Always connected.",
       "You set the rules. The work gets shared.",
+      "The Ametyst Agent. Always connected.",
       "Your workflows are your differentiation.",
       "Built with our design partners. Running on their own.",
       "Free until the workflow runs. Paid from there.",
-      "You pay for what your agents do.",
+      "Pay only for what you use.",
       "Get your first workflow running on its own.",
     ];
     const indices = headings.map((h) => text.indexOf(h));

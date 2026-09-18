@@ -43,9 +43,9 @@ describe("Hero", () => {
 describe("Pricing", () => {
   it("has the three cards and no seats", () => {
     render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Apps: pay per call or by subscription" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "The Ametyst Agent: a monthly credit" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Specialized agents: a budget per job" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Apps" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Specialized agents" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Ametyst Agent" })).toBeInTheDocument();
     expect(screen.queryByText(/seat/i)).toBeNull();
     expect(screen.queryByText(/share of/i)).not.toBeNull();
   });

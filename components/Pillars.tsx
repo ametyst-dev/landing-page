@@ -80,27 +80,27 @@ export default function Pillars() {
           <SectionHeading
             index="01 · for your agents"
             title="Every app and every specialized agent. One key."
-            lead={<><strong className="font-semibold text-fg">24 apps</strong> live today, paid per call or by subscription. <strong className="font-semibold text-fg">Specialized agents</strong>, built to do one job well, are coming on the same rails: you set a budget, they do the work. <strong className="font-semibold text-fg">One key</strong> from your workspace: no accounts, no keys on the machine.</>}
+            lead={<><strong className="font-semibold text-fg">24 apps</strong> live today. <strong className="font-semibold text-fg">Specialized agents</strong> coming soon. <strong className="font-semibold text-fg">One key</strong>: no accounts, no keys on the machine.</>}
           />
           <AppsAgentsCard />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <div className="lg:order-2">
             <SectionHeading
-              index="02 · on your side"
-              title="The Ametyst Agent. Always connected."
-              lead={<>An agent of ours that <strong className="font-semibold text-fg">knows your workspace</strong>. Ask it anything, from your own agent or from the app: it looks at your tasks, tells you <strong className="font-semibold text-fg">what went wrong</strong>, fixes what breaks and proposes <strong className="font-semibold text-fg">what to build next</strong>. <strong className="font-semibold text-fg">Nothing changes without your word.</strong></>}
+              index="02 · you in control"
+              title="You set the rules. The work gets shared."
+              lead={<><strong className="font-semibold text-fg">Policies</strong> say who can spend, how much, on what. An agent asks, <strong className="font-semibold text-fg">you approve</strong>. Build a task once, <strong className="font-semibold text-fg">the whole team runs it</strong>.</>}
             />
           </div>
-          <div className="lg:order-1"><AgentCard /></div>
+          <div className="lg:order-1"><AdminCard /></div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <SectionHeading
-            index="03 · for the admin"
-            title="You set the rules. The work gets shared."
-            lead={<><strong className="font-semibold text-fg">Policies</strong> say how much each agent and each person can spend, on what. An agent asks, <strong className="font-semibold text-fg">you approve</strong>. Build a task once: when someone joins, their agent <strong className="font-semibold text-fg">runs it the same way</strong>, inside your limits.</>}
+            index="03 · on your side"
+            title="The Ametyst Agent. Always connected."
+            lead={<>Our agent, inside your workspace. <strong className="font-semibold text-fg">Ask it anything</strong>, from your own agent or from the app. It tells you <strong className="font-semibold text-fg">what went wrong</strong>, fixes what breaks, proposes <strong className="font-semibold text-fg">what to build next</strong>.</>}
           />
-          <AdminCard />
+          <AgentCard />
         </div>
       </div>
     </section>
