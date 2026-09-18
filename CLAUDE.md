@@ -1,7 +1,7 @@
 # CLAUDE.md — landing-page/
 
 ## Purpose
-This is the public-facing landing page for Ametyst — it lets teams' existing agents (Claude Code, Codex, Cursor) work on their own: every tool with one key, spending policies, and Ametyst's Maintenance and Behaviours agents that keep tasks sharp. Customer-facing copy never says "bank" or "wallet"; the workflow is the door. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
+This is the public-facing landing page for Ametyst — it lets teams' existing agents (Claude Code, Codex, Cursor) work on their own: every tool with one key, spending policies, and the Ametyst Agent, which keeps tasks sharp. Customer-facing copy never says "bank" or "wallet"; the workflow is the door. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
 
 ## Context triggers
 - Load this when the task involves UI changes, new sections, routing, API endpoints, or styling

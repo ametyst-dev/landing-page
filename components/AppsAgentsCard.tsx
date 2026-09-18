@@ -35,28 +35,25 @@ function AppsView() {
   );
 }
 
-const AGENTS: { name: string; by: string; does: string; status: string }[] = [
-  { name: "Maintenance", by: "Ametyst", does: "keeps a task working when providers change or steps get expensive", status: "live" },
-  { name: "Behaviours", by: "Ametyst", does: "watches how a task runs and proposes what to add next", status: "live" },
-  { name: "Partner agents", by: "by use case", does: "data, legal, research: specialists on the same rails", status: "coming" },
+const AGENTS: { name: string; does: string }[] = [
+  { name: "Data agents", does: "enrichment, research and lists done end to end, not one call at a time" },
+  { name: "Legal and compliance agents", does: "contracts, checks and filings handled by a specialist" },
+  { name: "Your use case", does: "agents built to do one job well, brought in as partners" },
 ];
 
 function AgentsView() {
   return (
-    <AmetystApp page="Agents" admin={false}>
-      <AppTabs tabs={["Overview", "Catalog"]} active="Catalog" />
+    <AmetystApp page="Specialized Agents" admin={false}>
+      <p className="mb-2 inline-block rounded bg-[#efe8ff] px-1.5 py-0.5 font-mono text-[9px] text-[#7a1fff]">coming soon</p>
       <div className="space-y-2">
         {AGENTS.map((a) => (
-          <AppCard key={a.name} className={a.status === "coming" ? "border-dashed" : ""}>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-[11px] font-semibold text-[#0b0b0f]">{a.name} <span className="font-normal text-[#8a7a9f]">· {a.by}</span></span>
-              <span className={`rounded px-1.5 py-0.5 font-mono text-[9px] ${a.status === "live" ? "bg-[#efe8ff] text-[#7a1fff]" : "bg-[#f3f3f7] text-[#8a7a9f]"}`}>{a.status}</span>
-            </div>
+          <AppCard key={a.name} className="border-dashed">
+            <span className="text-[11px] font-semibold text-[#0b0b0f]">{a.name}</span>
             <p className="text-[10px] text-[#8a7a9f]">{a.does}</p>
           </AppCard>
         ))}
       </div>
-      <p className="mt-3 text-[10px] text-[#8a7a9f]">specialized agents · pay per output, held in escrow until the output is validated</p>
+      <p className="mt-3 text-[10px] text-[#8a7a9f]">specialized agents · you set a budget for the job, Ametyst checks the work before the money moves</p>
     </AmetystApp>
   );
 }
@@ -72,7 +69,7 @@ export default function AppsAgentsCard() {
   return (
     <div className="w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="mb-3 grid grid-cols-2 gap-1.5" role="tablist" aria-label="Apps and agents">
-        {["Apps", "Agents"].map((label, i) => (
+        {["Apps", "Specialized agents"].map((label, i) => (
           <button key={label} type="button" role="tab" aria-selected={view === i} onClick={() => setView(i as 0 | 1)}
             className={`rounded-md px-2 py-1.5 text-left transition-colors ${view === i ? "bg-accent-soft" : "hover:bg-accent-soft/50"}`}>
             <span className={`block font-body text-[11px] leading-tight ${view === i ? "text-fg" : "text-muted"}`}>{label}</span>
