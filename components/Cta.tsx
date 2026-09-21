@@ -17,7 +17,7 @@ export default function Cta() {
             href="https://business.ametyst.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-opacity hover:opacity-90 font-body"
+            className="btn btn-primary"
           >
             Create your workspace
           </a>
@@ -25,7 +25,7 @@ export default function Cta() {
             href="/book"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6 text-sm md:text-base transition-colors hover:bg-accent-soft font-body"
+            className="btn btn-secondary"
           >
             Talk to the team
           </a>

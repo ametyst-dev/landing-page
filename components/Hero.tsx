@@ -14,10 +14,10 @@ export default function Hero() {
             keeps them inside the spending policies you set, and keeps them sharp over time.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-center mb-10">
-            <a href="https://business.ametyst.ai" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base text-center transition-opacity hover:opacity-90 font-body">
+            <a href="https://business.ametyst.ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Create your workspace
             </a>
-            <a href="/book" target="_blank" rel="noopener noreferrer" className="rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6 text-sm md:text-base text-center transition-colors hover:bg-accent-soft font-body">
+            <a href="/book" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
               Talk to the team
             </a>
           </div>

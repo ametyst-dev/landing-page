@@ -16,7 +16,7 @@ export default function TopBar() {
               href="https://business.ametyst.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-btn-bg text-btn-fg font-bold py-2 px-4 md:px-5 text-xs md:text-sm transition-opacity hover:opacity-90 font-body"
+              className="btn btn-primary btn-sm"
             >
               Create your workspace
             </a>

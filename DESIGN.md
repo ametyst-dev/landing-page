@@ -17,7 +17,7 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 - **Ink**: near-black `#0B0B0F`. Body copy is ink at 75 percent opacity, never a grey token.
 - **Accent**: one violet, `#7A1FFF`. Buttons, links to product, eyebrows, active states, the coloured half of a headline. A single soft tint `#EFE8FF` for fills behind it.
 - **Type**: a heavy geometric display (Neue Machina at 900) for every headline, Inter for everything else, monospace for eyebrows and small labels.
-- **Shape**: 8px on buttons, 12px on cards, full pills for badges and tabs. Borders are one pixel of lavender `#D6DAFF`, often at 40 percent.
+- **Shape**: buttons are pills, 12px on cards, full pills for badges and tabs. Borders are one pixel of lavender `#D6DAFF`, often at 40 percent.
 - **Voice**: the product is shown, not described. Every section is heading + one lead + a real frame of the product or a real workflow with its cost.
 
 ## Tokens: colors
@@ -31,6 +31,7 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 | Border | `#D6DAFF` | `--color-border` | `border-border` | Hairlines, card edges, dividers (often `/40` or `/60`) |
 | Surface | `#FFFFFF` | `--color-surface` | `bg-surface` | Cards, pills, mock cards |
 | Accent | `#7A1FFF` | `--color-accent` | `text-accent`, `bg-accent`, `border-accent` | The one loud colour |
+| Accent strong | `#6717D9` | `--color-accent-strong` | `bg-accent-strong` | Primary button hover only |
 | Accent soft | `#EFE8FF` | `--color-accent-soft` | `bg-accent-soft` | Tints, band sections (`/60`), active tabs |
 | Button bg | `#7A1FFF` | `--color-btn-bg` | `bg-btn-bg` | Primary button fill |
 | Button fg | `#F8F8FF` | `--color-btn-fg` | `text-btn-fg` | Text on accent |
@@ -63,8 +64,8 @@ Rules that make it look like Ametyst:
 | Content width | `max-w-6xl` (1152px), `max-w-xl` for a heading block, `max-w-3xl` for a centred CTA | every section |
 | Section rhythm | `py-16 md:py-24`, sections separated by `border-b border-border/40` | every section |
 | Block gap | `gap-10 lg:gap-16` two-column, `gap-4` card grids, `space-y-20 md:space-y-28` between steps | how it works, pricing |
-| Radius | `rounded-lg` 8px buttons and small panels, `rounded-xl` 12px cards and frames, `rounded-[10px]` mock cards, `rounded-full` pills and tabs | everywhere |
-| Border | 1px `border-border`; 2px `border-accent` for a highlighted card or the secondary button | cards, buttons |
+| Radius | `rounded-full` buttons, pills and tabs, `rounded-lg` 8px small panels, `rounded-xl` 12px cards and frames, `rounded-[10px]` mock cards | everywhere |
+| Border | 1px `border-border`; 2px `border-accent` for a highlighted card only | cards |
 | Shadow | none on real UI; mock frames only: `shadow-[0_24px_60px_-32px_rgba(122,31,255,0.45)]` for the Ametyst app, the same with black at 0.25 for third-party apps | frames |
 | Motion | one keyframe, `fadein` 6px rise over 300 to 350ms; tab rotation 3.8 to 4.2s, paused on hover | hero frames, tabs |
 
@@ -72,9 +73,13 @@ Rules that make it look like Ametyst:
 
 **Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom. Brand word in display face in accent. Nav links `text-sm font-medium text-fg/70`, hidden under `md`. Right side: a text link (Sign in) and one primary button (Book a call).
 
-**Primary button**. `rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6`, hover `opacity-90`. One per block, always the same verb: Book a call.
+**Button**. One class, `.btn` in `app/globals.css`: a pill (`rounded-full`), 44px tall (48px from `md`), `px-6`, Inter semibold, `text-sm` then `text-base`, 150ms colour transition, a 2px violet focus ring at 40 percent. Reference: ElevenLabs (pill, medium weight, hairline secondary), adapted to keep the violet fill.
 
-**Secondary button**. `rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6`, hover `bg-accent-soft`. Create your workspace.
+- `.btn-primary`: violet fill `bg-btn-bg`, text `text-btn-fg`, hover `bg-accent-strong`. Create your workspace, one per block.
+- `.btn-secondary`: white pill `bg-surface`, ink text, 1px `border-border`; hover turns border and text violet. Talk to the team.
+- `.btn-sm`: 36px tall (40px from `md`), `px-4`, for the top bar.
+
+Never stack more than two button styles in one group. Never put a shadow on a button.
 
 **Eyebrow**. `font-mono text-xs md:text-sm text-accent mb-3`. Names the block (The problem, How it works, Proof, Pricing, FAQ) or numbers a step (`01 · connect`).
 

@@ -17,6 +17,7 @@ const config: Config = {
         "btn-fg": "var(--color-btn-fg)",
         "btn-border": "var(--color-btn-border)",
         accent: "var(--color-accent)",
+        "accent-strong": "var(--color-accent-strong)",
         "accent-soft": "var(--color-accent-soft)",
         surface: "var(--color-surface)",
         ink: "var(--color-ink)",
