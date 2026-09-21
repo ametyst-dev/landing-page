@@ -7,11 +7,11 @@ const MARKS: { name: string; d: string }[] = [
   { name: "Cursor", d: "M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23" },
 ];
 
-export default function HarnessLogos({ label = "Works with the agent you already use" }: { label?: string }) {
+export default function HarnessLogos({ label = "Works with the agent you already use", centered = false }: { label?: string; centered?: boolean }) {
   return (
-    <div className="font-body">
+    <div className={`font-body ${centered ? "text-center" : ""}`}>
       <p className="text-xs md:text-sm text-muted mb-3">{label}</p>
-      <ul className="flex flex-wrap items-center gap-x-7 gap-y-3" aria-label="Supported agents">
+      <ul className={`flex flex-wrap items-center gap-x-7 gap-y-3 ${centered ? "justify-center" : ""}`} aria-label="Supported agents">
         {MARKS.map((m) => (
           <li key={m.name} className="flex items-center gap-2 text-fg/80">
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d={m.d} /></svg>

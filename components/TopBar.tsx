@@ -1,8 +1,5 @@
 "use client";
 
-const navLinkClass =
-  "hidden md:inline text-sm font-medium text-fg/70 hover:text-fg transition-colors font-body";
-
 export default function TopBar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full bg-bg/90 backdrop-blur border-b border-border/40">
@@ -15,18 +12,6 @@ export default function TopBar() {
             Ametyst
           </a>
           <nav className="flex items-center gap-5 sm:gap-7" aria-label="Main">
-            <a href="#how-it-works" className={navLinkClass}>
-              How it works
-            </a>
-            <a href="#tasks" className={navLinkClass}>
-              Proof
-            </a>
-            <a href="#pricing" className={navLinkClass}>
-              Pricing
-            </a>
-            <a href="#faq" className={navLinkClass}>
-              FAQ
-            </a>
             <a
               href="https://business.ametyst.ai"
               target="_blank"
