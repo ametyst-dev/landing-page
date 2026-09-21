@@ -80,8 +80,7 @@ export default function EndStrip() {
         </div>
 
         <p lang="it" className="font-body text-xs text-muted mt-12 pt-6 border-t border-border/40 leading-relaxed">
-          AMETYST SRL · Corso Magenta 56, 20123 Milano (MI) · P.IVA e C.F. 14681630969 · REA MI-2800625 · Capitale sociale €
-          10.000,00 i.v.
+          AMETYST SRL · Corso Magenta 56, 20123 Milano (MI) · P.IVA e C.F. 14681630969 · REA MI-2800625
         </p>
       </div>
     </footer>
