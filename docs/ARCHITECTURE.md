@@ -36,7 +36,11 @@ landing-page/
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks
 ├── public/                     # Static assets served at /
+├── scripts/
+│   └── snapshot.mjs            # npm run snapshot: static copy of / for design-review artifacts
+├── snapshot/                   # (gitignored) output of the snapshot script
 ├── docs/                       # This documentation folder
+├── DESIGN.md                   # Design system, Refero DESIGN.md format
 ├── tailwind.config.ts          # Tailwind theme: color aliases + font families
 ├── next.config.js              # Next.js config (standalone output)
 ├── tsconfig.json               # TypeScript config
@@ -49,3 +53,4 @@ landing-page/
 - **Booking**: "Book a discovery call" CTAs (TopBar, Hero, Waitlist) link to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
 - **Skill files**: static `.md` files in `public/` remain on disk and are served at the site root, but are intentionally NOT linked anywhere in the UI (product links removed in landing v2 until the product-ready signal)
 - **Fonts**: Inter is loaded via `next/font/google` in `layout.tsx`; Neue Machina is loaded via `@font-face` in `globals.css` pointing to an external CDN
+- **Design review snapshot**: `npm run snapshot` runs `next build`, takes the prerendered `.next/server/app/index.html`, copies `.next/static` to `snapshot/assets/static` (the artifact service reserves `_`-prefixed names), rewrites every absolute path to a relative one, downloads Neue Machina next to the Inter files, drops the legacy polyfills bundle, and appends a preview strip with branch and commit. The result is published as a Claude artifact with `snapshot/` as root and `snapshot/files.json` as the file list. One-way: comments on the artifact come back to a person or an agent who edits the components and republishes

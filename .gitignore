@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# static snapshot for design review (see scripts/snapshot.mjs)
+/snapshot/
+
 # production
 /build
 

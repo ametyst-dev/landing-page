@@ -22,12 +22,10 @@ describe("Hero", () => {
   it("renders the locked headline, the credits line and both CTAs", () => {
     render(<Hero />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "You have the agents.Let them work."
+      "How many of your AI workflows run without you?"
     );
     expect(screen.getByText("€10 in usage credits")).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Book a call, we set up your first workflow" })
-    ).toHaveAttribute("href", "/book");
+    expect(screen.getByRole("link", { name: "Book a call" })).toHaveAttribute("href", "/book");
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
@@ -41,11 +39,11 @@ describe("Hero", () => {
 });
 
 describe("Pricing", () => {
-  it("has the three cards and no seats", () => {
+  it("has the three plans mapped to the steps and no seats", () => {
     render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Apps" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Specialized agents" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Ametyst Agent" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Free" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Pro" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Team" })).toBeInTheDocument();
     expect(screen.queryByText(/seat/i)).toBeNull();
     expect(screen.queryByText(/share of/i)).not.toBeNull();
   });

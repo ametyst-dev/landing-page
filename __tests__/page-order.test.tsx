@@ -5,18 +5,19 @@ import Home from "@/app/page";
 afterEach(() => cleanup());
 
 describe("Page section order", () => {
-  it("renders the sections in the locked order", () => {
+  it("renders the sections in the playbook order", () => {
     render(<Home />);
     const text = document.body.textContent ?? "";
     const headings = [
-      "Let them work.",
-      "Every app and every specialized agent. One key.",
-      "You set the rules. The work gets shared.",
-      "The Ametyst Agent. Always connected.",
-      "Your workflows are your differentiation.",
-      "Built with our design partners. Running on their own.",
-      "Free until the workflow runs. Paid from there.",
+      "run without you?",
+      "You built the workflow. Now it depends on you.",
+      "Create a workspace. Connect your agents.",
+      "Set spending policies. Invite your colleagues.",
+      "The Ametyst Agent keeps them sharp.",
+      "Four workflows running today. One number each.",
       "Pay only for what you use.",
+      "Free until the workflow runs. Paid from there.",
+      "Questions we get on every call.",
       "Get your first workflow running on its own.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
@@ -26,8 +27,16 @@ describe("Page section order", () => {
     }
   });
 
-  it("never says wallet anywhere on the page", () => {
+  it("never uses the words the playbook bans in public copy", () => {
     render(<Home />);
-    expect((document.body.textContent ?? "").toLowerCase()).not.toContain("wallet");
+    const text = (document.body.textContent ?? "").toLowerCase();
+    for (const banned of ["wallet", "neobank", " bank", "banking", "optimiz", "platform", "skill"]) {
+      expect(text, banned).not.toContain(banned);
+    }
+  });
+
+  it("has no em dash anywhere on the page", () => {
+    render(<Home />);
+    expect(document.body.textContent ?? "").not.toContain("—");
   });
 });

@@ -84,11 +84,11 @@ export default function RealTasks() {
     <section id="tasks" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-8">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">Tasks running today</p>
+          <p className="font-mono text-xs md:text-sm text-accent mb-3">Proof</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
-            Built with our design partners. Running on their own.
+            Four workflows running today. One number each.
           </h2>
-          <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed">Three workflows exactly as they run now. Each one built in a week with the team that uses it.</p>
+          <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed">Built with our design partners, each one in a week with the team that uses it. Shown exactly as they run now, with what a run costs.</p>
         </div>
         <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Tasks">
           {TASKS.map((task, i) => (
@@ -118,7 +118,11 @@ export default function RealTasks() {
             </div>
             <div className="lg:col-span-5">
               <dl className="rounded-lg border border-border bg-bg divide-y divide-border/60">
-                {[["Runs from", t.runsFrom], ["Writes to", t.writesTo], ["Cost", t.cost]].map(([k, v]) => (
+                <div className="px-4 py-3">
+                  <dt className="font-body text-xs text-muted mb-1">Cost</dt>
+                  <dd className="font-headline text-lg md:text-xl text-accent leading-tight" style={{ fontWeight: 900 }}>{t.cost}</dd>
+                </div>
+                {[["Runs from", t.runsFrom], ["Writes to", t.writesTo]].map(([k, v]) => (
                   <div key={k} className="grid grid-cols-3 gap-3 px-4 py-3">
                     <dt className="font-body text-xs text-muted">{k}</dt>
                     <dd className="col-span-2 font-body text-sm text-fg">{v}</dd>

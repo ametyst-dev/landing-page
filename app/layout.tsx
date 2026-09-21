@@ -10,9 +10,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
-  title: "Ametyst – You have the agents. Let them work.",
+  title: "Ametyst – The agent that sits in every run of your workflows",
   description:
-    "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+    "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
   keywords: [
     "autonomous AI workflows",
     "agents that pay per use",
@@ -29,24 +29,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.ai",
     siteName: "Ametyst",
-    title: "Ametyst – You have the agents. Let them work.",
+    title: "Ametyst – The agent that sits in every run of your workflows",
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst – You have the agents. Let them work.",
+        alt: "Ametyst – The agent that sits in every run of your workflows",
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_ai",
-    title: "Ametyst – You have the agents. Let them work.",
+    title: "Ametyst – The agent that sits in every run of your workflows",
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
     images: ["/icon.png"],
   },
   icons: {

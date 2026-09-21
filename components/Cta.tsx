@@ -9,7 +9,7 @@ export default function Cta() {
           Get your first workflow running on its own.
         </h2>
         <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8">
-          €10 in credits when you sign up. Book a call and we set it up with you.
+          €10 in credits when you sign up. Book a call and we set the first one up with you, on your own agent.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a

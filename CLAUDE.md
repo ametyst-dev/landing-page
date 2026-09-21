@@ -31,6 +31,7 @@ This is the public-facing landing page for Ametyst — it lets teams' existing a
 - `contexts/` — React context providers (currently empty); enter when adding global client-side state
 - `hooks/` — Custom React hooks (currently empty); enter when extracting reusable client logic
 - `public/` — Static assets served at root path; enter when updating icons, images, or skill `.md` files
+- `scripts/` — `snapshot.mjs`, the static snapshot used for design-review artifacts (`npm run snapshot`)
 
 ## Testing
 - Command: `npm test` (Vitest, single run) — `npm run test:watch` for watch mode
@@ -43,7 +44,8 @@ This is the public-facing landing page for Ametyst — it lets teams' existing a
 - `./docs/README.md` — overview of this repo and what it contains
 - `./docs/ARCHITECTURE.md` — how the codebase is structured and why
 - `./docs/ECOSYSTEM.md` — how this repo relates to external services and the broader Ametyst system
-- `./docs/CONTRIBUTING.md` — how to add new content correctly
+- `./docs/CONTRIBUTING.md` — how to add new content correctly, including the branch + artifact review loop
+- `./DESIGN.md` — the design system (tokens, type, components, do/don't); read before UI work, update in the same commit as a token change
 
 ## Safety / sharp edges
 - `GOOGLE_SCRIPT_URL` in `.env.local` is the only required secret — never log or expose it client-side
@@ -58,3 +60,5 @@ This is the public-facing landing page for Ametyst — it lets teams' existing a
 - "Change the brand color" → update CSS custom properties in `app/globals.css`, do not change `tailwind.config.ts` color aliases
 - "Update the final CTA copy" → edit `components/Cta.tsx` only
 - "Update what agents are told to do" → edit `public/skill.md` (agent-facing onboarding guide, plain markdown)
+- "Make a preview I can comment on" → branch `preview/<topic>`, `npm run snapshot`, publish `snapshot/` as a Claude artifact; comments come back here, the artifact never edits code
+- Public copy never uses: bank, banking, wallet, neobank, skill, optimization, optimizer, platform, or an em dash. `__tests__/page-order.test.tsx` enforces it
