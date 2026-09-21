@@ -16,9 +16,8 @@ describe("Page section order", () => {
       "The Ametyst Agent keeps them sharp.",
       "Four workflows running today. One number each.",
       "Pay only for what you use.",
-      "Free until the workflow runs. Paid from there.",
       "Before you start.",
-      "Get your first workflow running on its own.",
+      "Stop watching every run.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
     indices.forEach((idx, i) => expect(idx, headings[i]).toBeGreaterThanOrEqual(0));

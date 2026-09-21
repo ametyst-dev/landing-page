@@ -6,10 +6,11 @@ export default function Cta() {
           className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4"
           style={{ fontWeight: 900 }}
         >
-          Get your first workflow running on its own.
+          Stop watching <span className="text-accent">every run.</span>
         </h2>
-        <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8">
-          Free to start. If you prefer, we set the first one up with you, on your own agent.
+        <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8 text-balance">
+          Create your workspace, connect your agent, and let Ametyst keep your workflows sharp.
+          Free to start, and we set the first one up with you if you prefer.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a

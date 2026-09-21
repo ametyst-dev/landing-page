@@ -32,13 +32,13 @@ const faqs: { q: string; a: string }[] = [
 export default function Faq() {
   return (
     <section id="faq" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-        <div className="lg:col-span-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="max-w-xl mb-10">
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>
             Before you start.
           </h2>
         </div>
-        <dl className="lg:col-span-8 divide-y divide-border/60 border-y border-border/60">
+        <dl className="divide-y divide-border/60 border-y border-border/60">
           {faqs.map((f) => (
             <details key={f.q} className="group py-4">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-base md:text-lg font-semibold text-fg [&::-webkit-details-marker]:hidden">
