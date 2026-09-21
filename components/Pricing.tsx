@@ -6,26 +6,33 @@ const rows: { label: string; sub?: boolean; group?: boolean; cells: [string, str
     label: "Credits",
     cells: [
       "You buy them when you need them, about 108 credits per €",
-      "2,400 credits every month (120 per €)",
-      "3,000 credits every month per member (120 per €), shared by the workspace",
+      "2,400 credits every month",
+      "3,000 credits every month per member, shared by the workspace",
     ],
   },
   { label: "Tools connected", cells: ["30+", "30+", "30+"] },
-  { label: "Policies on your agents", cells: ["✓", "✓", "✓"] },
-  { label: "Ametyst Agent", cells: ["✓ With your credits", "✓ With your plan credits", "✓ With your plan credits"] },
-  { label: "Other members in the workspace", group: true, cells: ["", "", ""] },
-  { label: "Policies on their agents", sub: true, cells: ["✓ You set them", "✓ You set them", "✓ You set them"] },
-  {
-    label: "Access to tools",
-    sub: true,
-    cells: ["✓ From the budget you give them", "✓ From the budget you give them", "✓ From the budget you give them"],
-  },
+  { label: "Policies on your agents", cells: ["Limited: up to 2", "✓ Unlimited", "✓ Unlimited"] },
   {
     label: "Ametyst Agent",
-    sub: true,
-    cells: ["From the budget you give them", "From the budget you give them", "✓ For every member, from the shared plan credits"],
+    cells: [
+      "Limited: answers when you ask, with your credits",
+      "✓ Watches every run, fixes what breaks, proposes what to build",
+      "✓ The same, for every member",
+    ],
   },
+  { label: "Your tasks", cells: ["Up to 3", "✓ Unlimited, with scheduled runs", "✓ Unlimited, with scheduled runs"] },
+  { label: "Run history and spend reports", cells: ["Last 7 days", "✓ Full", "✓ Full, per member"] },
+  { label: "Other members in the workspace", group: true, cells: ["", "", ""] },
+  { label: "Invite people", sub: true, cells: ["✓", "✓", "✓"] },
+  {
+    label: "Policies on their agents",
+    sub: true,
+    cells: ["Limited: one standard policy", "Limited: one standard policy", "✓ One per member"],
+  },
+  { label: "Access to tools", sub: true, cells: ["✓", "✓", "✓"] },
+  { label: "Ametyst Agent", sub: true, cells: ["No", "No", "✓"] },
   { label: "Shared tasks", sub: true, cells: ["No", "No", "✓ The team shares tasks and builds its own"] },
+  { label: "Admin panel: requests, approvals, spend per member", sub: true, cells: ["No", "No", "✓"] },
 ];
 
 export function PlansTable() {

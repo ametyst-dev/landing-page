@@ -10,7 +10,8 @@ export default function PricingPage() {
     <LegalPage title="Pricing" updated={false}>
       <P>
         <strong>Everything on Ametyst is priced in credits.</strong> One balance, for everything: Ametyst Agent and external
-        tools. Start on pay per use, or pick a monthly plan and get more credits for the same money.
+        tools. On pay per use Ametyst Agent answers when you ask. On Pro it works on its own: it watches every run, fixes what
+        breaks and proposes what to build. Team brings that to every member, with shared tasks.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />
