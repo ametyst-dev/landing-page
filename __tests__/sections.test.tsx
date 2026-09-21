@@ -41,13 +41,21 @@ describe("Hero", () => {
 });
 
 describe("Pricing", () => {
-  it("has the three cards and no seats", () => {
+  it("shows the three plans with their prices and credits", () => {
     render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Apps" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Specialized agents" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Ametyst Agent" })).toBeInTheDocument();
-    expect(screen.queryByText(/seat/i)).toBeNull();
-    expect(screen.queryByText(/share of/i)).not.toBeNull();
+    for (const plan of ["Pay per use", "Pro", "Team"]) {
+      expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
+    }
+    expect(screen.getByText("€20 per month")).toBeInTheDocument();
+    expect(screen.getByText(/€25 per member per month/)).toBeInTheDocument();
+    expect(screen.getByText(/2,400 credits every month/)).toBeInTheDocument();
+    expect(screen.getByText(/3,000 credits every month per member/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Full pricing details" })).toHaveAttribute("href", "/pricing");
+  });
+
+  it("never uses wallet or stablecoin wording", () => {
+    const { container } = render(<Pricing />);
+    expect(container.textContent).not.toMatch(/wallet|usdc|stablecoin/i);
   });
 });
 

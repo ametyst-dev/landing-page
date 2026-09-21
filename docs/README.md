@@ -10,6 +10,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `app/` — Next.js App Router root: layout, main page, globals CSS, and route handlers
 - `app/api/waitlist/` — POST endpoint that validates email and forwards it to a Google Sheets script
 - `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
+- `app/pricing/`, `app/terms/`, `app/refunds/`, `app/privacy/`, `app/contact/` — Static text pages the payment processor (Stripe) requires to be public: plans and how credits are bought, Terms of Service, Refund and Cancellation Policy, Privacy Policy, support contacts and company data. Copy rule: "credits", never "wallet"/"USDC"/"bank"
 - `components/TopBar.tsx` — Fixed navigation bar: brand, section anchors, "Sign in" (business.ametyst.ai) and "Book a call" CTA
 - `components/Hero.tsx` — Above-the-fold: "You have the agents. Let them work.", two CTAs, the €10 credits line, and the `TaskFlow` animation
 - `components/Frames.tsx` — Product-faithful mock frames: `AmetystApp` (business-app shell: white sidebar, nav labels and Admin panel as in `index.html`, 10px-radius cards, Verification tabs Overview/Behaviours/Maintenance, `admin={false}` for the member view with the Admin panel collapsed), `NotionFrame`, `ClaudeFrame`, `SheetsFrame`. Keep `AmetystApp` in sync with business-app's sidebar when it changes
@@ -18,7 +19,9 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/RealTasks.tsx` — Four real tasks (B2B prospecting, events CRM, the engineering agent, competitor ads), anonymized: no task slugs or client names on the page; copy comes from the delivered HANDOFF files in domain-expansion
 - `components/Pillars.tsx` — The three blocks, in order: 01 every provider live on production (grouped wall, keep in sync with merchants-router `[env.production.vars]`), 02 policies + task sharing for the admin, 03 maintained and efficient workflows
 - `components/HowWeStart.tsx` — Design-partner process, four steps from the first call to maintenance and new workflows: free until the workflow runs, paid from there
-- `components/Pricing.tsx` — Two cards: tools pay per call, verification pay per run on a monthly budget (never a share of spend, never seats)
+- `components/Pricing.tsx` — The three plans (Pay per use, Pro €20/month, Team €25/member/month) as a table, everything priced in credits; exports `PlansTable`, reused by `/pricing`. Source of truth for the numbers: domain-expansion `areas/product/devops/stripe-activation/01-site-content-drafts.md`
+- `components/LegalPage.tsx` — Shell for the text pages (header with a link home, title, "Last updated", footer) plus the small typography helpers they share (`H2`, `P`, `UL`, `A`, `Table`). `LAST_UPDATED` lives here: bump it whenever Terms, Refunds or Privacy change
+- `components/EndStrip.tsx` — Footer: tagline and social links, then the company data Italian law requires on the site (art. 2250 c.c.) and the links to Pricing, Terms, Refunds, Privacy, Contact
 - `components/Cta.tsx` — Final call to action (book a call, create workspace)
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
