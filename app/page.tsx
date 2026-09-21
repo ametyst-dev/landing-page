@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <Problem />
       <Pillars />
-      <RealTasks />
       <Providers />
+      <RealTasks />
       <Faq />
       <Cta />
       <EndStrip />

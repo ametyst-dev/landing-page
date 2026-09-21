@@ -21,7 +21,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/HowWeStart.tsx` — Design-partner process, four steps from the first call to maintenance and new workflows. Not rendered since the playbook v1 review; kept for reuse
 - `components/Pricing.tsx` — Not rendered since the playbook v1 review (removed on Michele's request). Three plan cards mapped to the three steps (Free, Pro, Team) plus the usage line (apps per call or subscription, specialized agents per run, Ametyst Agent monthly credit). Never a share of spend, never seats
 - `components/Faq.tsx` — Seven questions with native `details` accordions, including the two known confusions: model subscription vs Ametyst credits, and what a policy limit does
-- `components/Providers.tsx` — Grid of providers live on Ametyst (name, what it does, favicon from `public/providers/`), between the real tasks and the FAQ; only providers with a verified logo, trimmed to fill the 4-column grid; keep in sync with the staging allowlist
+- `components/Providers.tsx` — Grid of providers live on Ametyst (name, what it does, favicon from `public/providers/`), right after the three steps, before the real tasks; only providers with a verified logo, trimmed to fill the 4-column grid; keep in sync with the staging allowlist
 - `components/Cta.tsx` — Final call to action on the action angle ("Stop watching every run."): create workspace primary, talk to the team secondary
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)

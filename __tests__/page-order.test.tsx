@@ -14,8 +14,8 @@ describe("Page section order", () => {
       "Create a workspace. Connect your agents.",
       "Set spending policies. Invite your colleagues.",
       "The Ametyst Agent keeps them sharp.",
-      "Four workflows running today. One number each.",
       "Every app, one key.",
+      "Four workflows running today. One number each.",
       "Before you start.",
       "Stop watching every run.",
     ];
