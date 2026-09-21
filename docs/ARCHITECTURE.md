@@ -21,6 +21,11 @@ landing-page/
 │   │       └── route.ts        # POST /api/waitlist
 │   ├── book/
 │   │   └── page.tsx            # /book — Cal.com embed
+│   ├── pricing/page.tsx        # /pricing — UNLISTED (no links, noindex): plans table + how credits are bought
+│   ├── terms/page.tsx          # /terms — Terms of Service
+│   ├── refunds/page.tsx        # /refunds — Refund and Cancellation Policy
+│   ├── privacy/page.tsx        # /privacy — Privacy Policy
+│   ├── contact/page.tsx        # /contact — support contacts + company data
 │   ├── globals.css             # Tailwind directives + CSS custom properties + @font-face
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components

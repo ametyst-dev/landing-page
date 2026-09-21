@@ -22,4 +22,23 @@ describe("EndStrip", () => {
       "https://www.linkedin.com/company/89660894/"
     );
   });
+
+  it("links the legal pages and shows the company data in Italian", () => {
+    render(<EndStrip />);
+    for (const [name, href] of [
+      ["Terms", "/terms"],
+      ["Refunds", "/refunds"],
+      ["Privacy", "/privacy"],
+      ["Contact", "/contact"],
+    ]) {
+      expect(screen.getByRole("link", { name })).toHaveAttribute("href", href);
+    }
+    expect(screen.getByText(/AMETYST SRL · Corso Magenta 56/)).toBeInTheDocument();
+    expect(screen.getByText(/P\.IVA e C\.F\. 14681630969/)).toBeInTheDocument();
+  });
+
+  it("does not link the unlisted pricing page", () => {
+    const { container } = render(<EndStrip />);
+    expect(container.querySelector('a[href="/pricing"]')).toBeNull();
+  });
 });

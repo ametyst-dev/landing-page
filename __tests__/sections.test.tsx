@@ -2,7 +2,7 @@ import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
+import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
 
 afterEach(() => cleanup());
@@ -40,14 +40,21 @@ describe("Hero", () => {
   });
 });
 
-describe("Pricing", () => {
-  it("has the three cards and no seats", () => {
-    render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Apps" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Specialized agents" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Ametyst Agent" })).toBeInTheDocument();
-    expect(screen.queryByText(/seat/i)).toBeNull();
-    expect(screen.queryByText(/share of/i)).not.toBeNull();
+describe("PlansTable (unlisted /pricing page)", () => {
+  it("shows the three plans with their prices and credits", () => {
+    render(<PlansTable />);
+    for (const plan of ["Pay per use", "Pro", "Team"]) {
+      expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
+    }
+    expect(screen.getByText("€20 per month")).toBeInTheDocument();
+    expect(screen.getByText(/€25 per member per month/)).toBeInTheDocument();
+    expect(screen.getByText(/2,400 credits every month/)).toBeInTheDocument();
+    expect(screen.getByText(/3,000 credits every month per member/)).toBeInTheDocument();
+  });
+
+  it("never uses wallet or stablecoin wording", () => {
+    const { container } = render(<PlansTable />);
+    expect(container.textContent).not.toMatch(/wallet|usdc|stablecoin/i);
   });
 });
 

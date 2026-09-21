@@ -15,8 +15,6 @@ describe("Page section order", () => {
       "The Ametyst Agent. Always connected.",
       "Your workflows are your differentiation.",
       "Built with our design partners. Running on their own.",
-      "Free until the workflow runs. Paid from there.",
-      "Pay only for what you use.",
       "Get your first workflow running on its own.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
@@ -24,6 +22,11 @@ describe("Page section order", () => {
     for (let i = 1; i < indices.length; i++) {
       expect(indices[i]).toBeGreaterThan(indices[i - 1]);
     }
+  });
+
+  it("links no pricing page and has no pricing section", () => {
+    const { container } = render(<Home />);
+    expect(container.querySelector('a[href="/pricing"], a[href="#pricing"], #pricing, #how-we-start')).toBeNull();
   });
 
   it("never says wallet anywhere on the page", () => {

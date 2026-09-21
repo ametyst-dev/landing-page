@@ -19,13 +19,7 @@ export default function TopBar() {
               How it works
             </a>
             <a href="#tasks" className={navLinkClass}>
-              Tasks
-            </a>
-            <a href="#how-we-start" className={navLinkClass}>
-              How we start
-            </a>
-            <a href="#pricing" className={navLinkClass}>
-              Pricing
+              Use cases
             </a>
             <a
               href="https://business.ametyst.ai"
