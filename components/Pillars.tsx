@@ -2,15 +2,14 @@ import type { ReactNode } from "react";
 import { AmetystApp, AppButton, AppCard, AppTabs } from "@/components/Frames";
 import AppsAgentsCard from "@/components/AppsAgentsCard";
 
-function SectionHeading({ index, title, lead, plan }: { index: string; title: string; lead: ReactNode; plan: string }) {
+function SectionHeading({ title, lead, plan }: { title: string; lead: ReactNode; plan: string }) {
   return (
     <div className="max-w-xl">
-      <p className="font-mono text-xs md:text-sm text-accent mb-3">{index}</p>
       <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
         {title}
       </h3>
       <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-4">{lead}</p>
-      <p className="inline-block rounded-full bg-accent-soft px-3 py-1 font-mono text-[11px] md:text-xs text-accent">{plan}</p>
+      <p className="font-body text-sm text-muted">{plan}</p>
     </div>
   );
 }
@@ -78,7 +77,6 @@ export default function Pillars() {
     <section id="how-it-works" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto space-y-20 md:space-y-28">
         <div className="max-w-xl">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">How it works</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
             Three steps, in the order you will use them.
           </h2>
@@ -86,30 +84,27 @@ export default function Pillars() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <SectionHeading
-            index="01 · connect"
             title="Create a workspace. Connect your agents."
             lead={<><strong className="font-semibold text-fg">One key</strong> gives them <strong className="font-semibold text-fg">24 apps</strong> today, specialized agents soon. No accounts, no keys on the machine. Claude Code, Codex and Cursor.</>}
-            plan="Free · until your first workflow runs on its own"
+            plan="Free, until your first workflow runs on its own."
           />
           <AppsAgentsCard />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <div className="lg:order-2">
             <SectionHeading
-              index="02 · control"
               title="Set spending policies. Invite your colleagues."
               lead={<>A <strong className="font-semibold text-fg">policy per agent</strong>: how much, on what, per run and per day. Workflows shared in the workspace, <strong className="font-semibold text-fg">a policy per person</strong>. Policies protect whoever runs the workflow. They are not a way to watch the team.</>}
-              plan="Pro · policies   ·   Team · invites and sharing"
+              plan="Pro for the policies. Team for the invites and the sharing."
             />
           </div>
           <div className="lg:order-1"><AdminCard /></div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
           <SectionHeading
-            index="03 · sharp"
             title="The Ametyst Agent keeps them sharp."
             lead={<>It sits in every run. It tells you <strong className="font-semibold text-fg">what went wrong</strong>, fixes what broke, and proposes <strong className="font-semibold text-fg">what to build next</strong>. Ask it from your own agent or from the app.</>}
-            plan="Pro and Team · a monthly credit for the agent"
+            plan="Pro and Team, with a monthly credit for the agent."
           />
           <AgentCard />
         </div>

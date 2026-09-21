@@ -18,7 +18,6 @@ export default function Problem() {
     <section id="problem" className="section-x py-16 md:py-24 bg-accent-soft/60 border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-10">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">The problem</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance" style={{ fontWeight: 900 }}>
             You built the workflow. Now it depends on you.
           </h2>

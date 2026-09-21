@@ -34,9 +34,8 @@ export default function Faq() {
     <section id="faq" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         <div className="lg:col-span-4">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">FAQ</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>
-            Questions we get on every call.
+            Before you start.
           </h2>
         </div>
         <dl className="lg:col-span-8 divide-y divide-border/60 border-y border-border/60">

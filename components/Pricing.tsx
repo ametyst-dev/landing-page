@@ -31,7 +31,6 @@ export default function Pricing() {
     <section id="pricing" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-10">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">Pricing</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
             Pay only for what you use.
           </h2>
@@ -42,7 +41,7 @@ export default function Pricing() {
             <div key={p.name} className={`rounded-xl border p-5 md:p-6 ${p.highlight ? "border-accent bg-accent-soft/60" : "border-border bg-surface"}`}>
               <div className="mb-4 flex items-center justify-between gap-2">
                 <h3 className="font-headline text-2xl md:text-3xl text-fg leading-none" style={{ fontWeight: 900 }}>{p.name}</h3>
-                <span className="rounded-full bg-accent-soft px-2.5 py-0.5 font-mono text-[11px] text-accent">{p.step}</span>
+                <span className="font-body text-xs text-muted">{p.step}</span>
               </div>
               <p className="font-body text-base md:text-lg font-semibold text-fg mb-3">{p.title}</p>
               <ul className="space-y-1.5">

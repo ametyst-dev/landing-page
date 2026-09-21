@@ -39,9 +39,17 @@ export default function TopBar() {
               href="/book"
               target="_blank"
               rel="noopener noreferrer"
+              className="hidden sm:inline text-xs md:text-sm font-semibold text-fg/80 hover:text-fg transition-colors font-body"
+            >
+              Talk to the team
+            </a>
+            <a
+              href="https://business.ametyst.ai"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg bg-btn-bg text-btn-fg font-bold py-2 px-4 md:px-5 text-xs md:text-sm transition-opacity hover:opacity-90 font-body"
             >
-              Book a call
+              Create your workspace
             </a>
           </nav>
         </div>

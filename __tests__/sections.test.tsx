@@ -8,9 +8,13 @@ import Cta from "@/components/Cta";
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
-  it("links Book a call to /book and Sign in to the web app", () => {
+  it("links Talk to the team to /book, Create your workspace and Sign in to the web app", () => {
     render(<TopBar />);
-    expect(screen.getByRole("link", { name: "Book a call" })).toHaveAttribute("href", "/book");
+    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
+      "href",
+      "https://business.ametyst.ai"
+    );
     expect(screen.getByRole("link", { name: "Sign in" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
@@ -19,13 +23,14 @@ describe("TopBar", () => {
 });
 
 describe("Hero", () => {
-  it("renders the locked headline, the credits line and both CTAs", () => {
+  it("renders the angle 3 headline, both CTAs and the three harnesses", () => {
     render(<Hero />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "How many of your AI workflows run without you?"
+      "Your agent workflows break quietly."
     );
-    expect(screen.getByText("€10 in usage credits")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Book a call" })).toHaveAttribute("href", "/book");
+    expect(screen.queryByText(/usage credits/)).toBeNull();
+    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    for (const h of ["Claude Code", "Codex", "Cursor"]) expect(screen.getByText(h)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"

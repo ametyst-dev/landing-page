@@ -9,7 +9,7 @@ describe("Page section order", () => {
     render(<Home />);
     const text = document.body.textContent ?? "";
     const headings = [
-      "run without you?",
+      "break quietly.",
       "You built the workflow. Now it depends on you.",
       "Create a workspace. Connect your agents.",
       "Set spending policies. Invite your colleagues.",
@@ -17,7 +17,7 @@ describe("Page section order", () => {
       "Four workflows running today. One number each.",
       "Pay only for what you use.",
       "Free until the workflow runs. Paid from there.",
-      "Questions we get on every call.",
+      "Before you start.",
       "Get your first workflow running on its own.",
     ];
     const indices = headings.map((h) => text.indexOf(h));

@@ -9,24 +9,24 @@ export default function Cta() {
           Get your first workflow running on its own.
         </h2>
         <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8">
-          €10 in credits when you sign up. Book a call and we set the first one up with you, on your own agent.
+          Free to start. If you prefer, we set the first one up with you, on your own agent.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href="/book"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-opacity hover:opacity-90 font-body"
-          >
-            Book a call
-          </a>
           <a
             href="https://business.ametyst.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6 text-sm md:text-base transition-colors hover:bg-accent-soft font-body"
+            className="rounded-lg bg-btn-bg text-btn-fg font-bold py-3 px-6 text-sm md:text-base transition-opacity hover:opacity-90 font-body"
           >
             Create your workspace
+          </a>
+          <a
+            href="/book"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border-2 border-accent text-accent font-semibold py-3 px-6 text-sm md:text-base transition-colors hover:bg-accent-soft font-body"
+          >
+            Talk to the team
           </a>
         </div>
       </div>

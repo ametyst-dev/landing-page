@@ -10,7 +10,6 @@ export default function HowWeStart() {
     <section id="how-we-start" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-10">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">How we start</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
             Free until the workflow runs. Paid from there.
           </h2>
