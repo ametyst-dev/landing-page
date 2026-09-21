@@ -1,26 +1,26 @@
 const faqs: { q: string; a: string }[] = [
   {
-    q: "Does it work with my agent?",
+    q: "Works with my agent?",
     a: "Yes, with Claude Code, Codex and Cursor. Ametyst is a set of tools your agent calls with one key. Installing takes a few minutes, and the setup guide is written for the agent itself.",
   },
   {
-    q: "Do I still need my Claude, OpenAI or Cursor subscription?",
+    q: "Do I still need my model subscription?",
     a: "Yes. Your agent keeps thinking on your subscription. Ametyst credits pay for what the agent calls through Ametyst: the apps, and soon the specialized agents. They never pay for the model.",
   },
   {
-    q: "What happens when a run hits a policy limit?",
+    q: "What happens at a policy limit?",
     a: "The run stops and the agent asks. You approve or refuse from the app, per run or per day, and the workflow picks up from there.",
   },
   {
-    q: "Can I use the Ametyst Agent today?",
+    q: "Is the Ametyst Agent live today?",
     a: "Yes. It runs in our design partners' workspaces today, from the app and from their own agents. Ask it what went wrong and it answers with the run it looked at.",
   },
   {
-    q: "Do my colleagues need to build workflows themselves?",
+    q: "Do colleagues build their own workflows?",
     a: "No. A workflow shared in the workspace runs from their own agent, with their own policy. They never see your keys.",
   },
   {
-    q: "Do you take a share of what my agents spend?",
+    q: "Do you take a cut of spend?",
     a: "Never. Apps are paid per call or by subscription, the Ametyst Agent has a monthly credit. No minimums.",
   },
   {
@@ -33,7 +33,7 @@ export default function Faq() {
   return (
     <section id="faq" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-10">
+        <div className="max-w-xl mx-auto text-center mb-10">
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>
             Before you start.
           </h2>

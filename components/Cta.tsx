@@ -10,7 +10,6 @@ export default function Cta() {
         </h2>
         <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8 text-balance">
           Create your workspace, connect your agent, and let Ametyst keep your workflows sharp.
-          Free to start, and we set the first one up with you if you prefer.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a

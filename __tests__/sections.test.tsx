@@ -8,14 +8,15 @@ import Cta from "@/components/Cta";
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
-  it("has Create your workspace as the only CTA", () => {
+  it("has the two CTAs and no section links", () => {
     render(<TopBar />);
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
+    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
     expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
-    expect(screen.queryByRole("link", { name: "Talk to the team" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "Pricing" })).toBeNull();
   });
 });
 
