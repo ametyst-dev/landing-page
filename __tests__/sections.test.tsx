@@ -2,7 +2,6 @@ import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
 import Cta from "@/components/Cta";
 
 afterEach(() => cleanup());
@@ -38,17 +37,6 @@ describe("Hero", () => {
   it("never says wallet", () => {
     const { container } = render(<Hero />);
     expect(container.textContent?.toLowerCase()).not.toContain("wallet");
-  });
-});
-
-describe("Pricing", () => {
-  it("has the three plans mapped to the steps and no seats", () => {
-    render(<Pricing />);
-    expect(screen.getByRole("heading", { name: "Free" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Pro" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Team" })).toBeInTheDocument();
-    expect(screen.queryByText(/seat/i)).toBeNull();
-    expect(screen.queryByText(/share of/i)).not.toBeNull();
   });
 });
 

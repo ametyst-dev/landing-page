@@ -15,10 +15,9 @@ describe("Page section order", () => {
       "Set spending policies. Invite your colleagues.",
       "The Ametyst Agent keeps them sharp.",
       "Four workflows running today. One number each.",
-      "Pay only for what you use.",
+      "Every app, one key.",
       "Before you start.",
       "Stop watching every run.",
-      "Every app, one key.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
     indices.forEach((idx, i) => expect(idx, headings[i]).toBeGreaterThanOrEqual(0));
