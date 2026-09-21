@@ -23,10 +23,9 @@ describe("EndStrip", () => {
     );
   });
 
-  it("links the legal pages and shows the company data", () => {
+  it("links the legal pages and shows the company data in Italian", () => {
     render(<EndStrip />);
     for (const [name, href] of [
-      ["Pricing", "/pricing"],
       ["Terms", "/terms"],
       ["Refunds", "/refunds"],
       ["Privacy", "/privacy"],
@@ -34,7 +33,12 @@ describe("EndStrip", () => {
     ]) {
       expect(screen.getByRole("link", { name })).toHaveAttribute("href", href);
     }
-    expect(screen.getByText(/AMETYST SRL società con socio unico/)).toBeInTheDocument();
-    expect(screen.getByText(/14681630969/)).toBeInTheDocument();
+    expect(screen.getByText(/AMETYST SRL · Corso Magenta 56/)).toBeInTheDocument();
+    expect(screen.getByText(/P\.IVA e C\.F\. 14681630969/)).toBeInTheDocument();
+  });
+
+  it("does not link the unlisted pricing page", () => {
+    const { container } = render(<EndStrip />);
+    expect(container.querySelector('a[href="/pricing"]')).toBeNull();
   });
 });

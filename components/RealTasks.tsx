@@ -84,7 +84,7 @@ export default function RealTasks() {
     <section id="tasks" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mb-8">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">Tasks running today</p>
+          <p className="font-mono text-xs md:text-sm text-accent mb-3">Use cases running today</p>
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
             Built with our design partners. Running on their own.
           </h2>

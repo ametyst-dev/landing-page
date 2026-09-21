@@ -86,9 +86,10 @@ export default function TermsPage() {
 
       <H2>6. Plans</H2>
       <P>
-        Ametyst offers Pay per use and monthly plans (Pro, Team) described on the <A href="/pricing">pricing page</A>. A monthly
+        Ametyst offers Pay per use and monthly plans (Pro, Team), as presented to the Customer in the dashboard at the time of
+        purchase. A monthly
         plan is billed in advance each month, per workspace (Pro) or per member (Team, minimum two members), includes the number
-        of credits stated on the pricing page, and renews automatically until cancelled. Ametyst may change the price of a plan
+        of credits shown at purchase, and renews automatically until cancelled. Ametyst may change the price of a plan
         or the credits it includes from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
         any time from Settings; cancellation takes effect at the end of the billing period already paid, and the workspace then
         continues on Pay per use. Fees for a period already started are not refunded.

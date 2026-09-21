@@ -65,26 +65,3 @@ export function PlansTable() {
     </div>
   );
 }
-
-export default function Pricing() {
-  return (
-    <section id="pricing" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
-      <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-10">
-          <p className="font-mono text-xs md:text-sm text-accent mb-3">Pricing</p>
-          <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>
-            Pay only for what you use.
-          </h2>
-        </div>
-        <PlansTable />
-        <p className="font-body text-sm text-fg/70 mt-6">
-          Everything is priced in credits, one balance for tools and Ametyst Agent. Credits you buy never expire. Prices in euro,
-          VAT excluded.{" "}
-          <a href="/pricing" className="text-accent underline underline-offset-2 hover:opacity-80">
-            Full pricing details
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-}

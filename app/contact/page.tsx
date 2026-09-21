@@ -22,7 +22,7 @@ export default function ContactPage() {
 
       <H2>Company</H2>
       <P>
-        <strong>AMETYST SRL</strong>, single-member company (società con socio unico)
+        <strong>AMETYST SRL</strong>
         <br />
         Corso Magenta 56, 20123 Milano (MI), Italy
         <br />

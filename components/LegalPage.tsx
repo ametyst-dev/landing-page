@@ -74,9 +74,6 @@ export default function LegalPage({
               Ametyst
             </a>
             <nav className="flex items-center gap-5 sm:gap-7" aria-label="Main">
-              <a href="/pricing" className="hidden md:inline text-sm font-medium text-fg/70 hover:text-fg transition-colors font-body">
-                Pricing
-              </a>
               <a href="/contact" className="hidden md:inline text-sm font-medium text-fg/70 hover:text-fg transition-colors font-body">
                 Contact
               </a>

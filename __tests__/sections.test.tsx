@@ -2,7 +2,7 @@ import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
+import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
 
 afterEach(() => cleanup());
@@ -40,9 +40,9 @@ describe("Hero", () => {
   });
 });
 
-describe("Pricing", () => {
+describe("PlansTable (unlisted /pricing page)", () => {
   it("shows the three plans with their prices and credits", () => {
-    render(<Pricing />);
+    render(<PlansTable />);
     for (const plan of ["Pay per use", "Pro", "Team"]) {
       expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
     }
@@ -50,11 +50,10 @@ describe("Pricing", () => {
     expect(screen.getByText(/€25 per member per month/)).toBeInTheDocument();
     expect(screen.getByText(/2,400 credits every month/)).toBeInTheDocument();
     expect(screen.getByText(/3,000 credits every month per member/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Full pricing details" })).toHaveAttribute("href", "/pricing");
   });
 
   it("never uses wallet or stablecoin wording", () => {
-    const { container } = render(<Pricing />);
+    const { container } = render(<PlansTable />);
     expect(container.textContent).not.toMatch(/wallet|usdc|stablecoin/i);
   });
 });

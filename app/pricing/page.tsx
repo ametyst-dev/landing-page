@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import LegalPage, { A, H2, P, UL } from "@/components/LegalPage";
 import { PlansTable } from "@/components/Pricing";
 
-export const metadata: Metadata = { title: "Pricing · Ametyst" };
+// Unlisted on purpose: nothing on the site links here yet, and search engines are told not to index it.
+export const metadata: Metadata = { title: "Pricing · Ametyst", robots: { index: false, follow: false } };
 
 export default function PricingPage() {
   return (
