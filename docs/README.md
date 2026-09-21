@@ -21,10 +21,11 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/HowWeStart.tsx` — Design-partner process, four steps from the first call to maintenance and new workflows. Not rendered since the playbook v1 review; kept for reuse
 - `components/Pricing.tsx` — Three plan cards mapped to the three steps (Free, Pro, Team) plus the usage line (apps per call or subscription, specialized agents per run, Ametyst Agent monthly credit). Never a share of spend, never seats
 - `components/Faq.tsx` — Seven questions with native `details` accordions, including the two known confusions: model subscription vs Ametyst credits, and what a policy limit does
+- `components/Providers.tsx` — Grid of every provider live on Ametyst (name, what it does, favicon from `public/providers/`), placed before the footer; keep the list in sync with the staging allowlist, withdrawn merchants out
 - `components/Cta.tsx` — Final call to action on the action angle ("Stop watching every run."): create workspace primary, talk to the team secondary
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
-- `public/` — Static assets: `icon.png` (brand icon), `skill.md` (the agent-facing onboarding guide, linked from the footer) and other skill `.md` files served at root
+- `public/` — Static assets: `icon.png` (brand icon), `providers/<slug>.png` (provider favicons for the Providers grid), `skill.md` (the agent-facing onboarding guide, linked from the footer) and other skill `.md` files served at root
 - `tailwind.config.ts` — Tailwind configuration with semantic color aliases and font families
 - `DESIGN.md` — The Ametyst design system in the Refero DESIGN.md format: tokens, type, shape, components, do/don't, agent prompt guide. Read it before any UI work
 - `PALETTE-info.md` — Older palette notes (light and a never-shipped dark theme); superseded by `DESIGN.md`

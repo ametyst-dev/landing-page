@@ -18,6 +18,7 @@ describe("Page section order", () => {
       "Pay only for what you use.",
       "Before you start.",
       "Stop watching every run.",
+      "Every app, one key.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
     indices.forEach((idx, i) => expect(idx, headings[i]).toBeGreaterThanOrEqual(0));

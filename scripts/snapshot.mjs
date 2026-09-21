@@ -31,6 +31,7 @@ await rm(out, { recursive: true, force: true });
 await mkdir(path.join(out, "assets"), { recursive: true });
 await cp(path.join(root, ".next/static"), path.join(out, "assets/static"), { recursive: true });
 await cp(path.join(root, "public/icon.png"), path.join(out, "icon.png"));
+await cp(path.join(root, "public/providers"), path.join(out, "providers"), { recursive: true });
 
 /* 1. Stylesheets. Inter is self-hosted by next/font under /_next/static/media.
  *    Neue Machina comes from a third-party CDN in globals.css; the artifact
@@ -86,6 +87,7 @@ page = page
   .replace(/<title>[^<]*<\/title>/, "<title>Ametyst Landing Preview</title>")
   .replaceAll('"/_next/', '"assets/')
   .replaceAll('"/icon.png"', '"icon.png"')
+  .replaceAll('"/providers/', '"providers/')
   .replaceAll('href="/book"', `href="${site}/book"`)
   .replaceAll('href="/skill.md"', `href="${site}/skill.md"`);
 
