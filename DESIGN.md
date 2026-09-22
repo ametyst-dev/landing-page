@@ -105,13 +105,13 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. In the hero, two terminals side by side compare the same run without and with the Ametyst Agent; the agent's lines sit in `bg-term-line` blocks headed `Ametyst Agent`; the left terminal has no placeholder for the missing agent.
 
-**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy. Nothing boxed inside the tools card: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. Policy rows keep small icon tiles. Outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
+**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy. Nothing boxed inside the tools card: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. The policy card follows the same rule: bare icons, limits as a plain definition list. Outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
 
 **Mock frame (retired)**. `components/Frames.tsx` (`AmetystApp` and the Claude, Sheets, Notion frames) drew the web app with a violet shadow. Not rendered since review round 2: the page no longer shows the web app.
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
 
-**FAQ item**. Native `details` with `summary` in a `max-w-3xl` list: the question alone, Inter semibold, violet on hover and when open, no `+` or chevron. A one-sentence answer `text-fg/75` under it.
+**FAQ item**. Native `details` with `summary` in a `max-w-2xl` list, so the `+` on the right stays close to the question. Question Inter semibold, violet on hover and when open; mono `+` in accent that rotates 45 degrees when open. A one-sentence answer `text-fg/75` under it.
 
 ## Do
 

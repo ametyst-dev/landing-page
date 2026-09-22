@@ -92,7 +92,7 @@ export default function ToolsCard() {
         {APPS.map((t) => <ToolItem key={t.slug} t={t} />)}
       </ul>
       <div className="my-6 h-px bg-border" />
-      <p className="font-body text-sm font-semibold text-fg mb-4">50+ providers</p>
+      <p className="font-body text-sm font-semibold text-fg mb-4">50+ external providers</p>
       <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-4">
         {PROVIDERS.map((t) => <ToolItem key={t.slug} t={t} />)}
       </ul>

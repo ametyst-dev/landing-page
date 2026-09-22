@@ -18,10 +18,10 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/Terminal.tsx` — Flat dark terminal window shared by the hero run and step 01
 - `components/Manifesto.tsx` — "Your workflows are your differentiation" band. Not rendered since playbook v1 (the Problem block took its place); kept for reuse
 - `components/RealTasks.tsx` — Four real workflows as cards visible together: team, in, out, tool chips with favicons, cost per run. Anonymized, copy from the delivered HANDOFF files in domain-expansion
-- `components/Pillars.tsx` — "Three things Ametyst does in every run": 01 the Ametyst Agent (full-width terminal), 02 every tool (company apps and providers, `ToolsCard`), 03 spending policies (the Marketing policy with allowed, approved and denied calls, the same policy the hero run hits)
+- `components/Pillars.tsx` — "Three things Ametyst does in every run": 01 the Ametyst Agent (full-width terminal), 02 every tool (company apps and providers, `ToolsCard`), 03 the spending policy of a task (competitor-ads: per run, per day, its tools, this morning's run with allowed, approved and denied calls; the same task the hero runs)
 - `components/HowWeStart.tsx` — Design-partner process, four steps from the first call to maintenance and new workflows. Not rendered since the playbook v1 review; kept for reuse
 - `components/Pricing.tsx` — Not rendered; its "never a share of your spend" line contradicts the 1.5% in the deck, fix before reusing it. Not rendered since the playbook v1 review (removed on Michele's request). Three plan cards mapped to the three steps (Free, Pro, Team) plus the usage line (apps per call or subscription, specialized agents per run, Ametyst Agent monthly credit). Never a share of spend, never seats
-- `components/Faq.tsx` — Six questions, one-sentence answers, native `details`, question only (no + marker), violet when open
+- `components/Faq.tsx` — Six questions, one-sentence answers, native `details`, `+` on the right in a narrow list, violet when open
 - `components/Providers.tsx` — Tool data and views: `APPS` (company apps connected to the workspace), `PROVIDERS` (live on staging, logo-verified), `ToolIcon`, and `ToolsCard`, the visual of step 02. No longer a section of its own; keep `PROVIDERS` in sync with the staging allowlist
 - `components/Cta.tsx` — Final call to action on the action angle ("Stop watching every run."): create workspace primary, talk to the team secondary
 - `contexts/` — React context providers (currently empty, reserved for future global state)

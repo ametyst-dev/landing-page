@@ -16,7 +16,7 @@ type Task = {
 
 const TASKS: Task[] = [
   {
-    who: "B2B sales team",
+    who: "Sales team",
     title: "Event attendees into the CRM",
     input: "An attendee list: a screenshot, a link or rows in Notion.",
     output: "Verified contacts in the Notion CRM, with a LinkedIn message and an email for each. The team sends.",
