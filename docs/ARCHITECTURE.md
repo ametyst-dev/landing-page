@@ -25,13 +25,16 @@ landing-page/
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
-│   ├── TopBar.tsx              # Fixed header / nav
-│   ├── Hero.tsx                # Above-the-fold hero (client component)
-│   ├── ChatDemo.tsx            # Animated terminal demo (client component, scripted)
-│   ├── Problem.tsx             # Two-column problem statement
-│   ├── Personas.tsx            # Two-column personas (champion / buyer)
-│   ├── HowItWorks.tsx          # 3 wallet steps
-│   ├── Waitlist.tsx            # Final CTA: /book link + email capture form (client component)
+│   ├── TopBar.tsx              # Fixed header: wordmark, Talk to the team, Create your workspace
+│   ├── Hero.tsx                # Above-the-fold hero, renders HeroRun
+│   ├── HeroRun.tsx             # One workflow run in a terminal (client component, CSS-delayed lines)
+│   ├── Terminal.tsx            # Flat terminal window shared by HeroRun and Pillars
+│   ├── Problem.tsx             # Three pains on the tinted band
+│   ├── Pillars.tsx             # Three steps: Ametyst Agent, tools, spending policies
+│   ├── Providers.tsx           # Tool data (apps, providers), ToolIcon, ToolsCard
+│   ├── RealTasks.tsx           # Four workflow cards with cost per run
+│   ├── Faq.tsx                 # Six native details items
+│   ├── Cta.tsx                 # Closing band with the two CTAs
 │   └── EndStrip.tsx            # Footer / bottom strip
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks

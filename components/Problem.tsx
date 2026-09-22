@@ -1,15 +1,15 @@
 const pains = [
   {
-    title: "You are the only one who can run it.",
-    body: "The workflow lives on your machine, with your keys and your prompts. When you are out, it waits. When a colleague needs it, you run it for them.",
+    title: "Only you can run it.",
+    body: "It runs on your laptop, with your keys. When you are away, it stops.",
   },
   {
-    title: "You are afraid to let it go.",
-    body: "Give the agent the tools and it can spend without asking. Hold back and it does nothing. So you watch every run, and you never stop.",
+    title: "You can't let it go.",
+    body: "Give it the tools and it spends without asking. So you check every run.",
   },
   {
-    title: "It breaks without telling you.",
-    body: "A folder gets renamed, a provider changes its response. The run still says done. You find out from the output, weeks later.",
+    title: "It breaks in silence.",
+    body: "A tool changes and the run still says done. You find out weeks later.",
   },
 ];
 

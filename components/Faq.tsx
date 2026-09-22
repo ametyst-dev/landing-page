@@ -1,27 +1,27 @@
 const faqs: { q: string; a: string }[] = [
   {
     q: "Works with my agent?",
-    a: "Yes, with Claude Code, Codex and Cursor. Ametyst is a set of tools your agent calls with one key. Installing takes a few minutes, and the setup guide is written for the agent itself.",
+    a: "Yes. Claude Code, Codex, Cursor and any MCP client, set up in a few minutes.",
+  },
+  {
+    q: "Do I need an account with each tool?",
+    a: "No. One key covers every provider, and Ametyst pays them per call.",
   },
   {
     q: "Do I still need my model subscription?",
-    a: "Yes. Your agent keeps thinking on your subscription. Ametyst credits pay for what the agent calls through Ametyst: the apps, and soon the specialized agents. They never pay for the model.",
+    a: "Yes. Ametyst credits pay for the tools, never for the model.",
   },
   {
     q: "What happens at a policy limit?",
-    a: "The run stops and the agent asks. You approve or refuse from the app, per run or per day, and the workflow picks up from there.",
+    a: "The call waits, and you approve or refuse it from the app.",
   },
   {
     q: "Is the Ametyst Agent live today?",
-    a: "Yes. It runs in our design partners' workspaces today, from the app and from their own agents. Ask it what went wrong and it answers with the run it looked at.",
+    a: "Yes, in our design partners' workspaces, from the app and from their own agents.",
   },
   {
-    q: "Do colleagues build their own workflows?",
-    a: "No. A workflow shared in the workspace runs from their own agent, with their own policy. They never see your keys.",
-  },
-  {
-    q: "Where are you based?",
-    a: "In Europe. We work with our design partners on calls and in a shared Slack channel.",
+    q: "Can colleagues run my workflows?",
+    a: "Yes, from their own agent and under their own policy. They never see your keys.",
   },
 ];
 
@@ -34,14 +34,14 @@ export default function Faq() {
             Before you start.
           </h2>
         </div>
-        <dl className="divide-y divide-border/60 border-y border-border/60">
+        <dl className="max-w-3xl mx-auto divide-y divide-border/60 border-y border-border/60">
           {faqs.map((f) => (
             <details key={f.q} className="group py-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-base md:text-lg font-semibold text-fg [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center gap-3 font-body text-base md:text-lg font-semibold text-fg [&::-webkit-details-marker]:hidden">
+                <span className="w-4 shrink-0 font-mono text-lg text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
                 <dt>{f.q}</dt>
-                <span className="font-mono text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
               </summary>
-              <dd className="font-body text-sm md:text-base text-fg/75 leading-relaxed pt-3 max-w-2xl">{f.a}</dd>
+              <dd className="font-body text-sm md:text-base text-fg/75 leading-relaxed pt-2 pl-7">{f.a}</dd>
             </details>
           ))}
         </dl>

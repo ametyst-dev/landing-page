@@ -3,6 +3,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import Cta from "@/components/Cta";
+import Pillars from "@/components/Pillars";
 
 afterEach(() => cleanup());
 
@@ -34,6 +35,13 @@ describe("Hero", () => {
     );
   });
 
+  it("shows one run with a priced call, a policy hold and the Ametyst Agent note", () => {
+    render(<Hero />);
+    expect(screen.getByText("stablestudio")).toBeInTheDocument();
+    expect(screen.getByText(/over the €1.50 per run limit/)).toBeInTheDocument();
+    expect(screen.getByText("✦ Ametyst Agent")).toBeInTheDocument();
+  });
+
   it("never says wallet", () => {
     const { container } = render(<Hero />);
     expect(container.textContent?.toLowerCase()).not.toContain("wallet");
@@ -45,5 +53,19 @@ describe("Cta", () => {
     const { container } = render(<Cta />);
     expect(container.querySelector("form")).toBeNull();
     expect(container.querySelector("input")).toBeNull();
+  });
+});
+
+describe("Pillars", () => {
+  it("puts the Ametyst Agent first, then the tools, then the policies with a denied call", () => {
+    render(<Pillars />);
+    const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
+    expect(titles).toEqual([
+      "The Ametyst Agent sits in every run.",
+      "Every tool your workflows need, with one key.",
+      "Spending policies you set once.",
+    ]);
+    for (const app of ["Notion", "Google Drive", "Granola", "Slack", "GitHub"]) expect(screen.getByText(app)).toBeInTheDocument();
+    expect(screen.getByText("denied")).toBeInTheDocument();
   });
 });

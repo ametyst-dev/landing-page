@@ -25,6 +25,17 @@
   --color-accent-soft: #EFE8FF;
   --color-surface: #FFFFFF;
   --color-ink: #0B0B0F;
+  /* Policy outcomes, on light surfaces */
+  --color-ok: #1F8A5B;
+  --color-deny: #C2334D;
+  /* Terminal views (hero run, Ametyst Agent). Flat, no glow. */
+  --color-term-bg: #16131D;
+  --color-term-fg: #ECE9F3;
+  --color-term-muted: #8E879C;
+  --color-term-line: #2B2636;
+  --color-term-accent: #B892FF;
+  --color-term-ok: #6FD49A;
+  --color-term-warn: #F2C46D;
 }
 
 @layer base {

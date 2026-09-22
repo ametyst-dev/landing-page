@@ -1,4 +1,4 @@
-import TaskFlow from "@/components/TaskFlow";
+import HeroRun from "@/components/HeroRun";
 import HarnessLogos from "@/components/HarnessLogos";
 
 export default function Hero() {
@@ -23,8 +23,8 @@ export default function Hero() {
           </div>
           <HarnessLogos centered />
         </div>
-        <div className="max-w-4xl mx-auto mt-12 md:mt-16">
-          <TaskFlow />
+        <div className="max-w-3xl mx-auto mt-12 md:mt-16">
+          <HeroRun />
         </div>
       </div>
     </section>

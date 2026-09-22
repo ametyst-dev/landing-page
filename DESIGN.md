@@ -36,10 +36,18 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 | Button bg | `#7A1FFF` | `--color-btn-bg` | `bg-btn-bg` | Primary button fill |
 | Button fg | `#F8F8FF` | `--color-btn-fg` | `text-btn-fg` | Text on accent |
 | Button border | `transparent` | `--color-btn-border` | `border-btn-border` | Reserved |
+| OK | `#1F8A5B` | `--color-ok` | `text-ok` | Policy outcome "Allowed", on light surfaces |
+| Deny | `#C2334D` | `--color-deny` | `text-deny` | Policy outcome "Denied", on light surfaces |
+| Terminal bg | `#16131D` | `--color-term-bg` | `bg-term-bg` | Terminal ground |
+| Terminal fg | `#ECE9F3` | `--color-term-fg` | `text-term-fg` | Terminal text |
+| Terminal muted | `#8E879C` | `--color-term-muted` | `text-term-muted` | Descriptions, footers |
+| Terminal line | `#2B2636` | `--color-term-line` | `border-term-line` | Terminal border and dividers |
+| Terminal accent | `#B892FF` | `--color-term-accent` | `text-term-accent` | Prompt, `ametyst ›`, the Ametyst Agent (the violet made readable on dark) |
+| Terminal ok / warn | `#6FD49A` / `#F2C46D` | `--color-term-ok` / `--color-term-warn` | `text-term-ok` / `text-term-warn` | ✓ and fixed / held and proposal |
 
 Opacity steps in use: `text-fg/70`, `text-fg/75`, `text-fg/80`, `text-fg/85`, `border-border/40`, `border-border/60`, `bg-accent-soft/40`, `bg-accent-soft/60`.
 
-Not defined yet: success, warning, danger. The mock frames borrow app colours from the products they imitate (Claude `#D97757`, Sheets `#1E8E3E`), never for Ametyst state.
+Status colours exist only for policy outcomes and terminal lines; never use them for decoration.
 
 ## Tokens: typography
 
@@ -82,9 +90,9 @@ Rules that make it look like Ametyst:
 
 Never stack more than two button styles in one group. Never put a shadow on a button.
 
-**Eyebrow**. `font-mono text-xs md:text-sm text-accent mb-3`. Names the block (The problem, How it works, Proof, Pricing, FAQ) or numbers a step (`01 · connect`).
+**Eyebrow**. Not used: violet labels above headings were removed in review. A step may carry a plain grey number, `font-mono text-sm text-muted` (`01`).
 
-**Section heading**. Eyebrow, display h2, one lead paragraph `text-fg/75`. Block of `max-w-xl`.
+**Section heading**. Display h2, one lead paragraph `text-fg/75`. Block of `max-w-xl`.
 
 **Card**. `rounded-xl border border-border bg-surface p-5 md:p-6`. Highlighted variant: `border-accent bg-accent-soft/60`. Card title Inter semibold, body `text-sm text-fg/75`.
 
@@ -94,11 +102,15 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Band**. A full-width section on `bg-accent-soft/60` for the one block that must feel different (The problem).
 
-**Mock frame**. `AmetystApp`, `ClaudeFrame`, `SheetsFrame`, `NotionFrame` in `components/Frames.tsx`. They use literal hex values on purpose: they draw the product and other people's products, so they must not follow the page theme. Keep `AmetystApp` in sync with the real app sidebar.
+**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with three grey dots and a path, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does: the hero run, the Ametyst Agent.
+
+**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy: hairline grids (`gap-px bg-border/60`), favicons in 32px bordered tiles (`ToolIcon`), outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
+
+**Mock frame (retired)**. `components/Frames.tsx` (`AmetystApp` and the Claude, Sheets, Notion frames) drew the web app with a violet shadow. Not rendered since review round 2: the page no longer shows the web app.
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
 
-**FAQ item**. Native `details` with `summary`, question Inter semibold, a mono `+` that rotates 45 degrees when open, answer `text-fg/75 max-w-2xl`.
+**FAQ item**. Native `details` with `summary` in a `max-w-3xl` list, a mono `+` right before the question that rotates 45 degrees when open, question Inter semibold, a one-sentence answer `text-fg/75` indented under the question.
 
 ## Do
 
@@ -113,7 +125,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 ## Don't
 
 - Don't say bank, banking, wallet, neobank, skill, optimization, optimizer, platform in public copy.
-- Don't add gradients, glows or coloured shadows on real UI. Only the mock frames carry a shadow.
+- Don't add gradients, glows or coloured shadows anywhere, product views included. The violet aura read as AI-made and was removed.
 - Don't introduce a second accent or a grey text token. Use opacity on ink.
 - Don't use the display face for body text, card titles or buttons.
 - Don't centre everything. Only the final CTA is centred.
@@ -127,13 +139,13 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 | 0, page | `#F8F8FF` | none |
 | 1, card | `#FFFFFF` | 1px `#D6DAFF` |
 | 1, tinted band | `#EFE8FF` at 60 percent | 1px `#D6DAFF` at 40 percent |
-| 2, mock frame | `#F8F8FF` or the imitated app's ground | 1px `#D6DAFF` plus the violet shadow |
+| 2, terminal | `#16131D` | 1px `#2B2636`, no shadow |
 
 No hover elevation. Hover changes opacity (buttons) or border colour (tab pills).
 
 ## Imagery
 
-The brand mark is the word Ametyst in the display face, in accent. The favicon is `public/icon.png`. Product screens are never screenshots: they are the mock frames, drawn in code, so they stay in sync with the real app and read at any size.
+The brand mark is the word Ametyst in the display face, in accent. The favicon is `public/icon.png`. Product views are never screenshots and never the web app: terminals for what the agent does, clean cards for what a person sets, drawn in code. Tool logos are real favicons in `public/providers/`.
 
 ## Layout
 
