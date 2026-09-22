@@ -57,7 +57,7 @@ export default function RealTasks() {
   return (
     <section id="tasks" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-xl mb-10">
+        <div className="max-w-xl mx-auto text-center mb-10">
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
             Four workflows running today. One number each.
           </h2>

@@ -3,7 +3,7 @@ import Terminal from "@/components/Terminal";
 import ToolsCard, { PROVIDERS, ToolIcon, toolName } from "@/components/Providers";
 
 /* The three things Ametyst does in every run, most important first:
- * 01 the Ametyst Agent (full width, terminal), 02 the tools (company apps and
+ * 01 the Ametyst Agent (terminal), 02 the tools (company apps and
  * providers), 03 the spending policies. The policy in 03 is the same one the
  * hero run hits (Marketing, €1.50 per run, €10 a day), so the page tells one story. */
 
@@ -129,18 +129,19 @@ export default function Pillars() {
   return (
     <section id="how-it-works" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto space-y-20 md:space-y-28">
-        <h2 className="max-w-2xl -mb-4 md:-mb-10 font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance" style={{ fontWeight: 900 }}>
+        <h2 className="max-w-2xl mx-auto text-center -mb-4 md:-mb-10 font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance" style={{ fontWeight: 900 }}>
           Three things Ametyst does in every run.
         </h2>
 
-        <div className="space-y-8 md:space-y-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-14 lg:items-end">
-            <StepHeading n="01" title="The Ametyst Agent sits in every run." />
-            <p className="max-w-xl font-body text-base md:text-lg text-fg/75 leading-relaxed">
-              It reads every run of your workflows. When one breaks, it tells you why and <strong className="font-semibold text-fg">fixes it</strong>. When one could do more, it <strong className="font-semibold text-fg">proposes the change</strong>. You ask it from the agent you already use.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center [&>*]:min-w-0">
+          <div className="lg:col-span-5">
+            <StepHeading
+              n="01"
+              title="The Ametyst Agent sits in every run."
+              lead={<>It reads every run of your workflows. When one breaks, it tells you why and <strong className="font-semibold text-fg">fixes it</strong>. When one could do more, it <strong className="font-semibold text-fg">proposes the change</strong>. You ask it from the agent you already use.</>}
+            />
           </div>
-          <AgentTerminal />
+          <div className="lg:col-span-7"><AgentTerminal /></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start [&>*]:min-w-0">
