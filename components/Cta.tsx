@@ -16,7 +16,7 @@ export default function Cta() {
             href="https://business.ametyst.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            className="btn btn-primary btn-lg"
           >
             Create your workspace
           </a>
@@ -24,7 +24,7 @@ export default function Cta() {
             href="/book"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-lg"
           >
             Talk to the team
           </a>

@@ -87,7 +87,7 @@ Rules that make it look like Ametyst:
 - `.btn-primary`: violet fill `bg-btn-bg`, text `text-btn-fg`, hover `bg-accent-strong`. Create your workspace, one per block.
 - `.btn-secondary`: white pill `bg-surface`, ink text, 1px `border-border`; hover turns border and text violet. Talk to the team.
 - `.btn-sm`: 36px tall (40px from `md`), `px-4`, for the top bar.
-- `.btn-lg`: 48px tall (56px from `md`), `px-7` then `px-9`, `text-base` then `text-lg`, for the hero pair only.
+- `.btn-lg`: 48px tall (56px from `md`), `px-7` then `px-9`, `text-base` then `text-lg`, for the hero pair and the closing pair.
 
 Never stack more than two button styles in one group. Never put a shadow on a button.
 
