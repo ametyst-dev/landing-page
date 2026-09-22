@@ -26,6 +26,7 @@ describe("EndStrip", () => {
   it("links the legal pages and shows the company data in Italian", () => {
     render(<EndStrip />);
     for (const [name, href] of [
+      ["Pricing", "/pricing"],
       ["Terms", "/terms"],
       ["Refunds", "/refunds"],
       ["Privacy", "/privacy"],
@@ -37,8 +38,4 @@ describe("EndStrip", () => {
     expect(screen.getByText(/P\.IVA e C\.F\. 14681630969/)).toBeInTheDocument();
   });
 
-  it("does not link the unlisted pricing page", () => {
-    const { container } = render(<EndStrip />);
-    expect(container.querySelector('a[href="/pricing"]')).toBeNull();
-  });
 });

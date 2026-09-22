@@ -40,6 +40,11 @@ export default function EndStrip() {
             <p className={headClass}>Legal</p>
             <ul className="space-y-3">
               <li>
+                <a href="/pricing" className={linkClass}>
+                  Pricing
+                </a>
+              </li>
+              <li>
                 <a href="/terms" className={linkClass}>
                   Terms
                 </a>
