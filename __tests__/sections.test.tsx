@@ -40,7 +40,7 @@ describe("Hero", () => {
   });
 });
 
-describe("PlansTable (unlisted /pricing page)", () => {
+describe("PlansTable (/pricing page)", () => {
   it("shows the three plans with their prices and credits", () => {
     render(<PlansTable />);
     for (const plan of ["Pay per use", "Pro", "Team"]) {

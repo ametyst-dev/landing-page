@@ -24,9 +24,9 @@ describe("Page section order", () => {
     }
   });
 
-  it("links no pricing page and has no pricing section", () => {
+  it("has no pricing section and no How we start section on the home page", () => {
     const { container } = render(<Home />);
-    expect(container.querySelector('a[href="/pricing"], a[href="#pricing"], #pricing, #how-we-start')).toBeNull();
+    expect(container.querySelector('a[href="#pricing"], #pricing, #how-we-start')).toBeNull();
   });
 
   it("never says wallet anywhere on the page", () => {
