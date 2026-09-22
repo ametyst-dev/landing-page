@@ -23,7 +23,7 @@ export default function Hero() {
           </div>
           <HarnessLogos centered />
         </div>
-        <div className="max-w-3xl mx-auto mt-12 md:mt-16">
+        <div className="max-w-5xl mx-auto mt-12 md:mt-16">
           <HeroRun />
         </div>
       </div>

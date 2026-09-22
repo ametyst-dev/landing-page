@@ -37,11 +37,10 @@ export default function Faq() {
         <dl className="max-w-3xl mx-auto divide-y divide-border/60 border-y border-border/60">
           {faqs.map((f) => (
             <details key={f.q} className="group py-4">
-              <summary className="flex cursor-pointer list-none items-center gap-3 font-body text-base md:text-lg font-semibold text-fg [&::-webkit-details-marker]:hidden">
-                <span className="w-4 shrink-0 font-mono text-lg text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              <summary className="cursor-pointer list-none font-body text-base md:text-lg font-semibold text-fg hover:text-accent group-open:text-accent transition-colors [&::-webkit-details-marker]:hidden">
                 <dt>{f.q}</dt>
               </summary>
-              <dd className="font-body text-sm md:text-base text-fg/75 leading-relaxed pt-2 pl-7">{f.a}</dd>
+              <dd className="font-body text-sm md:text-base text-fg/75 leading-relaxed pt-2">{f.a}</dd>
             </details>
           ))}
         </dl>

@@ -43,6 +43,7 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 | Terminal muted | `#8E879C` | `--color-term-muted` | `text-term-muted` | Descriptions, footers |
 | Terminal line | `#2B2636` | `--color-term-line` | `border-term-line` | Terminal border and dividers |
 | Terminal accent | `#B892FF` | `--color-term-accent` | `text-term-accent` | Prompt, `ametyst ›`, the Ametyst Agent (the violet made readable on dark) |
+| Window dots | `#FF5F57` / `#FEBC2E` / `#28C840` | `--color-term-red` / `-yellow` / `-green` | `bg-term-red` … | The three dots of a terminal title bar, nothing else |
 | Terminal ok / warn | `#6FD49A` / `#F2C46D` | `--color-term-ok` / `--color-term-warn` | `text-term-ok` / `text-term-warn` | ✓ and fixed / held and proposal |
 
 Opacity steps in use: `text-fg/70`, `text-fg/75`, `text-fg/80`, `text-fg/85`, `border-border/40`, `border-border/60`, `bg-accent-soft/40`, `bg-accent-soft/60`.
@@ -102,7 +103,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Band**. A full-width section on `bg-accent-soft/60` for the one block that must feel different (The problem).
 
-**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with three grey dots and a path, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does: the hero run, the Ametyst Agent.
+**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. In the hero, two terminals side by side compare the same run without and with the Ametyst Agent; the agent's lines sit in `bg-term-line` blocks headed `✦ Ametyst Agent`, the missing agent in dashed blocks.
 
 **Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy: hairline grids (`gap-px bg-border/60`), favicons in 32px bordered tiles (`ToolIcon`), outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
 
@@ -110,7 +111,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
 
-**FAQ item**. Native `details` with `summary` in a `max-w-3xl` list, a mono `+` right before the question that rotates 45 degrees when open, question Inter semibold, a one-sentence answer `text-fg/75` indented under the question.
+**FAQ item**. Native `details` with `summary` in a `max-w-3xl` list: the question alone, Inter semibold, violet on hover and when open, no `+` or chevron. A one-sentence answer `text-fg/75` under it.
 
 ## Do
 

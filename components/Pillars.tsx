@@ -28,8 +28,8 @@ const WEEK: { task: string; what: string; how: string; status: "fixed" | "propos
   },
   {
     task: "competitor-ads",
-    what: "Ads Library changed its response and 2 runs came back empty.",
-    how: "Updated the parser, re-checked 3 runs.",
+    what: "Ads Library changed its response on Tuesday.",
+    how: "Updated the parser before the next run, so no ads were lost.",
     status: "fixed",
   },
   {
@@ -42,12 +42,12 @@ const WEEK: { task: string; what: string; how: string; status: "fixed" | "propos
 
 function AgentTerminal() {
   return (
-    <Terminal title="~/workflows" footer="41 runs read this week · 2 fixed · 1 proposal">
+    <Terminal footer="41 runs read this week · 2 fixed · 1 proposal">
       <p>
         <span className="text-term-accent">&gt;</span> ametyst, what happened in my workflows this week?
       </p>
       <p className="mt-4 text-term-accent">✦ Ametyst Agent</p>
-      <p className="mt-1 font-body text-[13px] md:text-sm">I read 41 runs across 4 workflows. Two broke without an error. Both are fixed.</p>
+      <p className="mt-1 font-body text-[13px] md:text-sm">I read 41 runs across 4 workflows. Two things changed under them without an error. Both are fixed.</p>
       <ul className="mt-4 divide-y divide-term-line border-y border-term-line">
         {WEEK.map((w) => (
           <li key={w.what} className="grid grid-cols-[1fr_auto] sm:grid-cols-[9.5rem_1fr_auto] gap-x-4 gap-y-1 py-3">

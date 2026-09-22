@@ -30,6 +30,9 @@ const config: Config = {
         "term-accent": "var(--color-term-accent)",
         "term-ok": "var(--color-term-ok)",
         "term-warn": "var(--color-term-warn)",
+        "term-red": "var(--color-term-red)",
+        "term-yellow": "var(--color-term-yellow)",
+        "term-green": "var(--color-term-green)",
       },
       fontFamily: {
         headline: ["var(--font-neue-machina)", "Arial Black", "sans-serif"],

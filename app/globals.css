@@ -36,6 +36,10 @@
   --color-term-accent: #B892FF;
   --color-term-ok: #6FD49A;
   --color-term-warn: #F2C46D;
+  /* Window controls, as on macOS */
+  --color-term-red: #FF5F57;
+  --color-term-yellow: #FEBC2E;
+  --color-term-green: #28C840;
 }
 
 @layer base {

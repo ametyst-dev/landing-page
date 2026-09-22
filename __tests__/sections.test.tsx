@@ -35,11 +35,13 @@ describe("Hero", () => {
     );
   });
 
-  it("shows one run with a priced call, a policy hold and the Ametyst Agent note", () => {
+  it("shows the same run without and with the Ametyst Agent", () => {
     render(<Hero />);
-    expect(screen.getByText("stablestudio")).toBeInTheDocument();
-    expect(screen.getByText(/over the €1.50 per run limit/)).toBeInTheDocument();
-    expect(screen.getByText("✦ Ametyst Agent")).toBeInTheDocument();
+    expect(screen.getByText("Without the Ametyst Agent")).toBeInTheDocument();
+    expect(screen.getByText("✦ With the Ametyst Agent")).toBeInTheDocument();
+    expect(screen.getByText("0 ads")).toBeInTheDocument();
+    expect(screen.getByText(/I updated step 1 before this run/)).toBeInTheDocument();
+    expect(screen.queryByText(/Replay/)).toBeNull();
   });
 
   it("never says wallet", () => {
