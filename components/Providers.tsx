@@ -58,8 +58,9 @@ export function toolName(slug: string) {
 
 export function ToolIcon({ slug, size = "md", bare = false }: { slug: string; size?: "sm" | "md"; bare?: boolean }) {
   if (bare) {
+    const px = size === "sm" ? "h-3.5 w-3.5" : "h-5 w-5";
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={`/providers/${slug}.png`} alt="" width={14} height={14} loading="lazy" className="h-3.5 w-3.5 shrink-0 object-contain" />;
+    return <img src={`/providers/${slug}.png`} alt="" width={20} height={20} loading="lazy" className={`${px} shrink-0 object-contain`} />;
   }
   const box = size === "sm" ? "h-6 w-6 rounded-md" : "h-8 w-8 rounded-lg";
   const img = size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4";
@@ -71,38 +72,29 @@ export function ToolIcon({ slug, size = "md", bare = false }: { slug: string; si
   );
 }
 
-function ToolCell({ t }: { t: Tool }) {
+function ToolItem({ t }: { t: Tool }) {
   return (
-    <li className="flex items-center gap-2.5 bg-surface px-3 py-2.5 min-w-0">
-      <ToolIcon slug={t.slug} />
-      <span className="truncate font-body text-[13px] font-medium text-fg">{t.name}</span>
+    <li className="flex items-center gap-2.5 min-w-0">
+      <ToolIcon slug={t.slug} size="md" bare />
+      <span className="truncate font-body text-sm font-medium text-fg">{t.name}</span>
     </li>
   );
 }
 
-/* The visual of step 02: the apps the company already uses, then every
- * provider paid per call. Flat card, hairline grid, no shadow. */
+/* The visual of step 02: the tools the company already uses, then the
+ * providers paid per call. One outer card and nothing boxed inside it:
+ * bare logos, names, one hairline between the two groups. */
 export default function ToolsCard() {
   return (
-    <div className="rounded-xl border border-border bg-surface p-4 md:p-5">
-      <div className="flex items-baseline justify-between gap-3 mb-3">
-        <p className="font-body text-sm font-semibold text-fg">Your company apps</p>
-        <p className="font-mono text-[11px] text-muted">connected once</p>
-      </div>
-      <ul className="flex flex-wrap gap-2 mb-6">
-        {APPS.map((t) => (
-          <li key={t.slug} className="flex items-center gap-2.5 rounded-lg border border-border bg-surface py-1.5 pl-1.5 pr-3">
-            <ToolIcon slug={t.slug} />
-            <span className="font-body text-[13px] font-medium text-fg">{t.name}</span>
-          </li>
-        ))}
+    <div className="rounded-xl border border-border bg-surface p-5 md:p-7">
+      <p className="font-body text-sm font-semibold text-fg mb-4">The tools you already use</p>
+      <ul className="flex flex-wrap gap-x-7 gap-y-3">
+        {APPS.map((t) => <ToolItem key={t.slug} t={t} />)}
       </ul>
-      <div className="flex items-baseline justify-between gap-3 mb-3">
-        <p className="font-body text-sm font-semibold text-fg">{PROVIDERS.length} providers</p>
-        <p className="font-mono text-[11px] text-muted">paid per call, one key</p>
-      </div>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px rounded-lg border border-border bg-border/60 overflow-hidden">
-        {PROVIDERS.map((t) => <ToolCell key={t.slug} t={t} />)}
+      <div className="my-6 h-px bg-border" />
+      <p className="font-body text-sm font-semibold text-fg mb-4">50+ providers</p>
+      <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-4">
+        {PROVIDERS.map((t) => <ToolItem key={t.slug} t={t} />)}
       </ul>
     </div>
   );

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Terminal from "@/components/Terminal";
-import ToolsCard, { PROVIDERS, ToolIcon, toolName } from "@/components/Providers";
+import ToolsCard, { ToolIcon, toolName } from "@/components/Providers";
 
 /* The three things Ametyst does in every run, most important first:
  * 01 the Ametyst Agent (terminal), 02 the tools (company apps and
@@ -46,7 +46,7 @@ function AgentTerminal() {
       <p>
         <span className="text-term-accent">&gt;</span> ametyst, what happened in my workflows this week?
       </p>
-      <p className="mt-4 text-term-accent">✦ Ametyst Agent</p>
+      <p className="mt-4 text-term-accent">Ametyst Agent</p>
       <p className="mt-1 font-body text-[13px] md:text-sm">I read 41 runs across 4 workflows. Two things changed under them without an error. Both are fixed.</p>
       <ul className="mt-4 divide-y divide-term-line border-y border-term-line">
         {WEEK.map((w) => (
@@ -149,7 +149,7 @@ export default function Pillars() {
             <StepHeading
               n="02"
               title="Every tool your workflows need, with one key."
-              lead={<>Your company apps and <strong className="font-semibold text-fg">{PROVIDERS.length} providers</strong> in one workspace. Your agent picks the tool and Ametyst pays per call. No accounts to open, no keys on your machine.</>}
+              lead={<>The tools you already use and <strong className="font-semibold text-fg">50+ providers</strong> in one workspace. Your agent picks the tool and Ametyst pays per call. No accounts to open, no keys on your machine.</>}
             />
           </div>
           <div className="lg:col-span-8 lg:order-1"><ToolsCard /></div>

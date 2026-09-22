@@ -79,7 +79,7 @@ export default function RealTasks() {
               <ul className="flex flex-wrap gap-1.5 mb-6" aria-label="Tools">
                 {t.tools.map((slug) => (
                   <li key={slug} className="flex items-center gap-1.5 rounded-md border border-border bg-bg px-2 py-1">
-                    <ToolIcon slug={slug} bare />
+                    <ToolIcon slug={slug} size="sm" bare />
                     <span className="font-body text-xs text-fg">{toolName(slug)}</span>
                   </li>
                 ))}

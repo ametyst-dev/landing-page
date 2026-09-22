@@ -5,7 +5,7 @@ import Terminal from "@/components/Terminal";
  * Ads Library changed its response. Without the Ametyst Agent every call
  * returns, the run says done and the scoreboard is empty. With it, the agent
  * that built the workflow updates step 1 before the run and checks the output
- * after. Pattern from typesafe.ai's side-by-side race. Lines fade in with CSS
+ * after. No markers on the left: the missing agent is the point. Pattern from typesafe.ai's side-by-side race. Lines fade in with CSS
  * delays, both columns in step, so the full text is in the HTML and reduced
  * motion shows it all at once. */
 
@@ -57,17 +57,8 @@ function Calls({ calls, from, broken }: { calls: Call[]; from: number; broken?: 
 function Agent({ i, children }: { i: number; children: ReactNode }) {
   return (
     <Line i={i} className="my-2.5 rounded-lg bg-term-line px-3 py-2">
-      <span className="text-term-accent">✦ Ametyst Agent</span>
+      <span className="text-term-accent">Ametyst Agent</span>
       <span className="block mt-0.5 font-body text-[13px] text-term-fg">{children}</span>
-    </Line>
-  );
-}
-
-function Absent({ i, children }: { i: number; children: ReactNode }) {
-  return (
-    <Line i={i} className="my-2.5 rounded-lg border border-dashed border-term-line px-3 py-2 text-term-muted">
-      <span>No agent</span>
-      <span className="block mt-0.5 font-body text-[13px]">{children}</span>
     </Line>
   );
 }
@@ -93,15 +84,13 @@ export default function HeroRun() {
         <p className="font-body text-sm md:text-base font-semibold text-muted mb-3">Without the Ametyst Agent</p>
         <Terminal className="flex-1">
           <Line i={0}><span className="text-term-accent">&gt;</span> run competitor-ads</Line>
-          <Absent i={1}>Nothing checks the workflow before the run.</Absent>
           <Calls calls={WITHOUT} from={2} broken />
-          <Absent i={WITHOUT.length + 2}>Nothing checks the output.</Absent>
           <Line i={end}><span className="text-term-ok">✓</span> Done. Scoreboard updated in Google Sheets.</Line>
         </Terminal>
         <Outcome i={end + 1} rows={[["0 ads", "in the scoreboard"], ["€1.02", "spent for nothing"], ["Done", "says the run"]]} />
       </div>
       <div className="min-w-0 flex flex-col">
-        <p className="font-body text-sm md:text-base font-semibold text-accent mb-3">✦ With the Ametyst Agent</p>
+        <p className="font-body text-sm md:text-base font-semibold text-accent mb-3">With the Ametyst Agent</p>
         <Terminal className="flex-1">
           <Line i={0}><span className="text-term-accent">&gt;</span> run competitor-ads</Line>
           <Agent i={1}>Ads Library changed its response on Tuesday. I updated step 1 before this run.</Agent>

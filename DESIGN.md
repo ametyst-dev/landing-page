@@ -103,9 +103,9 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Band**. A full-width section on `bg-accent-soft/60` for the one block that must feel different (The problem).
 
-**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. In the hero, two terminals side by side compare the same run without and with the Ametyst Agent; the agent's lines sit in `bg-term-line` blocks headed `✦ Ametyst Agent`, the missing agent in dashed blocks.
+**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. In the hero, two terminals side by side compare the same run without and with the Ametyst Agent; the agent's lines sit in `bg-term-line` blocks headed `Ametyst Agent`; the left terminal has no placeholder for the missing agent.
 
-**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy: hairline grids (`gap-px bg-border/60`), favicons in 32px bordered tiles (`ToolIcon`), outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
+**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy. Nothing boxed inside the tools card: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. Policy rows keep small icon tiles. Outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
 
 **Mock frame (retired)**. `components/Frames.tsx` (`AmetystApp` and the Claude, Sheets, Notion frames) drew the web app with a violet shadow. Not rendered since review round 2: the page no longer shows the web app.
 
@@ -130,7 +130,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 - Don't introduce a second accent or a grey text token. Use opacity on ink.
 - Don't use the display face for body text, card titles or buttons.
 - Don't centre everything. Only the final CTA is centred.
-- Don't add illustrations, stock photos or icons for their own sake. The mono `✦` marks the Ametyst Agent and that is the only glyph.
+- Don't add illustrations, stock photos or glyphs. No `✦` on the landing (removed on Michele's request): the Ametyst Agent is marked by its name in `text-term-accent` and its `bg-term-line` block. `__tests__/page-order.test.tsx` enforces it.
 - Don't change tokens in `tailwind.config.ts`. Change the CSS variables in `app/globals.css`.
 
 ## Surfaces and elevation

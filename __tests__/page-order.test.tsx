@@ -38,4 +38,9 @@ describe("Page section order", () => {
     render(<Home />);
     expect(document.body.textContent ?? "").not.toContain("—");
   });
+
+  it("has no ✦ glyph anywhere on the page", () => {
+    render(<Home />);
+    expect(document.body.textContent ?? "").not.toContain("✦");
+  });
 });

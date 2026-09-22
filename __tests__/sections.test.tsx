@@ -38,7 +38,8 @@ describe("Hero", () => {
   it("shows the same run without and with the Ametyst Agent", () => {
     render(<Hero />);
     expect(screen.getByText("Without the Ametyst Agent")).toBeInTheDocument();
-    expect(screen.getByText("✦ With the Ametyst Agent")).toBeInTheDocument();
+    expect(screen.getByText("With the Ametyst Agent")).toBeInTheDocument();
+    expect(screen.queryByText(/No agent/)).toBeNull();
     expect(screen.getByText("0 ads")).toBeInTheDocument();
     expect(screen.getByText(/I updated step 1 before this run/)).toBeInTheDocument();
     expect(screen.queryByText(/Replay/)).toBeNull();
