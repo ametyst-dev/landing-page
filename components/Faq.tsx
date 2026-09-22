@@ -20,10 +20,6 @@ const faqs: { q: string; a: string }[] = [
     a: "No. A workflow shared in the workspace runs from their own agent, with their own policy. They never see your keys.",
   },
   {
-    q: "Do you take a cut of spend?",
-    a: "Never. Apps are paid per call or by subscription, the Ametyst Agent has a monthly credit. No minimums.",
-  },
-  {
     q: "Where are you based?",
     a: "In Europe. We work with our design partners on calls and in a shared Slack channel.",
   },
