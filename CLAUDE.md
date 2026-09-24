@@ -55,7 +55,7 @@ This is the public-facing landing page for Ametyst — it lets teams' existing a
 - `next.config.js` uses `output: 'standalone'` — required for the Vercel/Docker deployment; do not remove
 
 ## Examples
-- "Add a FAQ section" → create `components/Faq.tsx`, import it in `app/page.tsx` after `Pricing`, update `docs/README.md`
+- "Add a FAQ section" → create `components/Faq.tsx`, import it in `app/page.tsx` before `Cta`, update `docs/README.md`
 - "Add a new API endpoint" → create `app/api/<name>/route.ts`, update `docs/ARCHITECTURE.md`
 - "Change the brand color" → update CSS custom properties in `app/globals.css`, do not change `tailwind.config.ts` color aliases
 - "Update the final CTA copy" → edit `components/Cta.tsx` only

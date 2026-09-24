@@ -15,7 +15,7 @@ const pains = [
 
 export default function Problem() {
   return (
-    <section id="problem" className="section-x py-16 md:py-24 bg-accent-soft/60 border-b border-border/40 scroll-mt-16">
+    <section id="problem" className="section-x py-16 md:py-24 bg-accent-soft/60 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mx-auto text-center mb-10">
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance" style={{ fontWeight: 900 }}>

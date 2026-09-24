@@ -2,19 +2,23 @@ import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
+import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
 import Pillars from "@/components/Pillars";
+import RealTasks from "@/components/RealTasks";
 
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
-  it("has the two CTAs and no section links", () => {
+  it("has the two CTAs, the two section links and no Sign in or Pricing", () => {
     render(<TopBar />);
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
     expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    expect(screen.getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
+    expect(screen.getByRole("link", { name: "Use cases" })).toHaveAttribute("href", "#tasks");
     expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
     expect(screen.queryByRole("link", { name: "Pricing" })).toBeNull();
   });
@@ -35,19 +39,33 @@ describe("Hero", () => {
     );
   });
 
-  it("shows the same run without and with the Ametyst Agent", () => {
+  it("has no demo under it", () => {
     render(<Hero />);
-    expect(screen.getByText("Without the Ametyst Agent")).toBeInTheDocument();
-    expect(screen.getByText("With the Ametyst Agent")).toBeInTheDocument();
-    expect(screen.queryByText(/No agent/)).toBeNull();
-    expect(screen.getByText("0 ads")).toBeInTheDocument();
-    expect(screen.getByText(/I updated step 1 before this run/)).toBeInTheDocument();
-    expect(screen.queryByText(/Replay/)).toBeNull();
+    expect(screen.queryByText(/Without the Ametyst Agent/)).toBeNull();
+    expect(screen.queryByText(/With the Ametyst Agent/)).toBeNull();
   });
 
   it("never says wallet", () => {
     const { container } = render(<Hero />);
     expect(container.textContent?.toLowerCase()).not.toContain("wallet");
+  });
+});
+
+describe("PlansTable (/pricing page)", () => {
+  it("shows the three plans with their prices and credits", () => {
+    render(<PlansTable />);
+    for (const plan of ["Pay per use", "Pro", "Team"]) {
+      expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
+    }
+    expect(screen.getByText("€20 per month")).toBeInTheDocument();
+    expect(screen.getByText(/€25 per member per month/)).toBeInTheDocument();
+    expect(screen.getByText(/2,400 credits every month/)).toBeInTheDocument();
+    expect(screen.getByText(/3,000 credits every month per member/)).toBeInTheDocument();
+  });
+
+  it("never uses wallet or stablecoin wording", () => {
+    const { container } = render(<PlansTable />);
+    expect(container.textContent).not.toMatch(/wallet|usdc|stablecoin/i);
   });
 });
 
@@ -60,15 +78,26 @@ describe("Cta", () => {
 });
 
 describe("Pillars", () => {
-  it("puts the Ametyst Agent first, then the tools, then the policies with a denied call", () => {
-    render(<Pillars />);
+  it("has two blocks, the Ametyst Agent first, then the workspace, with no step numbers and no policy card", () => {
+    const { container } = render(<Pillars />);
     const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
     expect(titles).toEqual([
-      "The Ametyst Agent sits in every run.",
-      "Every tool your workflows need, with one key.",
-      "Spending policies you set once.",
+      "The Ametyst Agent watches your workflows, all the time.",
+      "One workspace: every tool, and a policy for each workflow.",
     ]);
+    for (const n of ["01", "02", "03"]) expect(screen.queryByText(n)).toBeNull();
+    expect(container.textContent).not.toMatch(/in every run/i);
     for (const app of ["Notion", "Google Drive", "Granola", "Slack", "GitHub"]) expect(screen.getByText(app)).toBeInTheDocument();
-    expect(screen.getByText("denied")).toBeInTheDocument();
+    expect(screen.getByText(/spending policy/)).toBeInTheDocument();
+    expect(screen.queryByText("denied")).toBeNull();
+  });
+});
+
+describe("RealTasks", () => {
+  it("shows four workflows with one result line each and no In / Out labels", () => {
+    const { container } = render(<RealTasks />);
+    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(4);
+    expect(container.querySelector("dt")).toBeNull();
+    expect(screen.getByText("Sales team")).toBeInTheDocument();
   });
 });

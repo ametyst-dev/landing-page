@@ -21,21 +21,27 @@ landing-page/
 │   │       └── route.ts        # POST /api/waitlist
 │   ├── book/
 │   │   └── page.tsx            # /book — Cal.com embed
+│   ├── pricing/page.tsx        # /pricing — plans table + how credits are bought
+│   ├── terms/page.tsx          # /terms — Terms of Service
+│   ├── refunds/page.tsx        # /refunds — Refund and Cancellation Policy
+│   ├── privacy/page.tsx        # /privacy — Privacy Policy
+│   ├── contact/page.tsx        # /contact — support contacts + company data
 │   ├── globals.css             # Tailwind directives + CSS custom properties + @font-face
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
-│   ├── TopBar.tsx              # Fixed header: wordmark, Talk to the team, Create your workspace
-│   ├── Hero.tsx                # Above-the-fold hero, renders HeroRun
-│   ├── HeroRun.tsx             # One workflow run in a terminal (client component, CSS-delayed lines)
-│   ├── Terminal.tsx            # Flat terminal window shared by HeroRun and Pillars
+│   ├── TopBar.tsx              # Fixed header: wordmark, How it works, Use cases, Talk to the team, Create your workspace
+│   ├── Hero.tsx                # Above-the-fold hero: headline, subheadline, two CTAs, harness logos
+│   ├── Terminal.tsx            # Flat terminal window used by the Ametyst Agent block
 │   ├── Problem.tsx             # Three pains on the tinted band
-│   ├── Pillars.tsx             # Three steps: Ametyst Agent, tools, spending policies
+│   ├── Pillars.tsx             # Two blocks: the Ametyst Agent, the workspace (tools + spending policies)
 │   ├── Providers.tsx           # Tool data (apps, providers), ToolIcon, ToolsCard
-│   ├── RealTasks.tsx           # Four workflow cards with cost per run
+│   ├── RealTasks.tsx           # Social proof: four workflow cards with cost per run
 │   ├── Faq.tsx                 # Six native details items
 │   ├── Cta.tsx                 # Closing band with the two CTAs
-│   └── EndStrip.tsx            # Footer / bottom strip
+│   ├── LegalPage.tsx           # Shell and typography helpers for the text pages
+│   ├── Pricing.tsx             # PlansTable, used by /pricing
+│   └── EndStrip.tsx            # Footer: Product, Legal, Follow, company data line
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks
 ├── public/                     # Static assets served at /

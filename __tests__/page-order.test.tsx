@@ -11,11 +11,10 @@ describe("Page section order", () => {
     const headings = [
       "break quietly.",
       "You built the workflow. Now it depends on you.",
-      "Three things Ametyst does in every run.",
-      "The Ametyst Agent sits in every run.",
-      "Every tool your workflows need, with one key.",
-      "Spending policies you set once.",
-      "Four workflows running today. One number each.",
+      "How Ametyst keeps your workflows running.",
+      "The Ametyst Agent watches your workflows, all the time.",
+      "One workspace: every tool, and a policy for each workflow.",
+      "Running today with our design partners.",
       "Before you start.",
       "Stop watching every run.",
     ];
@@ -24,6 +23,18 @@ describe("Page section order", () => {
     for (let i = 1; i < indices.length; i++) {
       expect(indices[i]).toBeGreaterThan(indices[i - 1]);
     }
+  });
+
+  it("has no line between sections, footer included", () => {
+    const { container } = render(<Home />);
+    const blocks = container.querySelectorAll("main > section, main > footer");
+    expect(blocks.length).toBeGreaterThan(5);
+    blocks.forEach((b) => expect(b.className, b.id || b.tagName).not.toMatch(/(^|\s)border-(t|b|y)(\s|$)/));
+  });
+
+  it("has no pricing section and no How we start section on the home page", () => {
+    const { container } = render(<Home />);
+    expect(container.querySelector('a[href="#pricing"], #pricing, #how-we-start')).toBeNull();
   });
 
   it("never uses the words the playbook bans in public copy", () => {

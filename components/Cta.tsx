@@ -1,6 +1,6 @@
 export default function Cta() {
   return (
-    <section id="get-started" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
+    <section id="get-started" className="section-x py-16 md:py-24 bg-bg scroll-mt-16">
       <div className="max-w-3xl mx-auto text-center">
         <h2
           className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4"

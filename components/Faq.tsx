@@ -9,7 +9,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do I still need my model subscription?",
-    a: "Yes. Ametyst credits pay for the tools, never for the model.",
+    a: "Yes, your agent runs on your own model. Ametyst credits pay for the tools and LLM calls inside your workflows.",
   },
   {
     q: "What happens at a policy limit?",
@@ -27,7 +27,7 @@ const faqs: { q: string; a: string }[] = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
+    <section id="faq" className="section-x py-16 md:py-24 bg-bg scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-xl mx-auto text-center mb-10">
           <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight" style={{ fontWeight: 900 }}>

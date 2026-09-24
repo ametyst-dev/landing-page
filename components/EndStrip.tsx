@@ -1,33 +1,88 @@
-const linkClass =
-  "text-xs md:text-sm font-medium text-fg/70 hover:text-fg transition-colors font-body";
+/* The one footer, shared by the home page and the text pages: three link
+ * columns (Product, Legal, Follow) and the company data line. No line above
+ * it: sections on the page are separated by space only. */
+const linkClass = "text-sm text-fg/70 hover:text-fg transition-colors font-body";
+const headClass = "font-mono text-[11px] uppercase tracking-wider text-muted mb-4";
+
+const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export default function EndStrip() {
   return (
-    <footer className="bg-bg section-x py-8">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-body text-xs md:text-sm text-muted">
-          Ametyst · The agent that sits in every run. Built in Europe.
+    <footer className="bg-bg section-x pt-14 pb-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-10 sm:max-w-xl">
+          <nav aria-label="Product">
+            <p className={headClass}>Product</p>
+            <ul className="space-y-3">
+              <li>
+                <a href="https://business.ametyst.ai" {...external} className={linkClass}>
+                  Sign in
+                </a>
+              </li>
+              <li>
+                <a href="/book" className={linkClass}>
+                  Book a call
+                </a>
+              </li>
+              <li>
+                <a href="/skill.md" className={linkClass}>
+                  Setup guide for agents
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Legal">
+            <p className={headClass}>Legal</p>
+            <ul className="space-y-3">
+              <li>
+                <a href="/pricing" className={linkClass}>
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/terms" className={linkClass}>
+                  Terms
+                </a>
+              </li>
+              <li>
+                <a href="/refunds" className={linkClass}>
+                  Refunds
+                </a>
+              </li>
+              <li>
+                <a href="/privacy" className={linkClass}>
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className={linkClass}>
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Follow">
+            <p className={headClass}>Follow</p>
+            <ul className="space-y-3">
+              <li>
+                <a href="https://x.com/ametyst_ai" {...external} className={linkClass} aria-label="X">
+                  X
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/89660894/" {...external} className={linkClass} aria-label="LinkedIn">
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <p lang="it" className="font-body text-xs text-muted mt-12 pt-6 border-t border-border/40 leading-relaxed">
+          AMETYST SRL · Corso Magenta 56, 20123 Milano (MI) · P.IVA e C.F. 14681630969 · REA MI-2800625
         </p>
-        <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6" aria-label="Footer">
-          <a href="https://business.ametyst.ai" target="_blank" rel="noopener noreferrer" className={linkClass}>
-            Sign in
-          </a>
-          <a href="/skill.md" className={linkClass}>
-            Setup guide for agents
-          </a>
-          <a href="https://x.com/ametyst_ai" target="_blank" rel="noopener noreferrer" className={linkClass} aria-label="X">
-            X
-          </a>
-          <a
-            href="https://www.linkedin.com/company/89660894/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-            aria-label="LinkedIn"
-          >
-            LinkedIn
-          </a>
-        </nav>
       </div>
     </footer>
   );

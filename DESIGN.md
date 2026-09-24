@@ -71,7 +71,7 @@ Rules that make it look like Ametyst:
 |---|---|---|
 | Page gutter | `section-x` = `px-6 md:px-12 lg:px-20 xl:px-28` | every section |
 | Content width | `max-w-6xl` (1152px), `max-w-xl` for a heading block, `max-w-3xl` for a centred CTA | every section |
-| Section rhythm | `py-16 md:py-24`, sections separated by `border-b border-border/40` | every section |
+| Section rhythm | `py-16 md:py-24`, sections separated by space only: no line between sections or above the footer (asked in review, enforced in `__tests__/page-order.test.tsx`) | every section |
 | Block gap | `gap-10 lg:gap-16` two-column, `gap-4` card grids, `space-y-20 md:space-y-28` between steps | how it works, pricing |
 | Radius | `rounded-full` buttons, pills and tabs, `rounded-lg` 8px small panels, `rounded-xl` 12px cards and frames, `rounded-[10px]` mock cards | everywhere |
 | Border | 1px `border-border`; 2px `border-accent` for a highlighted card only | cards |
@@ -80,7 +80,7 @@ Rules that make it look like Ametyst:
 
 ## Components
 
-**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom. Brand word in display face in accent. Nav links `text-sm font-medium text-fg/70`, hidden under `md`. Right side: a text link (Sign in) and one primary button (Book a call).
+**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. Two anchor links, How it works and Use cases, `text-sm font-medium text-fg/70`, hidden under `md`. Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
 
 **Button**. One class, `.btn` in `app/globals.css`: a pill (`rounded-full`), 44px tall (48px from `md`), `px-6`, Inter semibold, `text-sm` then `text-base`, 150ms colour transition, a 2px violet focus ring at 40 percent. Reference: ElevenLabs (pill, medium weight, hairline secondary), adapted to keep the violet fill.
 
@@ -91,7 +91,7 @@ Rules that make it look like Ametyst:
 
 Never stack more than two button styles in one group. Never put a shadow on a button.
 
-**Eyebrow**. Not used: violet labels above headings were removed in review. A step may carry a plain grey number, `font-mono text-sm text-muted` (`01`).
+**Eyebrow**. Not used: violet labels above headings were removed in review. Steps carry no number either.
 
 **Section heading**. Display h2, one lead paragraph `text-fg/75`. Block of `max-w-xl`.
 
@@ -103,13 +103,15 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Band**. A full-width section on `bg-accent-soft/60` for the one block that must feel different (The problem).
 
-**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. In the hero, two terminals side by side compare the same run without and with the Ametyst Agent; the agent's lines sit in `bg-term-line` blocks headed `Ametyst Agent`; the left terminal has no placeholder for the missing agent.
+**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. The Ametyst Agent block uses the title `Ametyst Agent` and, on the right, a pulsing `term-ok` dot with "watching 4 workflows": a feed of timestamped events (task, what it saw, what it did, status `fixed` in `term-ok` or `proposal` in `term-warn`). Fixes happen at night, because the agent works between runs too; proposals are new workflows (task `new workflow` in `term-accent`) built on what the team does by hand. The hero has no terminal: the side-by-side run was removed in review.
 
-**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools or a policy. Nothing boxed inside the tools card: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. The policy card follows the same rule: bare icons, limits as a plain definition list. Outcome words in `text-ok`, `text-accent` (approved after a hold), `text-deny`.
+**Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools. Nothing boxed inside: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. Spending policies are said in the text of the workspace block, not drawn: the policy card was removed in review.
 
 **Mock frame (retired)**. `components/Frames.tsx` (`AmetystApp` and the Claude, Sheets, Notion frames) drew the web app with a violet shadow. Not rendered since review round 2: the page no longer shows the web app.
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
+
+**Footer**. `components/EndStrip.tsx`, shared by the home page and the text pages. Three link columns (Product, Legal, Follow) with mono uppercase headings, then the company data line in Italian above a hairline. No brand word, no tagline, no line above it.
 
 **FAQ item**. Native `details` with `summary` in a `max-w-2xl` list, so the `+` on the right stays close to the question. Question Inter semibold, violet on hover and when open; mono `+` in accent that rotates 45 degrees when open. A one-sentence answer `text-fg/75` under it.
 

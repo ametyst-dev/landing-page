@@ -89,7 +89,9 @@ page = page
   .replaceAll('"/icon.png"', '"icon.png"')
   .replaceAll('"/providers/', '"providers/')
   .replaceAll('href="/book"', `href="${site}/book"`)
-  .replaceAll('href="/skill.md"', `href="${site}/skill.md"`);
+  .replaceAll('href="/skill.md"', `href="${site}/skill.md"`)
+  // the footer's text pages live on the site, not in the artifact
+  .replace(/href="\/(pricing|terms|refunds|privacy|contact)"/g, `href="${site}/$1"`);
 
 const leftover = [...page.matchAll(/(?:href|src)="\/(?!\/)[^"]*"/g)].map((m) => m[0]);
 if (leftover.length) console.warn("absolute paths left in the page:", [...new Set(leftover)]);
