@@ -8,16 +8,17 @@ const inter = Inter({
   display: "swap",
 });
 
-/* Same words as the hero, so search results and link previews say what the page says. */
-const TITLE = "Ametyst – The agent that looks after your workflows, all the time";
+/* Short enough to show in full: Google cuts titles at about 60 characters and
+ * descriptions at about 155, link previews at two or three lines. The large
+ * preview image is app/opengraph-image.tsx (and twitter-image.tsx for X). */
+const TITLE = "Ametyst – The agent that looks after your agent workflows";
 const DESCRIPTION =
-  "Ametyst is the agent that looks after your workflows, all the time. It fixes what breaks and, from what your team does every day, proposes new workflows for your company. Every tool with one key, inside the spending policies you set. Works with Claude Code, Codex and Cursor.";
+  "Ametyst fixes your agent workflows when they break and proposes new ones for your company. Every tool with one key, inside your spending policies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
   title: TITLE,
-  description:
-    DESCRIPTION,
+  description: DESCRIPTION,
   keywords: [
     "autonomous AI workflows",
     "agents that pay per use",
@@ -35,24 +36,13 @@ export const metadata: Metadata = {
     url: "https://ametyst.ai",
     siteName: "Ametyst",
     title: TITLE,
-    description:
-      DESCRIPTION,
-    images: [
-      {
-        url: "/icon.png",
-        width: 512,
-        height: 512,
-        alt: TITLE,
-      },
-    ],
+    description: DESCRIPTION,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     site: "@ametyst_ai",
     title: TITLE,
-    description:
-      DESCRIPTION,
-    images: ["/icon.png"],
+    description: DESCRIPTION,
   },
   icons: {
     icon: "/icon.png",
