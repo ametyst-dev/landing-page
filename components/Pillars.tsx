@@ -1,106 +1,113 @@
 import type { ReactNode } from "react";
-import { AmetystApp, AppButton, AppCard, AppTabs } from "@/components/Frames";
-import AppsAgentsCard from "@/components/AppsAgentsCard";
+import Terminal from "@/components/Terminal";
+import ToolsCard from "@/components/Providers";
 
-function SectionHeading({ index, title, lead }: { index: string; title: string; lead: ReactNode }) {
+/* What Ametyst does for your workflows, most important first, no step
+ * numbers: the Ametyst Agent, which watches them all the time and not only
+ * when a run starts, and proposes new AI workflows from what the team does in
+ * Claude Code, Codex or Cursor (terminal), then the workspace: every tool with
+ * one key and a spending policy for each workflow (tools card, policies in the
+ * text). */
+
+function StepHeading({ title, lead }: { title: string; lead: ReactNode }) {
   return (
     <div className="max-w-xl">
-      <p className="font-mono text-xs md:text-sm text-accent mb-3">{index}</p>
-      <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4" style={{ fontWeight: 900 }}>
+      <h3 className="font-headline text-3xl md:text-4xl text-fg leading-tight tracking-tight text-balance mb-4" style={{ fontWeight: 900 }}>
         {title}
-      </h2>
+      </h3>
       <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed">{lead}</p>
     </div>
   );
 }
 
-function AdminCard() {
-  return (
-    <AmetystApp page="Permissions" admin={false}>
-      <AppTabs tabs={["Policies", "Members", "Requests"]} active="Policies" />
-      <div className="space-y-2">
-        {[
-          ["GTM daily", "€5 / day · €1 / run", "3 agents"],
-          ["Research", "€20 / week", "2 agents"],
-          ["Full access", "no cap · admin only", "1 agent"],
-        ].map(([n, r, w]) => (
-          <AppCard key={n}>
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-[#0b0b0f]">{n}</span>
-              <span className="font-mono text-[9px] text-[#8a7a9f]">{w}</span>
-            </div>
-            <p className="text-[10px] text-[#8a7a9f]">{r}</p>
-          </AppCard>
-        ))}
-        <AppCard className="border-dashed border-[#7a1fff]">
-          <p className="text-[9px] text-[#8a7a9f]">Access request · 2 min ago</p>
-          <p className="text-[10px] text-[#0b0b0f]">MB's agent requests access on “GTM daily”</p>
-          <div className="mt-1.5 flex gap-1.5"><AppButton>Approve</AppButton><AppButton secondary>Refuse</AppButton></div>
-        </AppCard>
-      </div>
-    </AmetystApp>
-  );
-}
+/* The agent's feed over a few days, with no title or status line: the block
+ * heading says whose it is. Two fixes, made at night when nothing is running,
+ * each saying what changed under the workflow and what Ametyst changed. Two
+ * proposals: AI workflows built on what the team keeps doing by hand in its
+ * agent, which is what landed in the demo calls. */
+const FEED: { when: string; task: string; what: string; how: string; status: "fixed" | "proposal" }[] = [
+  {
+    when: "Mon 22:40",
+    task: "event-crm",
+    what: "Granola renamed the folder your calls land in.",
+    how: "Pointed the workflow at the new folder, so no call is skipped.",
+    status: "fixed",
+  },
+  {
+    when: "Tue 03:12",
+    task: "competitor-ads",
+    what: "The ads source changed the format of its results.",
+    how: "Changed how the workflow reads them before the 09:00 run.",
+    status: "fixed",
+  },
+  {
+    when: "Wed 18:30",
+    task: "new workflow",
+    what: "In Claude Code, your sales team researched 14 companies by hand this week, with the same steps each time.",
+    how: "A workflow can write the brief for every new lead in Notion. Build it?",
+    status: "proposal",
+  },
+  {
+    when: "Thu 16:20",
+    task: "new workflow",
+    what: "In Cursor, your engineers wrote release notes from merged pull requests 6 times this month.",
+    how: "A workflow can draft them from GitHub at every release. Build it?",
+    status: "proposal",
+  },
+];
 
-function AgentCard() {
+const STATUS = {
+  fixed: "text-term-ok",
+  proposal: "text-term-warn",
+} as const;
+
+function AgentTerminal() {
   return (
-    <AmetystApp page="Ametyst Agent" admin={false}>
-      <div className="mb-2 grid grid-cols-2 gap-2">
-        <AppCard>
-          <p className="text-[9px] text-[#8a7a9f]">Agent credit · this month</p>
-          <p className="text-[13px] font-bold text-[#0b0b0f]">€9.40 <span className="text-[9px] font-normal text-[#8a7a9f]">left of €15</span></p>
-          <div className="mt-1 h-1 w-full rounded-full bg-[#efe8ff]"><div className="h-1 w-[63%] rounded-full bg-[#7a1fff]" /></div>
-        </AppCard>
-        <AppCard>
-          <p className="text-[9px] text-[#8a7a9f]">Watching</p>
-          <p className="text-[13px] font-bold text-[#0b0b0f]">4 tasks</p>
-          <p className="text-[9px] text-[#8a7a9f]">2 fixed · 1 proposal this week</p>
-        </AppCard>
-      </div>
-      <AppCard>
-        <p className="text-[9px] text-[#8a7a9f]">You · from Claude</p>
-        <p className="text-[10px] text-[#0b0b0f]">Look at the workspace tasks. What went wrong this week?</p>
-        <p className="mt-1.5 text-[9px] text-[#7a1fff]">Ametyst Agent</p>
-        <p className="text-[10px] text-[#0b0b0f]">event-crm skipped 2 calls: the Granola folder was renamed. I pointed it at the new one and re-ran them. competitor-ads is fine, and €0.60 cheaper per run since Monday.</p>
-      </AppCard>
-      <div className="mt-2 flex items-center gap-2 rounded-[10px] border border-[#7a1fff] bg-white px-2.5 py-1.5">
-        <span className="text-[10px] text-[#7a1fff]">✦</span>
-        <span className="min-w-0 flex-1 truncate text-[10px] text-[#8a7a9f]">Ask the Ametyst Agent: “why did competitor-ads cost more this week?”</span>
-        <span className="rounded-[6px] bg-[#7a1fff] px-1.5 py-0.5 text-[9px] font-bold text-white">↵</span>
-      </div>
-    </AmetystApp>
+    <Terminal>
+      <ul className="divide-y divide-term-line">
+        {FEED.map((e) => (
+          <li key={e.when} className="grid grid-cols-[1fr_auto] sm:grid-cols-[8.5rem_1fr_auto] gap-x-4 gap-y-1 py-3 first:pt-0 last:pb-0">
+            <span>
+              <span className="block text-term-muted">{e.when}</span>
+              <span className={`block ${e.status === "proposal" ? "text-term-accent" : "text-term-fg"}`}>{e.task}</span>
+            </span>
+            <span className={`sm:order-last text-right ${STATUS[e.status]}`}>{e.status}</span>
+            <span className="col-span-2 sm:col-span-1 font-body text-[13px] md:text-sm">
+              {e.what} <span className="text-term-muted">{e.how}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </Terminal>
   );
 }
 
 export default function Pillars() {
   return (
-    <section id="how-it-works" className="section-x py-16 md:py-24 bg-bg border-b border-border/40 scroll-mt-16">
+    <section id="how-it-works" className="section-x py-16 md:py-24 bg-bg scroll-mt-16">
       <div className="max-w-6xl mx-auto space-y-20 md:space-y-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
-          <SectionHeading
-            index="01 · for your agents"
-            title="Every app and every specialized agent. One key."
-            lead={<><strong className="font-semibold text-fg">24 apps</strong> live today. <strong className="font-semibold text-fg">Specialized agents</strong> coming soon. <strong className="font-semibold text-fg">One key</strong>: no accounts, no keys on the machine.</>}
-          />
-          <AppsAgentsCard />
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
-          <div className="lg:order-2">
-            <SectionHeading
-              index="02 · you in control"
-              title="You set the rules. The work gets shared."
-              lead={<><strong className="font-semibold text-fg">Policies</strong> say who can spend, how much, on what. An agent asks, <strong className="font-semibold text-fg">you approve</strong>. Build a task once, <strong className="font-semibold text-fg">the whole team runs it</strong>.</>}
+        <h2 className="max-w-2xl mx-auto text-center -mb-4 md:-mb-10 font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance" style={{ fontWeight: 900 }}>
+          How Ametyst keeps your workflows running.
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center [&>*]:min-w-0">
+          <div className="lg:col-span-5">
+            <StepHeading
+              title="The Ametyst Agent watches your workflows, all the time."
+              lead={<>Not only when a run starts. When a tool changes under a workflow, it <strong className="font-semibold text-fg">fixes the workflow</strong> before the next run and tells you why. From what your team does every day in Claude Code, Codex or Cursor, it <strong className="font-semibold text-fg">proposes new AI workflows</strong> built for your company. You ask it from the agent you already use.</>}
             />
           </div>
-          <div className="lg:order-1"><AdminCard /></div>
+          <div className="lg:col-span-7"><AgentTerminal /></div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center [&>*]:min-w-0">
-          <SectionHeading
-            index="03 · on your side"
-            title="The Ametyst Agent. Always connected."
-            lead={<>Our agent, inside your workspace. <strong className="font-semibold text-fg">Ask it anything</strong>, from your own agent or from the app. It tells you <strong className="font-semibold text-fg">what went wrong</strong>, fixes what breaks, proposes <strong className="font-semibold text-fg">what to build next</strong>.</>}
-          />
-          <AgentCard />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center [&>*]:min-w-0">
+          <div className="lg:col-span-4 lg:order-2">
+            <StepHeading
+              title="One workspace: every tool, and a policy for each workflow."
+              lead={<>The tools you already use, the LLMs and <strong className="font-semibold text-fg">50+ external providers</strong>, with one key. Ametyst pays per call: no accounts to open, no keys on your machine. Each workflow gets its own <strong className="font-semibold text-fg">spending policy</strong>: how much a run can spend, how much a day, and which tools it can call.</>}
+            />
+          </div>
+          <div className="lg:col-span-8 lg:order-1"><ToolsCard /></div>
         </div>
       </div>
     </section>

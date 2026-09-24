@@ -20,6 +20,13 @@
 4. Use only Tailwind semantic color aliases (`bg-bg`, `text-fg`, `text-muted`, `border-border`, `bg-btn-bg`, `text-btn-fg`) — never hardcode hex values
 5. Update `docs/README.md` to list the new component
 
+## How to run a design review on a branch
+1. `git checkout -b preview/<topic>` from `main`
+2. Make the changes, run `npm test`
+3. `npm run snapshot` (add `-- --no-build` to reuse the last build), then publish `snapshot/index.html` as a Claude artifact with root `snapshot/` and the files listed in `snapshot/files.json`; republish to the same URL on every round
+4. Reviewers comment on the artifact page; apply the comments in `components/`, commit, snapshot, republish
+5. Open the PR to `main` when the review is done. The artifact never writes to the branch
+
 ## How to add a new API route
 1. Create `app/api/<endpoint-name>/route.ts`
 2. Validate all inputs server-side before processing
@@ -45,6 +52,7 @@
 - To add a new semantic color token: add the variable in `globals.css` AND add the alias in `tailwind.config.ts`
 - Light mode only — do not add `dark:` variants unless the design direction explicitly changes
 - The page uses two font families: `font-body` (Inter) for body text and `font-headline` (Neue Machina) for headings
+- Read `DESIGN.md` before any UI work; when a token or pattern changes, update it in the same commit
 
 ## What NOT to do
 - ❌ Never commit `.env*.local`, `.env`, or any file containing API keys or secrets

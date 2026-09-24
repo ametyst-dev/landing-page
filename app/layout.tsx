@@ -8,11 +8,16 @@ const inter = Inter({
   display: "swap",
 });
 
+/* Same words as the hero, so search results and link previews say what the page says. */
+const TITLE = "Ametyst – The agent that looks after your workflows, all the time";
+const DESCRIPTION =
+  "Ametyst is the agent that looks after your workflows, all the time. It fixes what breaks and, from what your team does every day, proposes new workflows for your company. Every tool with one key, inside the spending policies you set. Works with Claude Code, Codex and Cursor.";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
-  title: "Ametyst – You have the agents. Let them work.",
+  title: TITLE,
   description:
-    "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+    DESCRIPTION,
   keywords: [
     "autonomous AI workflows",
     "agents that pay per use",
@@ -29,24 +34,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.ai",
     siteName: "Ametyst",
-    title: "Ametyst – You have the agents. Let them work.",
+    title: TITLE,
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      DESCRIPTION,
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst – You have the agents. Let them work.",
+        alt: TITLE,
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_ai",
-    title: "Ametyst – You have the agents. Let them work.",
+    title: TITLE,
     description:
-      "You have the agents. Let them work. Ametyst gives your agents on Claude, Codex or Cursor every app and every other specialized agent they need, and gives you the limits and the visibility that keep their work sharp.",
+      DESCRIPTION,
     images: ["/icon.png"],
   },
   icons: {

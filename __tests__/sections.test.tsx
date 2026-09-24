@@ -4,34 +4,45 @@ import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
+import Pillars from "@/components/Pillars";
+import RealTasks from "@/components/RealTasks";
 
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
-  it("links Book a call to /book and Sign in to the web app", () => {
+  it("has the two CTAs and no section links, Sign in or Pricing", () => {
     render(<TopBar />);
-    expect(screen.getByRole("link", { name: "Book a call" })).toHaveAttribute("href", "/book");
-    expect(screen.getByRole("link", { name: "Sign in" })).toHaveAttribute(
-      "href",
-      "https://business.ametyst.ai"
-    );
-  });
-});
-
-describe("Hero", () => {
-  it("renders the locked headline, the credits line and both CTAs", () => {
-    render(<Hero />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "You have the agents.Let them work."
-    );
-    expect(screen.getByText("€10 in usage credits")).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Book a call, we set up your first workflow" })
-    ).toHaveAttribute("href", "/book");
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
+    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    expect(screen.queryByRole("link", { name: "How it works" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "Use cases" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "Pricing" })).toBeNull();
+  });
+});
+
+describe("Hero", () => {
+  it("renders the angle 3 headline, both CTAs and the three harnesses", () => {
+    render(<Hero />);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Your agent workflows break quietly."
+    );
+    expect(screen.queryByText(/usage credits/)).toBeNull();
+    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    for (const h of ["Claude Code", "Codex", "Cursor"]) expect(screen.getByText(h)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
+      "href",
+      "https://business.ametyst.ai"
+    );
+  });
+
+  it("has no demo under it", () => {
+    render(<Hero />);
+    expect(screen.queryByText(/Without the Ametyst Agent/)).toBeNull();
+    expect(screen.queryByText(/With the Ametyst Agent/)).toBeNull();
   });
 
   it("never says wallet", () => {
@@ -63,5 +74,30 @@ describe("Cta", () => {
     const { container } = render(<Cta />);
     expect(container.querySelector("form")).toBeNull();
     expect(container.querySelector("input")).toBeNull();
+  });
+});
+
+describe("Pillars", () => {
+  it("has two blocks, the Ametyst Agent first, then the workspace, with no step numbers and no policy card", () => {
+    const { container } = render(<Pillars />);
+    const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
+    expect(titles).toEqual([
+      "The Ametyst Agent watches your workflows, all the time.",
+      "One workspace: every tool, and a policy for each workflow.",
+    ]);
+    for (const n of ["01", "02", "03"]) expect(screen.queryByText(n)).toBeNull();
+    expect(container.textContent).not.toMatch(/in every run/i);
+    for (const app of ["Notion", "Google Drive", "Granola", "Slack", "GitHub"]) expect(screen.getByText(app)).toBeInTheDocument();
+    expect(screen.getByText(/spending policy/)).toBeInTheDocument();
+    expect(screen.queryByText("denied")).toBeNull();
+  });
+});
+
+describe("RealTasks", () => {
+  it("shows four workflows with one result line each and no In / Out labels", () => {
+    const { container } = render(<RealTasks />);
+    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(4);
+    expect(container.querySelector("dt")).toBeNull();
+    expect(screen.getByText("Sales team")).toBeInTheDocument();
   });
 });

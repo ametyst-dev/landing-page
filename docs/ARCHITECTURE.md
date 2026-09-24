@@ -30,18 +30,26 @@ landing-page/
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
-│   ├── TopBar.tsx              # Fixed header / nav
-│   ├── Hero.tsx                # Above-the-fold hero (client component)
-│   ├── ChatDemo.tsx            # Animated terminal demo (client component, scripted)
-│   ├── Problem.tsx             # Two-column problem statement
-│   ├── Personas.tsx            # Two-column personas (champion / buyer)
-│   ├── HowItWorks.tsx          # 3 wallet steps
-│   ├── Waitlist.tsx            # Final CTA: /book link + email capture form (client component)
-│   └── EndStrip.tsx            # Footer / bottom strip
+│   ├── TopBar.tsx              # Fixed header: wordmark, Talk to the team, Create your workspace
+│   ├── Hero.tsx                # Above-the-fold hero: headline, subheadline, two CTAs, harness logos
+│   ├── Terminal.tsx            # Flat terminal window used by the Ametyst Agent block
+│   ├── Problem.tsx             # Three pains on the tinted band
+│   ├── Pillars.tsx             # Two blocks: the Ametyst Agent, the workspace (tools + spending policies)
+│   ├── Providers.tsx           # Tool data (apps, providers), ToolIcon, ToolsCard
+│   ├── RealTasks.tsx           # Social proof: four workflow cards with cost per run
+│   ├── Faq.tsx                 # Six native details items
+│   ├── Cta.tsx                 # Closing band with the two CTAs
+│   ├── LegalPage.tsx           # Shell and typography helpers for the text pages
+│   ├── Pricing.tsx             # PlansTable, used by /pricing
+│   └── EndStrip.tsx            # Footer: legal links, X and LinkedIn marks, company data line
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks
 ├── public/                     # Static assets served at /
+├── scripts/
+│   └── snapshot.mjs            # npm run snapshot: static copy of / for design-review artifacts
+├── snapshot/                   # (gitignored) output of the snapshot script
 ├── docs/                       # This documentation folder
+├── DESIGN.md                   # Design system, Refero DESIGN.md format
 ├── tailwind.config.ts          # Tailwind theme: color aliases + font families
 ├── next.config.js              # Next.js config (standalone output)
 ├── tsconfig.json               # TypeScript config
@@ -54,3 +62,4 @@ landing-page/
 - **Booking**: "Book a discovery call" CTAs (TopBar, Hero, Waitlist) link to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
 - **Skill files**: static `.md` files in `public/` remain on disk and are served at the site root, but are intentionally NOT linked anywhere in the UI (product links removed in landing v2 until the product-ready signal)
 - **Fonts**: Inter is loaded via `next/font/google` in `layout.tsx`; Neue Machina is loaded via `@font-face` in `globals.css` pointing to an external CDN
+- **Design review snapshot**: `npm run snapshot` runs `next build`, takes the prerendered `.next/server/app/index.html`, copies `.next/static` to `snapshot/assets/static` (the artifact service reserves `_`-prefixed names), rewrites every absolute path to a relative one, downloads Neue Machina next to the Inter files, drops the legacy polyfills bundle, and appends a preview strip with branch and commit. The result is published as a Claude artifact with `snapshot/` as root and `snapshot/files.json` as the file list. One-way: comments on the artifact come back to a person or an agent who edits the components and republishes
