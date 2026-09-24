@@ -14,9 +14,6 @@ export default function TopBar() {
             Ametyst
           </a>
           <nav className="flex items-center gap-2 sm:gap-3" aria-label="Main">
-            <a href="#how-it-works" className={navLinkClass}>
-              How it works
-            </a>
             <a href="#tasks" className={`${navLinkClass} mr-2 lg:mr-4`}>
               Use cases
             </a>

@@ -30,7 +30,7 @@ landing-page/
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
-│   ├── TopBar.tsx              # Fixed header: wordmark, How it works, Use cases, Talk to the team, Create your workspace
+│   ├── TopBar.tsx              # Fixed header: wordmark, Use cases, Talk to the team, Create your workspace
 │   ├── Hero.tsx                # Above-the-fold hero: headline, subheadline, two CTAs, harness logos
 │   ├── Terminal.tsx            # Flat terminal window used by the Ametyst Agent block
 │   ├── Problem.tsx             # Three pains on the tinted band

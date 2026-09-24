@@ -10,14 +10,14 @@ import RealTasks from "@/components/RealTasks";
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
-  it("has the two CTAs, the two section links and no Sign in or Pricing", () => {
+  it("has the two CTAs, the Use cases link and no How it works, Sign in or Pricing", () => {
     render(<TopBar />);
     expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
     expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
-    expect(screen.getByRole("link", { name: "How it works" })).toHaveAttribute("href", "#how-it-works");
+    expect(screen.queryByRole("link", { name: "How it works" })).toBeNull();
     expect(screen.getByRole("link", { name: "Use cases" })).toHaveAttribute("href", "#tasks");
     expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
     expect(screen.queryByRole("link", { name: "Pricing" })).toBeNull();

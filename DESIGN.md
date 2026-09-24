@@ -80,7 +80,7 @@ Rules that make it look like Ametyst:
 
 ## Components
 
-**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. Two anchor links, How it works and Use cases, `text-sm font-medium text-fg/70`, hidden under `md`. Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
+**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. One anchor link, Use cases, `text-sm font-medium text-fg/70`, hidden under `md` (How it works was removed in review). Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
 
 **Button**. One class, `.btn` in `app/globals.css`: a pill (`rounded-full`), 44px tall (48px from `md`), `px-6`, Inter semibold, `text-sm` then `text-base`, 150ms colour transition, a 2px violet focus ring at 40 percent. Reference: ElevenLabs (pill, medium weight, hairline secondary), adapted to keep the violet fill.
 
