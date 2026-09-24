@@ -76,7 +76,7 @@ function ToolItem({ t }: { t: Tool }) {
   return (
     <li className="flex items-center gap-2.5 min-w-0">
       <ToolIcon slug={t.slug} size="md" bare />
-      <span className="truncate font-body text-sm font-medium text-fg">{t.name}</span>
+      <span className="min-w-0 font-body text-sm font-medium leading-snug text-fg">{t.name}</span>
     </li>
   );
 }

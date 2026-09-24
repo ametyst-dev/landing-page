@@ -8,11 +8,16 @@ const inter = Inter({
   display: "swap",
 });
 
+/* Same words as the hero, so search results and link previews say what the page says. */
+const TITLE = "Ametyst – The agent that looks after your workflows, all the time";
+const DESCRIPTION =
+  "Ametyst is the agent that looks after your workflows, all the time. It fixes what breaks and, from what your team does every day, proposes new workflows for your company. Every tool with one key, inside the spending policies you set. Works with Claude Code, Codex and Cursor.";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
-  title: "Ametyst – The agent that sits in every run of your workflows",
+  title: TITLE,
   description:
-    "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
+    DESCRIPTION,
   keywords: [
     "autonomous AI workflows",
     "agents that pay per use",
@@ -29,24 +34,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ametyst.ai",
     siteName: "Ametyst",
-    title: "Ametyst – The agent that sits in every run of your workflows",
+    title: TITLE,
     description:
-      "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
+      DESCRIPTION,
     images: [
       {
         url: "/icon.png",
         width: 512,
         height: 512,
-        alt: "Ametyst – The agent that sits in every run of your workflows",
+        alt: TITLE,
       },
     ],
   },
   twitter: {
     card: "summary",
     site: "@ametyst_ai",
-    title: "Ametyst – The agent that sits in every run of your workflows",
+    title: TITLE,
     description:
-      "Build a workflow once. Your agents run it on their own, inside the limits you set. Ametyst gives them the tools they need, keeps them inside your spending policies, and keeps them sharp over time. Works with Claude Code, Codex and Cursor.",
+      DESCRIPTION,
     images: ["/icon.png"],
   },
   icons: {
