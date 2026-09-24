@@ -4,9 +4,10 @@ import ToolsCard from "@/components/Providers";
 
 /* What Ametyst does for your workflows, most important first, no step
  * numbers: the Ametyst Agent, which watches them all the time and not only
- * when a run starts, and proposes new workflows from what the team does in
- * the workspace (terminal), then the workspace: every tool with one key and a
- * spending policy for each workflow (tools card, policies in the text). */
+ * when a run starts, and proposes new AI workflows from what the team does in
+ * Claude Code, Codex or Cursor (terminal), then the workspace: every tool with
+ * one key and a spending policy for each workflow (tools card, policies in the
+ * text). */
 
 function StepHeading({ title, lead }: { title: string; lead: ReactNode }) {
   return (
@@ -19,36 +20,38 @@ function StepHeading({ title, lead }: { title: string; lead: ReactNode }) {
   );
 }
 
-/* The agent's feed over a few days. The fixes happen at night, when nothing
- * is running; the proposals are new workflows built on what the team does by
- * hand, which is what landed in the demo calls. */
+/* The agent's feed over a few days, with no title or status line: the block
+ * heading says whose it is. Two fixes, made at night when nothing is running,
+ * each saying what changed under the workflow and what Ametyst changed. Two
+ * proposals: AI workflows built on what the team keeps doing by hand in its
+ * agent, which is what landed in the demo calls. */
 const FEED: { when: string; task: string; what: string; how: string; status: "fixed" | "proposal" }[] = [
   {
     when: "Mon 22:40",
     task: "event-crm",
-    what: "The Granola folder was renamed.",
-    how: "Pointed the workflow at the new folder before the next run.",
+    what: "Granola renamed the folder your calls land in.",
+    how: "Pointed the workflow at the new folder, so no call is skipped.",
     status: "fixed",
   },
   {
     when: "Tue 03:12",
     task: "competitor-ads",
-    what: "Ads Library changed its response.",
-    how: "Updated the parser, so the 09:00 run lost no ads.",
+    what: "The ads source changed the format of its results.",
+    how: "Changed how the workflow reads them before the 09:00 run.",
     status: "fixed",
   },
   {
     when: "Wed 18:30",
     task: "new workflow",
-    what: "After every demo call, your team copies the Granola notes into Notion by hand.",
-    how: "A workflow can do it after each call. Build it?",
+    what: "In Claude Code, your sales team researched 14 companies by hand this week, with the same steps each time.",
+    how: "A workflow can write the brief for every new lead in Notion. Build it?",
     status: "proposal",
   },
   {
     when: "Thu 16:20",
     task: "new workflow",
-    what: "Every Monday someone collects last week's signups from Drive and posts them in Slack.",
-    how: "A workflow can post the update for you. Build it?",
+    what: "In Cursor, your engineers wrote release notes from merged pull requests 6 times this month.",
+    how: "A workflow can draft them from GitHub at every release. Build it?",
     status: "proposal",
   },
 ];
@@ -60,15 +63,7 @@ const STATUS = {
 
 function AgentTerminal() {
   return (
-    <Terminal
-      title="Ametyst Agent"
-      aside={
-        <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-term-ok animate-pulse motion-reduce:animate-none" aria-hidden="true" />
-          watching 4 workflows
-        </span>
-      }
-    >
+    <Terminal>
       <ul className="divide-y divide-term-line">
         {FEED.map((e) => (
           <li key={e.when} className="grid grid-cols-[1fr_auto] sm:grid-cols-[8.5rem_1fr_auto] gap-x-4 gap-y-1 py-3 first:pt-0 last:pb-0">
@@ -99,7 +94,7 @@ export default function Pillars() {
           <div className="lg:col-span-5">
             <StepHeading
               title="The Ametyst Agent watches your workflows, all the time."
-              lead={<>Not only when a run starts. When a tool changes under a workflow, it <strong className="font-semibold text-fg">fixes the workflow</strong> before the next run and tells you why. From what your team does every day in the workspace, it <strong className="font-semibold text-fg">proposes new workflows</strong> built for your company. You ask it from the agent you already use.</>}
+              lead={<>Not only when a run starts. When a tool changes under a workflow, it <strong className="font-semibold text-fg">fixes the workflow</strong> before the next run and tells you why. From what your team does every day in Claude Code, Codex or Cursor, it <strong className="font-semibold text-fg">proposes new AI workflows</strong> built for your company. You ask it from the agent you already use.</>}
             />
           </div>
           <div className="lg:col-span-7"><AgentTerminal /></div>

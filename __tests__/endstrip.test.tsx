@@ -38,6 +38,12 @@ describe("EndStrip", () => {
     expect(screen.getByText(/P\.IVA e C\.F\. 14681630969/)).toBeInTheDocument();
   });
 
+  it("has no Product links, only the legal links and the two marks", () => {
+    render(<EndStrip />);
+    for (const name of ["Sign in", "Book a call", "Setup guide for agents"]) expect(screen.queryByRole("link", { name })).toBeNull();
+    expect(screen.getAllByRole("link")).toHaveLength(7);
+  });
+
   it("has no brand block, no tagline and no line above it", () => {
     const { container } = render(<EndStrip />);
     expect(container.textContent).not.toContain("You have the agents");

@@ -80,7 +80,7 @@ Rules that make it look like Ametyst:
 
 ## Components
 
-**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. One anchor link, Use cases, `text-sm font-medium text-fg/70`, hidden under `md` (How it works was removed in review). Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
+**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. No section links (How it works and Use cases were removed in review). Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
 
 **Button**. One class, `.btn` in `app/globals.css`: a pill (`rounded-full`), 44px tall (48px from `md`), `px-6`, Inter semibold, `text-sm` then `text-base`, 150ms colour transition, a 2px violet focus ring at 40 percent. Reference: ElevenLabs (pill, medium weight, hairline secondary), adapted to keep the violet fill.
 
@@ -103,7 +103,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Band**. A full-width section on `bg-accent-soft/60` for the one block that must feel different (The problem).
 
-**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. The Ametyst Agent block uses the title `Ametyst Agent` and, on the right, a pulsing `term-ok` dot with "watching 4 workflows": a feed of timestamped events (task, what it saw, what it did, status `fixed` in `term-ok` or `proposal` in `term-warn`). Fixes happen at night, because the agent works between runs too; proposals are new workflows (task `new workflow` in `term-accent`) built on what the team does by hand. The hero has no terminal: the side-by-side run was removed in review.
+**Terminal**. `components/Terminal.tsx`: `rounded-xl border border-term-line bg-term-bg`, a title bar with the three macOS window dots in colour (`term-red`, `term-yellow`, `term-green`) and no path, no buttons, mono 12 to 13px, an optional footer. No shadow, no glow. Shows what the agent does. The Ametyst Agent block has no title and no status line, only the dots: a feed of timestamped events (task, what it saw, what it did, status `fixed` in `term-ok` or `proposal` in `term-warn`). Fixes happen at night, because the agent works between runs too; proposals are new AI workflows (task `new workflow` in `term-accent`) built on what the team keeps doing by hand in Claude Code, Codex or Cursor. The hero has no terminal: the side-by-side run was removed in review.
 
 **Clean card for what a person sets**. A card (`bg-surface`, hairline) holding tools. Nothing boxed inside: bare 20px favicons (`ToolIcon bare`) next to the name, one hairline between groups. Spending policies are said in the text of the workspace block, not drawn: the policy card was removed in review.
 
@@ -111,7 +111,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
 
-**Footer**. `components/EndStrip.tsx`, shared by the home page and the text pages. Three link columns (Product, Legal, Follow) with mono uppercase headings, then the company data line in Italian above a hairline. No brand word, no tagline, no line above it.
+**Footer**. `components/EndStrip.tsx`, shared by the home page and the text pages, kept small. One row: the legal links (Pricing, Terms, Refunds, Privacy, Contact) on the left, the X and LinkedIn marks (18px, `text-fg/60`, Simple Icons paths) on the right. Under a hairline, the company data line in Italian. No headings, no Product links, no brand word, no tagline, no line above it.
 
 **FAQ item**. Native `details` with `summary` in a `max-w-2xl` list, so the `+` on the right stays close to the question. Question Inter semibold, violet on hover and when open; mono `+` in accent that rotates 45 degrees when open. A one-sentence answer `text-fg/75` under it.
 

@@ -30,7 +30,7 @@ landing-page/
 │   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
 │   └── page.tsx                # Main page: imports and orders all section components
 ├── components/
-│   ├── TopBar.tsx              # Fixed header: wordmark, Use cases, Talk to the team, Create your workspace
+│   ├── TopBar.tsx              # Fixed header: wordmark, Talk to the team, Create your workspace
 │   ├── Hero.tsx                # Above-the-fold hero: headline, subheadline, two CTAs, harness logos
 │   ├── Terminal.tsx            # Flat terminal window used by the Ametyst Agent block
 │   ├── Problem.tsx             # Three pains on the tinted band
@@ -41,7 +41,7 @@ landing-page/
 │   ├── Cta.tsx                 # Closing band with the two CTAs
 │   ├── LegalPage.tsx           # Shell and typography helpers for the text pages
 │   ├── Pricing.tsx             # PlansTable, used by /pricing
-│   └── EndStrip.tsx            # Footer: Product, Legal, Follow, company data line
+│   └── EndStrip.tsx            # Footer: legal links, X and LinkedIn marks, company data line
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks
 ├── public/                     # Static assets served at /
