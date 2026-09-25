@@ -17,11 +17,20 @@ export default function RefundsPage() {
       <H2>Pay per use</H2>
       <P>There is nothing to cancel: you pay only when you choose to buy credits.</P>
 
-      <H2>Credits are not refundable</H2>
+      <H2>Credits are not refundable (business customers)</H2>
       <P>
         Credits are delivered to your workspace immediately after payment and can be used straight away, so top-ups are final.
         Credits you buy never expire, so they stay available for as long as your workspace is open. Credits included in a monthly
         plan reset at each renewal.
+      </P>
+
+      <H2>If you buy as an individual (consumer)</H2>
+      <P>
+        You have 14 days from payment to change your mind, no reason needed: write to{" "}
+        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A> and we refund the credits you have not used, at the price you
+        paid, to the original payment method within 14 days. Credits you have already used are not refunded, because you asked
+        us to deliver them immediately. For a monthly plan, the first month is refunded in proportion to the days not yet
+        elapsed.
       </P>
 
       <H2>When we refund</H2>
