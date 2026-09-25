@@ -17,11 +17,18 @@ export default function RefundsPage() {
       <H2>Pay per use</H2>
       <P>There is nothing to cancel: you pay only when you choose to buy credits.</P>
 
-      <H2>Credits are not refundable</H2>
+      <H2>Credits are not refundable (business customers)</H2>
       <P>
         Credits are delivered to your workspace immediately after payment and can be used straight away, so top-ups are final.
         Credits you buy never expire, so they stay available for as long as your workspace is open. Credits included in a monthly
         plan reset at each renewal.
+      </P>
+
+      <H2>If you buy as an individual (consumer)</H2>
+      <P>
+        The same applies. Credits are digital content delivered immediately at your express request, given when you complete the
+        purchase, so the 14-day right of withdrawal does not apply and top-ups are final. Billing errors are always corrected,
+        see below.
       </P>
 
       <H2>When we refund</H2>

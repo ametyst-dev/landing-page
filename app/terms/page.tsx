@@ -15,11 +15,15 @@ export default function TermsPage() {
         <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>.
       </P>
 
-      <H2>2. Business use only</H2>
+      <H2>2. Who can use the Service</H2>
       <P>
-        The Service is offered exclusively to companies, professionals and other organisations acting for purposes related to
-        their trade, business or profession (&quot;Customer&quot;). It is not offered to consumers. By creating a workspace you
-        confirm that you act in a business capacity and that you have authority to bind the organisation you represent.
+        The Service is offered to companies, professionals and other organisations acting for purposes related to their trade,
+        business or profession (&quot;Business Customers&quot;), and to individuals acting for purposes outside their trade,
+        business or profession (&quot;Consumers&quot;). Business Customers and Consumers are together the &quot;Customer&quot;.
+        If you create a workspace on behalf of an organisation you confirm that you have authority to bind it. If you are a
+        Consumer, the mandatory protections of the law of your country of residence, including the Italian Consumer Code
+        (Legislative Decree 206/2005) where applicable, prevail over anything in these Terms that would reduce them; clause 18
+        says how these Terms apply to you.
       </P>
 
       <H2>3. The Service</H2>
@@ -170,7 +174,34 @@ export default function TermsPage() {
       </P>
 
       <H2>17. Governing law and jurisdiction</H2>
-      <P>Italian law. Exclusive jurisdiction: the Court of Milan.</P>
+      <P>
+        Italian law. For Business Customers, exclusive jurisdiction: the Court of Milan. For Consumers, the courts of the
+        Consumer&apos;s place of residence or domicile, and any mandatory choice-of-law rules of the Consumer&apos;s country
+        apply.
+      </P>
+
+      <H2>18. Consumers: withdrawal and how these Terms apply to you</H2>
+      <P>
+        <strong>18.1 No right of withdrawal.</strong> Credits are digital content delivered to your workspace immediately
+        after payment. By completing a purchase you expressly request immediate delivery and acknowledge that, once the credits
+        are delivered, you lose your right of withdrawal under article 59(o) of the Italian Consumer Code and the corresponding
+        rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. The credits
+        included in a Plan are delivered immediately at the start of each month on the same basis. Billing errors are always
+        corrected (see the <A href="/refunds">Refund Policy</A>).
+      </P>
+      <P>
+        <strong>18.2 Plans.</strong> A monthly Plan renews automatically; you can cancel at any time from Settings, with effect
+        at the end of the paid month. We remind you by email before each renewal where the law requires it.
+      </P>
+      <P>
+        <strong>18.3 Clauses that do not apply to Consumers.</strong> Clause 14 (liability limits) does not limit our liability
+        towards Consumers for damages caused by our fault; clause 9 applies to Consumers only to the extent permitted by law;
+        clause 16 changes apply to Consumers only from the first renewal or purchase after the notice.
+      </P>
+      <P>
+        <strong>18.4 Disputes.</strong> You can contact us at <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>; if we
+        cannot resolve a dispute, you may use the out-of-court dispute resolution bodies available in your country of residence.
+      </P>
     </LegalPage>
   );
 }

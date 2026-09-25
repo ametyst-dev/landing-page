@@ -14,8 +14,8 @@ export default function PrivacyPage() {
 
       <H2>Who this covers</H2>
       <P>
-        Ametyst is a business-to-business service. We process personal data of the people who use it on behalf of our customers
-        (workspace admins and members), of people who contact us, and of visitors to this website.
+        We process personal data of the people who use Ametyst (workspace admins and members acting for a company, and
+        individuals who use it for themselves), of people who contact us, and of visitors to this website.
       </P>
 
       <H2>What we hold and why</H2>
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             "Contract; legitimate interest",
           ],
           [
-            "Company billing details, VAT number, payment and invoice history",
+            "Billing details: company name and VAT number, or, for individuals, name, address and Italian tax code (codice fiscale), plus payment and invoice history",
             "Billing, invoicing, tax and accounting duties",
             "Contract; legal obligation",
           ],
