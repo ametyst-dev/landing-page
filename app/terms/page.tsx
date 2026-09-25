@@ -182,12 +182,12 @@ export default function TermsPage() {
 
       <H2>18. Consumers: withdrawal and how these Terms apply to you</H2>
       <P>
-        <strong>18.1 Right of withdrawal.</strong> If you are a Consumer, you may withdraw from a purchase of credits within 14
-        days of payment, without giving a reason, by writing to <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>.
-        Because credits are delivered to your workspace immediately, by completing the purchase you ask us to start providing
-        the Service at once and acknowledge that, for the credits you have already used, you lose the right of withdrawal; we
-        refund the credits you have not used, at the price you paid for them, to the original payment method within 14 days of
-        your request. The same applies to the first month of a Plan, in proportion to the days already elapsed.
+        <strong>18.1 No right of withdrawal.</strong> Credits are digital content delivered to your workspace immediately
+        after payment. By completing a purchase you expressly request immediate delivery and acknowledge that, once the credits
+        are delivered, you lose your right of withdrawal under article 59(o) of the Italian Consumer Code and the corresponding
+        rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. The credits
+        included in a Plan are delivered immediately at the start of each month on the same basis. Billing errors are always
+        corrected (see the <A href="/refunds">Refund Policy</A>).
       </P>
       <P>
         <strong>18.2 Plans.</strong> A monthly Plan renews automatically; you can cancel at any time from Settings, with effect

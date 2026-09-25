@@ -26,11 +26,9 @@ export default function RefundsPage() {
 
       <H2>If you buy as an individual (consumer)</H2>
       <P>
-        You have 14 days from payment to change your mind, no reason needed: write to{" "}
-        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A> and we refund the credits you have not used, at the price you
-        paid, to the original payment method within 14 days. Credits you have already used are not refunded, because you asked
-        us to deliver them immediately. For a monthly plan, the first month is refunded in proportion to the days not yet
-        elapsed.
+        The same applies. Credits are digital content delivered immediately at your express request, given when you complete the
+        purchase, so the 14-day right of withdrawal does not apply and top-ups are final. Billing errors are always corrected,
+        see below.
       </P>
 
       <H2>When we refund</H2>
