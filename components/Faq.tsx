@@ -19,10 +19,6 @@ const faqs: { q: string; a: string }[] = [
     q: "Do I need an account with each tool?",
     a: "No. One key covers 50+ models and tools, and Ametyst pays them per call.",
   },
-  {
-    q: "How does pricing work?",
-    a: "Pay per use has no fixed fee. You buy credits when you need them, priced in euro, and they don't expire while your account is open.",
-  },
 ];
 
 export default function Faq() {

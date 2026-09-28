@@ -19,7 +19,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/Terminal.tsx` — Flat dark terminal window with an optional title and aside. Not rendered today
 - `components/Providers.tsx` — Tool data and views: `APPS` (the tools the company already uses), `PROVIDERS` (live on staging, logo-verified), `ToolIcon` (used by `RouteCard`), and `ToolsCard` (not rendered today). Keep `PROVIDERS` in sync with the staging allowlist
 - `components/RealTasks.tsx` — Four workflow cards from our design partners. Not rendered today; kept for reuse
-- `components/Faq.tsx` — Six questions, one-sentence answers, native `details`, `+` on the right in a narrow list, violet when open
+- `components/Faq.tsx` — Five questions, one-sentence answers, native `details`, `+` on the right in a narrow list, violet when open
 - `components/Cta.tsx` — Final call to action ("See what your agents spend. Then spend less."): get started primary, book a demo secondary
 - `components/EndStrip.tsx` — The one footer, shared with the text pages: one row with the legal links (Pricing/Terms/Refunds/Privacy/Contact) and the X and LinkedIn marks, then a short company data line in Italian. No Product links, no brand block and no line above it. The full set art. 2250 c.c. requires on the site (share capital, single shareholder) is on `/contact`: do not remove it from there
 - `components/LegalPage.tsx` — Shell for the text pages (header with a link home, title, "Last updated", footer) plus the small typography helpers they share (`H2`, `P`, `UL`, `A`, `Table`). `LAST_UPDATED` lives here: bump it whenever Terms, Refunds or Privacy change
