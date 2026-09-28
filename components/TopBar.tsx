@@ -3,11 +3,11 @@
 export default function TopBar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full bg-bg/90 backdrop-blur border-b border-border/40">
-      <div className="w-full section-x">
-        <div className="max-w-6xl mx-auto flex items-center justify-between h-14 sm:h-16">
+      <div className="w-full px-6 md:px-8 lg:px-10">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           <a
             href="#hero"
-            className="text-2xl md:text-3xl font-headline font-bold tracking-tighter text-accent leading-none"
+            className="flex items-center h-full text-2xl md:text-3xl font-headline font-bold tracking-tighter text-accent leading-none"
           >
             Ametyst
           </a>
@@ -18,7 +18,7 @@ export default function TopBar() {
               rel="noopener noreferrer"
               className="btn btn-secondary btn-sm hidden sm:inline-flex"
             >
-              Talk to the team
+              Book a demo
             </a>
             <a
               href="https://business.ametyst.ai"
@@ -26,7 +26,7 @@ export default function TopBar() {
               rel="noopener noreferrer"
               className="btn btn-primary btn-sm"
             >
-              Create your workspace
+              Get started
             </a>
           </nav>
         </div>

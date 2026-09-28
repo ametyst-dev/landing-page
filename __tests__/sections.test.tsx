@@ -5,18 +5,18 @@ import Hero from "@/components/Hero";
 import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
 import Pillars from "@/components/Pillars";
-import RealTasks from "@/components/RealTasks";
+import Faq from "@/components/Faq";
 
 afterEach(() => cleanup());
 
 describe("TopBar", () => {
   it("has the two CTAs and no section links, Sign in or Pricing", () => {
     render(<TopBar />);
-    expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Get started" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
-    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
+    expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book");
     expect(screen.queryByRole("link", { name: "How it works" })).toBeNull();
     expect(screen.queryByRole("link", { name: "Use cases" })).toBeNull();
     expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
@@ -25,15 +25,15 @@ describe("TopBar", () => {
 });
 
 describe("Hero", () => {
-  it("renders the angle 3 headline, both CTAs and the three harnesses", () => {
+  it("renders the spend headline, both CTAs and the five harnesses", () => {
     render(<Hero />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Your agent workflows break quietly."
+      "See what every agent does with your money."
     );
     expect(screen.queryByText(/usage credits/)).toBeNull();
-    expect(screen.getByRole("link", { name: "Talk to the team" })).toHaveAttribute("href", "/book");
-    for (const h of ["Claude Code", "Codex", "Cursor"]) expect(screen.getByText(h)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Create your workspace" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book");
+    for (const h of ["Claude Code", "Codex", "Cursor", "OpenClaw", "OpenCode"]) expect(screen.getByText(h)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Get started" })).toHaveAttribute(
       "href",
       "https://business.ametyst.ai"
     );
@@ -43,6 +43,11 @@ describe("Hero", () => {
     render(<Hero />);
     expect(screen.queryByText(/Without the Ametyst Agent/)).toBeNull();
     expect(screen.queryByText(/With the Ametyst Agent/)).toBeNull();
+  });
+
+  it("does not list Hermes Agent", () => {
+    render(<Hero />);
+    expect(screen.queryByText(/Hermes/)).toBeNull();
   });
 
   it("never says wallet", () => {
@@ -78,26 +83,22 @@ describe("Cta", () => {
 });
 
 describe("Pillars", () => {
-  it("has two blocks, the Ametyst Agent first, then the workspace, with no step numbers and no policy card", () => {
-    const { container } = render(<Pillars />);
+  it("has two blocks, the spend dashboard first, then the cheaper route, with no step numbers in the titles", () => {
+    render(<Pillars />);
     const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
-    expect(titles).toEqual([
-      "The Ametyst Agent watches your workflows, all the time.",
-      "One workspace: every tool, and a policy for each workflow.",
-    ]);
-    for (const n of ["01", "02", "03"]) expect(screen.queryByText(n)).toBeNull();
-    expect(container.textContent).not.toMatch(/in every run/i);
-    for (const app of ["Notion", "Google Drive", "Granola", "Slack", "GitHub"]) expect(screen.getByText(app)).toBeInTheDocument();
+    expect(titles).toEqual(["AI spend by agent.", "Same work, cheaper route."]);
     expect(screen.getByText(/spending policy/)).toBeInTheDocument();
-    expect(screen.queryByText("denied")).toBeNull();
+    for (const view of ["Overview", "Agents", "People", "Policies"]) expect(screen.getByText(view)).toBeInTheDocument();
+    for (const option of ["Exa", "Parallel", "Hunter", "Claude Haiku 4.5"]) expect(screen.getByText(option)).toBeInTheDocument();
+    expect(screen.getAllByText("■ Selected")).toHaveLength(1);
   });
 });
 
-describe("RealTasks", () => {
-  it("shows four workflows with one result line each and no In / Out labels", () => {
-    const { container } = render(<RealTasks />);
-    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(4);
-    expect(container.querySelector("dt")).toBeNull();
-    expect(screen.getByText("Sales team")).toBeInTheDocument();
+describe("Faq", () => {
+  it("names OpenCode, not Hermes Agent, and keeps the dashboard answer short", () => {
+    const { container } = render(<Faq />);
+    expect(container.textContent).toContain("OpenClaw, OpenCode and any MCP client");
+    expect(container.textContent).not.toMatch(/Hermes/);
+    expect(screen.getByText("What every person and agent spends through Ametyst, call by call.")).toBeInTheDocument();
   });
 });

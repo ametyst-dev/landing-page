@@ -9,14 +9,13 @@ describe("Page section order", () => {
     render(<Home />);
     const text = document.body.textContent ?? "";
     const headings = [
-      "break quietly.",
-      "You built the workflow. Now it depends on you.",
-      "How Ametyst keeps your workflows running.",
-      "The Ametyst Agent watches your workflows, all the time.",
-      "One workspace: every tool, and a policy for each workflow.",
-      "Running today with our design partners.",
+      "your money.",
+      "Nobody is watching what your agents cost.",
+      "How Ametyst cuts your AI spend.",
+      "AI spend by agent.",
+      "Same work, cheaper route.",
       "Before you start.",
-      "Stop watching every run.",
+      "Then spend less.",
     ];
     const indices = headings.map((h) => text.indexOf(h));
     indices.forEach((idx, i) => expect(idx, headings[i]).toBeGreaterThanOrEqual(0));
@@ -28,7 +27,7 @@ describe("Page section order", () => {
   it("has no line between sections, footer included", () => {
     const { container } = render(<Home />);
     const blocks = container.querySelectorAll("main > section, main > footer");
-    expect(blocks.length).toBeGreaterThan(5);
+    expect(blocks.length).toBeGreaterThan(4);
     blocks.forEach((b) => expect(b.className, b.id || b.tagName).not.toMatch(/(^|\s)border-(t|b|y)(\s|$)/));
   });
 

@@ -11,23 +11,23 @@ const inter = Inter({
 /* Short enough to show in full: Google cuts titles at about 60 characters and
  * descriptions at about 155, link previews at two or three lines. The large
  * preview image is app/opengraph-image.tsx (and twitter-image.tsx for X). */
-const TITLE = "Ametyst – The agent that looks after your agent workflows";
+const TITLE = "Ametyst – See what every agent does with your money";
 const DESCRIPTION =
-  "Ametyst fixes your agent workflows when they break and proposes new ones for your company. Every tool with one key, inside your spending policies.";
+  "Spend management for AI agents. Monitor every AI cost in your company and find where every workflow can cost less.";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ametyst.ai'),
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
-    "autonomous AI workflows",
-    "agents that pay per use",
-    "autonomous AI agents",
-    "agent tool access",
-    "agent spending policies",
+    "AI spend management",
+    "AI cost monitoring",
+    "AI token spend",
     "AI agent spend management",
-    "AI agent infrastructure",
-    "on-demand tool access",
+    "agent spending policies",
+    "reduce AI costs",
+    "LLM cost control Europe",
+    "AI spend by person and agent",
   ],
   authors: [{ name: "Ametyst" }],
   openGraph: {
