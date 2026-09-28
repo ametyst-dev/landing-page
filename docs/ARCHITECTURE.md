@@ -20,6 +20,7 @@ landing-page/
 │   │   └── waitlist/
 │   │       └── route.ts        # POST /api/waitlist
 │   ├── book/
+│   │   ├── layout.tsx          # /book title ("Book a demo · Ametyst"); the page is a client component
 │   │   └── page.tsx            # /book — Cal.com embed
 │   ├── pricing/page.tsx        # /pricing — plans table + how credits are bought
 │   ├── terms/page.tsx          # /terms — Terms of Service
@@ -27,7 +28,10 @@ landing-page/
 │   ├── privacy/page.tsx        # /privacy — Privacy Policy
 │   ├── contact/page.tsx        # /contact — support contacts + company data
 │   ├── globals.css             # Tailwind directives + CSS custom properties + @font-face
-│   ├── layout.tsx              # Root layout: metadata, Inter font, body wrapper
+│   ├── layout.tsx              # Root layout: metadata (www canonical per page, link previews), Inter font, body wrapper
+│   ├── site.ts                 # SITE_URL (https://www.ametyst.ai), shared by metadata, sitemap and robots
+│   ├── sitemap.ts              # /sitemap.xml — home, book and the legal pages (not /pricing, /contact)
+│   ├── robots.ts               # /robots.txt — allow all but /api/, points at the sitemap
 │   ├── opengraph-image.tsx     # 1200x630 link preview built from the hero (next/og, fonts fetched at build)
 │   ├── twitter-image.tsx       # The same image for X
 │   └── page.tsx                # Main page: imports and orders all section components
@@ -62,6 +66,6 @@ landing-page/
 ## Data / content flow
 - **Waitlist form**: user fills email in `Waitlist.tsx` → browser POSTs to `app/api/waitlist/route.ts` → server validates email + honeypot → forwards to Google Sheets via `GOOGLE_SCRIPT_URL` env var → returns `{ ok: true }` → component shows success message
 - **Booking**: "Book a discovery call" CTAs (TopBar, Hero, Waitlist) link to `/book` → `app/book/page.tsx` renders a Cal.com embed (`@calcom/embed-react`) pointing to `patrick-pinta/30min`
-- **Skill files**: static `.md` files in `public/` remain on disk and are served at the site root, but are intentionally NOT linked anywhere in the UI (product links removed in landing v2 until the product-ready signal)
+- **Agent guide**: `public/skill.md` is served at `/skill.md` for agents that read the site on a person's behalf. It is not linked in the UI. The two "Coming soon" placeholders (`setup-agent-owners-skill.md`, `setup-saas-skill.md`) were removed
 - **Fonts**: Inter is loaded via `next/font/google` in `layout.tsx`; Neue Machina is loaded via `@font-face` in `globals.css` pointing to an external CDN. The link preview image fetches the same Neue Machina file as `.ttf` and Inter from Google Fonts at build time, and falls back to the default sans if either is down
 - **Design review snapshot**: `npm run snapshot` runs `next build`, takes the prerendered `.next/server/app/index.html`, copies `.next/static` to `snapshot/assets/static` (the artifact service reserves `_`-prefixed names), rewrites every absolute path to a relative one, downloads Neue Machina next to the Inter files, drops the legacy polyfills bundle, and appends a preview strip with branch and commit. The result is published as a Claude artifact with `snapshot/` as root and `snapshot/files.json` as the file list. One-way: comments on the artifact come back to a person or an agent who edits the components and republishes
