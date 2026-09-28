@@ -100,6 +100,6 @@ describe("Faq", () => {
     const { container } = render(<Faq />);
     expect(container.textContent).toContain("OpenClaw, OpenCode and any MCP client");
     expect(container.textContent).not.toMatch(/Hermes/);
-    expect(screen.getByText("What every person and agent spends through Ametyst, call by call.")).toBeInTheDocument();
+    expect(screen.getByText("What every person and agent spends, call by call.")).toBeInTheDocument();
   });
 });

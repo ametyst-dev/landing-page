@@ -5,7 +5,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What does the dashboard show?",
-    a: "What every person and agent spends through Ametyst, call by call.",
+    a: "What every person and agent spends, call by call.",
   },
   {
     q: "What happens at a spending limit?",
