@@ -1,15 +1,15 @@
 # landing-page
 
 ## What is this
-The public marketing site for Ametyst — it equips AI agents to work autonomously: a wallet and credits per agent, spending policies per agent and per person, and the Ametyst Agent, which keeps workflows sharp over time. It is a single-page Next.js 15 application with a fixed navigation bar, seven content sections (hero, three product blocks, real tasks, how we start, pricing, final CTA), an email API route kept for a future capture form (`/api/waitlist`, currently unused), and a dedicated booking page that embeds a Cal.com calendar.
+The public marketing site for Ametyst — spend management for AI agents: one dashboard with what every agent and person spends on AI, a spending policy per agent, and a cheaper model or tool proposed for each step of a workflow, applied only when the customer approves. It is a single-page Next.js 15 application with a fixed navigation bar, seven content sections (hero, three product blocks, real tasks, how we start, pricing, final CTA), an email API route kept for a future capture form (`/api/waitlist`, currently unused), and a dedicated booking page that embeds a Cal.com calendar.
 
 ## Why it exists
-The landing page is the primary conversion surface for Ametyst in its early-stage validation phase. It communicates the product value proposition to two distinct audiences (agent owners and SaaS developers), captures waitlist emails to measure market interest, and provides a frictionless path to book a discovery call.
+The landing page is the primary conversion surface for Ametyst in its early-stage validation phase. It communicates the product value proposition to two distinct audiences (agent owners and SaaS developers), captures waitlist emails to measure market interest, and provides a frictionless path to book a demo.
 
 ## What's inside
 - `app/` — Next.js App Router root: layout, main page, globals CSS, and route handlers
 - `app/api/waitlist/` — POST endpoint that validates email and forwards it to a Google Sheets script
-- `app/book/` — Booking page embedding the Cal.com calendar (30-minute discovery call)
+- `app/book/` — "Book a demo" page embedding the Cal.com calendar (30 minutes). Every booking button on the site says "Book a demo"
 - `app/pricing/`, `app/terms/`, `app/refunds/`, `app/privacy/`, `app/contact/` — Static text pages the payment processor (Stripe) requires. All five are linked from the footer. Plans and how credits are bought, Terms of Service, Refund and Cancellation Policy, Privacy Policy, support contacts and company data. Copy rule: "credits", never "wallet"/"USDC"/"bank"
 - `components/TopBar.tsx` — Fixed navigation bar, full width: brand, "Book a demo" and "Get started"
 - `components/Hero.tsx` — Above the fold: the spend headline ("See what every agent does with your money."), the subheadline (spend management for AI agents), two CTAs and the harness logos (Claude Code, Codex, Cursor, OpenClaw, OpenCode). No demo under it
@@ -27,7 +27,7 @@ The landing page is the primary conversion surface for Ametyst in its early-stag
 - `components/Frames.tsx`, `components/TaskFlow.tsx`, `components/AppsAgentsCard.tsx`, `components/Manifesto.tsx` — Not rendered (the page no longer shows the web app); kept for reuse
 - `contexts/` — React context providers (currently empty, reserved for future global state)
 - `hooks/` — Custom React hooks (currently empty, reserved for reusable client logic)
-- `public/` — Static assets: `icon.png` (brand icon), `providers/<slug>.png` (favicons of the company apps and providers), `skill.md` (the agent-facing onboarding guide, linked from the footer) and other skill `.md` files served at root
+- `public/` — Static assets: `icon.png` (brand icon), `providers/<slug>.png` (favicons of the company apps and providers), `skill.md` (the agent-facing onboarding guide: what Ametyst is, in the same words as the home page, then the setup steps; `__tests__/legal-copy.test.tsx` holds it to the copy rules)
 - `tailwind.config.ts` — Tailwind configuration with semantic color aliases and font families
 - `DESIGN.md` — The Ametyst design system in the Refero DESIGN.md format: tokens, type, shape, components, do/don't, agent prompt guide. Read it before any UI work
 - `PALETTE-info.md` — Older palette notes (light and a never-shipped dark theme); superseded by `DESIGN.md`

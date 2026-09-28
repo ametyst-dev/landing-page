@@ -10,6 +10,12 @@ describe("Page metadata (search results and link previews)", () => {
     expect(String(metadata.description).length).toBeLessThanOrEqual(155);
   });
 
+  it("points previews and the canonical at www, one canonical per page", () => {
+    expect(String(metadata.metadataBase)).toBe("https://www.ametyst.ai/");
+    expect(metadata.alternates).toMatchObject({ canonical: "./" });
+    expect(metadata.openGraph).toMatchObject({ url: "./" });
+  });
+
   it("uses the large preview card on X", () => {
     expect(metadata.twitter).toMatchObject({ card: "summary_large_image" });
   });

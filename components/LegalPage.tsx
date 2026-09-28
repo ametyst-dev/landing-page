@@ -81,7 +81,7 @@ export default function LegalPage({
                 href="/book"
                 className="rounded-lg bg-btn-bg text-btn-fg font-bold py-2 px-4 md:px-5 text-xs md:text-sm transition-opacity hover:opacity-90 font-body"
               >
-                Book a call
+                Book a demo
               </a>
             </nav>
           </div>

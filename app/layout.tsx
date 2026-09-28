@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "./site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ const DESCRIPTION =
   "Spend management for AI agents. Monitor every AI cost in your company and find where every workflow can cost less.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ametyst.ai'),
+  metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -30,10 +31,12 @@ export const metadata: Metadata = {
     "AI spend by person and agent",
   ],
   authors: [{ name: "Ametyst" }],
+  /* "./" resolves to each page's own path: /terms is canonical for /terms, not for the home page. */
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ametyst.ai",
+    url: "./",
     siteName: "Ametyst",
     title: TITLE,
     description: DESCRIPTION,
