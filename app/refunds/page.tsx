@@ -8,7 +8,7 @@ export default function RefundsPage() {
     <LegalPage title="Refund and Cancellation Policy">
       <H2>Cancelling a plan</H2>
       <P>
-        Pro and Team are monthly plans that renew automatically. You can cancel at any time from Settings or by writing to{" "}
+        Pro is a monthly plan that renews automatically. You can cancel at any time from Settings or by writing to{" "}
         <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>. Cancellation takes effect at the end of the month you have
         already paid: you keep the plan until then, you are not charged again, and your workspace continues on Pay per use. Plan
         fees for a month already started are not refunded.

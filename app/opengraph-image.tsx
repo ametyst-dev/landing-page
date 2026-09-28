@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
 
 /* The large link preview (LinkedIn, X, Slack, WhatsApp, iMessage), built at
- * build time from the hero: brand word, the headline on two lines with
- * "break quietly." in accent, one line under it. Colours are the tokens in
+ * build time from the hero: brand word, the headline on three lines with
+ * "your money." in accent, one line under it. Colours are the tokens in
  * app/globals.css. Fonts are fetched at build time from the same sources as
  * the site; if one is down the image still builds with the default sans. */
 
-export const alt = "Ametyst – Your agent workflows break quietly.";
+export const alt = "Ametyst – See what every agent does with your money.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -67,11 +67,12 @@ export default async function OpengraphImage() {
           Ametyst
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontFamily: head, fontSize: 90, lineHeight: 1.05, letterSpacing: -2 }}>
-          <span style={{ color: FG, ...heavy(2.6, FG) }}>Your agent workflows</span>
-          <span style={{ color: ACCENT, ...heavy(2.6, ACCENT) }}>break quietly.</span>
+          <span style={{ color: FG, ...heavy(2.6, FG) }}>See what every agent</span>
+          <span style={{ color: FG, ...heavy(2.6, FG) }}>does with</span>
+          <span style={{ color: ACCENT, ...heavy(2.6, ACCENT) }}>your money.</span>
         </div>
         <div style={{ display: "flex", fontFamily: body ? "Inter" : undefined, fontSize: 30, color: MUTED }}>
-          The agent that looks after your workflows, all the time.
+          Spend management for AI agents.
         </div>
       </div>
     ),

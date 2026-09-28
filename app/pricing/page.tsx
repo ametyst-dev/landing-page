@@ -8,9 +8,9 @@ export default function PricingPage() {
   return (
     <LegalPage title="Pricing" updated={false}>
       <P>
-        <strong>Everything on Ametyst is priced in credits.</strong> One balance, for everything: Ametyst Agent and external
-        tools. On pay per use Ametyst Agent answers when you ask. On Pro it works on its own: it watches every run, fixes what
-        breaks and proposes what to build. Team brings that to every member, with shared tasks.
+        <strong>Everything on Ametyst is priced in credits.</strong> One balance, for everything. On pay per use you see the
+        spend: the dashboard, the policies, and how much you could save. On Pro Ametyst finds the cheaper route for each step
+        and you approve it, for every person in the workspace. Enterprise adds what a larger company needs.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />
@@ -42,7 +42,7 @@ export default function PricingPage() {
 
       <H2>What things cost</H2>
       <P>
-        Every tool and every Ametyst Agent action has a listed price in credits, shown in the catalog and in your dashboard before
+        Every tool, every model and everything Ametyst does on your workflows has a listed price in credits, shown in the catalog and in your dashboard before
         your agent uses it. Listed prices include Ametyst&apos;s margin, and we may adjust them over time as our costs change; a
         new price applies only to what you use after it is shown. The price is deducted from your credit balance when the call
         succeeds.

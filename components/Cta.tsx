@@ -3,13 +3,14 @@ export default function Cta() {
     <section id="get-started" className="section-x py-16 md:py-24 bg-bg scroll-mt-16">
       <div className="max-w-3xl mx-auto text-center">
         <h2
-          className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight mb-4"
+          className="font-headline text-3xl md:text-4xl lg:text-5xl text-fg leading-tight tracking-tight text-balance mb-4"
           style={{ fontWeight: 900 }}
         >
-          Stop watching <span className="text-accent">every run.</span>
+          See what your agents spend. <br className="hidden md:block" />
+          <span className="text-accent">Then spend less.</span>
         </h2>
         <p className="font-body text-base md:text-lg text-fg/75 leading-relaxed mb-8 text-balance">
-          Create your workspace, connect your agent, and let Ametyst keep your workflows sharp.
+          Connect the agent you already use, and let Ametyst find where every workflow can cost less.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
@@ -18,7 +19,7 @@ export default function Cta() {
             rel="noopener noreferrer"
             className="btn btn-primary btn-lg"
           >
-            Create your workspace
+            Get started
           </a>
           <a
             href="/book"
@@ -26,7 +27,7 @@ export default function Cta() {
             rel="noopener noreferrer"
             className="btn btn-secondary btn-lg"
           >
-            Talk to the team
+            Book a demo
           </a>
         </div>
       </div>

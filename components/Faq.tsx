@@ -1,27 +1,23 @@
 const faqs: { q: string; a: string }[] = [
   {
     q: "Works with my agent?",
-    a: "Yes. Claude Code, Codex, Cursor and any MCP client, set up in a few minutes.",
+    a: "Yes. Claude Code, Codex, Cursor, OpenClaw, OpenCode and any MCP client, set up in a few minutes.",
   },
   {
-    q: "Do I need an account with each tool?",
-    a: "No. One key covers every provider, and Ametyst pays them per call.",
+    q: "What does the dashboard show?",
+    a: "What every person and agent spends through Ametyst, call by call.",
   },
   {
-    q: "Do I still need my model subscription?",
-    a: "Yes, your agent runs on your own model. Ametyst credits pay for the tools and LLM calls inside your workflows.",
-  },
-  {
-    q: "What happens at a policy limit?",
+    q: "What happens at a spending limit?",
     a: "The call waits, and you approve or refuse it from the app.",
   },
   {
-    q: "Is the Ametyst Agent live today?",
-    a: "Yes, in our design partners' workspaces, from the app and from their own agents.",
+    q: "Will a cheaper route change my results?",
+    a: "Nothing changes until you approve it. Each proposal shows the step, the new model or tool, and the saving in euro.",
   },
   {
-    q: "Can colleagues run my workflows?",
-    a: "Yes, from their own agent and under their own policy. They never see your keys.",
+    q: "Do I need an account with each tool?",
+    a: "No. One key covers 50+ models and tools, and Ametyst pays them per call.",
   },
 ];
 
