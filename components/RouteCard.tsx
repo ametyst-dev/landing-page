@@ -80,7 +80,7 @@ export default function RouteCard() {
     >
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-4 items-center">
         <div className="min-w-0">
-          <p className="font-mono text-[11px] text-muted mb-2">lead-research · steps</p>
+          <p className="font-mono text-[11px] text-muted mb-2">Agent · <span className="text-fg">lead-research</span></p>
           <ul className="space-y-2">
             {STEPS.map((s, n) => (
               <li key={s.n} className={rowClass(n === route.step)}>
