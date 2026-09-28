@@ -17,7 +17,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do I need an account with each tool?",
-    a: "No. One key covers 50+ models and tools, and Ametyst pays them per call.",
+    a: "No. One key covers 30+ models and tools, and Ametyst pays them per call.",
   },
 ];
 
