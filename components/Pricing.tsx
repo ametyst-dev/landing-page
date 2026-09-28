@@ -1,38 +1,45 @@
-const plans = ["Pay per use", "Pro", "Team"] as const;
+const plans = ["Pay per use", "Pro", "Enterprise"] as const;
 
-const rows: { label: string; sub?: boolean; group?: boolean; cells: [string, string, string] }[] = [
-  { label: "Price", cells: ["No fixed fee", "€20 per month", "€25 per member per month, minimum 2 members"] },
+const rows: { label: string; cells: [string, string, string] }[] = [
+  { label: "Price", cells: ["No fixed fee", "€20 per person per month", "Custom"] },
+  {
+    label: "Cheaper routes",
+    cells: [
+      "No. You see how much you could save",
+      "✓ On every workflow: a cheaper model or tool for each step, you approve",
+      "✓ The same, reviewed with us",
+    ],
+  },
   {
     label: "Credits",
     cells: [
-      "You buy them when you need them, about 108 credits per €",
-      "2,400 credits every month",
-      "3,000 credits every month per member, shared by the workspace",
+      "Bought when needed, about 108 credits per €. They never expire",
+      "2,400 credits every month per person, pooled in the workspace. Used first, reset at renewal",
+      "Agreed volume",
     ],
   },
   { label: "Tools connected", cells: ["30+", "30+", "30+"] },
-  { label: "Policies on your agents", cells: ["Limited: up to 2", "✓ Unlimited", "✓ Unlimited"] },
   {
-    label: "Ametyst Agent",
+    label: "Spend dashboard",
+    cells: ["Last 7 days", "✓ Full history, per agent and per person", "✓ Full, with export and audit"],
+  },
+  { label: "Agents connected", cells: ["Up to 3", "✓ Unlimited", "✓ Unlimited"] },
+  {
+    label: "Policies on your agents",
+    cells: ["Limited: up to 2", "✓ Unlimited", "✓ Unlimited, with custom approval flows"],
+  },
+  {
+    label: "Members",
     cells: [
-      "Limited: answers when you ask, with your credits",
-      "✓ Watches every run, fixes what breaks, proposes what to build",
-      "✓ The same, for every member",
+      "✓ Invite as many as you want, on one standard policy",
+      "✓ Unlimited, every member has what you have",
+      "✓ Unlimited",
     ],
   },
-  { label: "Your tasks", cells: ["Up to 3", "✓ Unlimited, with scheduled runs", "✓ Unlimited, with scheduled runs"] },
-  { label: "Run history and spend reports", cells: ["Last 7 days", "✓ Full", "✓ Full, per member"] },
-  { label: "Other members in the workspace", group: true, cells: ["", "", ""] },
-  { label: "Invite people", sub: true, cells: ["✓", "✓", "✓"] },
   {
-    label: "Policies on their agents",
-    sub: true,
-    cells: ["Limited: one standard policy", "Limited: one standard policy", "✓ One per member"],
+    label: "Support",
+    cells: ["Documentation", "Email", "Office hours, dedicated channel, onboarding, SSO, invoicing and DPA"],
   },
-  { label: "Access to tools", sub: true, cells: ["✓", "✓", "✓"] },
-  { label: "Ametyst Agent", sub: true, cells: ["No", "No", "✓"] },
-  { label: "Shared tasks", sub: true, cells: ["No", "No", "✓ The team shares tasks and builds its own"] },
-  { label: "Admin panel: requests, approvals, spend per member", sub: true, cells: ["No", "No", "✓"] },
 ];
 
 export function PlansTable() {
@@ -54,10 +61,7 @@ export function PlansTable() {
         <tbody>
           {rows.map((r, i) => (
             <tr key={i} className="border-b border-border/50 last:border-0">
-              <th
-                scope="row"
-                className={`px-4 py-3 text-left align-top ${r.sub ? "pl-8 font-normal text-fg/70" : "font-semibold text-fg"}`}
-              >
+              <th scope="row" className="px-4 py-3 text-left align-top font-semibold text-fg">
                 {r.label}
               </th>
               {r.cells.map((c, j) => (

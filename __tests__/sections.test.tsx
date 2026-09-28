@@ -59,13 +59,14 @@ describe("Hero", () => {
 describe("PlansTable (/pricing page)", () => {
   it("shows the three plans with their prices and credits", () => {
     render(<PlansTable />);
-    for (const plan of ["Pay per use", "Pro", "Team"]) {
+    for (const plan of ["Pay per use", "Pro", "Enterprise"]) {
       expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
     }
-    expect(screen.getByText("€20 per month")).toBeInTheDocument();
-    expect(screen.getByText(/€25 per member per month/)).toBeInTheDocument();
-    expect(screen.getByText(/2,400 credits every month/)).toBeInTheDocument();
-    expect(screen.getByText(/3,000 credits every month per member/)).toBeInTheDocument();
+    expect(screen.queryByRole("columnheader", { name: "Team" })).toBeNull();
+    expect(screen.getByText("€20 per person per month")).toBeInTheDocument();
+    expect(screen.getByText("Custom")).toBeInTheDocument();
+    expect(screen.getByText(/2,400 credits every month per person/)).toBeInTheDocument();
+    expect(screen.getByRole("rowheader", { name: "Cheaper routes" })).toBeInTheDocument();
   });
 
   it("never uses wallet or stablecoin wording", () => {

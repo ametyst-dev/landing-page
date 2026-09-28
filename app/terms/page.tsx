@@ -84,15 +84,16 @@ export default function TermsPage() {
         <strong>5.6 Promotional and plan credits.</strong> Credits granted free of charge have no cash value and are never
         refundable. Credits included in a Plan are added to the same balance, can be used for everything, are granted for the
         monthly billing period and are used before purchased credits; plan credits not used by the end of the period are
-        cancelled at renewal and do not carry over. Purchased credits are never affected by the reset. On Team, plan credits are
-        shared by the workspace.
+        cancelled at renewal and do not carry over. Purchased credits are never affected by the reset. Plan credits are
+        pooled in the workspace.
       </P>
 
       <H2>6. Plans</H2>
       <P>
-        Ametyst offers Pay per use and monthly plans (Pro, Team) described on the <A href="/pricing">pricing page</A>. A monthly
-        plan is billed in advance each month, per workspace (Pro) or per member (Team, minimum two members), includes the number
-        of credits stated on the pricing page, and renews automatically until cancelled. Ametyst may change the price of a plan
+        Ametyst offers Pay per use, the Pro monthly plan and Enterprise, described on the <A href="/pricing">pricing page</A>.
+        Pro is billed in advance each month, per person in the workspace, includes the number of credits stated on the pricing
+        page, and renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
+        says nothing, these Terms apply. Ametyst may change the price of a plan
         or the credits it includes from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
         any time from Settings; cancellation takes effect at the end of the billing period already paid, and the workspace then
         continues on Pay per use. Fees for a period already started are not refunded.
