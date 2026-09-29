@@ -91,7 +91,7 @@ describe("Pillars", () => {
     expect(screen.getByText(/spending policy/)).toBeInTheDocument();
     for (const view of ["Overview", "Agents", "People", "Policies"]) expect(screen.getByText(view)).toBeInTheDocument();
     for (const option of ["Exa", "Parallel", "Hunter", "Claude Haiku 4.5"]) expect(screen.getByText(option)).toBeInTheDocument();
-    expect(screen.getAllByText("■ Selected")).toHaveLength(1);
+    expect(screen.getAllByText("Cheaper route")).toHaveLength(1);
   });
 });
 
