@@ -25,9 +25,26 @@
   --color-accent-soft: #EFE8FF;
   --color-surface: #FFFFFF;
   --color-ink: #0B0B0F;
+  /* Honey: the one warm accent. Value kept: savings, money left, proposals.
+   * A fill or a tint with honey-ink text on it, never honey text on white. */
+  --color-honey: #F5CF47;
+  --color-honey-strong: #E0B400;
+  --color-honey-soft: #FFF6D6;
+  --color-honey-ink: #7A5B00;
   /* Policy outcomes, on light surfaces */
   --color-ok: #1F8A5B;
   --color-deny: #C2334D;
+  /* States, each with a soft fill and the ink that sits on it */
+  --color-ok-soft: #B8F0D2;
+  --color-ok-ink: #0B5F37;
+  --color-deny-soft: #FBE3E8;
+  --color-deny-ink: #8A1F33;
+  --color-warning: #F59E0B;
+  --color-warning-soft: #FFEDD5;
+  --color-warning-ink: #9A4A06;
+  --color-info: #3B5BDB;
+  --color-info-soft: #E3E8FF;
+  --color-info-ink: #26398F;
   /* Terminal views (hero run, Ametyst Agent). Flat, no glow. */
   --color-term-bg: #16131D;
   --color-term-fg: #ECE9F3;

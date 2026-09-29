@@ -105,7 +105,11 @@ export default function RouteCard() {
                     <span className="ml-auto font-mono text-[10px] text-muted shrink-0">{o.from}</span>
                   </p>
                   <p className={`text-xs mt-1 truncate ${on ? "text-fg/80" : "text-muted"}`}>{o.does}</p>
-                  {on && <p className="mt-1.5 font-mono text-[10px] text-ok">■ Selected</p>}
+                  {on && (
+                    <p className="mt-1.5">
+                      <span className="rounded-full bg-honey px-2 py-0.5 font-mono text-[10px] text-honey-ink">Cheaper route</span>
+                    </p>
+                  )}
                 </li>
               );
             })}
