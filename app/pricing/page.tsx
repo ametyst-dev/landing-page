@@ -8,10 +8,12 @@ export default function PricingPage() {
   return (
     <LegalPage title="Pricing" updated={false}>
       <P>
-        <strong>Everything on Ametyst is priced in credits.</strong> One balance, for everything. On pay per use you see the
-        spend: the dashboard, the policies, and how much you could save. On Pro Ametyst finds the cheaper route for each step
-        and you approve it. Pro is per person: in the same workspace some people can be on Pro and the others on pay per use.
-        Credits cost the same on every plan. Enterprise adds what a larger company needs.
+        <strong>Every workspace is free:</strong> unlimited members, unlimited policies, full spend history, 30+ tools.
+        Everyone starts on pay per use. Put on Pro the people who want every workflow to cost less: you pay only for them.
+        Enterprise adds what a larger company needs.
+      </P>
+      <P>
+        Everything on Ametyst is priced in credits. One balance, for everything, at the same rate on every plan.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />
