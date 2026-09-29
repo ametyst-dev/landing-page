@@ -24,7 +24,7 @@ const rows: { label: string; cells: [string, string, string] }[] = [
     label: "Members",
     cells: [
       "✓ Invite as many as you want",
-      "✓ Invite as many as you want. You pay Pro only for the people who need it, the others stay on pay per use",
+      "✓ Invite as many as you want. Pay for the people who build, invite for free the people who only spend",
       "✓ Unlimited",
     ],
   },
