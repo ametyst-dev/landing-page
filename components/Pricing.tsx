@@ -1,33 +1,16 @@
 const plans = ["Pay per use", "Pro", "Enterprise"] as const;
 
 const rows: { label: string; cells: [string, string, string] }[] = [
-  { label: "Price", cells: ["No fixed fee", "€15 per person per month", "Custom"] },
+  { label: "Price", cells: ["No fixed fee", "€15 per month for each person on Pro", "Custom"] },
   {
     label: "Cheaper routes",
     cells: [
-      "No. You see how much you could save",
-      "✓ On every workflow: a cheaper model or tool for each step, you approve",
+      "You see how much you could save",
+      "✓ A cheaper model or tool for each step. You approve",
       "✓ The same, reviewed with us",
     ],
   },
-  { label: "Tools connected", cells: ["30+", "30+", "30+"] },
-  {
-    label: "Spend dashboard",
-    cells: ["Last 30 days", "✓ Full history, per agent and per person", "✓ Full, with export and audit"],
-  },
-  { label: "Agents connected", cells: ["Up to 3", "✓ Unlimited", "✓ Unlimited"] },
-  {
-    label: "Policies on your agents",
-    cells: ["Limited: up to 2", "✓ Unlimited", "✓ Unlimited, with custom approval flows"],
-  },
-  {
-    label: "Members",
-    cells: [
-      "✓ Invite as many as you want",
-      "✓ Invite as many as you want. Pay for the people who build, invite for free the people who only spend",
-      "✓ Unlimited",
-    ],
-  },
+  { label: "Agents connected", cells: ["1", "✓ Unlimited", "✓ Unlimited"] },
   {
     label: "Support",
     cells: ["Documentation", "Email", "Office hours, dedicated channel, onboarding, SSO, invoicing and DPA"],

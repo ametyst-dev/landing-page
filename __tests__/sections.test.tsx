@@ -63,10 +63,12 @@ describe("PlansTable (/pricing page)", () => {
       expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
     }
     expect(screen.queryByRole("columnheader", { name: "Team" })).toBeNull();
-    expect(screen.getByText("€15 per person per month")).toBeInTheDocument();
+    expect(screen.getByText("€15 per month for each person on Pro")).toBeInTheDocument();
     expect(screen.getByText("Custom")).toBeInTheDocument();
     expect(screen.queryByRole("rowheader", { name: "Credits" })).toBeNull();
-    expect(screen.getByText("Last 30 days")).toBeInTheDocument();
+    for (const gone of ["Spend dashboard", "Policies on your agents", "Members", "Tools connected"]) {
+      expect(screen.queryByRole("rowheader", { name: gone })).toBeNull();
+    }
     expect(screen.getByRole("rowheader", { name: "Cheaper routes" })).toBeInTheDocument();
   });
 
