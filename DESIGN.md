@@ -1,7 +1,7 @@
 ---
 name: Ametyst
 theme: light
-version: 0.1 (base, extracted from the landing page as it ships)
+version: 0.2 (0.1 extracted from the landing page as it ships; 0.2 adds honey as the one warm accent)
 source: app/globals.css, tailwind.config.ts, components/*
 ---
 
@@ -15,7 +15,8 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 
 - **Ground**: lavender-white `#F8F8FF`, not pure white. Cards sit on it in pure white, so surfaces read as one step up.
 - **Ink**: near-black `#0B0B0F`. Body copy is ink at 75 percent opacity, never a grey token.
-- **Accent**: one violet, `#7A1FFF`. Buttons, links to product, eyebrows, active states, the coloured half of a headline. A single soft tint `#EFE8FF` for fills behind it.
+- **Accent**: one violet, `#7A1FFF`. Buttons, links to product, eyebrows, active states, the coloured half of a headline. A single soft tint `#EFE8FF` for fills behind it. The violet is electric on purpose and stays so (decided 2026-09-29).
+- **Honey**: one warm accent, `#F5CF47`. It means value kept: what you saved, what is left, a proposal to spend less. Violet is what you can do, honey is what you gain.
 - **Type**: a heavy geometric display (Neue Machina at 900) for every headline, Inter for everything else, monospace for eyebrows and small labels.
 - **Shape**: buttons are pills, 12px on cards, full pills for badges and tabs. Borders are one pixel of lavender `#D6DAFF`, often at 40 percent.
 - **Voice**: the product is shown, not described. Every section is heading + one lead + a real frame of the product or a real workflow with its cost.
@@ -33,6 +34,10 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 | Accent | `#7A1FFF` | `--color-accent` | `text-accent`, `bg-accent`, `border-accent` | The one loud colour |
 | Accent strong | `#6717D9` | `--color-accent-strong` | `bg-accent-strong` | Primary button hover only |
 | Accent soft | `#EFE8FF` | `--color-accent-soft` | `bg-accent-soft` | Tints, band sections (`/60`), active tabs |
+| Honey | `#F5CF47` | not in `globals.css` yet | not in Tailwind yet | Fill for value kept: savings, money left, proposals |
+| Honey strong | `#E0B400` | not in `globals.css` yet | not in Tailwind yet | Border of a honey fill, savings marks in a chart |
+| Honey soft | `#FFF6D6` | not in `globals.css` yet | not in Tailwind yet | Tint behind a savings block |
+| Honey ink | `#7A5B00` | not in `globals.css` yet | not in Tailwind yet | Text on honey and on honey soft |
 | Button bg | `#7A1FFF` | `--color-btn-bg` | `bg-btn-bg` | Primary button fill |
 | Button fg | `#F8F8FF` | `--color-btn-fg` | `text-btn-fg` | Text on accent |
 | Button border | `transparent` | `--color-btn-border` | `border-btn-border` | Reserved |
@@ -49,6 +54,14 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 Opacity steps in use: `text-fg/70`, `text-fg/75`, `text-fg/80`, `text-fg/85`, `border-border/40`, `border-border/60`, `bg-accent-soft/40`, `bg-accent-soft/60`.
 
 Status colours exist only for policy outcomes and terminal lines; never use them for decoration.
+
+Honey rules:
+- One honey block per screen is the target.
+- Honey is a fill or a tint with honey ink text on it. Never honey text on white or on the ground: it cannot be read.
+- Honey never means a warning. A warning is orange `#F59E0B`.
+- In a chart, spend is accent and savings are honey strong.
+
+The full token set (honey, state colours with their soft and ink steps, dark theme) lives in the Ametyst design system, v0.2. This file and the design system must say the same values.
 
 ## Tokens: typography
 
@@ -129,7 +142,8 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 - Don't say bank, banking, wallet, neobank, skill, optimization, optimizer, platform in public copy.
 - Don't add gradients, glows or coloured shadows anywhere, product views included. The violet aura read as AI-made and was removed.
-- Don't introduce a second accent or a grey text token. Use opacity on ink.
+- Don't introduce a third accent or a grey text token. The accents are violet and honey. Use opacity on ink.
+- Don't use honey for decoration, for buttons or for warnings. It marks value kept and nothing else.
 - Don't use the display face for body text, card titles or buttons.
 - Don't centre everything. Only the final CTA is centred.
 - Don't add illustrations, stock photos or glyphs. No `✦` on the landing (removed on Michele's request): the Ametyst Agent is marked by its name in `text-term-accent` and its `bg-term-line` block. `__tests__/page-order.test.tsx` enforces it.
@@ -203,7 +217,7 @@ fontFamily: {
 
 ## Known gaps, to fix in the next version
 
-- No status colours. The app will need success, warning and danger tints that sit with the violet.
+- Honey and the state colours (success, danger, warning, info) are defined in the design system v0.2 but are not yet CSS variables in `app/globals.css` nor Tailwind aliases. Add them before the first use on the page.
 - No dark theme. `PALETTE-info.md` describes one, but the site never shipped it; treat that file as superseded by this one.
 - Neue Machina is loaded from a third-party CDN with no licence on file. Decide whether to buy it, self-host it, or replace it.
 - Display weight is forced to 900 with an inline style because the font is declared at one weight only.
