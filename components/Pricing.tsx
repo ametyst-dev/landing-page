@@ -1,7 +1,7 @@
 const plans = ["Pay per use", "Pro", "Enterprise"] as const;
 
 const rows: { label: string; cells: [string, string, string] }[] = [
-  { label: "Price", cells: ["No fixed fee", "€20 per person per month", "Custom"] },
+  { label: "Price", cells: ["No fixed fee", "€15 per person per month", "Custom"] },
   {
     label: "Cheaper routes",
     cells: [
@@ -10,18 +10,10 @@ const rows: { label: string; cells: [string, string, string] }[] = [
       "✓ The same, reviewed with us",
     ],
   },
-  {
-    label: "Credits",
-    cells: [
-      "Bought when needed, about 108 credits per €. They never expire",
-      "2,400 credits every month per person, pooled in the workspace. Used first, reset at renewal",
-      "Agreed volume",
-    ],
-  },
   { label: "Tools connected", cells: ["30+", "30+", "30+"] },
   {
     label: "Spend dashboard",
-    cells: ["Last 7 days", "✓ Full history, per agent and per person", "✓ Full, with export and audit"],
+    cells: ["Last 30 days", "✓ Full history, per agent and per person", "✓ Full, with export and audit"],
   },
   { label: "Agents connected", cells: ["Up to 3", "✓ Unlimited", "✓ Unlimited"] },
   {
@@ -31,8 +23,8 @@ const rows: { label: string; cells: [string, string, string] }[] = [
   {
     label: "Members",
     cells: [
-      "✓ Invite as many as you want, on one standard policy",
-      "✓ Unlimited, every member has what you have",
+      "✓ Invite as many as you want",
+      "✓ Invite as many as you want. You pay Pro only for the people who need it, the others stay on pay per use",
       "✓ Unlimited",
     ],
   },

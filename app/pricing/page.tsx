@@ -10,7 +10,8 @@ export default function PricingPage() {
       <P>
         <strong>Everything on Ametyst is priced in credits.</strong> One balance, for everything. On pay per use you see the
         spend: the dashboard, the policies, and how much you could save. On Pro Ametyst finds the cheaper route for each step
-        and you approve it, for every person in the workspace. Enterprise adds what a larger company needs.
+        and you approve it. Pro is per person: in the same workspace some people can be on Pro and the others on pay per use.
+        Credits cost the same on every plan. Enterprise adds what a larger company needs.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />
@@ -35,8 +36,8 @@ export default function PricingPage() {
         </li>
         <li>You receive an invoice for every payment.</li>
         <li>
-          <strong>Credits you buy never expire.</strong> Credits included in a monthly plan are for that month and are used
-          first: what you do not use resets at renewal. Need more before renewal? Top up like anyone else.
+          <strong>Credits you buy never expire.</strong> A plan does not include credits: on every plan you buy them at the
+          same rate.
         </li>
       </UL>
 

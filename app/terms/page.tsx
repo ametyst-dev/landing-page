@@ -65,7 +65,7 @@ export default function TermsPage() {
       </P>
       <P>
         <strong>5.3 Purchase.</strong> Credits are bought in the dashboard, in euro, by card or wire transfer, at the rate of
-        credits per euro shown to the Customer before payment, or are included in a Plan. Ametyst updates the rate daily and may
+        credits per euro shown to the Customer before payment. Ametyst updates the rate daily and may
         change it at any time; the rate shown in the preview applies to that purchase, and a change never affects credits already
         bought. If the Customer pays with a card in a currency other than euro, the payment processor converts the amount at
         checkout, at the rate and cost it shows the Customer before payment; the Customer may choose to pay in euro instead.
@@ -80,20 +80,17 @@ export default function TermsPage() {
         <strong>5.5 No expiry.</strong> Purchased credits do not expire while the account is open.
       </P>
       <P>
-        <strong>5.6 Promotional and plan credits.</strong> Credits granted free of charge have no cash value and are never
-        refundable. Credits included in a Plan are added to the same balance, can be used for everything, are granted for the
-        monthly billing period and are used before purchased credits; plan credits not used by the end of the period are
-        cancelled at renewal and do not carry over. Purchased credits are never affected by the reset. Plan credits are
-        pooled in the account.
+        <strong>5.6 Promotional credits.</strong> Credits granted free of charge have no cash value and are never
+        refundable. Plans do not include credits.
       </P>
 
       <H2>6. Plans</H2>
       <P>
         Ametyst offers Pay per use, the Pro monthly plan and Enterprise, described on the <A href="/pricing">pricing page</A>.
-        Pro is billed in advance each month, per person in the account, includes the number of credits stated on the pricing
-        page, and renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
+        Pro is billed in advance each month, for each person the Customer puts on Pro (the other people in the account stay
+        on Pay per use), and renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
         says nothing, these Terms apply. Ametyst may change the price of a plan
-        or the credits it includes from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
+        from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
         any time from Settings; cancellation takes effect at the end of the billing period already paid, and the account then
         continues on Pay per use. Fees for a period already started are not refunded.
       </P>
@@ -186,8 +183,7 @@ export default function TermsPage() {
         <strong>18.1 No right of withdrawal.</strong> Credits are digital content delivered to your account immediately
         after payment. By completing a purchase you expressly request immediate delivery and acknowledge that, once the credits
         are delivered, you lose your right of withdrawal under article 59(o) of the Italian Consumer Code and the corresponding
-        rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. The credits
-        included in a Plan are delivered immediately at the start of each month on the same basis. Billing errors are always
+        rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. Billing errors are always
         corrected (see the <A href="/refunds">Refund Policy</A>).
       </P>
       <P>

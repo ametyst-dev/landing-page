@@ -20,8 +20,7 @@ export default function RefundsPage() {
       <H2>Credits are not refundable (business customers)</H2>
       <P>
         Credits are delivered to your account immediately after payment and can be used straight away, so top-ups are final.
-        Credits you buy never expire, so they stay available for as long as your account is open. Credits included in a monthly
-        plan reset at each renewal.
+        Credits you buy never expire, so they stay available for as long as your account is open.
       </P>
 
       <H2>If you buy as an individual (consumer)</H2>

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import EndStrip from "@/components/EndStrip";
 
-export const LAST_UPDATED = "28 September 2026";
+export const LAST_UPDATED = "29 September 2026";
 
 export function H2({ children }: { children: ReactNode }) {
   return (
