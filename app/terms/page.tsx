@@ -64,10 +64,8 @@ export default function TermsPage() {
         cannot be converted into or redeemed for money, except where the Refund Policy or mandatory law provides for a refund.
       </P>
       <P>
-        <strong>5.3 Purchase.</strong> Credits are bought in the dashboard, in euro, by card or wire transfer, at the rate of
-        credits per euro shown to the Customer before payment. Ametyst updates the rate daily and may
-        change it at any time; the rate shown in the preview applies to that purchase, and a change never affects credits already
-        bought. If the Customer pays with a card in a currency other than euro, the payment processor converts the amount at
+        <strong>5.3 Purchase.</strong> Credits are bought in the dashboard, in euro, by card or wire transfer, and are
+        expressed in euro: the credit added to the account equals the amount paid, net of VAT. If the Customer pays with a card in a currency other than euro, the payment processor converts the amount at
         checkout, at the rate and cost it shows the Customer before payment; the Customer may choose to pay in euro instead.
         Payments are processed by Stripe; Ametyst does not store card data. Credits are added to the account after payment is
         confirmed.
