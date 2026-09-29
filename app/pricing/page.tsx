@@ -27,7 +27,19 @@ export default function PricingPage() {
           uses it.
         </li>
         <li>You add credits in euro, by card or bank transfer, from €10. They never expire.</li>
+        <li>
+          Before you pay you see how many credits you get for your euros. The rate is updated once a day and stays locked
+          until you complete the payment.
+        </li>
+        <li>
+          If your card is in another currency, Stripe, our payment processor, shows you the amount in your currency at
+          checkout and converts it. You can always choose to pay in euro.
+        </li>
         <li>VAT is added at checkout where it applies, and you receive an invoice for every payment.</li>
+        <li>
+          Credits can be used only on Ametyst, by the workspace that bought them. They cannot be transferred or exchanged
+          for money.
+        </li>
       </UL>
       <P>
         The rules are in the <A href="/terms">Terms of Service</A> and the <A href="/refunds">Refund Policy</A>.
