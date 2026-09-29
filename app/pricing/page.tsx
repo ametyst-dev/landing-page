@@ -27,10 +27,7 @@ export default function PricingPage() {
           uses it.
         </li>
         <li>You add credits in euro, by card or bank transfer, from €10. They never expire.</li>
-        <li>
-          Before you pay you see how many credits you get for your euros. The rate is updated once a day and stays locked
-          until you complete the payment.
-        </li>
+        <li>Credits are in euro: you add €10, your workspace has €10 to spend.</li>
         <li>
           If your card is in another currency, Stripe, our payment processor, shows you the amount in your currency at
           checkout and converts it. You can always choose to pay in euro.
