@@ -5,8 +5,8 @@ const rows: { label: string; cells: [string, string, string] }[] = [
   {
     label: "Cheaper routes",
     cells: [
-      "You see how much you could save",
-      "✓ A cheaper model or tool for each step. You approve",
+      "Limited: now and then we show you a saving we found",
+      "✓ On every workflow: a cheaper model or tool for each step. You approve",
       "✓ The same, reviewed with us",
     ],
   },
