@@ -29,6 +29,11 @@ export default function RefundsPage() {
         purchase, so the 14-day right of withdrawal does not apply and top-ups are final. Billing errors are always corrected,
         see below.
       </P>
+      <P>
+        Pro is different: you can withdraw within 14 days from your first subscription by writing to{" "}
+        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>, and we refund the fee you paid, less the part that covers
+        the days Pro was active. It applies to the first subscription, not to its renewals.
+      </P>
 
       <H2>When we refund</H2>
       <P>

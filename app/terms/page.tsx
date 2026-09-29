@@ -92,7 +92,7 @@ export default function TermsPage() {
         says nothing, these Terms apply. Ametyst may change the price of a plan
         from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
         any time from Settings; cancellation takes effect at the end of the billing period already paid, and the account then
-        continues on Pay per use. Fees for a period already started are not refunded.
+        continues on Pay per use. Fees for a period already started are not refunded; for Consumers, clause 18.3 applies.
       </P>
 
       <H2>7. Prices, taxes and invoices</H2>
@@ -180,7 +180,7 @@ export default function TermsPage() {
 
       <H2>18. Consumers: withdrawal and how these Terms apply to you</H2>
       <P>
-        <strong>18.1 No right of withdrawal.</strong> Credits are digital content delivered to your account immediately
+        <strong>18.1 Credits: no right of withdrawal.</strong> Credits are digital content delivered to your account immediately
         after payment. By completing a purchase you expressly request immediate delivery and acknowledge that, once the credits
         are delivered, you lose your right of withdrawal under article 59(o) of the Italian Consumer Code and the corresponding
         rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. Billing errors are always
@@ -191,12 +191,19 @@ export default function TermsPage() {
         at the end of the paid month. We remind you by email before each renewal where the law requires it.
       </P>
       <P>
-        <strong>18.3 Clauses that do not apply to Consumers.</strong> Clause 14 (liability limits) does not limit our liability
+        <strong>18.3 Pro: right of withdrawal.</strong> If you subscribe to Pro as a Consumer, you can withdraw within 14 days
+        from your first subscription, without giving a reason, by writing to{" "}
+        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>. By subscribing you ask us to start the service at once: if
+        you withdraw, we refund the fee you paid, less the part that covers the days Pro was active. The right applies to the
+        first subscription, not to its renewals.
+      </P>
+      <P>
+        <strong>18.4 Clauses that do not apply to Consumers.</strong> Clause 14 (liability limits) does not limit our liability
         towards Consumers for damages caused by our fault; clause 9 applies to Consumers only to the extent permitted by law;
         clause 16 changes apply to Consumers only from the first renewal or purchase after the notice.
       </P>
       <P>
-        <strong>18.4 Disputes.</strong> You can contact us at <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>; if we
+        <strong>18.5 Disputes.</strong> You can contact us at <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>; if we
         cannot resolve a dispute, you may use the out-of-court dispute resolution bodies available in your country of residence.
       </P>
     </LegalPage>
