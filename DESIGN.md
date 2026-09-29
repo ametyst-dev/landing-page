@@ -34,15 +34,19 @@ This file is the reference every agent reads before touching Ametyst UI: the lan
 | Accent | `#7A1FFF` | `--color-accent` | `text-accent`, `bg-accent`, `border-accent` | The one loud colour |
 | Accent strong | `#6717D9` | `--color-accent-strong` | `bg-accent-strong` | Primary button hover only |
 | Accent soft | `#EFE8FF` | `--color-accent-soft` | `bg-accent-soft` | Tints, band sections (`/60`), active tabs |
-| Honey | `#F5CF47` | not in `globals.css` yet | not in Tailwind yet | Fill for value kept: savings, money left, proposals |
-| Honey strong | `#E0B400` | not in `globals.css` yet | not in Tailwind yet | Border of a honey fill, savings marks in a chart |
-| Honey soft | `#FFF6D6` | not in `globals.css` yet | not in Tailwind yet | Tint behind a savings block |
-| Honey ink | `#7A5B00` | not in `globals.css` yet | not in Tailwind yet | Text on honey and on honey soft |
+| Honey | `#F5CF47` | `--color-honey` | `bg-honey` | Fill for value kept: savings, money left, proposals |
+| Honey strong | `#E0B400` | `--color-honey-strong` | `border-honey-strong` | Border of a honey fill, savings marks in a chart |
+| Honey soft | `#FFF6D6` | `--color-honey-soft` | `bg-honey-soft` | Tint behind a savings block |
+| Honey ink | `#7A5B00` | `--color-honey-ink` | `text-honey-ink` | Text on honey and on honey soft |
 | Button bg | `#7A1FFF` | `--color-btn-bg` | `bg-btn-bg` | Primary button fill |
 | Button fg | `#F8F8FF` | `--color-btn-fg` | `text-btn-fg` | Text on accent |
 | Button border | `transparent` | `--color-btn-border` | `border-btn-border` | Reserved |
 | OK | `#1F8A5B` | `--color-ok` | `text-ok` | Policy outcome "Allowed", on light surfaces |
 | Deny | `#C2334D` | `--color-deny` | `text-deny` | Policy outcome "Denied", on light surfaces |
+| OK soft, OK ink | `#B8F0D2`, `#0B5F37` | `--color-ok-soft`, `--color-ok-ink` | `bg-ok-soft`, `text-ok-ink` | Success badge: fill and its text |
+| Deny soft, Deny ink | `#FBE3E8`, `#8A1F33` | `--color-deny-soft`, `--color-deny-ink` | `bg-deny-soft`, `text-deny-ink` | Error badge: fill and its text |
+| Warning, soft, ink | `#F59E0B`, `#FFEDD5`, `#9A4A06` | `--color-warning`, `-soft`, `-ink` | `bg-warning-soft`, `text-warning-ink` | A limit is close, something waits for a person |
+| Info, soft, ink | `#3B5BDB`, `#E3E8FF`, `#26398F` | `--color-info`, `-soft`, `-ink` | `bg-info-soft`, `text-info-ink` | Neutral notice |
 | Terminal bg | `#16131D` | `--color-term-bg` | `bg-term-bg` | Terminal ground |
 | Terminal fg | `#ECE9F3` | `--color-term-fg` | `text-term-fg` | Terminal text |
 | Terminal muted | `#8E879C` | `--color-term-muted` | `text-term-muted` | Descriptions, footers |
@@ -217,7 +221,7 @@ fontFamily: {
 
 ## Known gaps, to fix in the next version
 
-- Honey and the state colours (success, danger, warning, info) are defined in the design system v0.2 but are not yet CSS variables in `app/globals.css` nor Tailwind aliases. Add them before the first use on the page.
+- Honey is used in one place on the page, the pill on the selected option of the route card. The state colours (ok, deny, warning, info, each with soft and ink) are CSS variables and Tailwind aliases but are not used on the page yet.
 - No dark theme. `PALETTE-info.md` describes one, but the site never shipped it; treat that file as superseded by this one.
 - Neue Machina is loaded from a third-party CDN with no licence on file. Decide whether to buy it, self-host it, or replace it.
 - Display weight is forced to 900 with an inline style because the font is declared at one weight only.
