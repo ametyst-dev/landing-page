@@ -63,13 +63,18 @@ describe("PlansTable (/pricing page)", () => {
       expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
     }
     expect(screen.queryByRole("columnheader", { name: "Team" })).toBeNull();
-    expect(screen.getByText("€15 per month for each person on Pro")).toBeInTheDocument();
+    expect(screen.getByText("€15 per seat per month, every seat in the workspace")).toBeInTheDocument();
     expect(screen.getByText("Custom")).toBeInTheDocument();
     expect(screen.queryByRole("rowheader", { name: "Credits" })).toBeNull();
     for (const gone of ["Spend dashboard", "Policies on your agents", "Members", "Tools connected"]) {
       expect(screen.queryByRole("rowheader", { name: gone })).toBeNull();
     }
-    expect(screen.getByRole("rowheader", { name: "Cheaper routes" })).toBeInTheDocument();
+    for (const row of ["Savings advice", "Agents connected per person", "Policies", "Roles"]) {
+      expect(screen.getByRole("rowheader", { name: row })).toBeInTheDocument();
+    }
+    expect(screen.queryByRole("rowheader", { name: "Cheaper routes" })).toBeNull();
+    expect(screen.getByText("5 a month per workspace")).toBeInTheDocument();
+    expect(screen.getByText("5 per workspace")).toBeInTheDocument();
   });
 
   it("never uses wallet or stablecoin wording", () => {

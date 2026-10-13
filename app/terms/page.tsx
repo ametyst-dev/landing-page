@@ -85,8 +85,8 @@ export default function TermsPage() {
       <H2>6. Plans</H2>
       <P>
         Ametyst offers Pay per use, the Pro monthly plan and Enterprise, described on the <A href="/pricing">pricing page</A>.
-        Pro is billed in advance each month, for each person the Customer puts on Pro (the other people in the account stay
-        on Pay per use), and renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
+        Pro is billed in advance each month for every seat in the account: when the Customer takes Pro, every person in
+        the account is on Pro. It renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
         says nothing, these Terms apply. Ametyst may change the price of a plan
         from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
         any time from Settings; cancellation takes effect at the end of the billing period already paid, and the account then

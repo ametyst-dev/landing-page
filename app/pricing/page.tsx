@@ -8,13 +8,14 @@ export default function PricingPage() {
   return (
     <LegalPage title="Pricing" updated={false}>
       <P>
-        <strong>Opening a workspace is free.</strong> Invite your whole team, set the spending policies and see what every
-        agent spends. Your agents pay for the tools they use, and nothing else.
+        <strong>Opening a workspace is free.</strong> Invite your team, set the spending policies and see what every agent
+        spends. Your agents pay for the tools they use, and nothing else. The figure you saved is always visible, and every
+        month you get the five savings advice that save you most.
       </P>
       <P>
-        <strong>Pro is for the people who want every workflow to cost less.</strong> Ametyst finds a cheaper model or tool
-        for each step, and you approve it. You choose who goes on Pro and pay €15 a month for each of them. Enterprise is
-        for larger companies.
+        <strong>Pro is for the whole workspace.</strong> Every seat goes on Pro, €15 per seat per month, and every seat gets
+        unlimited savings advice: a cheaper model or tool for each step of every workflow, which you approve. The workspace
+        gets unlimited agents and policies, roles for the admin and an audit log. Enterprise is custom, on top of Pro.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />
