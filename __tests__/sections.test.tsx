@@ -69,7 +69,7 @@ describe("PlansTable (/pricing page)", () => {
     for (const gone of ["Spend dashboard", "Policies on your agents", "Members", "Tools connected"]) {
       expect(screen.queryByRole("rowheader", { name: gone })).toBeNull();
     }
-    for (const row of ["Savings advice", "Agents connected per person", "Policies", "Roles"]) {
+    for (const row of ["Savings advice", "Agents connected per person", "Wallets per person", "Policies", "Roles"]) {
       expect(screen.getByRole("rowheader", { name: row })).toBeInTheDocument();
     }
     expect(screen.queryByRole("rowheader", { name: "Cheaper routes" })).toBeNull();
@@ -77,9 +77,9 @@ describe("PlansTable (/pricing page)", () => {
     expect(screen.getByText("5 per workspace")).toBeInTheDocument();
   });
 
-  it("never uses wallet or stablecoin wording", () => {
+  it("never uses stablecoin wording (wallets are a counter of the plans since 13 October 2026)", () => {
     const { container } = render(<PlansTable />);
-    expect(container.textContent).not.toMatch(/wallet|usdc|stablecoin/i);
+    expect(container.textContent).not.toMatch(/usdc|stablecoin/i);
   });
 });
 

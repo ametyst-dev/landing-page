@@ -8,14 +8,14 @@ export default function PricingPage() {
   return (
     <LegalPage title="Pricing" updated={false}>
       <P>
-        <strong>Opening a workspace is free.</strong> Invite your team, set the spending policies and see what every agent
-        spends. Your agents pay for the tools they use, and nothing else. The figure you saved is always visible, and every
+        <strong>Opening a workspace is free.</strong> Invite your whole team, members are unlimited on every plan. Set the
+        spending policies and see what every agent spends. Your agents pay for the tools they use, and nothing else. The figure you saved is always visible, and every
         month you get the five savings advice that save you most.
       </P>
       <P>
         <strong>Pro is for the whole workspace.</strong> Every seat goes on Pro, €15 per seat per month, and every seat gets
         unlimited savings advice: a cheaper model or tool for each step of every workflow, which you approve. The workspace
-        gets unlimited agents and policies, roles for the admin and an audit log. Enterprise is custom, on top of Pro.
+        gets unlimited agents, wallets and policies, sub-admins and an audit log. Enterprise is custom, on top of Pro.
       </P>
       <div className="my-8 xl:-mx-24">
         <PlansTable />

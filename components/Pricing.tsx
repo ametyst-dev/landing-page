@@ -11,10 +11,11 @@ const rows: { label: string; cells: [string, string, string] }[] = [
     ],
   },
   { label: "Agents connected per person", cells: ["1", "✓ Unlimited", "✓ Unlimited"] },
+  { label: "Wallets per person", cells: ["1", "✓ Unlimited", "✓ Unlimited"] },
   { label: "Policies", cells: ["5 per workspace", "✓ Unlimited, per agent and per person", "✓ Unlimited"] },
   {
     label: "Roles",
-    cells: ["Owner and member", "✓ Admin, finance and member. Audit log and export", "✓ The same, plus SSO"],
+    cells: ["Admin and members", "✓ Admin and sub-admins. Audit log and export", "✓ The same, plus SSO"],
   },
   {
     label: "Support",
