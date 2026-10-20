@@ -49,12 +49,13 @@ NPMRC="$HOME_DIR/npmrc"
 if [ "$CHANNEL" = "staging" ]; then
   TOKEN="${GH_PACKAGES_TOKEN:-}"
   if [ -z "$TOKEN" ] && [ -f "$HOME/.npmrc" ]; then
-    TOKEN="$(sed -n 's#^//npm.pkg.github.com/:_authToken=##p' "$HOME/.npmrc" | head -n 1)"
+    TOKEN="$(sed -n 's#^//npm.pkg.github.com/:_authToken=##p' "$HOME/.npmrc" | head -n 1 | tr -d '\r')"
   fi
   [ -n "$TOKEN" ] || die "staging needs GH_PACKAGES_TOKEN (or a //npm.pkg.github.com/:_authToken line in ~/.npmrc)"
+  OLD_UMASK="$(umask)"
   umask 077
   printf '%s\n%s\n' "@ametyst-dev:registry=https://npm.pkg.github.com" "//npm.pkg.github.com/:_authToken=$TOKEN" > "$NPMRC"
-  umask 022
+  umask "$OLD_UMASK"
   chmod 600 "$NPMRC"
   NPM_CONFIG_USERCONFIG="$NPMRC"
   export NPM_CONFIG_USERCONFIG
@@ -81,9 +82,10 @@ download_node() {
   curl -fsSL "$BASE/$FILE" -o "$TMP/$FILE" || { rm -rf "$TMP"; return 1; }
   if command -v sha256sum >/dev/null 2>&1; then GOT="$(sha256sum "$TMP/$FILE")"; else GOT="$(shasum -a 256 "$TMP/$FILE")"; fi
   [ "${GOT%% *}" = "$SUM" ] || { rm -rf "$TMP"; die "checksum mismatch on $FILE"; }
-  tar -xzf "$TMP/$FILE" -C "$TMP"
+  tar -xzf "$TMP/$FILE" -C "$TMP" || { rm -rf "$TMP"; return 1; }
+  "$TMP/${FILE%.tar.gz}/bin/node" --version >/dev/null 2>&1 </dev/null || { rm -rf "$TMP"; say "the downloaded Node does not run here"; return 1; }
   rm -rf "$HOME_DIR/runtime/node"
-  mv "$TMP/${FILE%.tar.gz}" "$HOME_DIR/runtime/node"
+  mv "$TMP/${FILE%.tar.gz}" "$HOME_DIR/runtime/node" || { rm -rf "$TMP"; return 1; }
   rm -rf "$TMP"
   NODE="$HOME_DIR/runtime/node/bin/node"
 }
@@ -118,12 +120,19 @@ fi
 # ── install into versions/<v>, check it runs, then promote `current` ──────────────────────────
 DEST="$HOME_DIR/versions/$VERSION"
 ENTRY="$DEST/node_modules/$PKG/dist/index.js"
-if [ ! -f "$ENTRY" ]; then
+install_version() {
   say "installing $PKG@$VERSION"
   rm -rf "$DEST"
-  "$NPM" install --prefix "$DEST" --no-audit --no-fund "$PKG@$VERSION" >/dev/null || { rm -rf "$DEST"; die "npm install $PKG@$VERSION failed"; }
+  "$NPM" install --prefix "$DEST" --no-audit --no-fund "$PKG@$VERSION" >/dev/null </dev/null || { rm -rf "$DEST"; die "npm install $PKG@$VERSION failed"; }
+}
+entry_version() { "$NODE" "$ENTRY" --version 2>/dev/null </dev/null || true; }
+FRESH=0
+if [ ! -f "$ENTRY" ]; then install_version; FRESH=1; fi
+GOT="$(entry_version)"
+if [ "$GOT" != "$VERSION" ] && [ "$FRESH" = 0 ] && [ "$(readlink "$HOME_DIR/versions/current" 2>/dev/null || true)" != "$VERSION" ]; then
+  install_version
+  GOT="$(entry_version)"
 fi
-GOT="$("$NODE" "$ENTRY" --version 2>/dev/null || true)"
 [ "$GOT" = "$VERSION" ] || die "$PKG@$VERSION installed but '--version' printed '$GOT'; current left unchanged"
 
 LINK="$HOME_DIR/versions/current"

@@ -25,6 +25,7 @@ const SCRIPT = resolve(__dirname, "../public/install.sh");
 const FAKE_NPM = `#!/bin/sh
 # fake npm: \`view <pkg> version\` and \`install --prefix <dir> --no-audit --no-fund <pkg>@<v>\`
 echo "$*" >> "$FAKE_LOG"
+echo "userconfig=\${NPM_CONFIG_USERCONFIG:-}" >> "$FAKE_LOG"
 case "$1" in
   view) echo "$FAKE_LATEST" ;;
   install)
@@ -102,6 +103,7 @@ describe("public/install.sh", () => {
     expect(npmrc).toContain("//npm.pkg.github.com/:_authToken=tok123");
     expect(statSync(join(h, "npmrc")).mode & 0o077).toBe(0);
     expect(r.stdout + r.stderr).not.toContain("tok123");
+    expect(readFileSync(join(root, "npm.log"), "utf8")).toContain(`userconfig=${join(h, "npmrc")}`);
   });
 
   it("staging: falls back to the token line of ~/.npmrc", () => {
@@ -129,6 +131,15 @@ describe("public/install.sh", () => {
     expect(run({ AMETYST_VERSION: "0.3.100" }).status).toBe(0);
     const r = run({ AMETYST_VERSION: "0.3.101", FAKE_PRINTS: "garbage" });
     expect(r.status).not.toBe(0);
+    expect(readlinkSync(join(home, ".ametyst/versions/current"))).toBe("0.3.100");
+  });
+
+  it("a half-installed version folder (interrupted npm) is reinstalled once instead of failing forever", () => {
+    const entry = join(home, ".ametyst/versions/0.3.100/node_modules/@ametyst/cli/dist/index.js");
+    execFileSync("mkdir", ["-p", join(entry, "..")]);
+    writeFileSync(entry, "process.exit(1)\n");
+    const r = run({ AMETYST_VERSION: "0.3.100" });
+    expect(r.status, r.stderr).toBe(0);
     expect(readlinkSync(join(home, ".ametyst/versions/current"))).toBe("0.3.100");
   });
 
