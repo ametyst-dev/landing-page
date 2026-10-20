@@ -107,10 +107,11 @@ describe("public/install.sh", () => {
   });
 
   it("staging: falls back to the token line of ~/.npmrc", () => {
-    writeFileSync(join(home, ".npmrc"), "//npm.pkg.github.com/:_authToken=fromrc\n");
+    writeFileSync(join(home, ".npmrc"), "//npm.pkg.github.com/:_authToken=fromrc\r\n");
     const r = run({ AMETYST_CHANNEL: "staging" });
     expect(r.status, r.stderr).toBe(0);
-    expect(readFileSync(join(home, ".ametyst-staging/npmrc"), "utf8")).toContain("_authToken=fromrc");
+    expect(readFileSync(join(home, ".ametyst-staging/npmrc"), "utf8")).toContain("_authToken=fromrc\n");
+    expect(readFileSync(join(home, ".ametyst-staging/npmrc"), "utf8")).not.toContain("\r");
   });
 
   it("staging without any token refuses and installs nothing", () => {
