@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, within } from "@testing-library/react";
 import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import { PlansTable } from "@/components/Pricing";
@@ -69,9 +69,14 @@ describe("PlansTable (/pricing page)", () => {
     for (const gone of ["Spend dashboard", "Policies on your agents", "Members", "Tools connected"]) {
       expect(screen.queryByRole("rowheader", { name: gone })).toBeNull();
     }
-    for (const row of ["Savings advice", "Agents connected per person", "Wallets per person", "Policies", "Roles"]) {
+    for (const row of ["Savings advice", "Agents per person", "Skills", "Wallets per person", "Policies", "Roles"]) {
       expect(screen.getByRole("rowheader", { name: row })).toBeInTheDocument();
     }
+    expect(screen.queryByRole("rowheader", { name: "Agents connected per person" })).toBeNull();
+    const agentsRow = screen.getByRole("rowheader", { name: "Agents per person" }).closest("tr")!;
+    expect(within(agentsRow).getByText("Your Personal")).toBeInTheDocument();
+    const skillsRow = screen.getByRole("rowheader", { name: "Skills" }).closest("tr")!;
+    expect(within(skillsRow).getAllByText("✓ Unlimited")).toHaveLength(3);
     expect(screen.queryByRole("rowheader", { name: "Cheaper routes" })).toBeNull();
     expect(screen.getByText("5 a month per workspace")).toBeInTheDocument();
     expect(screen.getByText("5 per workspace")).toBeInTheDocument();
