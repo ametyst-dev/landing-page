@@ -8,7 +8,8 @@ export default function PricingPage() {
   return (
     <LegalPage title="Pricing" updated={false}>
       <P>
-        <strong>Opening a workspace is free.</strong> Invite your whole team, members are unlimited on every plan. Set the
+        <strong>Opening a workspace is free.</strong> Invite your whole team, members are unlimited on every plan. Every person has
+        one agent, their Personal, with every skill they want. Set the
         spending policies and see what every agent spends. Your agents pay for the tools they use, and nothing else. The figure you saved is always visible, and every
         month you get the five savings advice that save you most.
       </P>

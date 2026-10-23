@@ -10,7 +10,8 @@ const rows: { label: string; cells: [string, string, string] }[] = [
       "✓ Unlimited, reviewed with us",
     ],
   },
-  { label: "Agents connected per person", cells: ["1", "✓ Unlimited", "✓ Unlimited"] },
+  { label: "Agents per person", cells: ["Your Personal", "✓ Unlimited", "✓ Unlimited"] },
+  { label: "Skills", cells: ["✓ Unlimited", "✓ Unlimited", "✓ Unlimited"] },
   { label: "Wallets per person", cells: ["1", "✓ Unlimited", "✓ Unlimited"] },
   { label: "Policies", cells: ["5 per workspace", "✓ Unlimited, per agent and per person", "✓ Unlimited"] },
   {
