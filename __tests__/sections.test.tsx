@@ -6,6 +6,7 @@ import { PlansTable } from "@/components/Pricing";
 import Cta from "@/components/Cta";
 import Pillars from "@/components/Pillars";
 import Faq from "@/components/Faq";
+import PricingPage from "@/app/pricing/page";
 
 afterEach(() => cleanup());
 
@@ -75,8 +76,12 @@ describe("PlansTable (/pricing page)", () => {
     expect(screen.queryByRole("rowheader", { name: "Agents connected per person" })).toBeNull();
     const agentsRow = screen.getByRole("rowheader", { name: "Agents per person" }).closest("tr")!;
     expect(within(agentsRow).getByText("Your Personal")).toBeInTheDocument();
+    expect(within(agentsRow).getAllByText("✓ Unlimited")).toHaveLength(2);
     const skillsRow = screen.getByRole("rowheader", { name: "Skills" }).closest("tr")!;
     expect(within(skillsRow).getAllByText("✓ Unlimited")).toHaveLength(3);
+    const order = screen.getAllByRole("rowheader").map((h) => h.textContent?.trim());
+    expect(order.indexOf("Skills")).toBe(order.indexOf("Agents per person") + 1);
+    expect(order.indexOf("Wallets per person")).toBe(order.indexOf("Skills") + 1);
     expect(screen.queryByRole("rowheader", { name: "Cheaper routes" })).toBeNull();
     expect(screen.getByText("5 a month per workspace")).toBeInTheDocument();
     expect(screen.getByText("5 per workspace")).toBeInTheDocument();
@@ -85,6 +90,15 @@ describe("PlansTable (/pricing page)", () => {
   it("never uses stablecoin wording (wallets are a counter of the plans since 13 October 2026)", () => {
     const { container } = render(<PlansTable />);
     expect(container.textContent).not.toMatch(/usdc|stablecoin/i);
+  });
+});
+
+describe("Pricing page (/pricing)", () => {
+  it("says every person has one agent, their Personal, and keeps the Pro paragraph", () => {
+    const { container } = render(<PricingPage />);
+    const text = (container.textContent ?? "").replace(/\s+/g, " ");
+    expect(text).toContain("Every person has one agent, their Personal, with every skill they want.");
+    expect(text).toContain("unlimited agents, wallets and policies");
   });
 });
 
