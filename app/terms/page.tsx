@@ -1,208 +1,276 @@
-import type { Metadata } from "next";
-import LegalPage, { A, H2, P } from "@/components/LegalPage";
+import type { Metadata } from 'next';
+import LegalPage, { A, H2, P } from '@/components/LegalPage';
 
-export const metadata: Metadata = { title: "Terms of Service · Ametyst" };
+export const metadata: Metadata = { title: 'Terms of Service · Ametyst' };
 
 export default function TermsPage() {
   return (
     <LegalPage title="Terms of Service">
       <H2>1. Who we are</H2>
       <P>
-        The Ametyst service (&quot;Service&quot;) is provided by <strong>AMETYST SRL</strong>, a single-member limited liability
-        company (società a responsabilità limitata con socio unico), registered office Corso Magenta 56, 20123 Milano (MI), Italy,
-        VAT no. and tax code IT14681630969, Milan Companies Register no. 14681630969, REA MI-2800625, share capital €10,000.00
-        fully paid-in, certified email ametystsrl@pec.it (&quot;Ametyst&quot;, &quot;we&quot;). Contact:{" "}
+        The Ametyst service (&quot;Service&quot;) is provided by{' '}
+        <strong>AMETYST SRL</strong>, a single-member limited liability company
+        (società a responsabilità limitata con socio unico), registered office
+        Corso Magenta 56, 20123 Milano (MI), Italy, VAT no. and tax code
+        IT14681630969, Milan Companies Register no. 14681630969, REA MI-2800625,
+        share capital €10,000.00 fully paid-in, certified email
+        ametystsrl@pec.it (&quot;Ametyst&quot;, &quot;we&quot;). Contact:{' '}
         <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>.
       </P>
 
       <H2>2. Who can use the Service</H2>
       <P>
-        The Service is offered to companies, professionals and other organisations acting for purposes related to their trade,
-        business or profession (&quot;Business Customers&quot;), and to individuals acting for purposes outside their trade,
-        business or profession (&quot;Consumers&quot;). Business Customers and Consumers are together the &quot;Customer&quot;.
-        If you create an account on behalf of an organisation you confirm that you have authority to bind it. If you are a
-        Consumer, the mandatory protections of the law of your country of residence, including the Italian Consumer Code
-        (Legislative Decree 206/2005) where applicable, prevail over anything in these Terms that would reduce them; clause 18
-        says how these Terms apply to you.
+        The Service is offered to companies, professionals and other
+        organisations acting for purposes related to their trade, business or
+        profession (&quot;Business Customers&quot;), and to individuals acting
+        for purposes outside their trade, business or profession
+        (&quot;Consumers&quot;). Business Customers and Consumers are together
+        the &quot;Customer&quot;. If you create an account on behalf of an
+        organisation you confirm that you have authority to bind it. If you are
+        a Consumer, the mandatory protections of the law of your country of
+        residence, including the Italian Consumer Code (Legislative Decree
+        206/2005) where applicable, prevail over anything in these Terms that
+        would reduce them; clause 18 says how these Terms apply to you.
       </P>
 
       <H2>3. The Service</H2>
       <P>
-        Ametyst is spend management for AI agents. It shows the Customer what every person and agent in its organisation
-        spends on AI, lets the Customer set a spending policy for each agent, and proposes a cheaper model or tool for each step
-        of the Customer&apos;s workflows. Ametyst never applies a proposal without the Customer&apos;s approval.
+        Ametyst is spend management for AI agents. It shows the Customer what
+        every person and agent in its organisation spends on AI, lets the
+        Customer set a spending policy for each agent, and proposes a cheaper
+        model or tool for each step of the Customer&apos;s workflows. Ametyst
+        never applies a proposal without the Customer&apos;s approval.
       </P>
       <P>
-        By installing the Ametyst MCP on its own agent, the Customer lets that agent call the models and tools in the Ametyst
-        catalog with one key, within the budgets and policies the Customer sets, with reporting of every call.
+        By installing the Ametyst MCP on its own agent, the Customer lets that
+        agent call the models and tools in the Ametyst catalog with one key,
+        within the budgets and policies the Customer sets, with reporting of
+        every call.
       </P>
       <P>
-        Ametyst&apos;s proposals and all models and tools in the catalog are supplied to the Customer by Ametyst, in Ametyst&apos;s own name and at
-        Ametyst&apos;s listed prices. Ametyst sources some tools from third-party providers, which act as Ametyst&apos;s
-        suppliers. The Customer has no contract with those providers and makes no payment to them through the Service.
+        Ametyst&apos;s proposals and all models and tools in the catalog are
+        supplied to the Customer by Ametyst, in Ametyst&apos;s own name and at
+        Ametyst&apos;s listed prices. Ametyst sources some tools from
+        third-party providers, which act as Ametyst&apos;s suppliers. The
+        Customer has no contract with those providers and makes no payment to
+        them through the Service.
       </P>
       <P>
-        Accounts the Customer connects itself (for example its email, documents or chat tools) remain the Customer&apos;s: the
-        Customer&apos;s agent accesses them with the Customer&apos;s own credentials, which are not sent to Ametyst.
+        Accounts the Customer connects itself (for example its email, documents
+        or chat tools) remain the Customer&apos;s: the Customer&apos;s agent
+        accesses them with the Customer&apos;s own credentials, which are not
+        sent to Ametyst.
       </P>
 
       <H2>4. Accounts</H2>
       <P>
-        The Customer is responsible for the people and agents it authorises in its account, for the budgets and policies it
-        sets, for the changes it approves, and for keeping credentials secure. Activity carried out with the Customer&apos;s
-        credentials is treated as the Customer&apos;s.
+        The Customer is responsible for the people and agents it authorises in
+        its account, for the budgets and policies it sets, for the changes it
+        approves, and for keeping credentials secure. Activity carried out with
+        the Customer&apos;s credentials is treated as the Customer&apos;s.
       </P>
 
       <H2>5. Credits</H2>
       <P>
-        <strong>5.1 Nature.</strong> Credits are a prepayment for Ametyst services and the unit in which all Ametyst prices are
-        expressed. Credits are not money, electronic money, a deposit or a financial instrument, and earn no interest.
+        <strong>5.1 Nature.</strong> Credits are a prepayment for Ametyst
+        services and the unit in which all Ametyst prices are expressed. Credits
+        are not money, electronic money, a deposit or a financial instrument,
+        and earn no interest.
       </P>
       <P>
-        <strong>5.2 Limits.</strong> Credits (a) can be used only to pay for services supplied by Ametyst through the Service;
-        (b) cannot be used to pay third parties; (c) cannot be transferred, sold or assigned to another account or person; (d)
-        cannot be converted into or redeemed for money, except where the Refund Policy or mandatory law provides for a refund.
+        <strong>5.2 Limits.</strong> Credits (a) can be used only to pay for
+        services supplied by Ametyst through the Service; (b) cannot be used to
+        pay third parties; (c) cannot be transferred, sold or assigned to
+        another account or person; (d) cannot be converted into or redeemed for
+        money, except where the Refund Policy or mandatory law provides for a
+        refund.
       </P>
       <P>
-        <strong>5.3 Purchase.</strong> Credits are bought in the dashboard, in euro, by card or wire transfer, and are
-        expressed in euro: the credit added to the account equals the amount paid, net of VAT. If the Customer pays with a card in a currency other than euro, the payment processor converts the amount at
-        checkout, at the rate and cost it shows the Customer before payment; the Customer may choose to pay in euro instead.
-        Payments are processed by Stripe; Ametyst does not store card data. Credits are added to the account after payment is
-        confirmed.
+        <strong>5.3 Purchase.</strong> Credits are bought in the dashboard, in
+        euro, by card or wire transfer, and are expressed in euro: the credit
+        added to the account equals the amount paid, net of VAT. If the Customer
+        pays with a card in a currency other than euro, the payment processor
+        converts the amount at checkout, at the rate and cost it shows the
+        Customer before payment; the Customer may choose to pay in euro instead.
+        Payments are processed by Stripe; Ametyst does not store card data.
+        Credits are added to the account after payment is confirmed.
       </P>
       <P>
-        <strong>5.4 Use.</strong> Each model or tool call and each Ametyst service has a listed price in credits, shown before use,
-        deducted from the credit balance when the call succeeds.
+        <strong>5.4 Use.</strong> Each model or tool call and each Ametyst
+        service has a listed price in credits, shown before use, deducted from
+        the credit balance when the call succeeds.
       </P>
       <P>
-        <strong>5.5 No expiry.</strong> Purchased credits do not expire while the account is open.
+        <strong>5.5 No expiry.</strong> Purchased credits do not expire while
+        the account is open.
       </P>
       <P>
-        <strong>5.6 Promotional credits.</strong> Credits granted free of charge have no cash value and are never
-        refundable. Plans do not include credits.
+        <strong>5.6 Promotional credits.</strong> Credits granted free of charge
+        have no cash value and are never refundable. Plans do not include
+        credits.
       </P>
 
       <H2>6. Plans</H2>
       <P>
-        Ametyst offers Pay per use, the Pro monthly plan and Enterprise, described on the <A href="/pricing">pricing page</A>.
-        Pro is billed in advance each month for every seat in the account: when the Customer takes Pro, every person in
-        the account is on Pro. It renews automatically until cancelled. Enterprise is agreed in writing with the Customer; where that agreement
-        says nothing, these Terms apply. Ametyst may change the price of a plan
-        from the next renewal, with at least 15 days&apos; notice by email. The Customer can cancel at
-        any time from Settings; cancellation takes effect at the end of the billing period already paid, and the account then
-        continues on Pay per use. Fees for a period already started are not refunded; for Consumers, clause 18.3 applies.
+        Ametyst offers Pay per use, the Pro monthly plan and Enterprise,
+        described on the <A href="/pricing">pricing page</A>. Pro is billed in
+        advance each month for every seat in the account: when the Customer
+        takes Pro, every person in the account is on Pro. It renews
+        automatically until cancelled. Enterprise is agreed in writing with the
+        Customer; where that agreement says nothing, these Terms apply. Ametyst
+        may change the price of a plan from the next renewal, with at least 15
+        days&apos; notice by email. The Customer can cancel at any time from
+        Settings; cancellation takes effect at the end of the billing period
+        already paid, and the account then continues on Pay per use. Fees for a
+        period already started are not refunded; for Consumers, clause 18.3
+        applies.
       </P>
 
       <H2>7. Prices, taxes and invoices</H2>
       <P>
-        Prices of models, tools and Ametyst services are listed in credits and include Ametyst&apos;s margin. Ametyst may change listed
-        prices and plan prices over time, including to reflect changes in its costs. A new listed price applies only to use after
-        it is shown in the catalog and never affects credits already spent; a new plan price applies from the next renewal, with
-        at least 15 days&apos; notice by email.
+        Prices of models, tools and Ametyst services are listed in credits and
+        include Ametyst&apos;s margin. Ametyst may change listed prices and plan
+        prices over time, including to reflect changes in its costs. A new
+        listed price applies only to use after it is shown in the catalog and
+        never affects credits already spent; a new plan price applies from the
+        next renewal, with at least 15 days&apos; notice by email.
       </P>
       <P>
-        Credits and plans are sold in euro, VAT excluded. VAT is applied at payment according to the Customer&apos;s country and
-        VAT status. Ametyst issues an invoice for each payment, always in euro on the euro amount (also when the Customer&apos;s
-        card was charged in another currency), showing the amount paid and, for top-ups, the credits received, to the billing
-        details the Customer enters in Settings → Invoice; the Customer is responsible for their accuracy. Italian customers
-        receive an electronic invoice through the Sistema di Interscambio (SDI).
+        Credits and plans are sold in euro, VAT excluded. VAT is applied at
+        payment according to the Customer&apos;s country and VAT status. Ametyst
+        issues an invoice for each payment, always in euro on the euro amount
+        (also when the Customer&apos;s card was charged in another currency),
+        showing the amount paid and, for top-ups, the credits received, to the
+        billing details the Customer enters in Settings → Invoice; the Customer
+        is responsible for their accuracy. Italian customers receive an
+        electronic invoice through the Sistema di Interscambio (SDI).
       </P>
 
       <H2>8. Refunds and cancellation</H2>
       <P>
-        Governed by the <A href="/refunds">Refund and Cancellation Policy</A>, which forms part of these Terms.
+        Governed by the <A href="/refunds">Refund and Cancellation Policy</A>,
+        which forms part of these Terms.
       </P>
 
       <H2>9. Chargebacks and payment disputes</H2>
       <P>
-        If a payment is disputed, reversed or flagged as fraudulent, Ametyst may suspend the account, remove the corresponding
-        credits, and, where those credits were already used, invoice the Customer for the amount used. Please contact support
-        before opening a dispute with your card issuer: we can usually resolve it faster.
+        If a payment is disputed, reversed or flagged as fraudulent, Ametyst may
+        suspend the account, remove the corresponding credits, and, where those
+        credits were already used, invoice the Customer for the amount used.
+        Please contact support before opening a dispute with your card issuer:
+        we can usually resolve it faster.
       </P>
 
       <H2>10. Acceptable use</H2>
       <P>
-        The Customer must not: use the Service unlawfully or to infringe others&apos; rights; resell or sublicense credits or raw
-        access to the Service; attempt to bypass budgets, policies, rate limits or security controls; use a tool in breach of the
-        usage restrictions shown for it in the catalog. Ametyst may suspend access in case of breach, security risk or suspected
-        fraud.
+        The Customer must not: use the Service unlawfully or to infringe
+        others&apos; rights; resell or sublicense credits or raw access to the
+        Service; attempt to bypass budgets, policies, rate limits or security
+        controls; use a tool in breach of the usage restrictions shown for it in
+        the catalog. Ametyst may suspend access in case of breach, security risk
+        or suspected fraud.
       </P>
 
-      <H2>11. Ametyst&apos;s proposals, availability and changes to the catalog</H2>
+      <H2>
+        11. Ametyst&apos;s proposals, availability and changes to the catalog
+      </H2>
       <P>
-        Ametyst&apos;s reports and proposals (for example a cheaper model or tool for a step) are suggestions produced by
-        automated systems: they can be wrong, and the
-        Customer decides whether to apply them. Ametyst may add, change or remove models and tools. If one is removed, unused credits
-        remain usable on the rest of the Service. The Service is provided with reasonable skill and care; Ametyst does not
-        guarantee that a given tool is uninterrupted or that third-party data is accurate or complete.
+        Ametyst&apos;s reports and proposals (for example a cheaper model or
+        tool for a step) are suggestions produced by automated systems: they can
+        be wrong, and the Customer decides whether to apply them. Ametyst may
+        add, change or remove models and tools. If one is removed, unused
+        credits remain usable on the rest of the Service. The Service is
+        provided with reasonable skill and care; Ametyst does not guarantee that
+        a given tool is uninterrupted or that third-party data is accurate or
+        complete.
       </P>
 
       <H2>12. Customer data</H2>
       <P>
-        The Customer&apos;s tasks, their memory and the content of tool calls are the Customer&apos;s. Ametyst processes them only
-        to deliver the Service, and reads them inside the Customer&apos;s account for that purpose only. Personal
-        data is handled as described in the <A href="/privacy">Privacy Policy</A>.
+        The Customer&apos;s tasks, their memory and the content of tool calls
+        are the Customer&apos;s. Ametyst processes them only to deliver the
+        Service, and reads them inside the Customer&apos;s account for that
+        purpose only. Personal data is handled as described in the{' '}
+        <A href="/privacy">Privacy Policy</A>.
       </P>
 
       <H2>13. Intellectual property</H2>
       <P>
-        Ametyst keeps all rights in the Service. The Customer keeps all rights in its tasks, inputs and, as
-        between the parties, in the outputs it obtains, subject to the terms shown for each tool.
+        Ametyst keeps all rights in the Service. The Customer keeps all rights
+        in its tasks, inputs and, as between the parties, in the outputs it
+        obtains, subject to the terms shown for each tool.
       </P>
 
       <H2>14. Liability</H2>
       <P>
-        Nothing limits liability for wilful misconduct or gross negligence, or where the law does not allow limitation.
-        Otherwise, Ametyst&apos;s total liability in any 12-month period is limited to the amount the Customer paid to Ametyst in
-        that period, and Ametyst is not liable for loss of profit, loss of data or indirect damage.
+        Nothing limits liability for wilful misconduct or gross negligence, or
+        where the law does not allow limitation. Otherwise, Ametyst&apos;s total
+        liability in any 12-month period is limited to the amount the Customer
+        paid to Ametyst in that period, and Ametyst is not liable for loss of
+        profit, loss of data or indirect damage.
       </P>
 
       <H2>15. Term and termination</H2>
       <P>
-        These Terms apply while the Customer has an account. The Customer may close its account at any time. Ametyst may
-        terminate for material breach, or on 30 days&apos; notice for convenience; in the latter case paid, unused credits are
-        refunded.
+        These Terms apply while the Customer has an account. The Customer may
+        close its account at any time. Ametyst may terminate for material
+        breach, or on 30 days&apos; notice for convenience; in the latter case
+        paid, unused credits are refunded.
       </P>
 
       <H2>16. Changes to these Terms</H2>
       <P>
-        We may update these Terms. Material changes are notified to account admins by email at least 15 days before they apply.
+        We may update these Terms. Material changes are notified to account
+        admins by email at least 15 days before they apply.
       </P>
 
       <H2>17. Governing law and jurisdiction</H2>
       <P>
-        Italian law. For Business Customers, exclusive jurisdiction: the Court of Milan. For Consumers, the courts of the
-        Consumer&apos;s place of residence or domicile, and any mandatory choice-of-law rules of the Consumer&apos;s country
-        apply.
+        Italian law. For Business Customers, exclusive jurisdiction: the Court
+        of Milan. For Consumers, the courts of the Consumer&apos;s place of
+        residence or domicile, and any mandatory choice-of-law rules of the
+        Consumer&apos;s country apply.
       </P>
 
       <H2>18. Consumers: withdrawal and how these Terms apply to you</H2>
       <P>
-        <strong>18.1 Credits: no right of withdrawal.</strong> Credits are digital content delivered to your account immediately
-        after payment. By completing a purchase you expressly request immediate delivery and acknowledge that, once the credits
-        are delivered, you lose your right of withdrawal under article 59(o) of the Italian Consumer Code and the corresponding
-        rules of the EU Consumer Rights Directive. Purchases of credits are therefore final also for Consumers. Billing errors are always
-        corrected (see the <A href="/refunds">Refund Policy</A>).
+        <strong>18.1 Credits: no right of withdrawal.</strong> Credits are
+        digital content delivered to your account immediately after payment. By
+        completing a purchase you expressly request immediate delivery and
+        acknowledge that, once the credits are delivered, you lose your right of
+        withdrawal under article 59(o) of the Italian Consumer Code and the
+        corresponding rules of the EU Consumer Rights Directive. Purchases of
+        credits are therefore final also for Consumers. Billing errors are
+        always corrected (see the <A href="/refunds">Refund Policy</A>).
       </P>
       <P>
-        <strong>18.2 Plans.</strong> A monthly Plan renews automatically; you can cancel at any time from Settings, with effect
-        at the end of the paid month. We remind you by email before each renewal where the law requires it.
+        <strong>18.2 Plans.</strong> A monthly Plan renews automatically; you
+        can cancel at any time from Settings, with effect at the end of the paid
+        month. We remind you by email before each renewal where the law requires
+        it.
       </P>
       <P>
-        <strong>18.3 Pro: right of withdrawal.</strong> If you subscribe to Pro as a Consumer, you can withdraw within 14 days
-        from your first subscription, without giving a reason, by writing to{" "}
-        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>. By subscribing you ask us to start the service at once: if
-        you withdraw, we refund the fee you paid, less the part that covers the days Pro was active. The right applies to the
-        first subscription, not to its renewals.
+        <strong>18.3 Pro: right of withdrawal.</strong> If you subscribe to Pro
+        as a Consumer, you can withdraw within 14 days from your first
+        subscription, without giving a reason, by writing to{' '}
+        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>. By
+        subscribing you ask us to start the service at once: if you withdraw, we
+        refund the fee you paid, less the part that covers the days Pro was
+        active. The right applies to the first subscription, not to its
+        renewals.
       </P>
       <P>
-        <strong>18.4 Clauses that do not apply to Consumers.</strong> Clause 14 (liability limits) does not limit our liability
-        towards Consumers for damages caused by our fault; clause 9 applies to Consumers only to the extent permitted by law;
-        clause 16 changes apply to Consumers only from the first renewal or purchase after the notice.
+        <strong>18.4 Clauses that do not apply to Consumers.</strong> Clause 14
+        (liability limits) does not limit our liability towards Consumers for
+        damages caused by our fault; clause 9 applies to Consumers only to the
+        extent permitted by law; clause 16 changes apply to Consumers only from
+        the first renewal or purchase after the notice.
       </P>
       <P>
-        <strong>18.5 Disputes.</strong> You can contact us at <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>; if we
-        cannot resolve a dispute, you may use the out-of-court dispute resolution bodies available in your country of residence.
+        <strong>18.5 Disputes.</strong> You can contact us at{' '}
+        <A href="mailto:support@ametyst.ai">support@ametyst.ai</A>; if we cannot
+        resolve a dispute, you may use the out-of-court dispute resolution
+        bodies available in your country of residence.
       </P>
     </LegalPage>
   );
