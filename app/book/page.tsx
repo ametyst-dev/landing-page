@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Cal from "@calcom/embed-react";
+import Cal from '@calcom/embed-react';
 
 export default function BookPage() {
   return (
@@ -12,9 +12,9 @@ export default function BookPage() {
         <div className="bg-white rounded-lg border-2 border-border/20 p-4 md:p-8">
           <Cal
             calLink="patrick-pinta/30min"
-            style={{ width: "100%", height: "100%", overflow: "scroll" }}
+            style={{ width: '100%', height: '100%', overflow: 'scroll' }}
             config={{
-              layout: "month_view",
+              layout: 'month_view',
             }}
           />
         </div>

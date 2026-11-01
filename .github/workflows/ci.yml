@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Format check
+        run: npm run format:check
+
       # ⛔ `lint` is NOT run here, and that is a deliberate gap rather than an
       # oversight. `package.json`'s lint script is `next lint`, which with no
       # ESLint config in the repo is INTERACTIVE: it prompts to choose a config

@@ -1,132 +1,179 @@
-import { describe, it, expect, afterEach } from "vitest";
-import { render, screen, cleanup, within } from "@testing-library/react";
-import TopBar from "@/components/TopBar";
-import Hero from "@/components/Hero";
-import { PlansTable } from "@/components/Pricing";
-import Cta from "@/components/Cta";
-import Pillars from "@/components/Pillars";
-import Faq from "@/components/Faq";
-import PricingPage from "@/app/pricing/page";
+import { describe, it, expect, afterEach } from 'vitest';
+import { render, screen, cleanup, within } from '@testing-library/react';
+import TopBar from '@/components/TopBar';
+import Hero from '@/components/Hero';
+import { PlansTable } from '@/components/Pricing';
+import Cta from '@/components/Cta';
+import Pillars from '@/components/Pillars';
+import Faq from '@/components/Faq';
+import PricingPage from '@/app/pricing/page';
 
 afterEach(() => cleanup());
 
-describe("TopBar", () => {
-  it("has the two CTAs and no section links, Sign in or Pricing", () => {
+describe('TopBar', () => {
+  it('has the two CTAs and no section links, Sign in or Pricing', () => {
     render(<TopBar />);
-    expect(screen.getByRole("link", { name: "Get started" })).toHaveAttribute(
-      "href",
-      "https://business.ametyst.ai"
+    expect(screen.getByRole('link', { name: 'Get started' })).toHaveAttribute(
+      'href',
+      'https://business.ametyst.ai',
     );
-    expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book");
-    expect(screen.queryByRole("link", { name: "How it works" })).toBeNull();
-    expect(screen.queryByRole("link", { name: "Use cases" })).toBeNull();
-    expect(screen.queryByRole("link", { name: "Sign in" })).toBeNull();
-    expect(screen.queryByRole("link", { name: "Pricing" })).toBeNull();
+    expect(screen.getByRole('link', { name: 'Book a demo' })).toHaveAttribute(
+      'href',
+      '/book',
+    );
+    expect(screen.queryByRole('link', { name: 'How it works' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Use cases' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Sign in' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Pricing' })).toBeNull();
   });
 });
 
-describe("Hero", () => {
-  it("renders the spend headline, both CTAs and the five harnesses", () => {
+describe('Hero', () => {
+  it('renders the spend headline, both CTAs and the five harnesses', () => {
     render(<Hero />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "See what every agent does with your money."
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'See what every agent does with your money.',
     );
     expect(screen.queryByText(/usage credits/)).toBeNull();
-    expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book");
-    for (const h of ["Claude Code", "Codex", "Cursor", "OpenClaw", "OpenCode"]) expect(screen.getByText(h)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Get started" })).toHaveAttribute(
-      "href",
-      "https://business.ametyst.ai"
+    expect(screen.getByRole('link', { name: 'Book a demo' })).toHaveAttribute(
+      'href',
+      '/book',
+    );
+    for (const h of ['Claude Code', 'Codex', 'Cursor', 'OpenClaw', 'OpenCode'])
+      expect(screen.getByText(h)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Get started' })).toHaveAttribute(
+      'href',
+      'https://business.ametyst.ai',
     );
   });
 
-  it("has no demo under it", () => {
+  it('has no demo under it', () => {
     render(<Hero />);
     expect(screen.queryByText(/Without the Ametyst Agent/)).toBeNull();
     expect(screen.queryByText(/With the Ametyst Agent/)).toBeNull();
   });
 
-  it("does not list Hermes Agent", () => {
+  it('does not list Hermes Agent', () => {
     render(<Hero />);
     expect(screen.queryByText(/Hermes/)).toBeNull();
   });
 
-  it("never says wallet", () => {
+  it('never says wallet', () => {
     const { container } = render(<Hero />);
-    expect(container.textContent?.toLowerCase()).not.toContain("wallet");
+    expect(container.textContent?.toLowerCase()).not.toContain('wallet');
   });
 });
 
-describe("PlansTable (/pricing page)", () => {
-  it("shows the three plans with their prices and no credits row", () => {
+describe('PlansTable (/pricing page)', () => {
+  it('shows the three plans with their prices and no credits row', () => {
     render(<PlansTable />);
-    for (const plan of ["Pay per use", "Pro", "Enterprise"]) {
-      expect(screen.getByRole("columnheader", { name: plan })).toBeInTheDocument();
+    for (const plan of ['Pay per use', 'Pro', 'Enterprise']) {
+      expect(
+        screen.getByRole('columnheader', { name: plan }),
+      ).toBeInTheDocument();
     }
-    expect(screen.queryByRole("columnheader", { name: "Team" })).toBeNull();
-    expect(screen.getByText("€15 per seat per month, every seat in the workspace")).toBeInTheDocument();
-    expect(screen.getByText("Custom")).toBeInTheDocument();
-    expect(screen.queryByRole("rowheader", { name: "Credits" })).toBeNull();
-    for (const gone of ["Spend dashboard", "Policies on your agents", "Members", "Tools connected"]) {
-      expect(screen.queryByRole("rowheader", { name: gone })).toBeNull();
+    expect(screen.queryByRole('columnheader', { name: 'Team' })).toBeNull();
+    expect(
+      screen.getByText('€15 per seat per month, every seat in the workspace'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Custom')).toBeInTheDocument();
+    expect(screen.queryByRole('rowheader', { name: 'Credits' })).toBeNull();
+    for (const gone of [
+      'Spend dashboard',
+      'Policies on your agents',
+      'Members',
+      'Tools connected',
+    ]) {
+      expect(screen.queryByRole('rowheader', { name: gone })).toBeNull();
     }
-    for (const row of ["Savings advice", "Agents per person", "Skills", "Wallets per person", "Policies", "Roles"]) {
-      expect(screen.getByRole("rowheader", { name: row })).toBeInTheDocument();
+    for (const row of [
+      'Savings advice',
+      'Agents per person',
+      'Skills',
+      'Wallets per person',
+      'Policies',
+      'Roles',
+    ]) {
+      expect(screen.getByRole('rowheader', { name: row })).toBeInTheDocument();
     }
-    expect(screen.queryByRole("rowheader", { name: "Agents connected per person" })).toBeNull();
-    const agentsRow = screen.getByRole("rowheader", { name: "Agents per person" }).closest("tr")!;
-    expect(within(agentsRow).getByText("Your Personal")).toBeInTheDocument();
-    expect(within(agentsRow).getAllByText("✓ Unlimited")).toHaveLength(2);
-    const skillsRow = screen.getByRole("rowheader", { name: "Skills" }).closest("tr")!;
-    expect(within(skillsRow).getAllByText("✓ Unlimited")).toHaveLength(3);
-    const order = screen.getAllByRole("rowheader").map((h) => h.textContent?.trim());
-    expect(order.indexOf("Skills")).toBe(order.indexOf("Agents per person") + 1);
-    expect(order.indexOf("Wallets per person")).toBe(order.indexOf("Skills") + 1);
-    expect(screen.queryByRole("rowheader", { name: "Cheaper routes" })).toBeNull();
-    expect(screen.getByText("5 a month per workspace")).toBeInTheDocument();
-    expect(screen.getByText("5 per workspace")).toBeInTheDocument();
+    expect(
+      screen.queryByRole('rowheader', { name: 'Agents connected per person' }),
+    ).toBeNull();
+    const agentsRow = screen
+      .getByRole('rowheader', { name: 'Agents per person' })
+      .closest('tr')!;
+    expect(within(agentsRow).getByText('Your Personal')).toBeInTheDocument();
+    expect(within(agentsRow).getAllByText('✓ Unlimited')).toHaveLength(2);
+    const skillsRow = screen
+      .getByRole('rowheader', { name: 'Skills' })
+      .closest('tr')!;
+    expect(within(skillsRow).getAllByText('✓ Unlimited')).toHaveLength(3);
+    const order = screen
+      .getAllByRole('rowheader')
+      .map((h) => h.textContent?.trim());
+    expect(order.indexOf('Skills')).toBe(
+      order.indexOf('Agents per person') + 1,
+    );
+    expect(order.indexOf('Wallets per person')).toBe(
+      order.indexOf('Skills') + 1,
+    );
+    expect(
+      screen.queryByRole('rowheader', { name: 'Cheaper routes' }),
+    ).toBeNull();
+    expect(screen.getByText('5 a month per workspace')).toBeInTheDocument();
+    expect(screen.getByText('5 per workspace')).toBeInTheDocument();
   });
 
-  it("never uses stablecoin wording (wallets are a counter of the plans since 13 October 2026)", () => {
+  it('never uses stablecoin wording (wallets are a counter of the plans since 13 October 2026)', () => {
     const { container } = render(<PlansTable />);
     expect(container.textContent).not.toMatch(/usdc|stablecoin/i);
   });
 });
 
-describe("Pricing page (/pricing)", () => {
-  it("says every person has one agent, their Personal, and keeps the Pro paragraph", () => {
+describe('Pricing page (/pricing)', () => {
+  it('says every person has one agent, their Personal, and keeps the Pro paragraph', () => {
     const { container } = render(<PricingPage />);
-    const text = (container.textContent ?? "").replace(/\s+/g, " ");
-    expect(text).toContain("Every person has one agent, their Personal, with every skill they want.");
-    expect(text).toContain("unlimited agents, wallets and policies");
+    const text = (container.textContent ?? '').replace(/\s+/g, ' ');
+    expect(text).toContain(
+      'Every person has one agent, their Personal, with every skill they want.',
+    );
+    expect(text).toContain('unlimited agents, wallets and policies');
   });
 });
 
-describe("Cta", () => {
-  it("has no email form", () => {
+describe('Cta', () => {
+  it('has no email form', () => {
     const { container } = render(<Cta />);
-    expect(container.querySelector("form")).toBeNull();
-    expect(container.querySelector("input")).toBeNull();
+    expect(container.querySelector('form')).toBeNull();
+    expect(container.querySelector('input')).toBeNull();
   });
 });
 
-describe("Pillars", () => {
-  it("has two blocks, the spend dashboard first, then the cheaper route, with no step numbers in the titles", () => {
+describe('Pillars', () => {
+  it('has two blocks, the spend dashboard first, then the cheaper route, with no step numbers in the titles', () => {
     render(<Pillars />);
-    const titles = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
-    expect(titles).toEqual(["AI spend by agent.", "Same work, cheaper route."]);
+    const titles = screen
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.textContent);
+    expect(titles).toEqual(['AI spend by agent.', 'Same work, cheaper route.']);
     expect(screen.getByText(/spending policy/)).toBeInTheDocument();
-    for (const view of ["Overview", "Agents", "People", "Policies"]) expect(screen.getByText(view)).toBeInTheDocument();
-    for (const option of ["Exa", "Parallel", "Hunter", "Claude Haiku 4.5"]) expect(screen.getByText(option)).toBeInTheDocument();
-    expect(screen.getAllByText("Cheaper route")).toHaveLength(1);
+    for (const view of ['Overview', 'Agents', 'People', 'Policies'])
+      expect(screen.getByText(view)).toBeInTheDocument();
+    for (const option of ['Exa', 'Parallel', 'Hunter', 'Claude Haiku 4.5'])
+      expect(screen.getByText(option)).toBeInTheDocument();
+    expect(screen.getAllByText('Cheaper route')).toHaveLength(1);
   });
 });
 
-describe("Faq", () => {
-  it("names OpenCode, not Hermes Agent, and keeps the dashboard answer short", () => {
+describe('Faq', () => {
+  it('names OpenCode, not Hermes Agent, and keeps the dashboard answer short', () => {
     const { container } = render(<Faq />);
-    expect(container.textContent).toContain("OpenClaw, OpenCode and any MCP client");
+    expect(container.textContent).toContain(
+      'OpenClaw, OpenCode and any MCP client',
+    );
     expect(container.textContent).not.toMatch(/Hermes/);
-    expect(screen.getByText("What every person and agent spends, call by call.")).toBeInTheDocument();
+    expect(
+      screen.getByText('What every person and agent spends, call by call.'),
+    ).toBeInTheDocument();
   });
 });
