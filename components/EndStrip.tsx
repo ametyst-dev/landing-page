@@ -15,6 +15,10 @@ const LEGAL: [string, string][] = [
   ['Contact', '/contact'],
 ];
 
+/* The public status page (Better Stack), last item of the legal row. External,
+ * so it opens in a new tab like the marks. */
+const STATUS_URL = 'https://status.ametyst.ai/';
+
 const FOLLOW: { name: string; href: string; d: string }[] = [
   {
     name: 'X',
@@ -42,6 +46,11 @@ export default function EndStrip() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={STATUS_URL} {...external} className={linkClass}>
+                  Status
+                </a>
+              </li>
             </ul>
           </nav>
           <nav aria-label="Follow">

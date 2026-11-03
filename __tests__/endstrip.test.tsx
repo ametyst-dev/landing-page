@@ -31,6 +31,7 @@ describe('EndStrip', () => {
       ['Refunds', '/refunds'],
       ['Privacy', '/privacy'],
       ['Contact', '/contact'],
+      ['Status', 'https://status.ametyst.ai/'],
     ]) {
       expect(screen.getByRole('link', { name })).toHaveAttribute('href', href);
     }
@@ -44,7 +45,18 @@ describe('EndStrip', () => {
     render(<EndStrip />);
     for (const name of ['Sign in', 'Book a call', 'Setup guide for agents'])
       expect(screen.queryByRole('link', { name })).toBeNull();
-    expect(screen.getAllByRole('link')).toHaveLength(7);
+    expect(screen.getAllByRole('link')).toHaveLength(8);
+  });
+
+  it('opens Status in a new tab, last in the legal row', () => {
+    render(<EndStrip />);
+    const status = screen.getByRole('link', { name: 'Status' });
+    expect(status).toHaveAttribute('target', '_blank');
+    expect(status).toHaveAttribute('rel', 'noopener noreferrer');
+    const legal = screen.getByRole('navigation', { name: 'Legal' });
+    const links = legal.querySelectorAll('a');
+    expect(links[links.length - 1]).toBe(status);
+    expect(status.className).toBe(links[0].className);
   });
 
   it('has no brand block, no tagline and no line above it', () => {

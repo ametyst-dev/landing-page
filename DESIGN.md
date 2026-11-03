@@ -128,7 +128,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 **Definition list**. `rounded-lg border border-border bg-bg divide-y divide-border/60`, rows of `dt text-xs text-muted` and `dd text-sm text-fg`. Used for run metadata and usage pricing.
 
-**Footer**. `components/EndStrip.tsx`, shared by the home page and the text pages, kept small. One row: the legal links (Pricing, Terms, Refunds, Privacy, Contact) on the left, the X and LinkedIn marks (18px, `text-fg/60`, Simple Icons paths) on the right. Under a hairline, the company data line in Italian. No headings, no Product links, no brand word, no tagline, no line above it.
+**Footer**. `components/EndStrip.tsx`, shared by the home page and the text pages, kept small. One row: the legal links (Pricing, Terms, Refunds, Privacy, Contact, Status) on the left, the X and LinkedIn marks (18px, `text-fg/60`, Simple Icons paths) on the right. Under a hairline, the company data line in Italian. No headings, no Product links, no brand word, no tagline, no line above it.
 
 **FAQ item**. Native `details` with `summary` in a `max-w-2xl` list, so the `+` on the right stays close to the question. Question Inter semibold, violet on hover and when open; mono `+` in accent that rotates 45 degrees when open. A one-sentence answer `text-fg/75` under it.
 
