@@ -1,11 +1,11 @@
 const faqs: { q: string; a: string }[] = [
   {
     q: 'Works with my agent?',
-    a: 'Yes. Claude Code, Codex, Cursor, OpenClaw, OpenCode and any MCP client, set up in a few minutes.',
+    a: 'Yes. Claude Code, Codex, Cursor, OpenClaw, OpenCode and any MCP client, set up in a few minutes. It does not work yet with Claude Cowork and ChatGPT.',
   },
   {
     q: 'What does the dashboard show?',
-    a: 'What every person and agent spends, call by call.',
+    a: 'What your company spends on AI, call by call: by provider, model, project, member and agent.',
   },
   {
     q: 'What happens at a spending limit?',
@@ -17,7 +17,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'Do I need an account with each tool?',
-    a: 'No. One key covers 30+ models and tools, and Ametyst pays them per call.',
+    a: 'No. One key covers 40+ models and tools, and Ametyst pays them per call.',
+  },
+  {
+    q: 'When do I need Pro?',
+    a: 'When a member needs more than one agent or wallet, when two spending policies are not enough, or when you want every savings advice and a make-or-buy review with our team. Pay per use has no time limit.',
   },
 ];
 

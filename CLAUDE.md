@@ -1,7 +1,7 @@
 # CLAUDE.md — landing-page/
 
 ## Purpose
-This is the public-facing landing page for Ametyst — it lets teams' existing agents (Claude Code, Codex, Cursor) work on their own: every tool with one key, spending policies, and the Ametyst Agent, which keeps tasks sharp. Customer-facing copy never says "bank" or "wallet"; the workflow is the door. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
+This is the public-facing landing page for Ametyst — it lets teams' existing agents (Claude Code, Codex, Cursor) work on their own: every tool with one key, spending policies, and the Ametyst Agent, which keeps tasks sharp. Customer-facing copy never says "bank", and says "wallet" only where the plans are described; the workflow is the door. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. It serves as the main marketing surface: explains the product, collects waitlist sign-ups, and routes interested users to a discovery call booking page.
 
 ## Context triggers
 - Load this when the task involves UI changes, new sections, routing, API endpoints, or styling
@@ -58,7 +58,7 @@ This is the public-facing landing page for Ametyst — it lets teams' existing a
 - "Add a FAQ section" → create `components/Faq.tsx`, import it in `app/page.tsx` before `Cta`, update `docs/README.md`
 - "Add a new API endpoint" → create `app/api/<name>/route.ts`, update `docs/ARCHITECTURE.md`
 - "Change the brand color" → update CSS custom properties in `app/globals.css`, do not change `tailwind.config.ts` color aliases
-- "Update the final CTA copy" → edit `components/Cta.tsx` only
+- "Change a plan or its limits" → edit `GROUPS`, `FREE_LIST` and `PRO_LIST` in `components/Pricing.tsx` (the home section and `/pricing` read the same data), then the two paragraphs of `app/pricing/page.tsx`
 - "Update what agents are told to do" → edit `public/skill.md` (agent-facing onboarding guide, plain markdown)
 - "Make a preview I can comment on" → branch `preview/<topic>`, `npm run snapshot`, publish `snapshot/` as a Claude artifact; comments come back here, the artifact never edits code
-- Public copy never uses: bank, banking, wallet, neobank, skill, optimization, optimizer, platform, or an em dash. `__tests__/page-order.test.tsx` enforces it
+- Public copy never uses: bank, banking, neobank, skill, optimization, optimizer, platform, or an em dash; "wallet" appears only where the plans are described (pricing section, its FAQ answer, `/pricing`). `__tests__/page-order.test.tsx` enforces it

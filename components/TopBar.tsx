@@ -13,6 +13,12 @@ export default function TopBar() {
           </a>
           <nav className="flex items-center gap-2 sm:gap-3" aria-label="Main">
             <a
+              href="#pricing"
+              className="hidden sm:inline-flex items-center h-9 md:h-10 px-3 font-body text-xs md:text-sm font-semibold text-fg/70 hover:text-accent transition-colors"
+            >
+              Pricing
+            </a>
+            <a
               href="/book"
               target="_blank"
               rel="noopener noreferrer"

@@ -40,13 +40,13 @@ landing-page/
 │   ├── Hero.tsx                # Above-the-fold hero: headline, subheadline, two CTAs, harness logos
 │   ├── Terminal.tsx            # Flat terminal window used by the Ametyst Agent block
 │   ├── Problem.tsx             # Three pains on the tinted band
-│   ├── Pillars.tsx             # Two blocks: the Ametyst Agent, the workspace (tools + spending policies)
+│   ├── Pillars.tsx             # The spend dashboard (SpendSplit), then three cards: ROI, make or buy, cheaper route (RouteCard)
 │   ├── Providers.tsx           # Tool data (apps, providers), ToolIcon, ToolsCard
 │   ├── RealTasks.tsx           # Social proof: four workflow cards with cost per run
 │   ├── Faq.tsx                 # Six native details items
-│   ├── Cta.tsx                 # Closing band with the two CTAs
+│   ├── Cta.tsx                 # Closing band with the two CTAs. Not rendered today
 │   ├── LegalPage.tsx           # Shell and typography helpers for the text pages
-│   ├── Pricing.tsx             # PlansTable, used by /pricing
+│   ├── Pricing.tsx             # The two plans: #pricing section of the home page, table + cards, also used by /pricing
 │   └── EndStrip.tsx            # Footer: legal links, X and LinkedIn marks, company data line
 ├── contexts/                   # (empty) React context providers
 ├── hooks/                      # (empty) Custom React hooks

@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { ToolIcon } from '@/components/Providers';
 
-/* One workflow, step by step, and the model or tool Ametyst would route each
- * step to. It cycles through three steps every four seconds and stops while
- * the pointer is on it. Model marks are Simple Icons paths (24x24). */
+/* One step of a workflow, what runs it today, and the cheaper model or tool
+ * Ametyst would route it to, with the saving and the approval. It cycles
+ * through three routes every four seconds and stops while the pointer is on
+ * it. Model marks are Simple Icons paths (24x24). */
 
 type Option = {
   id: string;
@@ -51,26 +52,20 @@ const OPTIONS: Option[] = [
     from: 'Anthropic',
     kind: 'model',
   },
-  {
-    id: 'hunter',
-    name: 'Hunter',
-    does: 'Checks that an email address exists.',
-    from: 'Tool',
-    kind: 'tool',
-  },
 ];
 
 const STEPS: { n: string; ask: string; need: string }[] = [
   { n: '01', ask: 'Find 40 fintech companies in Milan', need: 'Web search' },
   { n: '02', ask: 'Write a brief for each lead', need: 'Writing' },
   { n: '03', ask: 'Tag each lead by industry', need: 'Classification' },
-  { n: '04', ask: 'Verify each email', need: 'Lookup' },
 ];
 
-const ROUTES: { step: number; option: string }[] = [
-  { step: 1, option: 'terra' },
-  { step: 0, option: 'exa' },
-  { step: 2, option: 'haiku' },
+/* The step, the option that runs it today, the cheaper one, and what the
+ * change saves in a month (euro). */
+const ROUTES: { step: number; today: string; to: string; saves: number }[] = [
+  { step: 1, today: 'fable', to: 'terra', saves: 212 },
+  { step: 0, today: 'parallel', to: 'exa', saves: 86 },
+  { step: 2, today: 'fable', to: 'haiku', saves: 134 },
 ];
 
 const OPENAI =
@@ -94,34 +89,35 @@ function OptionMark({ o }: { o: Option }) {
   );
 }
 
-const DOTS: [number, number][] = [
-  [12, 4],
-  [5, 8],
-  [19, 8],
-  [12, 12],
-  [5, 16],
-  [19, 16],
-  [12, 20],
-];
+const rowClass = (on: boolean) =>
+  `rounded-lg border px-3 py-2.5 transition-all duration-300 ${on ? 'border-accent bg-surface' : 'border-border/60 bg-bg opacity-45'}`;
 
-function RouterMark() {
+function OptionRow({ o, on }: { o: Option; on: boolean }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="28"
-      height="28"
-      aria-hidden="true"
-      className="text-accent"
-    >
-      {DOTS.map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r="2.2" fill="currentColor" />
-      ))}
-    </svg>
+    <div className={rowClass(on)}>
+      <p className="flex items-center gap-2">
+        <OptionMark o={o} />
+        <span className="text-sm font-semibold text-fg truncate">{o.name}</span>
+        {on ? (
+          <span className="ml-auto shrink-0 rounded-full bg-honey px-2 py-0.5 font-mono text-[10px] text-honey-ink">
+            Cheaper route
+          </span>
+        ) : (
+          <span className="ml-auto shrink-0 font-mono text-[10px] text-muted">
+            Today
+          </span>
+        )}
+      </p>
+      <p
+        className={`text-xs mt-1 truncate ${on ? 'text-fg/80' : 'text-muted'}`}
+      >
+        {o.does}
+      </p>
+    </div>
   );
 }
 
-const rowClass = (on: boolean) =>
-  `rounded-lg border px-3 py-2.5 transition-all duration-300 ${on ? 'border-accent bg-surface' : 'border-border/60 bg-bg opacity-45'}`;
+const option = (id: string) => OPTIONS.find((o) => o.id === id) ?? OPTIONS[0];
 
 export default function RouteCard() {
   const [i, setI] = useState(0);
@@ -129,72 +125,42 @@ export default function RouteCard() {
 
   useEffect(() => {
     if (paused) return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     const id = setInterval(() => setI((n) => (n + 1) % ROUTES.length), 4000);
     return () => clearInterval(id);
   }, [paused]);
 
   const route = ROUTES[i];
+  const step = STEPS[route.step];
 
   return (
     <div
-      className="rounded-xl border border-border bg-surface p-5 md:p-7 font-body"
+      className="flex-1 rounded-lg border border-border/60 bg-bg p-3 font-body"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-4 items-center">
-        <div className="min-w-0">
-          <p className="font-mono text-[11px] text-muted mb-2">
-            Agent · <span className="text-fg">lead-research</span>
+      <p className="font-mono text-[11px] text-muted mb-2">
+        Agent · <span className="text-fg">lead-research</span>
+      </p>
+      <div className="space-y-2">
+        <div className="rounded-lg border border-border/60 bg-surface px-3 py-2.5">
+          <p className="font-mono text-[10px] text-muted">
+            {step.n} / STEP · {step.need}
           </p>
-          <ul className="space-y-2">
-            {STEPS.map((s, n) => (
-              <li key={s.n} className={rowClass(n === route.step)}>
-                <p className="font-mono text-[10px] text-muted">{s.n} / STEP</p>
-                <p className="text-sm text-fg leading-snug">“{s.ask}”</p>
-                <p className="font-mono text-[10px] text-muted mt-1">
-                  {s.need}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <p className="text-sm text-fg leading-snug truncate">“{step.ask}”</p>
         </div>
-        <div className="hidden sm:flex justify-center">
-          <RouterMark />
-        </div>
-        <div className="min-w-0">
-          <p className="font-mono text-[11px] text-muted mb-2">
-            Models and tools
+        <OptionRow o={option(route.today)} on={false} />
+        <OptionRow o={option(route.to)} on />
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-border/60 bg-surface px-3 py-2">
+          <p className="text-[13px] text-fg/80 tabular-nums">
+            <strong className="font-semibold text-fg">
+              €{route.saves} less
+            </strong>{' '}
+            a month
           </p>
-          <ul className="space-y-2">
-            {OPTIONS.map((o) => {
-              const on = o.id === route.option;
-              return (
-                <li key={o.id} className={rowClass(on)}>
-                  <p className="flex items-center gap-2">
-                    <OptionMark o={o} />
-                    <span className="text-sm font-semibold text-fg truncate">
-                      {o.name}
-                    </span>
-                    <span className="ml-auto font-mono text-[10px] text-muted shrink-0">
-                      {o.from}
-                    </span>
-                  </p>
-                  <p
-                    className={`text-xs mt-1 truncate ${on ? 'text-fg/80' : 'text-muted'}`}
-                  >
-                    {o.does}
-                  </p>
-                  {on && (
-                    <p className="mt-1.5">
-                      <span className="rounded-full bg-honey px-2 py-0.5 font-mono text-[10px] text-honey-ink">
-                        Cheaper route
-                      </span>
-                    </p>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <span className="shrink-0 rounded-full bg-accent px-3 py-1 text-[11px] font-semibold text-btn-fg">
+            Approve
+          </span>
         </div>
       </div>
     </div>
