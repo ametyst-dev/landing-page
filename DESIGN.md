@@ -97,7 +97,7 @@ Rules that make it look like Ametyst:
 
 ## Components
 
-**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. No section links (How it works and Use cases were removed in review). Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
+**Top bar**. Fixed, `h-14 sm:h-16`, `bg-bg/90 backdrop-blur`, hairline bottom (the one line that stays). Brand word in display face in accent. No section links (How it works and Use cases were removed in review), except one quiet text link, Pricing, to the `#pricing` section of the home page, hidden on a phone. Right side: Talk to the team (`.btn-secondary .btn-sm`) and Create your workspace (`.btn-primary .btn-sm`).
 
 **Button**. One class, `.btn` in `app/globals.css`: a pill (`rounded-full`), 44px tall (48px from `md`), `px-6`, Inter semibold, `text-sm` then `text-base`, 150ms colour transition, a 2px violet focus ring at 40 percent. Reference: ElevenLabs (pill, medium weight, hairline secondary), adapted to keep the violet fill.
 
@@ -144,7 +144,7 @@ Never stack more than two button styles in one group. Never put a shadow on a bu
 
 ## Don't
 
-- Don't say bank, banking, wallet, neobank, skill, optimization, optimizer, platform in public copy.
+- Don't say bank, banking, neobank, skill, optimization, optimizer, platform in public copy. Wallet is said only where the plans are described (the pricing section, its question in the FAQ, `/pricing`): wallets are a counter of the plans.
 - Don't add gradients, glows or coloured shadows anywhere, product views included. The violet aura read as AI-made and was removed.
 - Don't introduce a third accent or a grey text token. The accents are violet and honey. Use opacity on ink.
 - Don't use honey for decoration, for buttons or for warnings. It marks value kept and nothing else.

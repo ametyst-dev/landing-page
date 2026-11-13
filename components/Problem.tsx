@@ -1,11 +1,17 @@
+/* The three pains, in the order the page then answers them: the spend nobody
+ * sees whole, the return nobody can show, the overpaying at every step. */
 const pains = [
-  {
-    title: 'Your agents overpay at every step.',
-    body: 'They reach for the most expensive model or tool whether the task needs it or not, even when a cheaper one would do the same job.',
-  },
   {
     title: 'Nobody sees the whole picture.',
     body: 'Costs sit in personal dashboards or are spread across ten providers. The total is a surprise at the end of every month.',
+  },
+  {
+    title: 'Nobody knows what it returned.',
+    body: 'The bill grows every month and nobody can put it next to the leads or the shipped work it produced. Tools get renewed because nobody has the numbers to decide.',
+  },
+  {
+    title: 'Your agents overpay at every step.',
+    body: 'They reach for the most expensive model or tool whether the task needs it or not, even when a cheaper one would do the same job.',
   },
 ];
 
@@ -24,7 +30,7 @@ export default function Problem() {
             Nobody is watching what your agents cost.
           </h2>
         </div>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {pains.map((p) => (
             <li
               key={p.title}

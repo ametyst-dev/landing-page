@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import LegalPage, { A, H2, P, UL } from '@/components/LegalPage';
-import { PlansTable } from '@/components/Pricing';
+import { Plans } from '@/components/Pricing';
 
 export const metadata: Metadata = { title: 'Pricing · Ametyst' };
 
@@ -9,21 +9,22 @@ export default function PricingPage() {
     <LegalPage title="Pricing" updated={false}>
       <P>
         <strong>Opening a workspace is free.</strong> Invite your whole team,
-        members are unlimited on every plan. Every person has one agent, their
-        Personal, with every skill they want. Set the spending policies and see
-        what every agent spends. Your agents pay for the tools they use, and
-        nothing else. The figure you saved is always visible, and every month
-        you get the five savings advice that save you most.
+        members are unlimited on every plan. You see what your company spends on
+        AI by provider, model, project, member and agent. Every person has one
+        agent, their Personal, with every skill they want, and one wallet. The
+        workspace has two spending policies. Your agents pay for the tools they
+        use, and nothing else. The figure you saved is always visible, and every
+        month you get the five savings advice that save you most.
       </P>
       <P>
         <strong>Pro is for the whole workspace.</strong> Every seat goes on Pro,
         €15 per seat per month, and every seat gets unlimited savings advice: a
         cheaper model or tool for each step of every workflow, which you
-        approve. The workspace gets unlimited agents, wallets and policies,
-        sub-admins and an audit log. Enterprise is custom, on top of Pro.
+        approve. The workspace gets unlimited agents, wallets and policies, the
+        ROI data to download, and a make-or-buy review with our team.
       </P>
       <div className="my-8 xl:-mx-24">
-        <PlansTable />
+        <Plans />
       </div>
 
       <H2>How you pay for what your agents use</H2>
